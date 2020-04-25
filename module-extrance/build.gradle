@@ -1,0 +1,20 @@
+apply from: "../module.build.gradle"
+
+android {
+    defaultConfig {
+        //当作为一个module的时候，指定一个applicationId
+        if (isBuildModule.toBoolean()) {
+            applicationId "com.dashingqi.m-extrance"
+        }
+    }
+
+    //统一资源前缀，规范资源引用
+    resourcePrefix "extrance_"
+
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+}

@@ -1,0 +1,7 @@
+rootProject.name='AndroidMVVMComponentProject'
+include ':app'
+include ':module-user'
+include ':module-home'
+include ':module-extrance'
+include ':library-base'
+include ':library-res'

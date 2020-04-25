@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions{
+        sourceCompatibility rootProject.ext.versions.java
+        targetCompatibility rootProject.ext.versions.java
+    }
+
+    //统一资源文件命名格式
+    resourcePrefix "res_"
+
+    dataBinding{
+        enabled true
+    }
+
+}
+
+dependencies {
+
+implementation 'androidx.appcompat:appcompat:1.1.0'
+}

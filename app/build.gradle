@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            if (!isBuildModule.toBoolean()) {
+
+                //合并到宿主中
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                resources {
+                    //正式版本时.剔除debug文件夹下的所有调式文件
+                    exclude 'src/debug/*'
+                }
+            }
+        }
+    }
+
+    dataBinding{
+        enabled true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation rootProject.ext.androidx["androidx.appcompat"]
+    implementation rootProject.ext.androidx["androidx.constraintlayout"]
+    testImplementation rootProject.ext.androidx["androidx.junit"]
+    androidTestImplementation rootProject.ext.androidx["androidx.test.ext:junit"]
+    androidTestImplementation rootProject.ext.androidx["androidx.espresso"]
+
+
+    if (isBuildModule.toBoolean()) {
+        //当组件独立运行时，需要把基础基础库依赖到宿主app项目上
+        implementation project(":library-base")
+    } else {
+        //如果是作为组件，需要把各个组件依赖到App宿主上
+
+        // app启动模块
+        implementation project(":module-extrance")
+        // app首页模块
+        implementation project(":module-home")
+        // app用户模块
+        implementation project(":module-user")
+
+    }
+}
