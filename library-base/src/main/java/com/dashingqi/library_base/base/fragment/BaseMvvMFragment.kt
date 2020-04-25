@@ -1,7 +1,8 @@
-package com.dashingqi.library_base.base.activity
+package com.dashingqi.library_base.base.fragment
 
-import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -13,20 +14,27 @@ import com.dashingqi.library_base.ext.getVmClass
  * @author : zhangqi
  * @time : 2020/4/25
  * desc :
- * 对于抽象类来说，在Kotlin中默认是open的
- * lateinit关键字是Kotlin中延迟初始化的实现 用于变量（var）
- * 说到lateinit关键字，就不得不说下kotlin中另外一个延迟初始化的实现lazy，它是用于常量的（val）
  */
-abstract class BaseMVVMActivity<DB : ViewDataBinding, VM : BaseViewModel> : BaseActivity() {
+abstract class BaseMvvMFragment<DB : ViewDataBinding, VM : BaseViewModel> : BaseLazyFragment() {
+
     lateinit var dataBinding: DB
     lateinit var viewModel: VM
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+
+    /**
+     * 通过DataBinding获取到布局文件
+     */
+    override fun getContentView(inflater: LayoutInflater, parent: ViewGroup?): View? {
         createDataBinding()
+        return dataBinding.root
+    }
+
+    /**
+     * 布局加载完成之后了
+     */
+    override fun onLoad(view: View) {
         viewModel = createViewModel()
         dataBinding.lifecycleOwner = this
-
     }
 
     /**
@@ -36,21 +44,19 @@ abstract class BaseMVVMActivity<DB : ViewDataBinding, VM : BaseViewModel> : Base
         var dbClass = getDbClass<DB>(this)
         var method = dbClass.getMethod("inflate", LayoutInflater::class.java)
         dataBinding = method.invoke(null, layoutInflater) as DB
-        setContentView(dataBinding.root)
     }
 
     /**
      * 创建ViewModel
      */
     private fun createViewModel(): VM {
-        return ViewModelProviders.of(this, getViewHolderFactory()).get(getVmClass(this))
+        return ViewModelProviders.of(this, getViewModelFactory()).get(getVmClass(this))
     }
 
     /**
-     * 如果你想传递参数到ViewModel中
-     * 可以重写这个方法，通过Factory 重新构造一个带参数的ViewModel
+     * 可通过重写该方法，来提供ViewModel传参数
      */
-    open fun getViewHolderFactory(): ViewModelProvider.Factory? {
+    open fun getViewModelFactory(): ViewModelProvider.Factory? {
         return null
     }
 }
