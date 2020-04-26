@@ -15,10 +15,12 @@ abstract class BaseLazyFragment : BaseFragment(), DQLazyFragmentProxy.DQLazyProx
 
     private val lazyFragmentProxy = DQLazyFragmentProxy<BaseLazyFragment>(this)
 
+    abstract override fun onLoad(rootView: View)
+
     /**
      *  当View创建成功后
      */
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lazyFragmentProxy.onViewCreated(view, savedInstanceState)
     }
@@ -26,7 +28,7 @@ abstract class BaseLazyFragment : BaseFragment(), DQLazyFragmentProxy.DQLazyProx
     /**
      * 开始创建View，并返回View
      */
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         return lazyFragmentProxy.onCreateView(inflater, container, savedInstanceState)
     }
@@ -44,6 +46,11 @@ abstract class BaseLazyFragment : BaseFragment(), DQLazyFragmentProxy.DQLazyProx
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         lazyFragmentProxy.onHiddenChanged(hidden)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        lazyFragmentProxy.onDetach()
     }
 
     override fun lazyEnabled(): Boolean = true

@@ -13,57 +13,75 @@ import java.lang.ref.WeakReference
  * @time : 2020/4/25
  * desc : 懒加载Fragment的代理文件 用来处理业务逻辑
  */
-class DQLazyFragmentProxy<T>(var mFragment: T) where T : Fragment?, T : DQLazyProxyOwner? {
+class DQLazyFragmentProxy<T>(var mFragment: T) where T : Fragment, T : DQLazyProxyOwner? {
 
     var isLoaded = false
     private var rootViewWeakReference: WeakReference<View?>? = null
 
     fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, saveInstanceState: Bundle?): View? {
 
-        return if (mFragment!!.lazyEnabled()) {
+        return if (mFragment.lazyEnabled()) {
             var view: View? = null
             if (rootViewWeakReference != null) {
                 view = rootViewWeakReference?.get()
             }
             if (view == null) {
                 isLoaded = false
-                view = mFragment!!.getContentView(inflater, container)
+                view = mFragment.getContentView(inflater, container)
                 rootViewWeakReference = WeakReference(view)
             }
             loadJudgment(view)
             view
         } else {
-            var view = if (mFragment!!.view == null) {
-                mFragment!!.getContentView(inflater, container)!!
+            var view = if (mFragment.view == null) {
+                mFragment.getContentView(inflater, container)
             } else {
-                mFragment!!.view
+                mFragment.view
             }
             loadJudgment(view)
-            mFragment!!.view
+            mFragment.view
         }
     }
 
     private fun loadJudgment(view: View?) {
-        if (view != null && mFragment!!.getUserVisibleHint() && !isLoaded && !mFragment!!.isHidden) {
+        if (view != null && mFragment.getUserVisibleHint() && !isLoaded && !mFragment.isHidden && !mFragment.isShowing()) {
             isLoaded = true
-            mFragment!!.onLoad(view)
+            mFragment.onLoad(view)
         }
     }
 
     fun onViewCreated(view: View, saveInstanceState: Bundle?) {
+        if (mFragment.lazyEnabled()) {
+            loadJudgment(mFragment.view)
+        } else {
+            mFragment.onLoad(view)
+        }
 
     }
 
     fun onStart() {
+        if (mFragment.lazyEnabled()) {
+            loadJudgment(mFragment!!.view)
+        }
 
     }
 
     fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        if (mFragment.lazyEnabled()) {
+            loadJudgment(mFragment.view)
+        }
 
     }
 
     fun onHiddenChanged(hidden: Boolean) {
+        if (mFragment.lazyEnabled()) {
+            loadJudgment(mFragment.view)
+        }
 
+    }
+
+    fun onDetach() {
+        rootViewWeakReference = null
     }
 
     interface DQLazyProxyOwner {

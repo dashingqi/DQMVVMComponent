@@ -3,6 +3,7 @@ package com.dashingqi.library_base.base.fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.CallSuper
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -33,6 +34,7 @@ abstract class BaseMvvMFragment<DB : ViewDataBinding, VM : BaseViewModel> : Base
     /**
      * 布局加载完成之后了
      */
+    @CallSuper
     override fun onLoad(view: View) {
         viewModel = createViewModel()
         dataBinding.lifecycleOwner = this
