@@ -38,6 +38,11 @@ android {
         enabled true
     }
 
+    compileOptions{
+        sourceCompatibility rootProject.ext.versions.java
+        targetCompatibility rootProject.ext.versions.java
+    }
+
 }
 
 dependencies {
@@ -51,8 +56,9 @@ dependencies {
 
 
     if (isBuildModule.toBoolean()) {
-        //当组件独立运行时，需要把基础基础库依赖到宿主app项目上
+        //当组件独立运行时，需要把基础库依赖到宿主app项目上
         implementation project(":library-base")
+        implementation project(":library-network")
     } else {
         //如果是作为组件，需要把各个组件依赖到App宿主上
 

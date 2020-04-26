@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
  */
 open class BaseFragment : Fragment() {
     private val BASE_TAG = "${this.javaClass.name}"
+    private var showing = false
+    private var touchable = false
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -21,11 +23,28 @@ open class BaseFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         Log.d(BASE_TAG, "onStart: ${this.javaClass.name}")
+        showing = true
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         Log.d(BASE_TAG, "onActivityCreated: ${this.javaClass.name}")
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        touchable = true
+    }
+
+    override fun onPause() {
+        super.onPause()
+        touchable = false
+    }
+
+    override fun onStop() {
+        super.onStop()
+        showing = false
     }
 
     override fun onDestroyView() {
@@ -42,4 +61,17 @@ open class BaseFragment : Fragment() {
         super.setUserVisibleHint(isVisibleToUser)
         Log.d(BASE_TAG, "setUserVisibleHint: ${this.javaClass.name} isVisibleToUser =  $isVisibleToUser")
     }
+
+
+    /**
+     * 是否可见
+     */
+    fun isShowing(): Boolean = showing
+
+    /**
+     * 可触摸的
+     */
+    fun isTouchable(): Boolean = touchable
+
+
 }
