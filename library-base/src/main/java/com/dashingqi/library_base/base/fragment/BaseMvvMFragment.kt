@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.dashingqi.library_base.BR
 import com.dashingqi.library_base.base.viewmodel.BaseViewModel
 import com.dashingqi.library_base.ext.getDbClass
 import com.dashingqi.library_base.ext.getVmClass
@@ -35,6 +36,7 @@ abstract class BaseMvvMFragment<DB : ViewDataBinding, VM : BaseViewModel> : Base
     override fun onLoad(view: View) {
         viewModel = createViewModel()
         dataBinding.lifecycleOwner = this
+        dataBinding.setVariable(getVariableId(), viewModel)
     }
 
     /**
@@ -59,4 +61,9 @@ abstract class BaseMvvMFragment<DB : ViewDataBinding, VM : BaseViewModel> : Base
     open fun getViewModelFactory(): ViewModelProvider.Factory? {
         return null
     }
+
+    /**
+     * BR.viewModel变量是由 文件 base_br_layout文件生成的
+     */
+    private fun getVariableId() = BR.viewModel
 }

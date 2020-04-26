@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--该文件的作用就是用来生成BaseMvvMActivity/Fragment中的BR.viewModel的 没有其他的作用-->
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="String" />
+
+        <variable
+            name="item"
+            type="String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
