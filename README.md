@@ -12,6 +12,7 @@
 - 个人（module-user）
 - 公众号文章(module-article)
 - 项目（module-project）
+- 入口（module-entrance）
 ##### 公共组件
 - library-base(抽取的Base)
 - library-network(网络层)
