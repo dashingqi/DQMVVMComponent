@@ -5,6 +5,7 @@
 #### 更新日志
 - 抽取BaseMvvMActivity和BaseMvvMFragment（2020/04/25）
 - 完善BaseLazyFragment;同时加入网络请求组件，目前要自定义请求回调，做业务层的分发。（2020/04/26）
+- 配置路由框架ARouter，为功能组件提供对外调用的接口（library-service）(2020/04/29)
 
 #### 组件化部分划分-wanAndroid项目（2020/04/28）
 ##### 功能模块组件划分

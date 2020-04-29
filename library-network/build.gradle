@@ -12,6 +12,15 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi-v7a' //, 'x86','armeabi', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
     }
 
     buildTypes {
@@ -22,6 +31,7 @@ android {
     }
 
     //统一资源前缀，规范资源引用，局限于布局的资源文件
+    resourcePrefix "network_"
     dataBinding {
         enabled true
     }
@@ -30,6 +40,7 @@ android {
         sourceCompatibility rootProject.ext.versions.java
         targetCompatibility rootProject.ext.versions.java
     }
+
 }
 
 dependencies {

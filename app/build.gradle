@@ -11,6 +11,15 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi-v7a' //, 'x86','armeabi', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
     }
 
     buildTypes {
@@ -53,12 +62,13 @@ dependencies {
     testImplementation rootProject.ext.androidx["androidx.junit"]
     androidTestImplementation rootProject.ext.androidx["androidx.test.ext:junit"]
     androidTestImplementation rootProject.ext.androidx["androidx.espresso"]
-
+    implementation project(":library-network")
+    implementation project(":library-service")
 
     if (isBuildModule.toBoolean()) {
         //当组件独立运行时，需要把基础库依赖到宿主app项目上
         implementation project(":library-base")
-        implementation project(":library-network")
+
     } else {
         //如果是作为组件，需要把各个组件依赖到App宿主上
 

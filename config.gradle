@@ -29,6 +29,8 @@ ext {
             //ViewModel
             "lifecycle-extensions": "androidx.lifecycle:lifecycle-extensions:2.2.0",
             "retrofit"            : "com.squareup.retrofit2:retrofit:2.8.1",
-            "conver-gson"         : "com.squareup.retrofit2:converter-gson:2.8.1"
+            "conver-gson"         : "com.squareup.retrofit2:converter-gson:2.8.1",
+            "ARouterCompiler"     : "com.alibaba:arouter-compiler:1.2.2",
+            "ARouterApi"          : "com.alibaba:arouter-api:1.5.0"
     ]
 }

@@ -7,7 +7,6 @@ if (isBuildModule.toBoolean()) {
     //作为组件运行，集合到宿主App中
     apply plugin: 'com.android.library'
 }
-
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -18,6 +17,12 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     //开启DataBinding
@@ -59,4 +64,7 @@ dependencies {
 
     implementation project(":library-base")
     implementation project(":library-network")
+    implementation project(":library-service")
+
+    annotationProcessor rootProject.ext.dependencies["ARouterCompiler"]
 }
