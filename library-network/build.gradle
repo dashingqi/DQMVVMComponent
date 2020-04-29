@@ -46,12 +46,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation rootProject.ext.androidx["androidx.appcompat"]
-    implementation 'androidx.core:core-ktx:1.2.0'
-    testImplementation rootProject.ext.androidx["androidx.junit"]
-    androidTestImplementation rootProject.ext.androidx["androidx.test.ext:junit"]
-    androidTestImplementation rootProject.ext.androidx["androidx.espresso"]
+    implementation project(":library-base")
 
-    api rootProject.ext.dependencies["retrofit"]
-    api rootProject.ext.dependencies["conver-gson"]
 }

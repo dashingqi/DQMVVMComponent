@@ -45,12 +45,14 @@ android {
 }
 
 dependencies {
-    implementation "androidx.core:core-ktx:+"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "androidx.core:core-ktx:+"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api rootProject.ext.androidx["androidx.appcompat"]
     api rootProject.ext.androidx["androidx.constraintlayout"]
     api rootProject.ext.dependencies["lifecycle-extensions"]
     api rootProject.ext.dependencies["ARouterApi"]
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["conver-gson"]
 
 
 }
