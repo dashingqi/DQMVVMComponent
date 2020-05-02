@@ -19,5 +19,5 @@ interface IResponse {
     /**
      * 获取到msg
      */
-    fun getMessage()
+    fun getMessage():String
 }
