@@ -67,6 +67,7 @@ dependencies {
     kapt rootProject.ext.dependencies["ARouterCompiler"]
     implementation project(":library-network")
     implementation project(":library-service")
+    implementation project(":library-res")
 
     if (isBuildModule.toBoolean()) {
         //当组件独立运行时，需要把基础库依赖到宿主app项目上
