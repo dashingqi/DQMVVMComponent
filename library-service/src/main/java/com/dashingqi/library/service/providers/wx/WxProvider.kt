@@ -1,4 +1,4 @@
-package com.dashingqi.library.service.providers.article
+package com.dashingqi.library.service.providers.wx
 
 import com.alibaba.android.arouter.facade.template.IProvider
 
@@ -7,5 +7,5 @@ import com.alibaba.android.arouter.facade.template.IProvider
  * @time : 2020/4/29
  * desc :
  */
-interface ArticleProvider : IProvider {
+interface WxProvider : IProvider {
 }
