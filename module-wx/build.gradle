@@ -4,7 +4,7 @@ android {
 
     defaultConfig {
         if (isBuildModule.toBoolean()) {
-            applicationId "com.dashingqi.project"
+            applicationId "com.dashingqi.wx"
         }
     }
 
