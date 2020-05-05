@@ -65,6 +65,7 @@ dependencies {
     implementation project(":library-base")
     implementation project(":library-network")
     implementation project(":library-service")
+    implementation project(":library-res")
 
     annotationProcessor rootProject.ext.dependencies["ARouterCompiler"]
 }
