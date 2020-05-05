@@ -54,7 +54,7 @@
     <ImageView
         android:layout_width="16dp"
         android:layout_height="16dp"
-        tools:src="@drawable/home_ic_like"
+        tools:src="@drawable/ic_res_ic_like_default"
         app:layout_constraintBottom_toBottomOf="@+id/tvArticleCategory"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvArticleContent"
