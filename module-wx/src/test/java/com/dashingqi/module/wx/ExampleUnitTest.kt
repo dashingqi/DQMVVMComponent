@@ -1,4 +1,4 @@
-package com.dashingqi.module_project
+package com.dashingqi.module.wx
 
 import org.junit.Test
 

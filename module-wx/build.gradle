@@ -1,0 +1,17 @@
+apply from: "../module.build.gradle"
+
+android {
+
+    defaultConfig {
+        if (isBuildModule.toBoolean()) {
+            applicationId "com.dashingqi.project"
+        }
+    }
+
+    //统一资源前缀，规范资源的引用
+    resourcePrefix "wx_"
+}
+
+dependencies {
+
+}
