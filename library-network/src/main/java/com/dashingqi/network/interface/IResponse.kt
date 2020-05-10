@@ -1,4 +1,4 @@
-package com.dashingqi.library_network.`interface`
+package com.dashingqi.network.`interface`
 
 /**
  * @author : zhangqi

@@ -1,6 +1,6 @@
-package com.dashingqi.library_network.callback
+package com.dashingqi.network.callback
 
-import com.dashingqi.library_network.`interface`.IResponse
+import com.dashingqi.network.`interface`.IResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
