@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="base_DQStateLayout">
+        <attr name="base_error_layout" format="reference" />
+        <attr name="base_empty_layout" format="reference" />
+        <attr name="base_success_layout" format="reference" />
+        <attr name="base_load_layout" format="reference" />
+    </declare-styleable>
+</resources>
