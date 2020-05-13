@@ -1,13 +1,10 @@
 package com.dashingqi.base.widget.loading
 
 import android.content.Context
-import android.os.Build
-import android.os.Parcel
-import android.os.Parcelable
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
-import androidx.annotation.RequiresApi
 import com.dashingqi.library_base.R
 
 /**
@@ -25,6 +22,10 @@ class DQStateLayout : FrameLayout, IStateLayout {
     var emptyLayoutID = defaultEmptyLayoutID
     var loadLayoutID = defaultLoadLayoutID
 
+    var emptyView: View? = null
+    var errorView: View? = null
+    var loadView: View? = null
+
     constructor(context: Context) : this(context, null) {}
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0) {}
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
@@ -40,9 +41,20 @@ class DQStateLayout : FrameLayout, IStateLayout {
     }
 
     override fun switchToEmptyLayout() {
+        if (emptyLayoutID != View.NO_ID && emptyView == null) {
+            emptyView = LayoutInflater.from(context).inflate(emptyLayoutID, this, false)
+            addView(emptyView)
+        }
+
+        handleViewShow(emptyView!!)
     }
 
     override fun switchToErrorLayout() {
+        if (errorLayoutID != View.NO_ID && errorView == null) {
+            errorView = LayoutInflater.from(context).inflate(errorLayoutID, this, false)
+            this.addView(errorView)
+        }
+        handleViewShow(errorView!!)
     }
 
     override fun switchToSuccessLayout() {
@@ -51,5 +63,32 @@ class DQStateLayout : FrameLayout, IStateLayout {
 
     override fun switchToLoadingLayout() {
 
+        if (loadLayoutID != View.NO_ID && loadView == null) {
+            loadView = LayoutInflater.from(context).inflate(loadLayoutID, this, false)
+            addView(loadView)
+        }
+        handleViewShow(loadView!!)
+
+    }
+
+    /**
+     * 处理View的显示
+     */
+    private fun handleViewShow(view: View) {
+        if (view == null)
+            return
+        if (loadView != null && view != loadView) {
+            loadView!!.visibility = View.GONE
+        }
+
+        if (errorView != null && view != errorView) {
+            errorView!!.visibility = View.GONE
+        }
+
+        if (emptyView != null && view != emptyView) {
+            emptyView!!.visibility = View.GONE
+        }
+
+        view.visibility = View.VISIBLE
     }
 }
