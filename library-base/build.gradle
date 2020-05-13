@@ -53,6 +53,8 @@ dependencies {
     api rootProject.ext.dependencies["ARouterApi"]
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["conver-gson"]
+    api rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 
 
 }

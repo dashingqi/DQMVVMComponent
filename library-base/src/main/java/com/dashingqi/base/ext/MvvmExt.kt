@@ -1,4 +1,4 @@
-package com.dashingqi.library_base.ext
+package com.dashingqi.base.ext
 
 import java.lang.reflect.ParameterizedType
 

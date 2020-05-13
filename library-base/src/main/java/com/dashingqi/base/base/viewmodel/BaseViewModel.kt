@@ -1,4 +1,4 @@
-package com.dashingqi.library_base.base.viewmodel
+package com.dashingqi.base.base.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

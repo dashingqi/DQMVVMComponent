@@ -1,4 +1,4 @@
-package com.dashingqi.library_base.base.fragment
+package com.dashingqi.base.base.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

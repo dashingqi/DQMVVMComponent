@@ -1,7 +1,7 @@
 package com.dashingqi.module.home.modules.main
 
 import android.app.Application
-import com.dashingqi.library_base.base.viewmodel.BaseViewModel
+import com.dashingqi.base.base.viewmodel.BaseViewModel
 
 /**
  * @author : zhangqi

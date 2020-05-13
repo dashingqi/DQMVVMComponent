@@ -1,11 +1,11 @@
-package com.dashingqi.library_base.base.fragment
+package com.dashingqi.base.base.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.dashingqi.library_base.base.fragment.DQLazyFragmentProxy.DQLazyProxyOwner
+import com.dashingqi.base.base.fragment.DQLazyFragmentProxy.DQLazyProxyOwner
 import java.lang.ref.WeakReference
 
 /**

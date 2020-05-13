@@ -1,4 +1,4 @@
-package com.dashingqi.library_base.base.activity
+package com.dashingqi.base.base.activity
 
 import android.content.Intent
 import android.content.pm.ActivityInfo

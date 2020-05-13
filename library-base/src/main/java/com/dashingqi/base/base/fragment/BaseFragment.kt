@@ -1,4 +1,4 @@
-package com.dashingqi.library_base.base.fragment
+package com.dashingqi.base.base.fragment
 
 import android.content.Context
 import android.os.Bundle

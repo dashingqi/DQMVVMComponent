@@ -1,4 +1,4 @@
-package com.dashingqi.library_base.base.fragment
+package com.dashingqi.base.base.fragment
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.dashingqi.library_base.BR
-import com.dashingqi.library_base.base.viewmodel.BaseViewModel
-import com.dashingqi.library_base.ext.getDbClass
-import com.dashingqi.library_base.ext.getVmClass
+import com.dashingqi.base.base.viewmodel.BaseViewModel
+import com.dashingqi.base.ext.getDbClass
+import com.dashingqi.base.ext.getVmClass
 
 /**
  * @author : zhangqi
