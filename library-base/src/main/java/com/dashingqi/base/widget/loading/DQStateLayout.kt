@@ -40,6 +40,9 @@ class DQStateLayout : FrameLayout, IStateLayout {
         obtainAttrs.recycle()
     }
 
+    /**
+     * 切换到空数据布局
+     */
     override fun switchToEmptyLayout() {
         if (emptyLayoutID != View.NO_ID && emptyView == null) {
             emptyView = LayoutInflater.from(context).inflate(emptyLayoutID, this, false)
@@ -49,6 +52,9 @@ class DQStateLayout : FrameLayout, IStateLayout {
         handleViewShow(emptyView!!)
     }
 
+    /**
+     * 切换到错误布局
+     */
     override fun switchToErrorLayout() {
         if (errorLayoutID != View.NO_ID && errorView == null) {
             errorView = LayoutInflater.from(context).inflate(errorLayoutID, this, false)
@@ -61,6 +67,9 @@ class DQStateLayout : FrameLayout, IStateLayout {
 
     }
 
+    /**
+     * 切换到加载中的布局
+     */
     override fun switchToLoadingLayout() {
 
         if (loadLayoutID != View.NO_ID && loadView == null) {

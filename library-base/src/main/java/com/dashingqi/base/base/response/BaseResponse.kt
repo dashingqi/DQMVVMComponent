@@ -1,6 +1,6 @@
-package com.dashingqi.network.response
+package com.dashingqi.base.base.response
 
-import com.dashingqi.network.`interface`.IResponse
+import com.dashingqi.base.base.`interface`.IResponse
 
 /**
  * @author : zhangqi

@@ -8,18 +8,6 @@ package com.dashingqi.base.widget.loading
 interface IStateLayout {
 
 
-    val STATE_SUCCESS: Int
-        get() = 0
-
-    val STATE_LOADING: Int
-        get() = 1
-
-    val STATE_EMPTY: Int
-        get() = 2
-
-    val STATE_ERROR: Int
-        get() = 3
-
     /**
      * 空布局
      */
@@ -39,6 +27,18 @@ interface IStateLayout {
      * 加载布局
      */
     fun switchToLoadingLayout()
+
+    companion object {
+
+        const val STATE_SUCCESS = 0
+
+        const val STATE_LOADING = 1
+
+        const val STATE_EMPTY = 2
+
+        const val STATE_ERROR = 3
+
+    }
 
 
 }

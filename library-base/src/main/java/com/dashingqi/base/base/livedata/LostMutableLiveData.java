@@ -1,4 +1,4 @@
-package com.dashingqi.network.livedata;
+package com.dashingqi.base.base.livedata;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
@@ -10,24 +10,23 @@ import java.lang.reflect.Method;
 
 /**
  * @author : zhangqi
- * @time : 2020/5/10
+ * @time : 2020/5/15
  * desc :
  */
 public class LostMutableLiveData<T> extends MutableLiveData<T> {
-
     public LostMutableLiveData() {
         super();
     }
 
     @Override
     public void observe(@NonNull LifecycleOwner owner, @NonNull Observer<? super T> observer) {
-        super.observe(owner, new WrapperObserver<>(observer, this));
+        super.observe(owner, new WrapperObserver<T>(observer, this));
     }
 
 
     @Override
     public void observeForever(@NonNull Observer<? super T> observer) {
-        super.observeForever(new WrapperObserver<>(observer, this));
+        super.observeForever(new WrapperObserver<T>(observer, this));
     }
 
     private int reflectGetVersion() {

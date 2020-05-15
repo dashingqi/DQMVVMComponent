@@ -1,4 +1,4 @@
-package com.dashingqi.network.livedata
+package com.dashingqi.base.base.livedata
 
 import android.os.Bundle
 

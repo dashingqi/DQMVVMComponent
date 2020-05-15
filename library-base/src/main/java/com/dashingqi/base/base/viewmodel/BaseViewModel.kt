@@ -2,6 +2,8 @@ package com.dashingqi.base.base.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import com.dashingqi.base.base.livedata.BaseLiveData
+
 
 /**
  * @author : zhangqi
@@ -11,4 +13,9 @@ import androidx.lifecycle.AndroidViewModel
  * 关键字open来修饰这个表明这个类可以被继承。
  */
 open class BaseViewModel(application: Application) : AndroidViewModel(application) {
+
+    var baseLiveData = BaseLiveData()
+
+    fun getStateLayout() = baseLiveData.stateLayout
+
 }

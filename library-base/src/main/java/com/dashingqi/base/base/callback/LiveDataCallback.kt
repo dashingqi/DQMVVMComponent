@@ -1,22 +1,37 @@
-package com.dashingqi.network.callback
+package com.dashingqi.base.base.callback
 
-import com.dashingqi.network.`interface`.IResponse
+import com.dashingqi.base.base.`interface`.IResponse
+import com.dashingqi.base.base.livedata.BaseLiveData
 import retrofit2.Call
 import retrofit2.Response
 
 /**
  * @author : zhangqi
- * @time : 2020/5/10
+ * @time : 2020/5/15
  * desc :
  */
 class LiveDataCallback<T : IResponse> : BaseCallback<T> {
+
+
+    private var baseLiveData: BaseLiveData? = null
+
+    init {
+
+    }
+
     /**
      * 次构造函数
      */
     constructor() : super()
 
-    init {
+    constructor(baseLiveData: BaseLiveData) : super() {
+        this.baseLiveData = baseLiveData
+    }
 
+
+    fun bindStateLayout(): LiveDataCallback<T> {
+        baseLiveData?.switchToLoading()
+        return this
     }
 
     override fun doOnResponse(doOnResponse: (call: Call<T>, response: Response<T>) -> Unit): BaseCallback<T> {

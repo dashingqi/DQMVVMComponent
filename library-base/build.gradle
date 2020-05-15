@@ -37,7 +37,7 @@ android {
         enabled true
     }
 
-    compileOptions{
+    compileOptions {
         sourceCompatibility rootProject.ext.versions.java
         targetCompatibility rootProject.ext.versions.java
     }

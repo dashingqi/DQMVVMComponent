@@ -1,10 +1,9 @@
-package com.dashingqi.network.callback
+package com.dashingqi.base.base.callback
 
-import com.dashingqi.network.`interface`.IResponse
+import com.dashingqi.base.base.`interface`.IResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 /**
  * @author : zhangqi

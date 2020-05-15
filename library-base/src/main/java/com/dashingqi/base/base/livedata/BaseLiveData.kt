@@ -1,12 +1,13 @@
-package com.dashingqi.network.livedata
+package com.dashingqi.base.base.livedata
 
 import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.facade.Postcard
-import com.dashingqi.network.callback.CallOwner
+import com.dashingqi.base.base.callback.CallOwner
+import com.dashingqi.base.widget.loading.IStateLayout
 
 /**
  * @author : zhangqi
- * @time : 2020/5/10
+ * @time : 2020/5/15
  * desc :
  */
 class BaseLiveData {
@@ -36,5 +37,36 @@ class BaseLiveData {
 
     val smartLoadMore by lazy {
         MutableLiveData<Int>()
+    }
+
+    val stateLayout by lazy {
+        MutableLiveData<Int>()
+    }
+
+    /**
+     * StateLayout 切换到空布局
+     */
+    fun switchEmpty() {
+
+    }
+
+    /**
+     * StateLayout 切换到错误布局
+     */
+    fun switchToError() {
+
+    }
+
+    /**
+     * StateLayout 切换到加载布局中
+     */
+    fun switchToLoading() {
+        ThreadUtil.runOnUiThread(Runnable {
+            stateLayout.value = IStateLayout.STATE_LOADING
+        })
+    }
+
+    fun switchToSuccess() {
+
     }
 }

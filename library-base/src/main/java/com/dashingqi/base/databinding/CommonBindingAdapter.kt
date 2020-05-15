@@ -15,7 +15,7 @@ import com.dashingqi.base.utils.DensityUtils
  * @time : 2020/5/13
  * desc : xml组件中的特殊用法
  */
-object DQDataBindingAdapter {
+object CommonBindingAdapter {
 
     /**
      * 自定义一个带有圆角的shape的View
