@@ -16,6 +16,11 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
 
     var baseLiveData = BaseLiveData()
 
+    /**
+     * 用于绑定到xml布局上的 （BindingAdapter）
+     */
     fun getStateLayout() = baseLiveData.stateLayout
+
+    fun getRefreshState() = baseLiveData.smartRefresh
 
 }

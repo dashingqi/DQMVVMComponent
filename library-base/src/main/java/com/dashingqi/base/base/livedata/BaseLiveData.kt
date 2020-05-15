@@ -66,7 +66,36 @@ class BaseLiveData {
         })
     }
 
+    /**
+     * StateLayout 切换到成功
+     */
     fun switchToSuccess() {
 
+    }
+
+    /**
+     * 开始刷新
+     */
+    fun startRefresh() {
+        ThreadUtil.runOnUiThread(Runnable {
+            if (smartRefresh.value == null) {
+                smartRefresh.value = 1
+            } else {
+                smartRefresh.value = (smartRefresh.value!! + 1)
+            }
+        })
+    }
+
+    /**
+     * 通知停止刷新
+     */
+    fun finishRefresh() {
+        ThreadUtil.runOnUiThread(Runnable {
+            if (smartRefresh.value == null) {
+                smartRefresh.value = (0)
+            } else {
+                smartRefresh.value = (smartRefresh.value!! - 1)
+            }
+        })
     }
 }

@@ -12,10 +12,54 @@ import retrofit2.Response
  */
 class LiveDataCallback<T : IResponse> : BaseCallback<T> {
 
+    /**
+     * 用于记录是否调用了bindStateLayout
+     */
+    private var isBindStateLayout = false
 
+    /**
+     * 用于记录是否调用了bindSmartRefresh
+     */
+    private var isBindSmartRefresh = false
+
+    /**
+     * m 与 v的中转站 ---> BaseViewModel
+     */
     private var baseLiveData: BaseLiveData? = null
 
     init {
+        doOnResponseCodeError { _, response ->
+            //提示一个toast
+        }
+
+        // 请求成功的回调
+        doOnResponseSuccess { call, response ->
+            //判断当前此次请求是否显示加载布局了
+            baseLiveData?.let {
+                if (isBindStateLayout) {
+                    it.switchToSuccess()
+                }
+
+                if (isBindSmartRefresh){
+                    it.finishRefresh()
+                }
+            }
+
+        }
+
+        doOnAnyFail {
+
+            baseLiveData?.let {
+                if (isBindStateLayout){
+                    it.switchToError()
+                }
+
+                if (isBindSmartRefresh){
+                    //停止下拉刷新的动画
+                    it.finishRefresh()
+                }
+            }
+        }
 
     }
 
@@ -29,8 +73,21 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
     }
 
 
+    /**
+     * 用于绑定状态页面
+     */
     fun bindStateLayout(): LiveDataCallback<T> {
         baseLiveData?.switchToLoading()
+        isBindStateLayout = true
+        return this
+    }
+
+    /**
+     * 用于绑定下拉刷新
+     */
+    fun bindSmartRefresh(): LiveDataCallback<T> {
+        baseLiveData?.startRefresh()
+        isBindSmartRefresh = true
         return this
     }
 
