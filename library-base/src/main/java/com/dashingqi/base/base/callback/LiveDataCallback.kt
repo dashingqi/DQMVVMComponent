@@ -2,6 +2,7 @@ package com.dashingqi.base.base.callback
 
 import com.dashingqi.base.base.response.IResponse
 import com.dashingqi.base.base.livedata.BaseLiveData
+import com.orhanobut.logger.Logger
 import retrofit2.Call
 import retrofit2.Response
 
@@ -11,7 +12,6 @@ import retrofit2.Response
  * desc :
  */
 class LiveDataCallback<T : IResponse> : BaseCallback<T> {
-
     /**
      * 用于记录是否调用了bindStateLayout
      */
@@ -40,7 +40,7 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
                     it.switchToSuccess()
                 }
 
-                if (isBindSmartRefresh){
+                if (isBindSmartRefresh) {
                     it.finishRefresh()
                     it.finishLoadMoreSuccess()
                 }
@@ -51,11 +51,11 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
         doOnAnyFail {
 
             baseLiveData?.let {
-                if (isBindStateLayout){
+                if (isBindStateLayout) {
                     it.switchToError()
                 }
 
-                if (isBindSmartRefresh){
+                if (isBindSmartRefresh) {
                     //停止下拉刷新的动画
                     it.finishRefresh()
                     it.finishLoadMore()
@@ -79,6 +79,7 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
      * 用于绑定状态页面
      */
     fun bindStateLayout(): LiveDataCallback<T> {
+        Logger.d("bindStateLayout----> transform")
         baseLiveData?.switchToLoading()
         isBindStateLayout = true
         return this
@@ -88,6 +89,7 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
      * 用于绑定下拉刷新
      */
     fun bindSmartRefresh(): LiveDataCallback<T> {
+        Logger.d( "bindSmartRefresh ----> transform")
         baseLiveData?.startRefresh()
         isBindSmartRefresh = true
         return this

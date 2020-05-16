@@ -7,9 +7,8 @@ import com.dashingqi.module.home.databinding.HomeActivityMainBinding
 import com.orhanobut.logger.Logger
 
 class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel>() {
-    private val TAG = "HomeMainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Logger.d(TAG, "test---main")
+        Logger.d("test---main")
     }
 }

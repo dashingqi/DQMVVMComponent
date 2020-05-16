@@ -2,6 +2,7 @@ package com.dashingqi.base.databinding
 
 import androidx.databinding.BindingAdapter
 import com.dashingqi.base.constant.SmartRefreshEvent
+import com.orhanobut.logger.Logger
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.constant.RefreshState
 import java.lang.Exception
@@ -21,9 +22,11 @@ object SmartRefreshBindingAdapter {
     fun setSmartRefreshState(smartRefreshLayout: SmartRefreshLayout, state: Int) {
         if (state == 0) {
             if (smartRefreshLayout.state == RefreshState.Refreshing) {
+                Logger.d("smart_refresh_finish_success")
                 smartRefreshLayout.finishRefresh(0, true, null)
             } else {
                 //需要封装一下log打印工具
+                Logger.d("smart_refresh_finish_failed")
             }
         }
     }
@@ -37,6 +40,7 @@ object SmartRefreshBindingAdapter {
         if (runnable != null) {
             smartRefreshLayout.setOnRefreshListener {
                 try {
+                    Logger.d("smart_refresh -----> transform")
                     runnable.run()
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -78,6 +82,7 @@ object SmartRefreshBindingAdapter {
         if (runnable != null) {
             smartRefreshLayout.setOnLoadMoreListener {
                 try {
+                    Logger.d("smart_refresh ----> transform")
                     runnable.run()
                 } catch (exception: Exception) {
                     exception.printStackTrace()
