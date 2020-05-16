@@ -23,4 +23,6 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
 
     fun getRefreshState() = baseLiveData.smartRefresh
 
+    fun getLoadMoreState() = baseLiveData.smartLoadMore
+
 }

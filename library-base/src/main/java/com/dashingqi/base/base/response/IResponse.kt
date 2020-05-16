@@ -1,4 +1,4 @@
-package com.dashingqi.base.base.`interface`
+package com.dashingqi.base.base.response
 
 /**
  * @author : zhangqi

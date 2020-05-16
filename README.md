@@ -9,6 +9,7 @@
 - 完善BaseCallBack，针对不同情况的业务分发（2020/05/2）
 - 完善LiveDateCallBack，新增SmartRefreshLayout，DQStateLayout（2020/5/15）
 - 为状态页面和下拉加载页面添加绑定状态
+- 需要测试Logger打印，为base中的重要逻辑添加日志
 
 #### 组件化部分划分-wanAndroid项目（2020/04/28）
 ##### 功能模块组件划分

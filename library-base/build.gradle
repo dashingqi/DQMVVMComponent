@@ -55,6 +55,7 @@ dependencies {
     api rootProject.ext.dependencies["conver-gson"]
     api rootProject.ext.dependencies["glide"]
     api rootProject.ext.dependencies["smart-refresh"]
+    api rootProject.ext.dependencies["logger"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 
 

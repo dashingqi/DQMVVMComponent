@@ -34,6 +34,7 @@ ext {
             "ARouterApi"          : "com.alibaba:arouter-api:1.5.0",
             "glide"               : "com.github.bumptech.glide:glide:4.11.0",
             "glide-compiler"      : "com.github.bumptech.glide:compiler:4.11.0",
-            "smart-refresh"       : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.2"
+            "smart-refresh"       : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.2",
+            "logger"              : "com.orhanobut:logger:2.2.0"
     ]
 }

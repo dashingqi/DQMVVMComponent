@@ -1,6 +1,6 @@
 package com.dashingqi.base.base.callback
 
-import com.dashingqi.base.base.`interface`.IResponse
+import com.dashingqi.base.base.response.IResponse
 import com.dashingqi.base.base.livedata.BaseLiveData
 import retrofit2.Call
 import retrofit2.Response
@@ -42,6 +42,7 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
 
                 if (isBindSmartRefresh){
                     it.finishRefresh()
+                    it.finishLoadMoreSuccess()
                 }
             }
 
@@ -57,6 +58,7 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
                 if (isBindSmartRefresh){
                     //停止下拉刷新的动画
                     it.finishRefresh()
+                    it.finishLoadMore()
                 }
             }
         }

@@ -1,13 +1,11 @@
 package com.dashingqi.base.base.response
 
-import com.dashingqi.base.base.`interface`.IResponse
-
 /**
  * @author : zhangqi
  * @time : 2020/5/2
  * desc : 响应的Response
  */
-class BaseResponse : IResponse {
+open class BaseResponse : IResponse {
     /**
      *  error 和 msg这两个字段看接口文档 这里只是做了一个假设
      */

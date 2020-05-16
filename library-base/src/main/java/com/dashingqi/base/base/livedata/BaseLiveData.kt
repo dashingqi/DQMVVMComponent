@@ -3,6 +3,7 @@ package com.dashingqi.base.base.livedata
 import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.facade.Postcard
 import com.dashingqi.base.base.callback.CallOwner
+import com.dashingqi.base.constant.SmartRefreshEvent
 import com.dashingqi.base.widget.loading.IStateLayout
 
 /**
@@ -97,5 +98,27 @@ class BaseLiveData {
                 smartRefresh.value = (smartRefresh.value!! - 1)
             }
         })
+    }
+
+    /**
+     * 结束刷新
+     * 是在网络回调出现问题的时候调用
+     */
+    fun finishLoadMore() {
+        smartLoadMore.postValue(SmartRefreshEvent.SMART_REFRESH_LAYOUT_LOAD_MORE_FINISH)
+    }
+
+    /**
+     * 是在网络请求回调成功的时候调用
+     */
+    fun finishLoadMoreSuccess() {
+        smartLoadMore.postValue(SmartRefreshEvent.SMART_REFRESH_LAYOUT_LOAD_MORE_FINISH_SUCCESS)
+    }
+
+    /**
+     * 是在加载最后一页数据的时候，进行的回调
+     */
+    fun finishLoadMoreWithNoMoreData() {
+        smartLoadMore.postValue(SmartRefreshEvent.SMART_REFRESH_LAYOUT_LOAD_MORE_FINISH_AND_NO_MORE)
     }
 }

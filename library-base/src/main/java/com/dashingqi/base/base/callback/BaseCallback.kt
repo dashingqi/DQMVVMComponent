@@ -1,6 +1,6 @@
 package com.dashingqi.base.base.callback
 
-import com.dashingqi.base.base.`interface`.IResponse
+import com.dashingqi.base.base.response.IResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
