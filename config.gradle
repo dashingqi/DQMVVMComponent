@@ -24,6 +24,11 @@ ext {
             "java": JavaVersion.VERSION_1_8
     ]
 
+    isBeata = NET_WORK_TYPE == "beta"
+    isUat = NET_WORK_TYPE == "uat"
+    isRelease = NET_WORK_TYPE == "release"
+
+
     // 第三方依赖配置
     dependencies = [
             //ViewModel

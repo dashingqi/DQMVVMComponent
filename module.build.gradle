@@ -7,6 +7,9 @@ if (isBuildModule.toBoolean()) {
     //作为组件运行，集合到宿主App中
     apply plugin: 'com.android.library'
 }
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -67,5 +70,5 @@ dependencies {
     implementation project(":library-service")
     implementation project(":library-res")
 
-    annotationProcessor rootProject.ext.dependencies["ARouterCompiler"]
+    kapt rootProject.ext.dependencies["ARouterCompiler"]
 }

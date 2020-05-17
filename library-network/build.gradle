@@ -12,6 +12,12 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //BuildConfig中生成配置网络的路径
+        buildConfigField 'boolean', 'NET_WORK_TYPE_IS_RELEASE', "$isRelease"
+        buildConfigField 'boolean', 'NET_WORK_TYPE_IS_UAT', "$isUat"
+        buildConfigField 'boolean', 'NET_WORK_TYPE_IS_BETA', "$isBeata"
+
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
@@ -36,7 +42,7 @@ android {
         enabled true
     }
 
-    compileOptions{
+    compileOptions {
         sourceCompatibility rootProject.ext.versions.java
         targetCompatibility rootProject.ext.versions.java
     }

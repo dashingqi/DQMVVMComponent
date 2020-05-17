@@ -1,6 +1,7 @@
 package com.dashingqi.mvvmcomponent
 
 import android.app.Application
+import com.alibaba.android.arouter.launcher.ARouter
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.FormatStrategy
 import com.orhanobut.logger.Logger
@@ -16,9 +17,17 @@ class AppApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        initARouter()
         //初始化打印
         initLog()
 
+    }
+
+    /**
+     * 初始化路由
+     */
+    private fun initARouter() {
+        ARouter.init(this)
     }
 
     /**
