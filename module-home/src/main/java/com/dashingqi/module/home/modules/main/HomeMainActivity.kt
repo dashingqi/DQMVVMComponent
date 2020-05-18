@@ -9,7 +9,6 @@ import com.dashingqi.base.providers.params.IGlobalParams
 import com.dashingqi.module.home.databinding.HomeActivityMainBinding
 import com.dashingqi.module.home.net.IHomeService
 import com.orhanobut.logger.Logger
-import kotlinx.android.synthetic.main.home_activity_main.*
 
 @Route(path = "/home/main_activity")
 class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel>() {
@@ -19,9 +18,6 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
 
         var baseUrl = ARouter.getInstance().navigation(IGlobalParams::class.java).getBaseUrl()
         Logger.d("baseUrl == $baseUrl")
-        btnClick.setOnClickListener {
-            ARouter.getInstance().build("/home/test_activity").navigation()
-        }
 
         //测试网络请求
         IHomeService.instance.getWxArticle().enqueue(LiveDataCallback())

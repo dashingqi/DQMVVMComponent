@@ -18,7 +18,7 @@
 
         <Button
             android:id="@+id/btnClick"
-            arPath='@{"/home/test_activity}"'
+            arPath='@{"/home/test_activity"}'
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="jump to test activity"

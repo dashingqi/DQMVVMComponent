@@ -3,6 +3,7 @@ package com.dashingqi.base.databinding
 import android.view.View
 import androidx.databinding.BindingAdapter
 import com.alibaba.android.arouter.launcher.ARouter
+import com.orhanobut.logger.Logger
 
 /**
  * @author : zhangqi
@@ -16,11 +17,12 @@ object ARouterBindingAdapter {
      */
     @JvmStatic
     @BindingAdapter(value = ["arPath"], requireAll = true)
-    fun arPath(view: View, path: String) {
+    fun arPath(view: View, arPath: String) {
+        Logger.d("arPath onClick")
         view?.let {
-            path?.let {
+            arPath?.let {
                 view.setOnClickListener(AntiOnClickListener(View.OnClickListener {
-                    ARouter.getInstance().build(path).navigation()
+                    ARouter.getInstance().build(arPath).navigation()
                 }))
             }
         }
