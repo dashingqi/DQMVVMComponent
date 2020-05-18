@@ -3,6 +3,8 @@ package com.dashingqi.network.service
 import android.content.Context
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.dashingqi.base.providers.network.IServiceProvider
+import com.dashingqi.network.interceptor.LogInterceptor
+import okhttp3.logging.HttpLoggingInterceptor
 
 /**
  * @author : zhangqi
@@ -18,4 +20,24 @@ class ServiceCreateProvider : IServiceProvider {
         TODO("Not yet implemented")
     }
 
+    override fun <T> createService(cla: Class<T>, baseUrl: String): T {
+        TODO("Not yet implemented")
+    }
+
+    private fun createServiceController(baseUrl: String): ServiceController {
+        return ServiceBuilder()
+                .setBaseUrl(baseUrl)
+                .isIgnoreSSL(true)
+                .setOkHttpBuilder {
+                    //添加头部拦截器
+
+                    //添加打印拦截器
+                    it.addInterceptor(HttpLoggingInterceptor(LogInterceptor())
+                            .setLevel(HttpLoggingInterceptor.Level.BODY))
+
+                    //失败重联
+                    it.retryOnConnectionFailure(true)
+                }
+                .builder()
+    }
 }
