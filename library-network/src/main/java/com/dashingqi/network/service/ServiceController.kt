@@ -59,6 +59,7 @@ class ServiceController(var baseUrl: String?,
      */
     private fun createSSLSocket(): SSLSocketFactory {
         val sslContext = SSLContext.getInstance("SSL")
+        sslContext.init(null, arrayOf<TrustManager>(createX509TrustManager()), SecureRandom())
         return sslContext.socketFactory
     }
 

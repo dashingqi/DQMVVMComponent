@@ -4,9 +4,11 @@ import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.activity.BaseMVVMActivity
+import com.dashingqi.base.base.callback.LiveDataCallback
 import com.dashingqi.base.providers.params.IGlobalParams
 import com.dashingqi.module.home.R
 import com.dashingqi.module.home.databinding.HomeActivityMainBinding
+import com.dashingqi.module.home.net.IHomeService
 import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.home_activity_main.*
 
@@ -21,5 +23,7 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
         btnClick.setOnClickListener {
             ARouter.getInstance().build("/home/test_activity").navigation()
         }
+
+        IHomeService.instance.getWxArticle().enqueue(LiveDataCallback())
     }
 }
