@@ -8,7 +8,7 @@ import com.orhanobut.logger.Logger
 /**
  * @author : zhangqi
  * @time : 2020/5/17
- * desc :
+ * desc : 用于使用ARouter来自定义控件属性的类
  */
 object ARouterBindingAdapter {
 
