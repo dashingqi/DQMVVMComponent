@@ -53,9 +53,14 @@ dependencies {
     api rootProject.ext.dependencies["ARouterApi"]
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["conver-gson"]
+    api rootProject.ext.dependencies["jakewharton-retrofit-adapter"]
     api rootProject.ext.dependencies["glide"]
     api rootProject.ext.dependencies["smart-refresh"]
     api rootProject.ext.dependencies["logger"]
+    api rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["logger-intercept"]
+    api rootProject.ext.dependencies["okhttp"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 
 
