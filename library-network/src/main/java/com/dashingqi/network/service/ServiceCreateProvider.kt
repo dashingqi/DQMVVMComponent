@@ -4,6 +4,7 @@ import android.content.Context
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.dashingqi.base.providers.network.IServiceProvider
 import com.dashingqi.network.interceptor.LogInterceptor
+import com.dashingqi.network.interceptor.ParamsInterceptor
 import okhttp3.logging.HttpLoggingInterceptor
 
 /**
@@ -13,15 +14,21 @@ import okhttp3.logging.HttpLoggingInterceptor
  */
 @Route(path = "/network/IServiceProvider", name = "Service创建模块入口")
 class ServiceCreateProvider : IServiceProvider {
+
+    private val serviceController by lazy {
+        //TODO 需要通过ARouter拿到BaseUrl
+        createServiceController("BaseUrl")
+    }
+
     override fun init(context: Context?) {
     }
 
     override fun <T> createService(cla: Class<T>): T {
-        TODO("Not yet implemented")
+        return serviceController.createService(cla)
     }
 
     override fun <T> createService(cla: Class<T>, baseUrl: String): T {
-        TODO("Not yet implemented")
+        return createServiceController(baseUrl).createService(cla)
     }
 
     private fun createServiceController(baseUrl: String): ServiceController {
@@ -29,8 +36,8 @@ class ServiceCreateProvider : IServiceProvider {
                 .setBaseUrl(baseUrl)
                 .isIgnoreSSL(true)
                 .setOkHttpBuilder {
-                    //添加头部拦截器
-
+                    //添加参数拦截器拦截器
+                    it.addInterceptor(ParamsInterceptor())
                     //添加打印拦截器
                     it.addInterceptor(HttpLoggingInterceptor(LogInterceptor())
                             .setLevel(HttpLoggingInterceptor.Level.BODY))
