@@ -14,17 +14,17 @@ import com.dashingqi.library_base.R
  */
 class DQStateLayout : FrameLayout, IStateLayout {
 
-    var defaultErrorLayoutID: Int = View.NO_ID
-    var defaultEmptyLayoutID: Int = View.NO_ID
-    var defaultLoadLayoutID: Int = View.NO_ID
+    private var defaultErrorLayoutID: Int = View.NO_ID
+    private var defaultEmptyLayoutID: Int = View.NO_ID
+    private var defaultLoadLayoutID: Int = View.NO_ID
 
-    var errorLayoutID = defaultErrorLayoutID
-    var emptyLayoutID = defaultEmptyLayoutID
-    var loadLayoutID = defaultLoadLayoutID
+    private var errorLayoutID = defaultErrorLayoutID
+    private var emptyLayoutID = defaultEmptyLayoutID
+    private var loadLayoutID = defaultLoadLayoutID
 
-    var emptyView: View? = null
-    var errorView: View? = null
-    var loadView: View? = null
+    private var emptyView: View? = null
+    private var errorView: View? = null
+    private var loadView: View? = null
 
     constructor(context: Context) : this(context, null) {}
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0) {}

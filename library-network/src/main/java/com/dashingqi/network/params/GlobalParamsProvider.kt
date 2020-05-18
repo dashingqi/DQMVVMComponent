@@ -27,13 +27,13 @@ class GlobalParamsProvider : IGlobalParams {
 
     object Url {
         //正式环境
-        val RELEASE_URL = "https://wanandroid.com/"
+        const val RELEASE_URL = "https://wanandroid.com/"
 
         //测试环境
-        val BEAT_URL = "https://wanandroid.com/"
+        const val BEAT_URL = "https://wanandroid.com/"
 
         //预发布环境
-        val UAT_URL = "https://wanandroid.com/"
+        const val UAT_URL = "https://wanandroid.com/"
     }
 
     /**

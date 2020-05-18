@@ -6,7 +6,6 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.activity.BaseMVVMActivity
 import com.dashingqi.base.base.callback.LiveDataCallback
 import com.dashingqi.base.providers.params.IGlobalParams
-import com.dashingqi.module.home.R
 import com.dashingqi.module.home.databinding.HomeActivityMainBinding
 import com.dashingqi.module.home.net.IHomeService
 import com.orhanobut.logger.Logger
@@ -24,6 +23,7 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
             ARouter.getInstance().build("/home/test_activity").navigation()
         }
 
+        //测试网络请求
         IHomeService.instance.getWxArticle().enqueue(LiveDataCallback())
     }
 }
