@@ -10,16 +10,16 @@ import com.dashingqi.library_network.BuildConfig
  * @time : 2020/5/17
  * desc :
  */
-@Route(path = "/service/global_params_provider", name = "全局请求链接的参数")
+@Route(path = "/service/params_provider", name = "全局请求链接的参数")
 class GlobalParamsProvider : IGlobalParams {
     override fun getBaseUrl(): String {
-        when {
+        return when {
             BuildConfig.NET_WORK_TYPE_IS_RELEASE -> Url.RELEASE_URL
             BuildConfig.NET_WORK_TYPE_IS_UAT -> Url.UAT_URL
             else -> Url.BEAT_URL
 
         }
-        return ""
+
     }
 
     override fun init(context: Context?) {

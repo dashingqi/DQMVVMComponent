@@ -69,6 +69,6 @@ dependencies {
     implementation project(":library-network")
     implementation project(":library-service")
     implementation project(":library-res")
-
+    implementation rootProject.ext.dependencies["ARouterApi"]
     kapt rootProject.ext.dependencies["ARouterCompiler"]
 }

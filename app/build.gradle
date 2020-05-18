@@ -58,7 +58,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation rootProject.ext.androidx["androidx.appcompat"]
     implementation rootProject.ext.androidx["androidx.constraintlayout"]
     testImplementation rootProject.ext.androidx["androidx.junit"]
@@ -72,7 +71,7 @@ dependencies {
 
     if (isBuildModule.toBoolean()) {
         //当组件独立运行时，需要把基础库依赖到宿主app项目上
-        implementation project(":library-base")
+
 
     } else {
         //如果是作为组件，需要把各个组件依赖到App宿主上
@@ -83,6 +82,10 @@ dependencies {
         implementation project(":module-home")
         // app用户模块
         implementation project(":module-user")
+        //wx公众号模块
+        implementation project(":module-wx")
+        //项目模块
+        implementation project(":module-project")
 
     }
 }

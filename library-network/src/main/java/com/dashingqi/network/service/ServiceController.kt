@@ -82,5 +82,5 @@ class ServiceController(var baseUrl: String?,
     /**
      * 创建对应的Service接口类
      */
-    fun <T> createService(cla: Class<T>) = createRetrofit().create(cla)
+    fun <T> createService(cla: Class<T>): T = createRetrofit().create(cla)
 }

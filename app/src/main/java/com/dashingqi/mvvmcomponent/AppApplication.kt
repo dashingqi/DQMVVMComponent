@@ -2,6 +2,7 @@ package com.dashingqi.mvvmcomponent
 
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
+import com.dashingqi.androidmvvmcomponentproject.BuildConfig
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.FormatStrategy
 import com.orhanobut.logger.Logger
@@ -27,6 +28,10 @@ class AppApplication : Application() {
      * 初始化路由
      */
     private fun initARouter() {
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog()
+            ARouter.openDebug()
+        }
         ARouter.init(this)
     }
 

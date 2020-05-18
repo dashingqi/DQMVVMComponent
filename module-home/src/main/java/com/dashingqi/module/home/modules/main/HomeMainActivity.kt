@@ -16,10 +16,10 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
         super.onCreate(savedInstanceState)
         Logger.d("test---main")
 
-//        var baseUrl = ARouter.getInstance().navigation(IGlobalParams::class.java).getBaseUrl()
-//        Logger.d(baseUrl)
-//        btnClick.setOnClickListener {
-//            ARouter.getInstance().build("/home/test_activity").navigation()
-//        }
+        var baseUrl = ARouter.getInstance().navigation(IGlobalParams::class.java).getBaseUrl()
+        Logger.d("baseUrl == $baseUrl")
+        btnClick.setOnClickListener {
+            ARouter.getInstance().build("/home/test_activity").navigation()
+        }
     }
 }
