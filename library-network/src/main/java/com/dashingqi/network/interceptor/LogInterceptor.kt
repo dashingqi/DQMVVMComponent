@@ -13,7 +13,8 @@ class LogInterceptor : HttpLoggingInterceptor.Logger {
         if (message.isEmpty()) {
             Logger.e("net-component-http", "response is null")
         } else {
-            Logger.d("net-component-http", message)
+            Logger.d(message)
+            //Logger.json(message)
         }
     }
 }
