@@ -31,7 +31,20 @@ open class BaseDialog : Dialog {
             widthAttributes.width = width
             it.attributes = widthAttributes
         }
+    }
 
+    /**
+     * 根据百分比设置宽度
+     */
+    fun setDialogWidthPercent(widthPercent: Float) {
+        setDialogWidth((widthPercent * getDialogWidth()) as Int)
+    }
+
+    /**
+     * 获取到dialog的宽度
+     */
+    fun getDialogWidth(): Int {
+        return context.resources.displayMetrics.widthPixels
     }
 
 
@@ -44,6 +57,14 @@ open class BaseDialog : Dialog {
             heightAttributes.height = height
             it.attributes = heightAttributes
         }
+    }
+
+    fun setDialogHeightPercent(heightPercent: Float) {
+        setDialogHeight((heightPercent * getDialogHeight()) as Int)
+    }
+
+    fun getDialogHeight(): Int {
+        return context.resources.displayMetrics.heightPixels
     }
 
     /**
