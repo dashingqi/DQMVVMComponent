@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -69,6 +70,18 @@ object CommonBindingAdapter {
             view.setImageDrawable(null)
         } else {
             view.setImageResource(resource)
+        }
+    }
+
+    /**
+     * 设置TextView的颜色
+     */
+
+    @JvmStatic
+    @BindingAdapter(value = ["dbTextColorId"], requireAll = true)
+    fun setTextColorId(view: TextView, colorId: Int?) {
+        if (colorId != null && colorId != 0 && colorId != View.NO_ID) {
+            view.setTextColor(ContextCompat.getColor(view.context, colorId))
         }
     }
 }
