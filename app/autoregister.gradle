@@ -1,0 +1,11 @@
+apply plugin: 'auto-register'
+autoregister {
+    registerInfo = [
+            [
+                    'scanInterface'          : 'com.dashingqi.base.providers.bottomtab.BottomTabProvider'
+                    , 'codeInsertToClassName': 'com.dashingqi.base.widget.bottomtab.TabManager'
+                    , 'registerMethodName'   : 'register'
+
+            ]
+    ]
+}

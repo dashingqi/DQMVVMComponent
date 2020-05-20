@@ -16,7 +16,7 @@ import com.dashingqi.module.home.databinding.HomeBottomBarItemBinding
  * @time : 2020/5/19
  * desc :
  */
-class BottomBarAdapter(var context: AppCompatActivity) : BottomBar.Adapter<BottomBarAdapter.ViewHolder, BottomBarItemBean>() {
+open class BottomBarAdapter(var context: AppCompatActivity) : BottomBar.Adapter<BottomBarAdapter.ViewHolder, BottomBarItemBean>() {
     private val inflate: LayoutInflater = LayoutInflater.from(context)
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

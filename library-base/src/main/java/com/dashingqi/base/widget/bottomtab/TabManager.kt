@@ -17,7 +17,7 @@ object TabManager {
     var tabs = ArrayList<BottomBarItemBean>()
 
     @JvmStatic
-    fun addTabProvider(tabProvider: BottomTabProvider) {
+    fun register(tabProvider: BottomTabProvider) {
         var bottomBarItemBean: BottomBarItemBean = tabProvider.getBottomBarItemBean() ?: return
         tabs.add(bottomBarItemBean)
         liveData.postValue(tabs)

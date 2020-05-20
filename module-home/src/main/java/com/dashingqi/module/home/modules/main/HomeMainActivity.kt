@@ -6,16 +6,13 @@ import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.activity.BaseMVVMActivity
-import com.dashingqi.base.base.callback.LiveDataCallback
-import com.dashingqi.base.providers.params.IGlobalParams
 import com.dashingqi.base.widget.bottomtab.FragmentCreator
 import com.dashingqi.base.widget.bottomtab.FragmentSwitchController
 import com.dashingqi.base.widget.bottomtab.OnItemSelectIChangedListener
 import com.dashingqi.base.widget.bottomtab.TabManager
-import com.dashingqi.base.widget.loading.LoadingDialog
 import com.dashingqi.module.home.R
 import com.dashingqi.module.home.databinding.HomeActivityMainBinding
-import com.dashingqi.module.home.net.IHomeService
+import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.home_activity_main.*
 
 @Route(path = "/home/main_activity")
@@ -61,16 +58,18 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
         })
 
         TabManager.getTabsLiveData().observe(this, Observer { data ->
-            bottomAdapter.setData(data)
-            bottomAdapter.notifyDataSetChanged()
-
-            if (bottomBar.getSelectIndex() < 0) {
-                data.indexOfFirst {
-                    it?.visibilityLD?.value == true
-                }.run {
-                    bottomBar.setSelectedIndex(this)
-                }
-            }
+            var size = data.size
+            Logger.d("size = $size")
+//            bottomAdapter.setData(data)
+//            bottomAdapter.notifyDataSetChanged()
+//
+//            if (bottomBar.getSelectIndex() < 0) {
+//                data.indexOfFirst {
+//                    it?.visibilityLD?.value == true
+//                }.run {
+//                    bottomBar.setSelectedIndex(this)
+//                }
+//            }
 
         })
 

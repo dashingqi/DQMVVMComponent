@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply from: 'autoregister.gradle'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -45,11 +46,11 @@ android {
         }
     }
 
-    dataBinding{
+    dataBinding {
         enabled true
     }
 
-    compileOptions{
+    compileOptions {
         sourceCompatibility rootProject.ext.versions.java
         targetCompatibility rootProject.ext.versions.java
     }
