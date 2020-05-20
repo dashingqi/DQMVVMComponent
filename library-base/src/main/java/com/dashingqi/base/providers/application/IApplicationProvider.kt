@@ -20,4 +20,9 @@ interface IApplicationProvider {
 
     fun onTerminate()
 
+    /**
+     * 获取到等级
+     */
+    fun getPriority(): Int
+
 }

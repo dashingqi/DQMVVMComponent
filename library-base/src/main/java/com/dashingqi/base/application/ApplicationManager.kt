@@ -7,10 +7,18 @@ import com.dashingqi.base.providers.application.IApplicationProvider
  * @time : 2020/5/20
  * desc :
  */
-class ApplicationManager {
+object ApplicationManager {
     /**
      * 用来存储实现IApplicationProvider接口的
      */
-    @JvmField
+    @JvmStatic
     val apps = mutableListOf<IApplicationProvider>()
+
+    /**
+     * 用来注册实现IApplicationProvider的接口的类
+     */
+    @JvmStatic
+    fun register(applicationProvider: IApplicationProvider) {
+        apps.add(applicationProvider)
+    }
 }

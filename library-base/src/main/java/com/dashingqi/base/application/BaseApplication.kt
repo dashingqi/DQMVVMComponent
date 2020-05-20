@@ -24,4 +24,8 @@ class BaseApplication : IApplicationProvider {
     override fun onTerminate() {
 
     }
+
+    override fun getPriority(): Int {
+        return 100
+    }
 }

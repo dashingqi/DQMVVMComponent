@@ -3,6 +3,7 @@ package com.dashingqi.mvvmcomponent
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.androidmvvmcomponentproject.BuildConfig
+import com.dashingqi.base.application.ApplicationController
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.FormatStrategy
 import com.orhanobut.logger.Logger
@@ -16,8 +17,13 @@ import com.orhanobut.logger.PrettyFormatStrategy
  */
 class AppApplication : Application() {
 
+    init {
+        ApplicationController.init(this, true)
+    }
+
     override fun onCreate() {
         super.onCreate()
+        ApplicationController.transformOnCreate()
         initARouter()
         //初始化打印
         initLog()
@@ -37,6 +43,7 @@ class AppApplication : Application() {
      * 被回收的进程，在杀死的时候，会去回调这个方法
      */
     override fun onLowMemory() {
+        ApplicationController.transformOnLowMemory()
         super.onLowMemory()
     }
 

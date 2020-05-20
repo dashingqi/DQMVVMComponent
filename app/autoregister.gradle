@@ -6,6 +6,11 @@ autoregister {
                     , 'codeInsertToClassName': 'com.dashingqi.base.widget.bottomtab.TabManager'
                     , 'registerMethodName'   : 'register'
 
+            ],
+            [
+                    'scanInterface'        : 'com.dashingqi.base.providers.application.IApplicationProvider',
+                    'codeInsertToClassName': 'com.dashingqi.base.application.ApplicationManager',
+                    'registerMethodName'   : 'register'
             ]
     ]
 }
