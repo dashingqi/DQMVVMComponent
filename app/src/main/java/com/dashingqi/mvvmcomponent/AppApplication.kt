@@ -21,7 +21,27 @@ class AppApplication : Application() {
         initARouter()
         //初始化打印
         initLog()
+    }
 
+    /**
+     * 在模拟器上，在整个应用退出的时候会回调这个方法
+     * 在真机上，整个应用退出的时候，是不会回调这个方法的。
+     */
+    override fun onTerminate() {
+        super.onTerminate()
+    }
+
+    /**
+     *当手机的内存存在紧张的时候，
+     * 系统中进程的等级（前台--> 后台进程），通过AMS 给进程打个分，然后在linux中去做回收
+     * 被回收的进程，在杀死的时候，会去回调这个方法
+     */
+    override fun onLowMemory() {
+        super.onLowMemory()
+    }
+
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
     }
 
     /**
