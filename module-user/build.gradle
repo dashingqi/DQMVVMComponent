@@ -1,9 +1,11 @@
-apply from:"../module.build.gradle"
+apply from: "../module.build.gradle"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
 
     defaultConfig {
-        if (isBuildModule.toBoolean()){
+        if (isBuildModule.toBoolean()) {
             applicationId "com.dashingqi.user"
         }
     }
@@ -14,4 +16,6 @@ android {
 
 dependencies {
 
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 }

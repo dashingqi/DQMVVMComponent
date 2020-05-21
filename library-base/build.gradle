@@ -22,6 +22,8 @@ android {
             //设置支持的SO库架构
             abiFilters 'armeabi-v7a' //, 'x86','armeabi', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
+
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -63,7 +65,10 @@ dependencies {
     api rootProject.ext.dependencies["rxandroid"]
     api rootProject.ext.dependencies["logger-intercept"]
     api rootProject.ext.dependencies["okhttp"]
+    api rootProject.ext.androidx["material"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+
+    implementation project(":library-res")
 
 
 }
