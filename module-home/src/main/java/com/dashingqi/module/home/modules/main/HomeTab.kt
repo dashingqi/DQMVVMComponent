@@ -12,13 +12,14 @@ import com.dashingqi.module.home.R
 class HomeTab : BottomTabProvider {
     override fun getBottomBarItemBean(): BottomBarItemBean {
         return BottomBarItemBean(
-                "测试",
-                10,
-                "/home/test_activity",
-                R.drawable.home_ic_one_selected,
-                R.drawable.home_ic_one_un,
+                "主页",
+                100,
+                "/home/home_fragment",
+                R.drawable.res_ic_like_selected,
+                R.drawable.res_ic_like,
                 R.color.res_colorAccent,
-                R.color.res_colorAccent
+                R.color.res_colorBlack66
+
         )
     }
 }

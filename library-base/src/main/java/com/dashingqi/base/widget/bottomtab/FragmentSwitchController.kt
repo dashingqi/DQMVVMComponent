@@ -10,16 +10,18 @@ import androidx.fragment.app.FragmentTransaction
  * desc : 控制Fragment是显示和隐藏
  */
 class FragmentSwitchController<T>
-(var fragmentManager: FragmentManager, var containerID: Int, var creator: FragmentCreator<T>, var tags: Set<T>) {
+(var fragmentManager: FragmentManager, var containerID: Int, var creator: FragmentCreator<T>, var tags: Set<T?>) {
 
     /**
      * 展示Fragment
      */
     fun showFragment(tagId: T) {
+
         var beginTransaction = fragmentManager.beginTransaction()
-        hideOtherFragment(beginTransaction, tagId)
-        var fragment = getFragmentByTag(beginTransaction, tagId)
-        beginTransaction.show(fragment).commitAllowingStateLoss()
+
+        hideOtherFragment(beginTransaction!!, tagId)
+        var fragment = getFragmentByTag(beginTransaction!!, tagId)
+        beginTransaction?.show(fragment)?.commitAllowingStateLoss()
     }
 
     /**
@@ -35,11 +37,11 @@ class FragmentSwitchController<T>
             }
             var fragment = fragmentManager.findFragmentByTag(tagId.toString())
             if (fragment != null) {
-                if (!fragment.isAdded)
+                if (!fragment.isAdded) {
                     transaction.add(containerID, fragment!!, tag.toString())
+                }
+                transaction.hide(fragment!!)
             }
-
-            transaction.hide(fragment!!)
         }
 
     }

@@ -6,10 +6,7 @@ import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.activity.BaseMVVMActivity
-import com.dashingqi.base.widget.bottomtab.FragmentCreator
-import com.dashingqi.base.widget.bottomtab.FragmentSwitchController
-import com.dashingqi.base.widget.bottomtab.OnItemSelectIChangedListener
-import com.dashingqi.base.widget.bottomtab.TabManager
+import com.dashingqi.base.widget.bottomtab.*
 import com.dashingqi.module.home.R
 import com.dashingqi.module.home.databinding.HomeActivityMainBinding
 import com.orhanobut.logger.Logger
@@ -20,9 +17,10 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
 
     val fsc by lazy {
 
-        val tags: MutableSet<String> = HashSet()
-        TabManager.getTabsLiveData().value!!.forEach { it ->
-            tags.add(it.pathLD.value!!)
+        val tags: MutableSet<String?> = HashSet()
+
+        for (it in TabManager.getTabsLiveData().value!!) {
+            tags.add(it?.pathLD?.value)
         }
 
         FragmentSwitchController<String>(supportFragmentManager, R.id.containerLayout, object : FragmentCreator<String> {
@@ -57,14 +55,15 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
             }
         })
 
-        TabManager.getTabsLiveData().observe(this, Observer { data ->
-            var size = data.size
+        bottomBar.setAdapter(bottomAdapter)
+        TabManager.getTabsLiveData().observe(this, Observer { bottomBarItemBeans: ArrayList<BottomBarItemBean?> ->
+            var size = bottomBarItemBeans.size
             Logger.d("size = $size")
-            bottomAdapter.data = data
+            bottomAdapter.data = bottomBarItemBeans
             bottomAdapter.notifyDataSetChanged()
 
             if (bottomBar.selectIndex < 0) {
-                data.indexOfFirst {
+                bottomBarItemBeans.indexOfFirst {
                     it?.visibilityLD?.value == true
                 }.run {
                     bottomBar.setSelectedIndex(this)

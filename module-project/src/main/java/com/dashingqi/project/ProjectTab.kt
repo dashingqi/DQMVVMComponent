@@ -1,18 +1,18 @@
-package com.dashingqi.module.user
+package com.dashingqi.project
 
 import com.dashingqi.base.providers.bottomtab.BottomTabProvider
 import com.dashingqi.base.widget.bottomtab.BottomBarItemBean
 
 /**
  * @author : zhangqi
- * @time : 2020/5/20
- * desc : 用户Tab
+ * @time : 2020/5/21
+ * desc :
  */
-class UserTab : BottomTabProvider {
+class ProjectTab : BottomTabProvider {
     override fun getBottomBarItemBean(): BottomBarItemBean {
         return BottomBarItemBean(
-                "我的",
-                40,
+                "项目",
+                60,
                 "/user/user_fragment",
                 R.drawable.res_ic_like_selected,
                 R.drawable.res_ic_like,
