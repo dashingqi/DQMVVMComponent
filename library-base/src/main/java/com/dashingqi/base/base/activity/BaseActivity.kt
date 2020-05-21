@@ -2,8 +2,15 @@ package com.dashingqi.base.base.activity
 
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
+import com.gyf.immersionbar.ImmersionBar
 
 /**
  * @author : zhangqi
@@ -19,6 +26,21 @@ open class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
     }
 
+    init {
+        if (isImmersionEnable()) {
+            lifecycle.addObserver(object : LifecycleObserver {
+                @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+                fun onCreate() {
+                    ImmersionBar.with(this@BaseActivity)
+                            .statusBarDarkFont(isDarkFont())
+                            .navigationBarColorInt(Color.WHITE)
+                            .keyboardEnable(true,WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+                            .init()
+                }
+            })
+        }
+    }
+
     /**
      * 是否强制竖屏
      */
@@ -30,5 +52,16 @@ open class BaseActivity : AppCompatActivity() {
      */
     fun gotoActivity(clazz: Class<*>) {
         startActivity(Intent(this, clazz))
+    }
+
+    /**
+     * 用来控制 是否要做状态栏的改变
+     */
+    open fun isImmersionEnable(): Boolean {
+        return true
+    }
+
+    open fun isDarkFont(): Boolean {
+        return true
     }
 }

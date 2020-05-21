@@ -47,6 +47,8 @@ ext {
             "logger"                      : "com.orhanobut:logger:2.2.0",
             "rxjava"                      : "io.reactivex.rxjava3:rxjava:3.0.3",
             "rxandroid"                   : "io.reactivex.rxjava3:rxandroid:3.0.0",
-            "edit-text-layout"            : "com.github.ooftf:OperationEditTextLayout:1.1.4"
+            "edit-text-layout"            : "com.github.ooftf:OperationEditTextLayout:1.1.4",
+            "immersionbar"                : "com.gyf.immersionbar:immersionbar:3.0.0",
+            "immersionbar-components"     : "com.gyf.immersionbar:immersionbar-components:3.0.0"
     ]
 }

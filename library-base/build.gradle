@@ -67,6 +67,8 @@ dependencies {
     api rootProject.ext.dependencies["okhttp"]
     api rootProject.ext.androidx["material"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    api rootProject.ext.dependencies["immersionbar"]
+    api rootProject.ext.dependencies["immersionbar-components"]
 
     implementation project(":library-res")
 
