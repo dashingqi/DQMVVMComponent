@@ -60,19 +60,17 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
         TabManager.getTabsLiveData().observe(this, Observer { data ->
             var size = data.size
             Logger.d("size = $size")
-//            bottomAdapter.setData(data)
-//            bottomAdapter.notifyDataSetChanged()
-//
-//            if (bottomBar.getSelectIndex() < 0) {
-//                data.indexOfFirst {
-//                    it?.visibilityLD?.value == true
-//                }.run {
-//                    bottomBar.setSelectedIndex(this)
-//                }
-//            }
+            bottomAdapter.data = data
+            bottomAdapter.notifyDataSetChanged()
 
+            if (bottomBar.selectIndex < 0) {
+                data.indexOfFirst {
+                    it?.visibilityLD?.value == true
+                }.run {
+                    bottomBar.setSelectedIndex(this)
+                }
+            }
         })
 
     }
-
 }

@@ -23,26 +23,24 @@ class DQCustomerTabLayout : TabLayout {
     init {
         addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabReselected(tab: Tab?) {
-                TODO("Not yet implemented")
             }
 
             override fun onTabUnselected(tab: Tab?) {
                 //当没有被选中，设置文字的样式
                 tab?.customView?.findViewById<TextView>(R.id.customerTableLayoutTitle)?.let {
                     it.textSize = 14F
-                    it.typeface = Typeface.DEFAULT_BOLD
+                    it.typeface = Typeface.DEFAULT
                 }
             }
 
             override fun onTabSelected(tab: Tab?) {
                 //当被选中，设置文字的样式
                 tab?.customView?.findViewById<TextView>(R.id.customerTableLayoutTitle)?.let {
-                    it.textSize = 16F
-                    it.typeface = Typeface.DEFAULT
+                    it.textSize = 18F
+                    it.typeface = Typeface.DEFAULT_BOLD
                 }
             }
         })
-
         //设置指示器的样式
         setSelectedTabIndicator(R.drawable.base_shape_customer_tl_indicator)
     }
@@ -53,7 +51,6 @@ class DQCustomerTabLayout : TabLayout {
     override fun newTab(): Tab {
         val tab = super.newTab()
         tab.setCustomView(R.layout.base_tab_layout_item)
-        tab.customView?.let { findViewById<TextView>(R.id.customerTableLayoutTitle).setTextColor(tabTextColors) }
         return tab
     }
 

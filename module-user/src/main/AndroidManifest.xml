@@ -3,7 +3,7 @@
     package="com.dashingqi.module.user">
 
     <application>
-        <activity android:name=".other.UserTabLayoutTestActivity"></activity>
+        <activity android:name=".other.tablayout.UserTabLayoutTestActivity"></activity>
     </application>
 
 </manifest>
