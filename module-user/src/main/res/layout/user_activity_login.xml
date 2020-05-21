@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".modules.login.LoginActivity">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/lineLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="36dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/lineRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="36dp" />
+
+        <TextView
+            android:id="@+id/originationName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:text="登录WanAndroid"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@+id/lineLeft"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilUserName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:layout_constraintLeft_toLeftOf="@+id/lineLeft"
+            app:layout_constraintRight_toRightOf="@+id/lineRight"
+            app:layout_constraintTop_toBottomOf="@+id/originationName">
+
+            <com.ooftf.operation.OperationEditText
+                android:id="@+id/etUserName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:hint="用户名"
+                android:inputType="textWebEditText"
+                android:maxLines="1"
+                app:oet_delEnabled="true" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPwd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintLeft_toLeftOf="@+id/lineLeft"
+            app:layout_constraintRight_toRightOf="@+id/lineRight"
+            app:layout_constraintTop_toBottomOf="@+id/tilUserName">
+
+            <com.ooftf.operation.OperationEditText
+                android:id="@+id/etPwd"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:hint="密码"
+                android:inputType="textPassword"
+                android:maxLength="12"
+                android:maxLines="1"
+                app:oet_maskEnabled="true" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/loginAction"
+            arPath='@{"/home/main_activity"}'
+            dbBackgroundColor='@{"#1CA0F1"}'
+            dbShapeRadius="@{8}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="48dp"
+            android:gravity="center"
+            android:paddingVertical="8dp"
+            android:text="登录"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@+id/lineLeft"
+            app:layout_constraintRight_toRightOf="@+id/lineRight"
+            app:layout_constraintTop_toBottomOf="@+id/tilPwd" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

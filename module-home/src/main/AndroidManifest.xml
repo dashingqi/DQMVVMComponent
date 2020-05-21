@@ -5,11 +5,7 @@
     <application>
         <activity android:name=".modules.main.HomeTestActivity"></activity>
         <activity android:name=".modules.main.HomeMainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
