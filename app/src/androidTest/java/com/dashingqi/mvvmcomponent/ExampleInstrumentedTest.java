@@ -1,4 +1,4 @@
-package com.dashingqi.androidmvvmcomponentproject;
+package com.dashingqi.mvvmcomponent;
 
 import android.content.Context;
 

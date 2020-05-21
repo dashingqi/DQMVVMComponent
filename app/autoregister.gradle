@@ -8,9 +8,9 @@ autoregister {
 
             ],
             [
-                    'scanInterface'        : 'com.dashingqi.base.providers.application.IApplicationProvider',
-                    'codeInsertToClassName': 'com.dashingqi.base.application.ApplicationManager',
-                    'registerMethodName'   : 'register'
+                    'scanInterface'           : 'com.dashingqi.base.providers.application.IApplicationProvider'
+                    , 'codeInsertToClassName' : 'com.dashingqi.base.application.ApplicationManager'
+                    , 'registerMethodName'    : 'register'
             ]
     ]
 }

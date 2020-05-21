@@ -2,7 +2,6 @@ package com.dashingqi.mvvmcomponent
 
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
-import com.dashingqi.androidmvvmcomponentproject.BuildConfig
 import com.dashingqi.base.application.ApplicationController
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.FormatStrategy
@@ -18,6 +17,8 @@ import com.orhanobut.logger.PrettyFormatStrategy
 class AppApplication : Application() {
 
     init {
+        //初始化打印
+        initLog()
         ApplicationController.init(this, true)
     }
 
@@ -25,8 +26,7 @@ class AppApplication : Application() {
         super.onCreate()
         ApplicationController.transformOnCreate()
         initARouter()
-        //初始化打印
-        initLog()
+
     }
 
     /**

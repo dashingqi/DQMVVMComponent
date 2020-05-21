@@ -1,33 +1,32 @@
-package com.dashingqi.base.application
+package com.dashingqi.module.home.app
 
 import android.app.Application
+import android.util.Log
 import com.dashingqi.base.providers.application.IApplicationProvider
 import com.orhanobut.logger.Logger
+
 
 /**
  * @author : zhangqi
  * @time : 2020/5/20
  * desc :
  */
-class BaseApplication : IApplicationProvider {
+class HomeApplication : IApplicationProvider {
+    private val TAG = "HomeApplication"
     override fun init(application: Application) {
-
     }
 
     override fun onCreate() {
-        Logger.d("base-application-create")
-
+        Log.d(TAG,"Home_OnCreate")
     }
 
     override fun onLowMemory() {
-
     }
 
     override fun onTerminate() {
-
     }
 
     override fun getPriority(): Int {
-        return 100
+        return 80
     }
 }

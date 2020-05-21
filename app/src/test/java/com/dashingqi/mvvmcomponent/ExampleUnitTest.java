@@ -1,4 +1,4 @@
-package com.dashingqi.androidmvvmcomponentproject;
+package com.dashingqi.mvvmcomponent;
 
 import org.junit.Test;
 
