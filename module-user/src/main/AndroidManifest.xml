@@ -3,6 +3,7 @@
     package="com.dashingqi.module.user">
 
     <application>
+        <activity android:name=".other.bitmap.BitmapTestActivity"></activity>
         <activity android:name=".modules.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

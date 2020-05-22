@@ -13,7 +13,7 @@ class WXTab : BottomTabProvider {
         return BottomBarItemBean(
                 "公众号",
                 80,
-                "/user/user_fragment",
+                "/wx/wx_fragment",
                 R.drawable.res_ic_like_selected,
                 R.drawable.res_ic_like,
                 R.color.res_colorAccent,

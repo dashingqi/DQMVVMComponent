@@ -13,7 +13,7 @@ class ProjectTab : BottomTabProvider {
         return BottomBarItemBean(
                 "项目",
                 60,
-                "/user/user_fragment",
+                "/project/project_fragment",
                 R.drawable.res_ic_like_selected,
                 R.drawable.res_ic_like,
                 R.color.res_colorAccent,

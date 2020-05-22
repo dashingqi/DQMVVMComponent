@@ -3,6 +3,7 @@ package com.dashingqi.base.widget.bottomtab
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.orhanobut.logger.Logger
 
 /**
  * @author : zhangqi
@@ -30,14 +31,15 @@ class FragmentSwitchController<T>
      * 然后将其隐藏
      */
     private fun hideOtherFragment(transaction: FragmentTransaction, tagId: T) {
+        Logger.d("tags == $tags")
         for (tag in tags) {
             //遇到相同的就不隐藏了
             if (tag!! == tagId) {
                 continue
             }
-            var fragment = fragmentManager.findFragmentByTag(tagId.toString())
+            var fragment = fragmentManager.findFragmentByTag(tag.toString())
             if (fragment != null) {
-                if (!fragment.isAdded) {
+                if (!(fragment.isAdded)) {
                     transaction.add(containerID, fragment!!, tag.toString())
                 }
                 transaction.hide(fragment!!)

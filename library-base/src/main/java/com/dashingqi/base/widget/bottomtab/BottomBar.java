@@ -5,14 +5,18 @@ package com.dashingqi.base.widget.bottomtab;
  * @time : 2020/5/20
  * desc :
  */
+
 import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.dashingqi.library_base.R;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +63,7 @@ public class BottomBar extends LinearLayout {
 
         mAdapter = adapter;
         mAdapter.registerAdapterDataObserver(observer);
+        //默认设置不选中任何一个
         selectIndex = -1;
         updateItems();
     }
@@ -114,9 +119,13 @@ public class BottomBar extends LinearLayout {
     }
 
     private void updateItems() {
+        Logger.d("updateItems");
+
         if (mAdapter == null) {
             return;
         }
+
+        Logger.d("item count = " + mAdapter.getItemCount());
 
         for (int i = 0; i < mAdapter.getItemCount(); i++) {
             RecyclerView.ViewHolder holder = findViewHolderByPosition(i);
@@ -144,10 +153,18 @@ public class BottomBar extends LinearLayout {
         return (RecyclerView.ViewHolder) getChildAt(i).getTag(R.id.base_bottom_bar_view_holder_tag_id);
     }
 
+    /**
+     * 选中的动画
+     * @param view
+     */
     private void selectedAnimate(View view) {
         view.animate().translationY(-5f).scaleX(1.03f).scaleY(1.03f).setDuration(200).start();
     }
 
+    /**
+     * 为选中的动画
+     * @param view
+     */
     private void unSelectedAnimate(View view) {
         view.animate().translationY(0f).scaleX(1.0f).scaleY(1.0f).setDuration(200).start();
     }
@@ -157,6 +174,7 @@ public class BottomBar extends LinearLayout {
         @Override
         public void onChanged() {
             super.onChanged();
+            Logger.d("onChange()");
             updateItems();
         }
 

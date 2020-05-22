@@ -49,6 +49,7 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
 
         bottomBar.setOnItemSelectChangedListener(object : OnItemSelectIChangedListener {
             override fun onItemSelect(oldIndex: Int, newIndex: Int) {
+                Logger.d("oldIndex == $oldIndex, newIndex == $newIndex")
                 fsc.showFragment(
                         bottomAdapter.getItem(newIndex)?.pathLD?.value!!
                 )
@@ -56,10 +57,12 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
         })
 
         bottomBar.setAdapter(bottomAdapter)
+        //监听数据的变化
         TabManager.getTabsLiveData().observe(this, Observer { bottomBarItemBeans: ArrayList<BottomBarItemBean?> ->
             var size = bottomBarItemBeans.size
-            Logger.d("size = $size")
+            //设置数据
             bottomAdapter.data = bottomBarItemBeans
+            //通知一下，
             bottomAdapter.notifyDataSetChanged()
 
             if (bottomBar.selectIndex < 0) {
