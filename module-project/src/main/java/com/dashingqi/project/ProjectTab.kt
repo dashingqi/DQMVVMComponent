@@ -14,8 +14,8 @@ class ProjectTab : BottomTabProvider {
                 "项目",
                 60,
                 "/project/project_fragment",
-                R.drawable.res_ic_like_selected,
-                R.drawable.res_ic_like,
+                R.drawable.project_icon_selected,
+                R.drawable.project_icon_default,
                 R.color.res_colorAccent,
                 R.color.res_colorBlack66
         )

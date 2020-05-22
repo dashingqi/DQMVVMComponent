@@ -14,8 +14,8 @@ class WXTab : BottomTabProvider {
                 "公众号",
                 80,
                 "/wx/wx_fragment",
-                R.drawable.res_ic_like_selected,
-                R.drawable.res_ic_like,
+                R.drawable.wx_icon_selected,
+                R.drawable.wx_icon_default,
                 R.color.res_colorAccent,
                 R.color.res_colorBlack66
         )

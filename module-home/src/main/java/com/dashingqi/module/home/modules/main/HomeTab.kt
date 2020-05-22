@@ -15,8 +15,8 @@ class HomeTab : BottomTabProvider {
                 "主页",
                 100,
                 "/home/home_fragment",
-                R.drawable.res_ic_like_selected,
-                R.drawable.res_ic_like,
+                R.drawable.home_ic_selected,
+                R.drawable.home_ic_default,
                 R.color.res_colorAccent,
                 R.color.res_colorBlack66
 
