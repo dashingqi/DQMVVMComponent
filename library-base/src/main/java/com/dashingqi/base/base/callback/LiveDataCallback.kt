@@ -79,7 +79,7 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
      * 用于绑定状态页面
      */
     fun bindStateLayout(): LiveDataCallback<T> {
-        Logger.d("bindStateLayout----> transform")
+        Logger.d("bindStateLayout  ---->  transform")
         baseLiveData?.switchToLoading()
         isBindStateLayout = true
         return this
@@ -89,7 +89,7 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
      * 用于绑定下拉刷新
      */
     fun bindSmartRefresh(): LiveDataCallback<T> {
-        Logger.d( "bindSmartRefresh ----> transform")
+        Logger.d( "bindSmartRefresh  ---->  transform")
         baseLiveData?.startRefresh()
         isBindSmartRefresh = true
         return this
@@ -99,6 +99,9 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
         return super.doOnResponse(doOnResponse) as LiveDataCallback<T>
     }
 
+    /**
+     * 高阶函数
+     */
     override fun doOnResponseSuccess(doOnResponseSuccess: (call: Call<T>, response: T) -> Unit): BaseCallback<T> {
         return super.doOnResponseSuccess(doOnResponseSuccess) as LiveDataCallback<T>
     }
