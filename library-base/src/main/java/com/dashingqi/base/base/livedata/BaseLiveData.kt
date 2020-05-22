@@ -73,7 +73,10 @@ class BaseLiveData {
      * StateLayout 切换到成功
      */
     fun switchToSuccess() {
-
+        Logger.d("switchToSuccess -----> transform")
+        ThreadUtil.runOnUiThread(Runnable {
+            stateLayout.value = IStateLayout.STATE_SUCCESS
+        })
     }
 
     /**
@@ -109,6 +112,21 @@ class BaseLiveData {
     fun finishLoadMore() {
         Logger.d("finishLoadMore ---> transform")
         smartLoadMore.postValue(SmartRefreshEvent.SMART_REFRESH_LAYOUT_LOAD_MORE_FINISH)
+    }
+
+    /**
+     * 通知开始弹出加载框
+     */
+    fun showLoading() {
+        Logger.d("showLoading ----> transform")
+
+    }
+
+    /**
+     * 通知隐藏加载框
+     */
+    fun hideLoading() {
+        Logger.d("hideLoading -----> transform")
     }
 
     /**

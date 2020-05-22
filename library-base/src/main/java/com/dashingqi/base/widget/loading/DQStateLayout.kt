@@ -25,6 +25,7 @@ class DQStateLayout : FrameLayout, IStateLayout {
     private var emptyView: View? = null
     private var errorView: View? = null
     private var loadView: View? = null
+    private var successView: View? = null
 
     constructor(context: Context) : this(context, null) {}
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0) {}
@@ -63,7 +64,16 @@ class DQStateLayout : FrameLayout, IStateLayout {
         handleViewShow(errorView!!)
     }
 
+    override fun onFinishInflate() {
+        super.onFinishInflate()
+        successView = getChildAt(0)
+    }
+
+    /**
+     * 切换到成功的布局，也就是显示正常数据的布局
+     */
     override fun switchToSuccessLayout() {
+        handleViewShow(successView!!)
 
     }
 

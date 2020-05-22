@@ -23,6 +23,11 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
     private var isBindSmartRefresh = false
 
     /**
+     * 用于记录是否调用了加载框，一个状态
+     */
+    private var isBindLoading = false
+
+    /**
      * m 与 v的中转站 ---> BaseViewModel
      */
     private var baseLiveData: BaseLiveData? = null
@@ -44,6 +49,10 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
                     it.finishRefresh()
                     it.finishLoadMoreSuccess()
                 }
+
+                if (isBindLoading) {
+                    it.hideLoading()
+                }
             }
 
         }
@@ -59,6 +68,10 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
                     //停止下拉刷新的动画
                     it.finishRefresh()
                     it.finishLoadMore()
+                }
+
+                if (isBindLoading) {
+                    it.hideLoading()
                 }
             }
         }
@@ -89,9 +102,16 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
      * 用于绑定下拉刷新
      */
     fun bindSmartRefresh(): LiveDataCallback<T> {
-        Logger.d( "bindSmartRefresh  ---->  transform")
+        Logger.d("bindSmartRefresh  ---->  transform")
         baseLiveData?.startRefresh()
         isBindSmartRefresh = true
+        return this
+    }
+
+    fun bindLoading(): LiveDataCallback<T> {
+        Logger.d("bindLoading -----> transform")
+        baseLiveData?.showLoading()
+        isBindLoading = true
         return this
     }
 
