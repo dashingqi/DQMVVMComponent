@@ -69,6 +69,7 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
     api rootProject.ext.dependencies["immersionbar"]
     api rootProject.ext.dependencies["immersionbar-components"]
+    api rootProject.ext.dependencies["magic-indicator"]
 
     implementation project(":library-res")
 

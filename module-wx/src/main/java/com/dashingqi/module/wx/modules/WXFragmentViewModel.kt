@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import com.dashingqi.base.base.callback.LiveDataCallback
 import com.dashingqi.base.base.viewmodel.BaseViewModel
+import com.dashingqi.library.service.providers.common.response.CommonClassifyResponse
 import com.dashingqi.module.wx.net.IWxService
 import com.dashingqi.module.wx.net.WxArticleChaptersResponse
 import com.orhanobut.logger.Logger
@@ -20,13 +21,21 @@ class WXFragmentViewModel(application: Application) : BaseViewModel(application)
         getWxArticleChapters()
     }
 
-    var mFragments = ArrayList<Fragment>()
-    var wxArticleChapterLiveData = MutableLiveData<List<WxArticleChaptersResponse.DataBean>>()
+    var mFragments: ArrayList<Fragment> = arrayListOf()
+    var mDatas: ArrayList<CommonClassifyResponse> = arrayListOf()
+    var wxArticleChapterLiveData = MutableLiveData<List<CommonClassifyResponse>>()
 
     private fun getWxArticleChapters() {
         IWxService.INSTANCE.getWxArticleChapters().enqueue(LiveDataCallback<WxArticleChaptersResponse>(baseLiveData)
                 .doOnResponseSuccess { _, response ->
                     Logger.d("wx_article_chapters_size == ${response.data.size}")
+                    if (mDatas.size > 0) {
+                        mDatas.clear()
+                    }
+                    mDatas.addAll(response.data)
+                    if (mFragments.size > 0) {
+                        mFragments.clear()
+                    }
                     response.data.forEach {
                         mFragments.add(WXArticleChapterFragment())
                     }

@@ -10,18 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.dashingqi.base.widget.tablayout.DQCustomerTabLayout
-            android:id="@+id/tabLayout"
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:background="@color/res_colorPrimary"
+            android:id="@+id/magicIndicator"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.viewpager2.widget.ViewPager2
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:overScrollMode="never"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/magicIndicator" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
