@@ -16,6 +16,12 @@ interface IHomeService {
     @GET("/wxarticle/chapters/json")
     fun getWxArticle(): Call<BaseResponse>
 
+    /**
+     * 获取到首页Banner数据
+     */
+    @GET("/banner/json")
+    fun getBannerData(): Call<HomeBannerResponse>
+
 
     companion object {
         var instance = ARouter.getInstance().navigation(IServiceProvider::class.java).createService(IHomeService::class.java)
