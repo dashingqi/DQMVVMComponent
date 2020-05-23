@@ -26,7 +26,7 @@ class HomeFragmentViewModel(application: Application) : BaseViewModel(applicatio
      * 获取到首页Banner数据
      */
     private fun getBannerData() {
-        IHomeService.instance.getBannerData().enqueue(LiveDataCallback<HomeBannerResponse>()
+        IHomeService.instance.getBannerData().enqueue(LiveDataCallback<HomeBannerResponse>(baseLiveData)
                 .doOnResponseSuccess { _, response ->
                     var data = response.data
                     bannerData.value = data
