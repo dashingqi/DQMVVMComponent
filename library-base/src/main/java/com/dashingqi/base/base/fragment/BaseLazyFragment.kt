@@ -15,7 +15,13 @@ abstract class BaseLazyFragment : BaseFragment(), DQLazyFragmentProxy.DQLazyProx
 
     private val lazyFragmentProxy = DQLazyFragmentProxy<BaseLazyFragment>(this)
 
-    abstract override fun onLoad(rootView: View)
+    /**
+     * 开始创建View，并返回View
+     */
+    final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
+        return lazyFragmentProxy.onCreateView(inflater, container, savedInstanceState)
+    }
 
     /**
      *  当View创建成功后
@@ -23,14 +29,6 @@ abstract class BaseLazyFragment : BaseFragment(), DQLazyFragmentProxy.DQLazyProx
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lazyFragmentProxy.onViewCreated(view, savedInstanceState)
-    }
-
-    /**
-     * 开始创建View，并返回View
-     */
-    final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return lazyFragmentProxy.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onStart() {
@@ -53,5 +51,13 @@ abstract class BaseLazyFragment : BaseFragment(), DQLazyFragmentProxy.DQLazyProx
         lazyFragmentProxy.onDetach()
     }
 
+    /**
+     * 是否开启懒加载 默认为true
+     */
     override fun lazyEnabled(): Boolean = true
+
+    /**
+     * 当前的fragment是否是可见状态
+     */
+    override fun isShowing(): Boolean = fragmentIsShowing()
 }

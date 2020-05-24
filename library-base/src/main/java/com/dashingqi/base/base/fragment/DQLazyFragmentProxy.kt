@@ -19,12 +19,17 @@ class DQLazyFragmentProxy<T>(var mFragment: T) where T : Fragment, T : DQLazyPro
     private var rootViewWeakReference: WeakReference<View?>? = null
 
     fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, saveInstanceState: Bundle?): View? {
-
         return if (mFragment.lazyEnabled()) {
             var view: View? = null
             if (rootViewWeakReference != null) {
                 view = rootViewWeakReference?.get()
             }
+
+            if (view == null) {
+                view = mFragment.view
+                rootViewWeakReference = WeakReference(view)
+            }
+
             if (view == null) {
                 isLoaded = false
                 view = mFragment.getContentView(inflater, container)
@@ -33,18 +38,15 @@ class DQLazyFragmentProxy<T>(var mFragment: T) where T : Fragment, T : DQLazyPro
             loadJudgment(view)
             view
         } else {
-            var view = if (mFragment.view == null) {
-                mFragment.getContentView(inflater, container)
-            } else {
-                mFragment.view
-            }
+
+            var view = mFragment.view ?: mFragment.getContentView(inflater, container)
             loadJudgment(view)
             mFragment.view
         }
     }
 
     private fun loadJudgment(view: View?) {
-        if (view != null && mFragment.getUserVisibleHint() && !isLoaded && !mFragment.isHidden && !mFragment.isShowing()) {
+        if (view != null && mFragment.getUserVisibleHint() && !isLoaded && !mFragment.isHidden && mFragment.isShowing()) {
             isLoaded = true
             mFragment.onLoad(view)
         }
@@ -56,28 +58,24 @@ class DQLazyFragmentProxy<T>(var mFragment: T) where T : Fragment, T : DQLazyPro
         } else {
             mFragment.onLoad(view)
         }
-
     }
 
     fun onStart() {
         if (mFragment.lazyEnabled()) {
             loadJudgment(mFragment!!.view)
         }
-
     }
 
     fun setUserVisibleHint(isVisibleToUser: Boolean) {
         if (mFragment.lazyEnabled()) {
             loadJudgment(mFragment.view)
         }
-
     }
 
     fun onHiddenChanged(hidden: Boolean) {
         if (mFragment.lazyEnabled()) {
             loadJudgment(mFragment.view)
         }
-
     }
 
     fun onDetach() {
@@ -102,10 +100,13 @@ class DQLazyFragmentProxy<T>(var mFragment: T) where T : Fragment, T : DQLazyPro
         fun onLoad(view: View)
 
         /**
-         *
+         * 是否卡其懒加载
          */
         fun lazyEnabled(): Boolean
 
+        /**
+         * 判断当前Fragment是否可见的
+         */
         fun isShowing(): Boolean
     }
 

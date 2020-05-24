@@ -11,6 +11,7 @@ import com.dashingqi.library_base.BR
 import com.dashingqi.base.base.viewmodel.BaseViewModel
 import com.dashingqi.base.ext.getDbClass
 import com.dashingqi.base.ext.getVmClass
+import com.orhanobut.logger.Logger
 
 /**
  * @author : zhangqi
@@ -34,8 +35,8 @@ abstract class BaseMvvMFragment<DB : ViewDataBinding, VM : BaseViewModel> : Base
     /**
      * 布局加载完成之后了
      */
-    @CallSuper
     override fun onLoad(view: View) {
+        Logger.d("onLoad -----> transform")
         viewModel = createViewModel()
         dataBinding.lifecycleOwner = this
         dataBinding.setVariable(getVariableId(), viewModel)

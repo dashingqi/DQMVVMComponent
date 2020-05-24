@@ -20,25 +20,19 @@ import com.orhanobut.logger.Logger
 @Route(path = "/wx/article_list_fragment")
 class WXArticleChapterFragment : BaseMvvMFragment<WxArticleChapterFragmentBinding, WXArticleChapterFragmentViewModel>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        ARouter.getInstance().inject(this)
-        super.onCreate(savedInstanceState)
-    }
-
     @JvmField
     @Autowired(name = "id")
     var articleId = 0
 
     override fun onLoad(view: View) {
+        ARouter.getInstance().inject(this)
         super.onLoad(view)
-        Logger.d("articleId == $articleId")
     }
 
     override fun getViewModelFactory(): ViewModelProvider.Factory? {
         return ParamViewModelFactory(
                 arrayOf(Application::class.java, Int::class.java),
                 arrayOf(activity?.application, articleId)
-
         )
     }
 }

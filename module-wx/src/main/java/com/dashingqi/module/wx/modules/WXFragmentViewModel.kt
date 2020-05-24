@@ -39,12 +39,12 @@ class WXFragmentViewModel(application: Application) : BaseViewModel(application)
                         mFragments.clear()
                     }
                     response.data.forEach {
-                        var navigation = ARouter
+                        var fragment = ARouter
                                 .getInstance()
                                 .build("/wx/article_list_fragment")
                                 .withInt("id", it.id)
                                 .navigation() as Fragment
-                        mFragments.add(navigation)
+                        mFragments.add(fragment)
                     }
                     wxArticleChapterLiveData.value = response.data
                 }
