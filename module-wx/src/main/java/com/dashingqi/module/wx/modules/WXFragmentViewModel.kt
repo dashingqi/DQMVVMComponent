@@ -3,6 +3,7 @@ package com.dashingqi.module.wx.modules
 import android.app.Application
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
+import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.callback.LiveDataCallback
 import com.dashingqi.base.base.viewmodel.BaseViewModel
 import com.dashingqi.library.service.providers.common.response.CommonClassifyResponse
@@ -37,7 +38,12 @@ class WXFragmentViewModel(application: Application) : BaseViewModel(application)
                         mFragments.clear()
                     }
                     response.data.forEach {
-                        mFragments.add(WXArticleChapterFragment())
+                        var navigation = ARouter
+                                .getInstance()
+                                .build("/wx/article_list_fragment")
+                                .withInt("id", it.id)
+                                .navigation() as Fragment
+                        mFragments.add(navigation)
                     }
                     wxArticleChapterLiveData.value = response.data
                 }

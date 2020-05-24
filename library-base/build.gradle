@@ -70,6 +70,8 @@ dependencies {
     api rootProject.ext.dependencies["immersionbar"]
     api rootProject.ext.dependencies["immersionbar-components"]
     api rootProject.ext.dependencies["magic-indicator"]
+    api rootProject.ext.dependencies["bindingcollectionadapter"]
+    api rootProject.ext.dependencies["bindingcollectionadapter-recyclerview"]
 
     implementation project(":library-res")
 

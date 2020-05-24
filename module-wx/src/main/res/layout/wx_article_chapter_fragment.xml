@@ -4,6 +4,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.dashingqi.module.wx.modules.WXArticleChapterFragmentViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
