@@ -25,7 +25,7 @@ abstract class BasePageViewModel<T>(application: Application) : BaseViewModel(ap
     /**
      * 每页要拉取的数据量
      */
-    open fun getPageSize() = 10
+    open fun getPageSize() = 20
 
     /**
      * 默认是从0 开始的,子类可以重写，指定开始的页码

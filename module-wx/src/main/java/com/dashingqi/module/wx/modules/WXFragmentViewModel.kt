@@ -9,6 +9,7 @@ import com.dashingqi.base.base.viewmodel.BaseViewModel
 import com.dashingqi.library.service.providers.common.response.CommonClassifyResponse
 import com.dashingqi.module.wx.net.IWxService
 import com.dashingqi.module.wx.net.WxArticleChaptersResponse
+import com.dashingqi.module.wx.net.WxArticleListResponse
 import com.orhanobut.logger.Logger
 
 /**

@@ -1,70 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tvWxArticleAuthor"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:textColor="@color/res_colorBlack66"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/tvWxArticlePubTime"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="DashingQi" />
+    <data>
 
-    <TextView
-        android:id="@+id/tvWxArticlePubTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/res_colorBlack66"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvWxArticleAuthor"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvWxArticleAuthor"
-        tools:text="现在" />
+        <variable
+            name="item"
+            type="com.dashingqi.library.service.providers.common.response.CommonArticleResponse" />
 
-    <TextView
-        android:id="@+id/tvWxArticleTitle"
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:ellipsize="end"
-        android:maxLines="4"
-        android:textColor="@color/res_colorBlack"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@+id/tvWxArticleAuthor"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWxArticleAuthor"
-        tools:text="Android:你要了解的关于自定义View的知识都在这里" />
+        android:paddingTop="16dp">
 
-    <TextView
-        android:id="@+id/tvWxArticleCategory"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="16sp"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:layout_marginRight="10dp"
-        app:layout_constraintLeft_toLeftOf="@+id/tvWxArticleTitle"
-        app:layout_constraintRight_toLeftOf="@+id/tvWxArticleLike"
-        app:layout_constraintTop_toBottomOf="@+id/tvWxArticleTitle"
-        tools:text="公众号 / DashingQi" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
 
-    <ImageView
-        android:id="@+id/tvWxArticleLike"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvWxArticleCategory"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvWxArticleCategory"
-        tools:src="@drawable/res_ic_like_default" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvWxArticleAuthor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="@{item.author}"
+            android:textColor="@color/res_colorBlack66"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@+id/line1"
+            app:layout_constraintRight_toLeftOf="@+id/tvWxArticlePubTime"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="DashingQi" />
+
+        <TextView
+            android:id="@+id/tvWxArticlePubTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.niceDate}"
+            android:textColor="@color/res_colorBlack66"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvWxArticleAuthor"
+            app:layout_constraintRight_toRightOf="@+id/line2"
+            app:layout_constraintTop_toTopOf="@+id/tvWxArticleAuthor"
+            tools:text="现在" />
+
+        <TextView
+            android:id="@+id/tvWxArticleTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:layout_marginTop="28dp"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:text="@{item.title}"
+            android:textColor="@color/res_colorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tvWxArticleAuthor"
+            tools:text="Android:你要了解的关于自定义View的知识都在这里" />
+
+        <TextView
+            android:id="@+id/tvWxArticleCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text='@{item.superChapterName+" / "+item.chapterName}'
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@+id/line1"
+            app:layout_constraintRight_toLeftOf="@+id/tvWxArticleLike"
+            app:layout_constraintTop_toBottomOf="@+id/tvWxArticleTitle"
+            tools:text="公众号 / DashingQi" />
+
+        <ImageView
+            android:id="@+id/tvWxArticleLike"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvWxArticleCategory"
+            app:layout_constraintRight_toRightOf="@id/line2"
+            app:layout_constraintTop_toTopOf="@+id/tvWxArticleCategory"
+            tools:src="@drawable/res_ic_like_default" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#303F9F"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWxArticleCategory" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

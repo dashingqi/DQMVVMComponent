@@ -47,7 +47,8 @@ class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         homeBanner.destroy()
+        super.onDestroy()
+
     }
 }

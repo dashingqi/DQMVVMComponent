@@ -24,7 +24,7 @@ interface IWxService {
      * 获取到某个公众号下的数据
      */
     @GET("/wxarticle/list/{id}/{page}/json")
-    fun getWxArticleList(@Path("id") id: Int, @Path("page") pageNO: Int): Call<WxArticleListResponse>
+    fun getWxArticleList(@Path("id") id: Int, @Path("page") pageNo: Int): Call<WxArticleListResponse>
 
     companion object {
         val INSTANCE = ARouter.getInstance().navigation(IServiceProvider::class.java).createService(IWxService::class.java)

@@ -32,7 +32,6 @@ class WXArticleChapterFragment : BaseMvvMFragment<WxArticleChapterFragmentBindin
     override fun onLoad(view: View) {
         super.onLoad(view)
         Logger.d("articleId == $articleId")
-        viewModel.getArticleList()
     }
 
     override fun getViewModelFactory(): ViewModelProvider.Factory? {
