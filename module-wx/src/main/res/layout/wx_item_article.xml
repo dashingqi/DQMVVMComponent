@@ -60,9 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:ellipsize="end"
-            android:maxLines="4"
-            android:text="@{item.title}"
+            android:text="@{item.titleText}"
             android:textColor="@color/res_colorBlack"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -81,6 +79,7 @@
             android:maxLines="1"
             android:text='@{item.superChapterName+" / "+item.chapterName}'
             android:textSize="14sp"
+            android:textColor="@color/res_colorPrimary"
             app:layout_constraintLeft_toLeftOf="@+id/line1"
             app:layout_constraintRight_toLeftOf="@+id/tvWxArticleLike"
             app:layout_constraintTop_toBottomOf="@+id/tvWxArticleTitle"
@@ -97,9 +96,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:background="#303F9F"
+            android:layout_height="6dp"
+            android:layout_marginTop="16dp"
+            android:background="#f2f2f2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWxArticleCategory" />
 

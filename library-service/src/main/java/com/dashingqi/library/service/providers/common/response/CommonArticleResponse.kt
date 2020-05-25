@@ -1,5 +1,7 @@
 package com.dashingqi.library.service.providers.common.response
 
+import android.text.Html
+
 /**
  * @author : zhangqi
  * @time : 2020/5/24
@@ -30,8 +32,12 @@ data class CommonArticleResponse(
         var type: Int,
         var userId: Int,
         var visible: Int,
-        var zan: Int){
-    fun getCategoryName():String{
+        var zan: Int) {
+    fun getCategoryName(): String {
         return "$superChapterName / $chapterName"
+    }
+
+    fun getTitleText(): String {
+        return Html.fromHtml(title).toString()
     }
 }
