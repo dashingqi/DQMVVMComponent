@@ -28,7 +28,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.Li
  * viewpager初始化的通用代码
  */
 fun ViewPager.init(fragment: Fragment, fragments: ArrayList<Fragment>): ViewPager {
-    adapter = object : FragmentStatePagerAdapter(fragment.parentFragmentManager) {
+    adapter = object : FragmentStatePagerAdapter(fragment.childFragmentManager) {
         override fun getItem(position: Int): Fragment = fragments[position]
 
         override fun getCount(): Int = fragments.size
@@ -92,6 +92,6 @@ fun MagicIndicator.initAndBindVP(viewPager: ViewPager, datas: ArrayList<CommonCl
 
     })
 
-    viewPager.currentItem = 1
+    viewPager.currentItem = 0
 
 }

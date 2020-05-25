@@ -1,6 +1,5 @@
 package com.dashingqi.project.modules
 
-import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -20,9 +19,11 @@ class ProjectFragment : BaseMvvMFragment<ProjectFragmentBinding, ProjectFragment
     override fun onLoad(view: View) {
         super.onLoad(view)
 
-        createObserver()
-        dataBinding.magicIndicator.initAndBindVP(dataBinding.viewPager, viewModel.mProjectTreeData)
+
         dataBinding.viewPager.init(this, viewModel.mFragmentData)
+        dataBinding.magicIndicator.initAndBindVP(dataBinding.viewPager, viewModel.mProjectTreeData)
+        createObserver()
+
     }
 
     private fun createObserver() {
