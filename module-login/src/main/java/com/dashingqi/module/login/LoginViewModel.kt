@@ -1,4 +1,4 @@
-package com.dashingqi.module.user.modules.login
+package com.dashingqi.module.login
 
 import android.app.Application
 import com.dashingqi.base.base.viewmodel.BaseViewModel

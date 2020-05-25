@@ -74,21 +74,21 @@ dependencies {
 
     if (isBuildModule.toBoolean()) {
         //当组件独立运行时，需要把基础库依赖到宿主app项目上
-
-
     } else {
         //如果是作为组件，需要把各个组件依赖到App宿主上
 
-        // app启动模块
+        // app启动
         implementation project(":module-extrance")
-        // app首页模块
+        // app首页
         implementation project(":module-home")
-        // app用户模块
+        // app用户
         implementation project(":module-user")
-        //wx公众号模块
+        //wx公众号
         implementation project(":module-wx")
-        //项目模块
+        //项目
         implementation project(":module-project")
+        //登录
+        implementation project(":module-login")
 
     }
 }
