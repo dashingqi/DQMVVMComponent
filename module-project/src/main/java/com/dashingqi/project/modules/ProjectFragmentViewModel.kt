@@ -44,7 +44,7 @@ class ProjectFragmentViewModel(application: Application) : BaseViewModel(applica
                     mProjectTreeData.addAll(response.data)
                     if (mFragmentData.size > 0) mFragmentData.clear()
                     mProjectTreeData.forEach {
-                        mFragmentData.add(ARouter.getInstance().build("/project/list_fragment").navigation() as Fragment)
+                        mFragmentData.add(ARouter.getInstance().build("/project/list_fragment").withInt("cid",it.id).navigation() as Fragment)
                     }
                     mNotify.value = mProjectTreeData
                 })

@@ -30,4 +30,8 @@ data class CommonArticleResponse(
         var type: Int,
         var userId: Int,
         var visible: Int,
-        var zan: Int)
+        var zan: Int){
+    fun getCategoryName():String{
+        return "$superChapterName / $chapterName"
+    }
+}

@@ -57,16 +57,17 @@
 
         <TextView
             android:id="@+id/tvWxArticleTitle"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
             android:layout_marginTop="20dp"
             android:ellipsize="end"
             android:maxLines="4"
             android:text="@{item.title}"
             android:textColor="@color/res_colorBlack"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/line1"
+            app:layout_constraintRight_toRightOf="@+id/line2"
             app:layout_constraintTop_toBottomOf="@+id/tvWxArticleAuthor"
             tools:text="Android:你要了解的关于自定义View的知识都在这里" />
 
@@ -79,7 +80,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text='@{item.superChapterName+" / "+item.chapterName}'
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintLeft_toLeftOf="@+id/line1"
             app:layout_constraintRight_toLeftOf="@+id/tvWxArticleLike"
             app:layout_constraintTop_toBottomOf="@+id/tvWxArticleTitle"

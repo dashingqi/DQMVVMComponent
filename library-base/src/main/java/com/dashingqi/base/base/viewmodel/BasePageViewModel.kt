@@ -35,7 +35,7 @@ abstract class BasePageViewModel<T>(application: Application) : BaseViewModel(ap
     /**
      * 子类用于实现请求数据
      */
-    abstract fun requestData(pag: Int)
+    abstract fun requestData(page: Int)
 
     fun refresh() {
         requestData(getStartPageNum())
