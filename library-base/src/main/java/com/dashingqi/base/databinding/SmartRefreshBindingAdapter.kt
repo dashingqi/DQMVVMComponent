@@ -90,4 +90,13 @@ object SmartRefreshBindingAdapter {
             }
         }
     }
+
+    /**
+     * 设置是否能够下拉刷新
+     */
+    @JvmStatic
+    @BindingAdapter(value = ["enableRefresh"], requireAll = true)
+    fun setCanRefresh(smartRefreshLayout: SmartRefreshLayout, enableRefresh: Boolean) {
+        smartRefreshLayout.setEnableRefresh(enableRefresh)
+    }
 }

@@ -33,6 +33,7 @@ class HomeFragmentViewModel(application: Application) : BasePageViewModel<Common
      */
     private fun getBannerData() {
         IHomeService.instance.getBannerData().enqueue(LiveDataCallback<HomeBannerResponse>(baseLiveData)
+                .bindSmartRefresh()
                 .doOnResponseSuccess { _, response ->
                     var data = response.data
                     bannerData.value = data

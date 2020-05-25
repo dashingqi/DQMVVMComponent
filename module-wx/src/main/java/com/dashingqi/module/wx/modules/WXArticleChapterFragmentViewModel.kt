@@ -23,11 +23,13 @@ class WXArticleChapterFragmentViewModel(application: Application, var id: Int) :
 
     override fun requestData(page: Int) {
         IWxService.INSTANCE.getWxArticleList(id, page).enqueue(LiveDataCallback<WxArticleListResponse>(baseLiveData)
+                .bindSmartRefresh()
                 .doOnResponseSuccess { call, response ->
                     Logger.d("size = ${response.data.datas.size}")
                     handleItemData(page, response.data.datas)
                 })
     }
+
     override fun getItemLayoutId(): Int = R.layout.wx_item_article
 
 

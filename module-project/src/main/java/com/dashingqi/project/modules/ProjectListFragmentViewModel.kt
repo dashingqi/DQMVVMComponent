@@ -23,6 +23,7 @@ class ProjectListFragmentViewModel(application: Application, var cid: Int) : Bas
 
     override fun requestData(page: Int) {
         IProjectService.INSTANCE.getProjectList(page, cid).enqueue(LiveDataCallback<ProjectTreeListResponse>(baseLiveData)
+                .bindSmartRefresh()
                 .doOnResponseSuccess { _, response ->
                     Logger.d("project list response size is ------->  ${response.data.datas.size}")
                     handleItemData(page, response.data.datas)
@@ -39,5 +40,9 @@ class ProjectListFragmentViewModel(application: Application, var cid: Int) : Bas
      */
     override fun getStartPageNum(): Int {
         return 0
+    }
+
+    override fun getPageSize(): Int {
+        return 15
     }
 }

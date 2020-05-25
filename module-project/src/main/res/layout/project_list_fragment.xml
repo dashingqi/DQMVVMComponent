@@ -14,13 +14,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            itemBinding="@{viewModel.itemBinding}"
-            items="@{viewModel.items}"
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            loadMoreListener="@{()->viewModel.loadMore()}"
+            loadMoreState="@{viewModel.loadMoreState}"
+            refreshListener="@{()->viewModel.refresh()}"
+            refreshState="@{viewModel.refreshState}"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                itemBinding="@{viewModel.itemBinding}"
+                items="@{viewModel.items}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

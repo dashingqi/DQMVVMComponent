@@ -20,15 +20,25 @@
             android:layout_height="180dp"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            itemBinding="@{viewModel.itemBinding}"
-            items="@{viewModel.items}"
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            enableRefresh="@{false}"
+            loadMoreListener="@{()->viewModel.loadMore()}"
+            loadMoreState="@{viewModel.loadMoreState}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:overScrollMode="never"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/homeBanner" />
+            app:layout_constraintTop_toBottomOf="@+id/homeBanner">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                itemBinding="@{viewModel.itemBinding}"
+                items="@{viewModel.items}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

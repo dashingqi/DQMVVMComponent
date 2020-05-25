@@ -69,7 +69,7 @@ abstract class BasePageViewModel<T>(application: Application) : BaseViewModel(ap
         /**
          * 上滑加载到最后一页了。
          */
-        if (data.size < getPageSize()) {
+        if (data.size<getPageSize()) {
             baseLiveData.finishLoadMoreWithNoMoreData()
         }
     }

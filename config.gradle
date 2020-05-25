@@ -44,6 +44,7 @@ ext {
             "glide"                                : "com.github.bumptech.glide:glide:4.11.0",
             "glide-compiler"                       : "com.github.bumptech.glide:compiler:4.11.0",
             "smart-refresh"                        : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.2",
+            "smert-refresh-header"                 : "com.scwang.smartrefresh:SmartRefreshHeader:1.1.2",
             "logger"                               : "com.orhanobut:logger:2.2.0",
             "rxjava"                               : "io.reactivex.rxjava3:rxjava:3.0.3",
             "rxandroid"                            : "io.reactivex.rxjava3:rxandroid:3.0.0",
