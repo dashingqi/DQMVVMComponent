@@ -12,9 +12,9 @@
 
         <net.lucode.hackware.magicindicator.MagicIndicator
             android:id="@+id/magicIndicator"
-            android:background="@color/res_colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="58dp"
+            android:background="@color/res_colorPrimary"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.viewpager.widget.ViewPager
