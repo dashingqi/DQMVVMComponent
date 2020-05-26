@@ -33,7 +33,6 @@ class HomeFragmentViewModel(application: Application) : BasePageViewModel<Common
      */
     private fun getBannerData() {
         IHomeService.instance.getBannerData().enqueue(LiveDataCallback<HomeBannerResponse>(baseLiveData)
-                .bindSmartRefresh()
                 .doOnResponseSuccess { _, response ->
                     var data = response.data
                     bannerData.value = data
@@ -46,6 +45,8 @@ class HomeFragmentViewModel(application: Application) : BasePageViewModel<Common
      */
     override fun requestData(page: Int) {
         IHomeService.instance.getHomeArticleList(page).enqueue(LiveDataCallback<HomeArticleListResponse>(baseLiveData)
+                .bindSmartRefresh()
+                .bindStateLayout()
                 .doOnResponseSuccess { _, response ->
                     Logger.d("home article list data size is -----> ${response.data.datas.size}")
                     handleItemData(page, response.data.datas)

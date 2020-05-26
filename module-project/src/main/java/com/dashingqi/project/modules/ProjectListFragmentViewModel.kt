@@ -24,6 +24,7 @@ class ProjectListFragmentViewModel(application: Application, var cid: Int) : Bas
     override fun requestData(page: Int) {
         IProjectService.INSTANCE.getProjectList(page, cid).enqueue(LiveDataCallback<ProjectTreeListResponse>(baseLiveData)
                 .bindSmartRefresh()
+                .bindStateLayout()
                 .doOnResponseSuccess { _, response ->
                     Logger.d("project list response size is ------->  ${response.data.datas.size}")
                     handleItemData(page, response.data.datas)

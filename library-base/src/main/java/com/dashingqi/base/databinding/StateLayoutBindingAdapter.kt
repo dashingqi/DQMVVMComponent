@@ -1,8 +1,8 @@
 package com.dashingqi.base.databinding
 
 import androidx.databinding.BindingAdapter
-import com.dashingqi.base.widget.loading.DQStateLayout
-import com.dashingqi.base.widget.loading.IStateLayout
+import com.dashingqi.base.widget.state.DQStateLayout
+import com.dashingqi.base.widget.state.IStateLayout
 
 /**
  * @author : zhangqi
@@ -12,7 +12,7 @@ import com.dashingqi.base.widget.loading.IStateLayout
 object StateLayoutBindingAdapter {
 
     @JvmStatic
-    @BindingAdapter(value = ["state"], requireAll = true)
+    @BindingAdapter(value = ["stateLayoutState"], requireAll = true)
     fun setState(stateLayout: DQStateLayout, state: Int) {
         if (stateLayout != null) {
             when (state) {

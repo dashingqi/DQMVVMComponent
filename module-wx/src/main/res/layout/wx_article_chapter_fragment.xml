@@ -22,12 +22,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                itemBinding="@{viewModel.itemBinding}"
-                items="@{viewModel.items}"
+            <com.dashingqi.base.widget.state.DQStateLayout
+                stateLayoutState="@{viewModel.stateLayout}"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    itemBinding="@{viewModel.itemBinding}"
+                    items="@{viewModel.items}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </com.dashingqi.base.widget.state.DQStateLayout>
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--    状态布局-->
     <declare-styleable name="base_DQStateLayout">
         <attr name="base_error_layout" format="reference" />
         <attr name="base_empty_layout" format="reference" />
         <attr name="base_success_layout" format="reference" />
         <attr name="base_load_layout" format="reference" />
+        <attr name="base_block_reload_state" format="boolean"></attr>
+    </declare-styleable>
+    <!--   加载gif -->
+    <declare-styleable name="base_GifImageView">
+        <attr name="base_gif_src" format="reference" />
     </declare-styleable>
 </resources>

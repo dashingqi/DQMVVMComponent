@@ -47,8 +47,8 @@ android {
 }
 
 dependencies {
-
-implementation 'androidx.appcompat:appcompat:1.1.0'
+    api rootProject.ext.androidx["androidx.appcompat"]
+    api rootProject.ext.androidx["androidx.constraintlayout"]
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

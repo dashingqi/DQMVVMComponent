@@ -1,4 +1,4 @@
-package com.dashingqi.base.widget.loading
+package com.dashingqi.base.widget.state
 
 /**
  * @author : zhangqi

@@ -1,4 +1,4 @@
-package com.dashingqi.base.widget.loading
+package com.dashingqi.base.widget.state
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.dashingqi.library_base.R
+import com.orhanobut.logger.Logger
 
 /**
  * @author : zhangqi
@@ -14,9 +15,6 @@ import com.dashingqi.library_base.R
  */
 class DQStateLayout : FrameLayout, IStateLayout {
 
-    private var defaultErrorLayoutID: Int = View.NO_ID
-    private var defaultEmptyLayoutID: Int = View.NO_ID
-    private var defaultLoadLayoutID: Int = View.NO_ID
 
     private var errorLayoutID = defaultErrorLayoutID
     private var emptyLayoutID = defaultEmptyLayoutID
@@ -26,6 +24,10 @@ class DQStateLayout : FrameLayout, IStateLayout {
     private var errorView: View? = null
     private var loadView: View? = null
     private var successView: View? = null
+
+    private var blockReloadState: Boolean = true
+
+    private var isBlockReload: Boolean = false
 
     constructor(context: Context) : this(context, null) {}
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0) {}
@@ -38,6 +40,7 @@ class DQStateLayout : FrameLayout, IStateLayout {
         errorLayoutID = obtainAttrs.getResourceId(R.styleable.base_DQStateLayout_base_error_layout, defaultErrorLayoutID)
         emptyLayoutID = obtainAttrs.getResourceId(R.styleable.base_DQStateLayout_base_empty_layout, defaultEmptyLayoutID)
         loadLayoutID = obtainAttrs.getResourceId(R.styleable.base_DQStateLayout_base_load_layout, defaultLoadLayoutID)
+        blockReloadState = obtainAttrs.getBoolean(R.styleable.base_DQStateLayout_base_block_reload_state, false)
         obtainAttrs.recycle()
     }
 
@@ -45,6 +48,7 @@ class DQStateLayout : FrameLayout, IStateLayout {
      * 切换到空数据布局
      */
     override fun switchToEmptyLayout() {
+        isBlockReload = false
         if (emptyLayoutID != View.NO_ID && emptyView == null) {
             emptyView = LayoutInflater.from(context).inflate(emptyLayoutID, this, false)
             addView(emptyView)
@@ -57,6 +61,7 @@ class DQStateLayout : FrameLayout, IStateLayout {
      * 切换到错误布局
      */
     override fun switchToErrorLayout() {
+        isBlockReload = false
         if (errorLayoutID != View.NO_ID && errorView == null) {
             errorView = LayoutInflater.from(context).inflate(errorLayoutID, this, false)
             this.addView(errorView)
@@ -73,6 +78,7 @@ class DQStateLayout : FrameLayout, IStateLayout {
      * 切换到成功的布局，也就是显示正常数据的布局
      */
     override fun switchToSuccessLayout() {
+        if (blockReloadState) isBlockReload = true
         handleViewShow(successView!!)
 
     }
@@ -81,8 +87,9 @@ class DQStateLayout : FrameLayout, IStateLayout {
      * 切换到加载中的布局
      */
     override fun switchToLoadingLayout() {
-
+        if (isBlockReload) return
         if (loadLayoutID != View.NO_ID && loadView == null) {
+            Logger.d("switchToLoadingLayout")
             loadView = LayoutInflater.from(context).inflate(loadLayoutID, this, false)
             addView(loadView)
         }
@@ -109,5 +116,23 @@ class DQStateLayout : FrameLayout, IStateLayout {
         }
 
         view.visibility = View.VISIBLE
+    }
+
+//    /**
+//     * 控制加载布局
+//     */
+//    fun setBlockReload(blockState: Boolean): DQStateLayout {
+//        isBlockReload = blockState
+//        return this
+//    }
+
+    companion object {
+        private var defaultErrorLayoutID: Int = View.NO_ID
+        private var defaultEmptyLayoutID: Int = View.NO_ID
+        private var defaultLoadLayoutID: Int = View.NO_ID
+
+        fun setDefaultLoadLayout(loadLayout: Int) {
+            defaultLoadLayoutID = loadLayout
+        }
     }
 }

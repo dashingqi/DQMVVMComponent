@@ -3,6 +3,8 @@ package com.dashingqi.base.application
 import android.app.Application
 import com.dashingqi.base.providers.application.IApplicationProvider
 import com.dashingqi.base.widget.smart.PremixHeader
+import com.dashingqi.base.widget.state.DQStateLayout
+import com.dashingqi.library_base.R
 import com.orhanobut.logger.Logger
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
@@ -18,8 +20,8 @@ class BaseApplication : IApplicationProvider {
     }
 
     override fun onCreate() {
-        Logger.d("base-application-create")
         initSmartRefresh()
+        initStateLayout()
 
     }
 
@@ -46,5 +48,12 @@ class BaseApplication : IApplicationProvider {
         SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout ->
             return@setDefaultRefreshFooterCreator ClassicsFooter(context)
         }
+    }
+
+    /**
+     * 初始化状态布局
+     */
+    private fun initStateLayout() {
+        DQStateLayout.setDefaultLoadLayout(R.layout.base_common_state_loading_layout)
     }
 }

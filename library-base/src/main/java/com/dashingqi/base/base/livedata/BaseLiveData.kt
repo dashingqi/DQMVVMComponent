@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.facade.Postcard
 import com.dashingqi.base.base.callback.CallOwner
 import com.dashingqi.base.constant.SmartRefreshEvent
-import com.dashingqi.base.widget.loading.IStateLayout
+import com.dashingqi.base.widget.state.IStateLayout
 import com.orhanobut.logger.Logger
 
 /**
