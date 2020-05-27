@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <!--    错误布局中，触发重试控件对应的ID值-->
+    <item name="base_error_action" type="id" />
+    <!--    空布局中，触发事件控件对应的ID值-->
+    <item name="base_empty_action" type="id" />
+</resources>

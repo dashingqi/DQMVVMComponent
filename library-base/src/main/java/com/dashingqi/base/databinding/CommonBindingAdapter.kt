@@ -9,7 +9,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.request.RequestOptions
 import com.dashingqi.base.utils.DensityUtils
+import com.dashingqi.library_base.R
 
 /**
  * @author : zhangqi
@@ -54,7 +57,12 @@ object CommonBindingAdapter {
     @JvmStatic
     @BindingAdapter(value = ["dbImageUrl"], requireAll = true)
     fun setImageUrl(view: ImageView, dbImageUrl: String) {
-        Glide.with(view.context).load(dbImageUrl).into(view)
+        //设置默认占位图
+        var requestOptions = RequestOptions()
+                .placeholder(R.drawable.res_img_default)
+                .error(R.drawable.res_img_default)
+                .fallback(R.drawable.res_img_default)
+        Glide.with(view.context).load(dbImageUrl).apply(requestOptions).into(view)
     }
 
     @JvmStatic

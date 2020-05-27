@@ -1,7 +1,14 @@
 package com.dashingqi.base.base.fragment
 
 
+import android.content.Context
+import android.content.res.Configuration
+import android.graphics.Color
+import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.gyf.immersionbar.ImmersionBar
+import com.gyf.immersionbar.components.SimpleImmersionOwner
+import com.gyf.immersionbar.components.SimpleImmersionProxy
 
 
 /**
@@ -9,11 +16,12 @@ import androidx.fragment.app.Fragment
  * @time : 2020/4/25
  * desc :
  */
-open class BaseFragment : Fragment() {
+open class BaseFragment : Fragment(), SimpleImmersionOwner {
     private var showing = false
     private var touchable = false
 
-
+    //Fragment沉浸式的代理类
+    private val simpleImmersionProxy = SimpleImmersionProxy(this)
     override fun onStart() {
         super.onStart()
         showing = true
@@ -33,6 +41,33 @@ open class BaseFragment : Fragment() {
         super.onStop()
         showing = false
     }
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        simpleImmersionProxy.onActivityCreated(savedInstanceState)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        simpleImmersionProxy.onConfigurationChanged(newConfig)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        simpleImmersionProxy.onDestroy()
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        simpleImmersionProxy.isUserVisibleHint = isVisibleToUser
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        simpleImmersionProxy.onHiddenChanged(hidden)
+    }
+
     /**
      * fragment是否可见
      */
@@ -42,4 +77,18 @@ open class BaseFragment : Fragment() {
      * fragment是否可触摸的
      */
     fun isTouchable(): Boolean = touchable
+
+    /**
+     * 用来控制Fragment快速实现沉浸式，当为true的时候才能去执行initImmersionBar()方法
+     */
+    override fun immersionBarEnabled(): Boolean = true
+
+    override fun initImmersionBar() {
+        val immersionBar = ImmersionBar.with(this).statusBarDarkFont(isDarkFont()).keyboardEnable(true)
+        immersionBar.navigationBarColorInt(Color.WHITE).init()
+    }
+
+    open fun isDarkFont(): Boolean {
+        return true
+    }
 }

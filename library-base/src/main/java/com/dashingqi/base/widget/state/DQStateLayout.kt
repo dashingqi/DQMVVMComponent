@@ -127,12 +127,21 @@ class DQStateLayout : FrameLayout, IStateLayout {
 //    }
 
     companion object {
+
         private var defaultErrorLayoutID: Int = View.NO_ID
         private var defaultEmptyLayoutID: Int = View.NO_ID
         private var defaultLoadLayoutID: Int = View.NO_ID
 
         fun setDefaultLoadLayout(loadLayout: Int) {
             defaultLoadLayoutID = loadLayout
+        }
+
+        fun setDefaultEmptyLayout(emptyLayout: Int) {
+            defaultEmptyLayoutID = emptyLayout
+        }
+
+        fun setDefaultErrorLayout(errorLayout: Int) {
+            defaultErrorLayoutID = errorLayout
         }
     }
 }
