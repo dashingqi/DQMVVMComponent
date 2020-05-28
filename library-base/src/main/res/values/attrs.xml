@@ -12,4 +12,26 @@
     <declare-styleable name="base_GifImageView">
         <attr name="base_gif_src" format="reference" />
     </declare-styleable>
+
+    <!--    通用的标题栏-->
+    <declare-styleable name="base_common_tool_bar">
+
+        <!--   标题栏     -->
+        <attr name="base_title" format="string" />
+        <!--   左面的部分  -->
+        <attr name="base_left_icon" format="reference" />
+        <attr name="base_left_text" format="reference|string" />
+        <attr name="base_left_text_size" format="dimension" />
+        <attr name="base_left_text_color" format="color" />
+
+        <!--        右面的部分-->
+        <attr name="base_right_icon" format="reference" />
+        <attr name="base_right_text" format="reference|string" />
+        <attr name="base_right_text_size" format="dimension" />
+        <attr name="base_right_text_color" format="color" />
+    </declare-styleable>
+    <!--    通用标题栏的子布局-->
+    <declare-styleable name="base_common_tool_bar_item">
+
+    </declare-styleable>
 </resources>

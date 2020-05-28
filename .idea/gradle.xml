@@ -20,6 +20,8 @@
             <option value="$PROJECT_DIR$/module-login" />
             <option value="$PROJECT_DIR$/module-project" />
             <option value="$PROJECT_DIR$/module-user" />
+            <option value="$PROJECT_DIR$/module-web" />
+            <option value="$PROJECT_DIR$/module-widget" />
             <option value="$PROJECT_DIR$/module-wx" />
           </set>
         </option>
