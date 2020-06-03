@@ -56,3 +56,35 @@
   - 加载状态的布局
   - 错误状态的布局
   - 无数据状态的布局
+#### HistoryLayout(搜索的通用布局)
+- 布局
+    - 标题（最近搜索）
+    - 删除按钮
+    - 流式布局（TagFlowLayout）
+        - 流式布局的适配器，指定布局样式，设置数据
+        - 拿到流式布局，设置item的点击事件
+            - 点击事件主要就是发出请求（内部的search方法）
+- 继承ConstraintLayout
+    - init 中添加布局，为删除按钮添加点击事件
+        - 点击事件的目的
+            - 流式布局的适配器数据源清空，刷新适配器
+            - 清空本地存储的数据
+    - 提供隐藏和显示布局的方法
+        - VISIBLE 和 GONE
+    - 内部的search方法
+        - 获取到EditText中的文本
+        - 通过回调，指定数据的请求
+    - 对外提供的方法，用于绑定输入框
+        - EditText
+            - 当获取到焦点的时候，需要把布局展示处理
+            - 当失去焦点的时候，需要吧布局隐藏处理
+            - 监听键盘中的搜索按钮
+        - 本地存储的标识
+        - 回调的接口
+- LiveData与DataBinding进行绑定
+    - LiveData用于从EditText中获取输入的数据 android:text="@={viewModel.liveData}"
+    - 本地的请求通过LiveData拿到输入框中数据
+    - 注意使用LiveData需要绑定Activity生命周期 setLifeCycleOwner(this)
+
+
+
