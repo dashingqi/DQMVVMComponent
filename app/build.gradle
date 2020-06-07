@@ -90,5 +90,7 @@ dependencies {
         //登录
         implementation project(":module-login")
 
+        implementation project(':module-widget')
+
     }
 }
