@@ -54,6 +54,7 @@ ext {
             "banner"                               : "com.youth.banner:banner:2.0.9",
             "magic-indicator"                      : "com.github.hackware1993:MagicIndicator:1.5.0",
             "bindingcollectionadapter"             : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0",
-            "bindingcollectionadapter-recyclerview": "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0"
+            "bindingcollectionadapter-recyclerview": "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0",
+            "flowlayout"                           : "com.hyman:flowlayout-lib:1.1.2"
     ]
 }
