@@ -1,9 +1,11 @@
-package com.dashingqi.base.utils.kv
+package com.dashingqi.module.impl.mmkv
 
 import android.content.Context
+import androidx.annotation.Keep
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.service.SerializationService
 import com.alibaba.android.arouter.launcher.ARouter
+import com.dashingqi.base.providers.mmkv.IKV
 import com.tencent.mmkv.MMKV
 import java.lang.reflect.Type
 
@@ -14,8 +16,9 @@ import java.lang.reflect.Type
  */
 class DQMMKV : IKV {
 
+    @Keep
     @Autowired
-    lateinit var serializationService: SerializationService
+    var serializationService: SerializationService? = null
 
     var mmkv: MMKV
 
@@ -63,7 +66,7 @@ class DQMMKV : IKV {
     }
 
     override fun putObject(key: String, obj: Any) {
-        serializationService.object2Json(obj)
+        mmkv.encode(key, serializationService?.object2Json(obj))
     }
 
 
@@ -115,12 +118,12 @@ class DQMMKV : IKV {
         return mmkv.decodeBytes(key, defaultValue)
     }
 
+
     override fun <T> getObject(key: String?, cla: Type?): T? {
         var strValue = getString(key!!)
         if (strValue.isEmpty()) {
             return null
         }
-
-        return serializationService.parseObject(strValue, cla)
+        return serializationService?.parseObject(strValue, cla)
     }
 }

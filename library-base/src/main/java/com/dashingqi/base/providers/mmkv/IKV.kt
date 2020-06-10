@@ -1,4 +1,4 @@
-package com.dashingqi.base.utils.kv
+package com.dashingqi.base.providers.mmkv
 
 import java.lang.reflect.Type
 
