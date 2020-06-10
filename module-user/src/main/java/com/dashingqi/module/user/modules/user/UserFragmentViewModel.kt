@@ -28,7 +28,7 @@ class UserFragmentViewModel(application: Application) : BaseViewModel(applicatio
 
     private fun initData() {
         items.add(UserItem("可折叠标题栏", "/widget/material"))
-        items.add(UserItem("Material Design1", "/widget/material"))
+        items.add(UserItem("BottomSheetDialog", "/widget/bottom_sheet_dialog"))
         items.add(UserItem("Material Design2", "/widget/material"))
         items.add(UserItem("Material Design3", "/widget/material"))
         items.add(UserItem("Material Design4", "/widget/material"))
