@@ -6,6 +6,9 @@
     <data>
 
         <variable
+            name="itemClick"
+            type="com.dashingqi.base.utils.OnItemClickListener" />
+        <variable
             name="item"
             type="com.dashingqi.library.service.providers.common.response.CommonArticleResponse" />
 
@@ -14,6 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{()-> itemClick.onItemClick(item)}"
         android:paddingTop="16dp">
 
         <TextView

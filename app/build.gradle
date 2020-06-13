@@ -92,5 +92,7 @@ dependencies {
 
         implementation project(':module-widget')
 
+        implementation project(':module-web')
+
     }
 }

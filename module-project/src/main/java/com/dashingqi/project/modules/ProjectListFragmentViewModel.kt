@@ -1,10 +1,13 @@
 package com.dashingqi.project.modules
 
 import android.app.Application
+import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.callback.LiveDataCallback
 import com.dashingqi.base.base.viewmodel.BasePageViewModel
 import com.dashingqi.base.base.viewmodel.BaseViewModel
+import com.dashingqi.base.utils.OnItemClickListener
 import com.dashingqi.library.service.providers.common.response.CommonArticleResponse
+import com.dashingqi.project.BR
 import com.dashingqi.project.R
 import com.dashingqi.project.net.IProjectService
 import com.dashingqi.project.net.ProjectTreeListResponse
@@ -18,6 +21,7 @@ import com.orhanobut.logger.Logger
 class ProjectListFragmentViewModel(application: Application, var cid: Int) : BasePageViewModel<CommonArticleResponse>(application) {
 
     init {
+     itemBinding.bindExtra(BR.onItemClick,onItemClickListener())
         refresh()
     }
 
@@ -45,5 +49,14 @@ class ProjectListFragmentViewModel(application: Application, var cid: Int) : Bas
 
     override fun getPageSize(): Int {
         return 15
+    }
+
+    private fun onItemClickListener():OnItemClickListener<CommonArticleResponse>{
+        return object :OnItemClickListener<CommonArticleResponse>{
+            override fun onItemClick(item: CommonArticleResponse) {
+                ARouter.getInstance().build("/web/commonView").withString("url",item.link).withString("title",item.title).navigation()
+            }
+
+        }
     }
 }
