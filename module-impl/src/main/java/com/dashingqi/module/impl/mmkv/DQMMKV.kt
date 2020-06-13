@@ -18,7 +18,7 @@ class DQMMKV : IKV {
 
     @Keep
     @Autowired
-    var serializationService: SerializationService? = null
+    lateinit var serializationService: SerializationService
 
     var mmkv: MMKV
 
@@ -119,11 +119,9 @@ class DQMMKV : IKV {
     }
 
 
-    override fun <T> getObject(key: String?, cla: Type?): T? {
+    override fun <T> getObject(key: String?, cla: Type?): T {
         var strValue = getString(key!!)
-        if (strValue.isEmpty()) {
-            return null
-        }
-        return serializationService?.parseObject(strValue, cla)
+
+        return serializationService.parseObject(strValue, cla)
     }
 }

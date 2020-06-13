@@ -110,5 +110,5 @@ interface IKV {
     /**
      * 指定类型
      */
-    fun <T> getObject(key: String?, cla: Type?): T?
+    fun <T> getObject(key: String?, cla: Type?): T
 }

@@ -12,7 +12,7 @@ import com.tencent.mmkv.MMKV
  * desc :
  */
 
-@Route(path = "/impl/mmkv", name = "mmkv工具类入口")
+@Route(path = "/service/mmkv", name = "mmkv工具类入口")
 class MMKVProviders : IMMKVProviders {
     var context: Context? = null
     var defaultMMKV: DQMMKV? = null

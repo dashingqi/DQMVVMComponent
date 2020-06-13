@@ -4,6 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.alibaba.android.arouter.facade.model.TypeWrapper
+import com.alibaba.android.arouter.launcher.ARouter
+import com.dashingqi.base.providers.mmkv.IMMKVProviders
 import com.dashingqi.module.widget.R
 import com.dashingqi.module.widget.databinding.WidgetHistoryLayoutBinding
 
@@ -19,6 +22,12 @@ class DQHistoryLayout : ConstraintLayout {
     var historyBinding = WidgetHistoryLayoutBinding
             .bind(LayoutInflater.from(context)
                     .inflate(R.layout.widget_history_layout, null, false))
+
+    var mmkv = ARouter.getInstance().navigation(IMMKVProviders::class.java)
+
+    private val MMKV_COMMON_PATH = "DQ_WAN_ANDROID_PATH"
+
+    private var mmkvKey = ""
 
     constructor(context: Context) : super(context, null) {
     }
@@ -41,6 +50,25 @@ class DQHistoryLayout : ConstraintLayout {
             adapter.data.clear()
             adapter.notifyDataChanged()
         }
+    }
+
+    /**
+     * 对外提供调用的方法
+     */
+    fun bindExitText(key: String) {
+        mmkvKey = key
+
+    }
+
+    /**
+     * 从MMKV中获取数据
+     */
+    private fun getDataFromMMKV() {
+        var type = object : TypeWrapper<List<String>>() {}.type
+        var data: MutableList<String> = mmkv.getDefaultMMKV().getObject(MMKV_COMMON_PATH + mmkvKey, type)
+        adapter.data.clear()
+        adapter.data.addAll(data)
+        adapter.notifyDataChanged()
     }
 
 
