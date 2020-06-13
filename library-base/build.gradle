@@ -75,6 +75,7 @@ dependencies {
     api rootProject.ext.dependencies["bindingcollectionadapter-recyclerview"]
     api rootProject.ext.dependencies["flowlayout"]
     api rootProject.ext.dependencies["mmkv"]
+    api rootProject.ext.dependencies["banner"]
 
     implementation project(":library-res")
 

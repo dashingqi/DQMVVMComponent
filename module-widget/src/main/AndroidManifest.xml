@@ -3,7 +3,8 @@
     package="com.dashingqi.module.widget">
 
     <application>
-        <activity android:name=".BottomSheetDialog.WidgetBottomSheetDialogActivity"></activity>
+        <activity android:name=".material.WidgetImitateExFreshActivity"></activity>
+        <activity android:name=".BottomSheetDialog.WidgetBottomSheetDialogActivity" />
         <activity android:name=".material.WidgetMaterialActivity" />
     </application>
 

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".material.WidgetImitateExFreshActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                app:layout_scrollFlags="exitUntilCollapsed|scroll"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/res_img_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iconLocation"
+                        android:layout_marginLeft="16dp"
+                        android:src="@drawable/res_icon_location"
+                        app:layout_constraintTop_toTopOf="@+id/address"
+                        app:layout_constraintBottom_toBottomOf="@+id/address"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:textSize="16sp"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="10dp"
+                        app:layout_constraintRight_toLeftOf="@+id/tvHintEx"
+                        app:layout_constraintLeft_toRightOf="@+id/iconLocation"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginRight="5dp"
+                        android:text="配送至：北京市海淀区苏州街"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/tvHintEx"
+                        app:layout_constraintTop_toTopOf="@+id/address"
+                        app:layout_constraintBottom_toBottomOf="@+id/address"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_marginRight="16dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:textSize="14sp"
+                        android:text="每日优鲜"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <View
+                        android:id="@+id/viewSearch"
+                        dbBackgroundColor='@{"#ffffff"}'
+                        dbShapeRadius="@{16}"
+                        app:layout_constraintTop_toBottomOf="@+id/address"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="26dp"/>
+
+                    <TextView
+                        app:layout_constraintTop_toTopOf="@+id/viewSearch"
+                        app:layout_constraintBottom_toBottomOf="@+id/viewSearch"
+                        app:layout_constraintLeft_toLeftOf="@+id/viewSearch"
+                        app:layout_constraintRight_toRightOf="@+id/viewSearch"
+                        android:drawableLeft="@drawable/res_ex_home_search"
+                        android:text="搜索"
+                        android:textColor="#f3f3f3"
+                        android:textSize="12sp"
+                        android:drawablePadding="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/banner"
+                        app:layout_constraintTop_toBottomOf="@+id/viewSearch"
+                        android:layout_marginTop="26dp"
+                        android:layout_width="match_parent"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_height="180dp"/>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    app:layout_collapseMode="pin"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize">
+
+
+
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -27,15 +27,15 @@ class UserTabLayoutTestActivity : BaseMVVMActivity<UserActivityTabLayoutTestBind
 
     private fun initViewPagerAdapter() {
         viewPager.adapter = object : FragmentStateAdapter(this) {
-            override fun getItem(position: Int): Fragment {
+
+            override fun getItemCount(): Int = 3
+            override fun createFragment(position: Int): Fragment {
                 return when (position) {
                     0 -> Test1Fragment()
                     1 -> Test2Fragment()
                     else -> Test3Fragment()
                 }
             }
-
-            override fun getItemCount(): Int = 3
 
         }
         tabLayout.isTabIndicatorFullWidth = false
