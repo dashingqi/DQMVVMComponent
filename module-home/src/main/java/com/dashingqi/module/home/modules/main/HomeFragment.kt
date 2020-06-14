@@ -6,8 +6,10 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.dashingqi.base.base.fragment.BaseMvvMFragment
 import com.dashingqi.module.home.databinding.HomeFragmentBinding
 import com.dashingqi.module.home.modules.banner.HomeBannerAdapter
+import com.google.android.material.appbar.AppBarLayout
 import com.youth.banner.indicator.CircleIndicator
 import kotlinx.android.synthetic.main.home_fragment.*
+import java.lang.Math.abs
 
 /**
  * @author : zhangqi
@@ -22,11 +24,10 @@ class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel
     override fun onLoad(view: View) {
         super.onLoad(view)
         configHomeBanner()
-        viewModel.bannerData.observe(this, Observer { data ->
-            homeBannerAdapter.datas.clear()
-            homeBannerAdapter.datas.addAll(data)
-            homeBannerAdapter.notifyDataSetChanged()
-        })
+        createObserver()
+        registerAppbarLayoutListener()
+        dataBinding.layoutSearch.alpha = 0.0F
+
     }
 
     private fun configHomeBanner() {
@@ -34,6 +35,30 @@ class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel
         dataBinding.homeBanner.adapter = homeBannerAdapter
         dataBinding.homeBanner.indicator = CircleIndicator(activity)
 
+    }
+
+    /**
+     * 监听AppbarLayout的事件
+     */
+    private fun registerAppbarLayoutListener() {
+        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            var percent = (kotlin.math.abs(verticalOffset * 1.0f)) / appBarLayout.totalScrollRange
+            var alpha = 1 - (1 - percent) * 5
+            if (percent > 0.5) {
+                dataBinding.layoutSearch.alpha = alpha
+            }
+        })
+    }
+
+    /**
+     * 创建观察者
+     */
+    private fun createObserver() {
+        viewModel.bannerData.observe(this, Observer { data ->
+            homeBannerAdapter.datas.clear()
+            homeBannerAdapter.datas.addAll(data)
+            homeBannerAdapter.notifyDataSetChanged()
+        })
     }
 
     override fun onStart() {
@@ -44,11 +69,6 @@ class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel
     override fun onStop() {
         super.onStop()
         homeBanner.stop()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
     }
 
     override fun isFitsSystemWindow(): Boolean {

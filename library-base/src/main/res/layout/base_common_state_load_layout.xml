@@ -5,8 +5,8 @@
     android:layout_height="match_parent">
 
     <com.dashingqi.base.widget.imageview.GifImageVIew
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         app:base_gif_src="@drawable/res_common_loading"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
