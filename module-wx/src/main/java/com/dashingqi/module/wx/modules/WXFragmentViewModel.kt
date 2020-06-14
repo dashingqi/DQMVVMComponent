@@ -29,6 +29,7 @@ class WXFragmentViewModel(application: Application) : BaseViewModel(application)
 
     private fun getWxArticleChapters() {
         IWxService.INSTANCE.getWxArticleChapters().enqueue(LiveDataCallback<WxArticleChaptersResponse>(baseLiveData)
+                .bindStateLayout()
                 .doOnResponseSuccess { _, response ->
                     Logger.d("wx_article_chapters_size == ${response.data.size}")
                     if (mDatas.size > 0) {

@@ -22,6 +22,9 @@ class UserFragmentViewModel(application: Application) : BaseViewModel(applicatio
 
     var itemBinding = ItemBinding.of<UserItem>(BR.item, R.layout.user_list_item)
 
+    var labelItems = ObservableArrayList<String>()
+    var labelBinding = ItemBinding.of<String>(BR.labelItem, R.layout.user_label_item)
+
     init {
         initData()
     }
@@ -33,6 +36,24 @@ class UserFragmentViewModel(application: Application) : BaseViewModel(applicatio
         items.add(UserItem("Material Design3", "/widget/material"))
         items.add(UserItem("Material Design4", "/widget/material"))
         items.add(UserItem("Material Design5", "/widget/material"))
+        items.add(UserItem("Material Design3", "/widget/material"))
+        items.add(UserItem("Material Design4", "/widget/material"))
+        items.add(UserItem("Material Design5", "/widget/material"))
+        items.add(UserItem("Material Design3", "/widget/material"))
+        items.add(UserItem("Material Design4", "/widget/material"))
+        items.add(UserItem("Material Design5", "/widget/material"))
+        items.add(UserItem("Material Design3", "/widget/material"))
+        items.add(UserItem("Material Design4", "/widget/material"))
+        items.add(UserItem("Material Design5", "/widget/material"))
+        items.add(UserItem("Material Design3", "/widget/material"))
+        items.add(UserItem("Material Design4", "/widget/material"))
+        items.add(UserItem("Material Design5", "/widget/material"))
+
+        labelItems.add("自由可撩")
+        labelItems.add("北京")
+        labelItems.add("互联网技术")
+        labelItems.add("大连海事大学")
+        labelItems.add("正大集团")
     }
 
 }

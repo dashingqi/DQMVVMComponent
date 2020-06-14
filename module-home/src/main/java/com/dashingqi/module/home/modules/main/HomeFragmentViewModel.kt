@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.home_fragment.*
 class HomeFragmentViewModel(application: Application) : BasePageViewModel<CommonArticleResponse>(application) {
 
     init {
-        itemBinding.bindExtra(BR.itemClick,onItemClickListener())
+        itemBinding.bindExtra(BR.itemClick, onItemClickListener())
         getBannerData()
         refresh()
     }
@@ -37,6 +37,7 @@ class HomeFragmentViewModel(application: Application) : BasePageViewModel<Common
      */
     private fun getBannerData() {
         IHomeService.instance.getBannerData().enqueue(LiveDataCallback<HomeBannerResponse>(baseLiveData)
+                .bindStateLayout()
                 .doOnResponseSuccess { _, response ->
                     var data = response.data
                     bannerData.value = data
@@ -62,12 +63,12 @@ class HomeFragmentViewModel(application: Application) : BasePageViewModel<Common
         return R.layout.home_article_item
     }
 
-    private fun onItemClickListener():OnItemClickListener<CommonArticleResponse>{
-       return object :OnItemClickListener<CommonArticleResponse>{
-           override fun onItemClick(item: CommonArticleResponse) {
-               ARouter.getInstance().build("/web/commonView").withString("url",item.link).withString("title",item.title).navigation()
-           }
+    private fun onItemClickListener(): OnItemClickListener<CommonArticleResponse> {
+        return object : OnItemClickListener<CommonArticleResponse> {
+            override fun onItemClick(item: CommonArticleResponse) {
+                ARouter.getInstance().build("/web/commonView").withString("url", item.link).withString("title", item.title).navigation()
+            }
 
-       }
+        }
     }
 }
