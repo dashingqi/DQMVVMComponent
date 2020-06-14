@@ -1,5 +1,6 @@
 package com.dashingqi.module.home.modules.main
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -73,6 +74,9 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
                 }
             }
         })
+    }
 
+    override fun setStatusBarColorInt(): Int {
+        return Color.WHITE
     }
 }
