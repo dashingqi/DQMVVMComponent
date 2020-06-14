@@ -48,6 +48,30 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            storeFile file("wa.jks")
+            storePassword "DQ2020"
+            keyAlias "key0"
+            keyPassword "DQ2020"
+        }
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
     dataBinding {
         enabled true
     }
