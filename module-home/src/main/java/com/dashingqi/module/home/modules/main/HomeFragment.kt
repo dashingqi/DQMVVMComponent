@@ -50,4 +50,8 @@ class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel
         super.onDestroy()
 
     }
+
+    override fun isFitsSystemWindow(): Boolean {
+        return false
+    }
 }

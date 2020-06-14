@@ -11,4 +11,8 @@ import com.dashingqi.module.user.databinding.UserFragmentBinding
  */
 @Route(path = "/user/user_fragment")
 class UserFragment : BaseMvvMFragment<UserFragmentBinding, UserFragmentViewModel>() {
+
+    override fun isFitsSystemWindow(): Boolean {
+        return false
+    }
 }

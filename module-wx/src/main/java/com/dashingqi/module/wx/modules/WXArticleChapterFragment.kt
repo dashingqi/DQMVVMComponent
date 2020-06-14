@@ -9,8 +9,10 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.fragment.BaseMvvMFragment
 import com.dashingqi.base.base.viewmodel.ParamViewModelFactory
+import com.dashingqi.module.wx.R
 import com.dashingqi.module.wx.databinding.WxArticleChapterFragmentBinding
 import com.orhanobut.logger.Logger
+import kotlinx.android.synthetic.main.wx_item_article.view.*
 
 /**
  * @author : zhangqi

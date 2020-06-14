@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.dashingqi.library_base.R
 import com.gyf.immersionbar.ImmersionBar
 import com.gyf.immersionbar.components.SimpleImmersionOwner
 import com.gyf.immersionbar.components.SimpleImmersionProxy
@@ -85,10 +86,29 @@ open class BaseFragment : Fragment(), SimpleImmersionOwner {
 
     override fun initImmersionBar() {
         val immersionBar = ImmersionBar.with(this).statusBarDarkFont(isDarkFont()).keyboardEnable(true)
+        immersionBar.fitsSystemWindows(isFitsSystemWindow())
+        if (isFitsSystemWindow()) {
+            immersionBar.statusBarColorInt(setStatusBarColor())
+        }
         immersionBar.navigationBarColorInt(Color.WHITE).init()
     }
 
     open fun isDarkFont(): Boolean {
         return true
     }
+
+    /**
+     * 防止状态栏和布局重叠的问题
+     */
+    open fun isFitsSystemWindow(): Boolean {
+        return true
+    }
+
+    /**
+     * 设置状态栏的颜色
+     */
+    open fun setStatusBarColor(): Int {
+        return resources.getColor(R.color.res_colorPrimary)
+    }
+
 }

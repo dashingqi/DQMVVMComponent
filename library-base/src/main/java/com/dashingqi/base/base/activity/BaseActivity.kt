@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
+import com.dashingqi.library_base.R
 import com.gyf.immersionbar.ImmersionBar
 
 /**
@@ -33,8 +34,9 @@ open class BaseActivity : AppCompatActivity() {
                 fun onCreate() {
                     ImmersionBar.with(this@BaseActivity)
                             .statusBarDarkFont(isDarkFont())
-                            .navigationBarColorInt(Color.WHITE)
-                            .keyboardEnable(true,WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+                            .fitsSystemWindows(isFitsSystemWindows())
+                            .statusBarColorInt(setStatusBarColorInt())
+                            .keyboardEnable(true, WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
                             .init()
                 }
             })
@@ -63,5 +65,19 @@ open class BaseActivity : AppCompatActivity() {
 
     open fun isDarkFont(): Boolean {
         return true
+    }
+
+    /**
+     * 为了防止布局和顶部的状态栏重叠
+     */
+    open fun isFitsSystemWindows(): Boolean {
+        return false
+    }
+
+    /**
+     * 设置状态栏的颜色
+     */
+    open fun setStatusBarColorInt(): Int {
+        return resources.getColor(R.color.res_colorPrimary)
     }
 }
