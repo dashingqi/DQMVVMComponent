@@ -3,6 +3,7 @@ package com.dashingqi.base.databinding
 import androidx.databinding.BindingAdapter
 import com.dashingqi.base.widget.state.DQStateLayout
 import com.dashingqi.base.widget.state.IStateLayout
+import com.orhanobut.logger.Logger
 
 /**
  * @author : zhangqi
@@ -15,6 +16,7 @@ object StateLayoutBindingAdapter {
     @BindingAdapter(value = ["stateLayoutState"], requireAll = true)
     fun setState(stateLayout: DQStateLayout, state: Int) {
         if (stateLayout != null) {
+            Logger.d("bean --> ${stateLayout.toString()}")
             when (state) {
                 IStateLayout.STATE_LOADING -> stateLayout.switchToLoadingLayout()
                 IStateLayout.STATE_EMPTY -> stateLayout.switchToEmptyLayout()

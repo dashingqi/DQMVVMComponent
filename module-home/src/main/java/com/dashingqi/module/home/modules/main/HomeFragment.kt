@@ -3,13 +3,14 @@ package com.dashingqi.module.home.modules.main
 import android.view.View
 import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.fragment.BaseMvvMFragment
 import com.dashingqi.module.home.databinding.HomeFragmentBinding
 import com.dashingqi.module.home.modules.banner.HomeBannerAdapter
+import com.dashingqi.module.home.net.HomeBannerResponse
 import com.google.android.material.appbar.AppBarLayout
 import com.youth.banner.indicator.CircleIndicator
 import kotlinx.android.synthetic.main.home_fragment.*
-import java.lang.Math.abs
 
 /**
  * @author : zhangqi
@@ -34,6 +35,13 @@ class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel
         homeBannerAdapter = HomeBannerAdapter()
         dataBinding.homeBanner.adapter = homeBannerAdapter
         dataBinding.homeBanner.indicator = CircleIndicator(activity)
+        dataBinding.homeBanner.setOnBannerListener { data, position ->
+            var data = dataBinding.homeBanner.adapter.getData(position) as HomeBannerResponse.DataBean
+            data?.let {
+                ARouter.getInstance().build("/web/commonView").withString("url", it.url).withString("title", it.title).navigation()
+            }
+
+        }
 
     }
 
