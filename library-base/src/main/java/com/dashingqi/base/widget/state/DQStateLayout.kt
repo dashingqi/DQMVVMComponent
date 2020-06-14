@@ -78,7 +78,8 @@ class DQStateLayout : FrameLayout, IStateLayout {
      * 切换到成功的布局，也就是显示正常数据的布局
      */
     override fun switchToSuccessLayout() {
-        if (blockReloadState) isBlockReload = true
+        if (blockReloadState)
+            isBlockReload = true
         handleViewShow(successView!!)
 
     }
@@ -87,13 +88,14 @@ class DQStateLayout : FrameLayout, IStateLayout {
      * 切换到加载中的布局
      */
     override fun switchToLoadingLayout() {
-        if (isBlockReload) return
-        if (loadLayoutID != View.NO_ID && loadView == null) {
-            Logger.d("switchToLoadingLayout")
-            loadView = LayoutInflater.from(context).inflate(loadLayoutID, this, false)
-            addView(loadView)
+        if (!isBlockReload) {
+            if (loadLayoutID != View.NO_ID && loadView == null) {
+                Logger.d("switchToLoadingLayout")
+                loadView = LayoutInflater.from(context).inflate(loadLayoutID, this, false)
+                addView(loadView)
+            }
+            handleViewShow(loadView!!)
         }
-        handleViewShow(loadView!!)
 
     }
 

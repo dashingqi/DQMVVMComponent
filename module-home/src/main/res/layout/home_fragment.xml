@@ -44,12 +44,12 @@
                         android:id="@+id/layoutSearch"
                         dbBackgroundColor='@{"#ffffff"}'
                         dbShapeRadius="@{16}"
-                        android:visibility="visible"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginBottom="10dp"
-                        android:paddingVertical="10dp">
+                        android:paddingVertical="10dp"
+                        android:visibility="visible">
 
                         <TextView
                             android:id="@+id/homeSearch"
@@ -82,7 +82,7 @@
             <com.dashingqi.base.widget.state.DQStateLayout
                 stateLayoutState="@{viewModel.stateLayout}"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <androidx.recyclerview.widget.RecyclerView
                     itemBinding="@{viewModel.itemBinding}"
