@@ -16,8 +16,10 @@ class HomeSearchActivity : BaseMVVMActivity<HomeActivitySearchBinding, HomeSearc
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         searchText.requestFocus()
+        searchHistory.bindExitText("home_article", searchText, refreshLayout, false) { key ->
+            viewModel.refresh()
+        }
     }
-
 
     override fun isFitsSystemWindows(): Boolean {
         return true

@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.dashingqi.module.home.modules.search.HomeSearchViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,12 +41,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="5dp"
                 android:drawableLeft="@drawable/res_search"
                 android:drawablePadding="10dp"
                 android:hint="搜索文章"
+                android:imeOptions="actionSearch"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
                 android:singleLine="true"
+                android:text="@={viewModel.key}"
                 android:textColor="#ff333333"
                 android:textColorHint="#ff999999"
                 android:textSize="14sp"
@@ -58,12 +64,14 @@
         </LinearLayout>
 
         <com.dashingqi.base.widget.history.DQHistoryLayout
+            android:id="@+id/searchHistory"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:visibility="gone"
