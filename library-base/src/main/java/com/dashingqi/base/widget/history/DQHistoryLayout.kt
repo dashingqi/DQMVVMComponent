@@ -1,4 +1,4 @@
-package com.dashingqi.module.widget.history
+package com.dashingqi.base.widget.history
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,8 +7,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.alibaba.android.arouter.facade.model.TypeWrapper
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.providers.mmkv.IMMKVProviders
-import com.dashingqi.module.widget.R
-import com.dashingqi.module.widget.databinding.WidgetHistoryLayoutBinding
+import com.dashingqi.library_base.R
+import com.dashingqi.library_base.databinding.BaseHistoryLayoutBinding
 
 /**
  * @author : zhangqi
@@ -19,9 +19,9 @@ class DQHistoryLayout : ConstraintLayout {
 
     var adapter: DQHistoryLayoutAdapter
 
-    var historyBinding = WidgetHistoryLayoutBinding
+    var historyBinding =BaseHistoryLayoutBinding
             .bind(LayoutInflater.from(context)
-                    .inflate(R.layout.widget_history_layout, null, false))
+                    .inflate(R.layout.base_history_layout, this, false))
 
     var mmkv = ARouter.getInstance().navigation(IMMKVProviders::class.java)
 

@@ -3,10 +3,9 @@
     package="com.dashingqi.module.home">
 
     <application>
-        <activity android:name=".modules.main.HomeTestActivity"></activity>
-        <activity android:name=".modules.main.HomeMainActivity">
-
-        </activity>
+        <activity android:name=".modules.search.HomeSearchActivity"></activity>
+        <activity android:name=".modules.main.HomeTestActivity" />
+        <activity android:name=".modules.main.HomeMainActivity"></activity>
     </application>
 
 </manifest>

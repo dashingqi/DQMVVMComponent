@@ -48,6 +48,7 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layoutSearch"
+                            arPath='@{"/home/search"}'
                             dbBackgroundColor='@{"#ffffff"}'
                             dbShapeRadius="@{16}"
                             android:layout_width="match_parent"
@@ -61,11 +62,11 @@
                                 android:id="@+id/homeSearch"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:drawableLeft="@drawable/res_ic_search"
+                                android:drawableLeft="@drawable/res_search"
                                 android:drawablePadding="5dp"
                                 android:gravity="center"
                                 android:text="搜索文章"
-                                android:textColor="#333333"
+                                android:textColor="#666666"
                                 android:textSize="14sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintLeft_toLeftOf="parent"

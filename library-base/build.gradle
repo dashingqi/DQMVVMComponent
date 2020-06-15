@@ -77,6 +77,7 @@ dependencies {
     api rootProject.ext.dependencies["mmkv"]
     api rootProject.ext.dependencies["banner"]
     api rootProject.ext.dependencies["roundImageView"]
+    api rootProject.ext.dependencies["edit-text-layout"]
 
     implementation project(":library-res")
 
