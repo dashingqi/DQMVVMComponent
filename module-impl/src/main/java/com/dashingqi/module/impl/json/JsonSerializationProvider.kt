@@ -11,7 +11,7 @@ import java.lang.reflect.Type
  * @time : 2020/6/10
  * desc :
  */
-@Route(path = "/service/json", name = "对象序列化")
+@Route(path = "/impl/json", name = "对象序列化")
 class JsonSerializationProvider : SerializationService {
 
     var gson = Gson()

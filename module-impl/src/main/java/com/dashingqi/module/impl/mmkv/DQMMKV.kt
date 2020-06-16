@@ -71,7 +71,7 @@ class DQMMKV : IKV {
 
 
     override fun getString(key: String): String {
-        return mmkv.decodeString(key)
+        return getString(key, "")
     }
 
     override fun getString(key: String, defaultValue: String): String {
@@ -79,7 +79,7 @@ class DQMMKV : IKV {
     }
 
     override fun getBoolean(key: String): Boolean {
-        return mmkv.decodeBool(key)
+        return getBoolean(key, false)
     }
 
     override fun getBoolean(key: String, defaultValue: Boolean): Boolean {
@@ -119,9 +119,8 @@ class DQMMKV : IKV {
     }
 
 
-    override fun <T> getObject(key: String?, cla: Type?): T {
-        var strValue = getString(key!!)
-
+    override fun <T> getObject(key: String, cla: Type?): T {
+        var strValue = getString(key)
         return serializationService.parseObject(strValue, cla)
     }
 }

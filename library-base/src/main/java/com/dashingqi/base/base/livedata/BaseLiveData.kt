@@ -144,4 +144,8 @@ class BaseLiveData {
         Logger.d("finishLoadMoreWithNoMoreData ---> transform")
         smartLoadMore.postValue(SmartRefreshEvent.SMART_REFRESH_LAYOUT_LOAD_MORE_FINISH_AND_NO_MORE)
     }
+
+    fun finish(){
+
+    }
 }

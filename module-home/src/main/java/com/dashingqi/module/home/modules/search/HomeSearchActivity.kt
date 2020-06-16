@@ -2,6 +2,7 @@ package com.dashingqi.module.home.modules.search
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.dashingqi.base.base.activity.BaseMVVMActivity
 import com.dashingqi.module.home.databinding.HomeActivitySearchBinding
@@ -19,6 +20,10 @@ class HomeSearchActivity : BaseMVVMActivity<HomeActivitySearchBinding, HomeSearc
         searchHistory.bindExitText("home_article", searchText, refreshLayout, false) { key ->
             viewModel.refresh()
         }
+        tvSearch.setOnClickListener {
+            searchText.onEditorAction(EditorInfo.IME_ACTION_SEARCH)
+        }
+
     }
 
     override fun isFitsSystemWindows(): Boolean {

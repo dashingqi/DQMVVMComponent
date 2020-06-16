@@ -12,7 +12,7 @@ import com.zhy.view.flowlayout.TagAdapter
  * @time : 2020/6/10
  * desc : 搜索布局的适配器
  */
-class DQHistoryLayoutAdapter(var layoutInflater: LayoutInflater, var data: MutableList<String>) : TagAdapter<String>(data) {
+class DQHistoryLayoutAdapter(var layoutInflater: LayoutInflater, var data: MutableList<String> = ArrayList<String>()) : TagAdapter<String>(data) {
     override fun getView(parent: FlowLayout?, position: Int, t: String?): View {
         var itemView = layoutInflater.inflate(R.layout.base_history_item, null, false) as TextView
         itemView.text = t

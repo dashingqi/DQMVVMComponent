@@ -95,6 +95,7 @@ dependencies {
     implementation project(":library-service")
     implementation project(":library-res")
     implementation project(":library-base")
+    implementation project(':module-impl')
 
     if (isBuildModule.toBoolean()) {
         //当组件独立运行时，需要把基础库依赖到宿主app项目上
