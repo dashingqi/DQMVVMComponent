@@ -9,6 +9,7 @@ import android.text.Html
  */
 data class CommonArticleResponse(
         var apkLink: String,
+        var audit: Int,
         var author: String,//作者
         var chapterId: Int,
         var chapterName: String,

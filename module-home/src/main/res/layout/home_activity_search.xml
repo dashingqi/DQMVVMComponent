@@ -73,6 +73,10 @@
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
+            loadMoreListener="@{()->viewModel.loadMore()}"
+            loadMoreState="@{viewModel.loadMoreState}"
+            refreshListener="@{()->viewModel.refresh()}"
+            refreshState="@{viewModel.refreshState}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:visibility="gone"
@@ -80,12 +84,16 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
             <com.dashingqi.base.widget.state.DQStateLayout
+                stateLayoutState="@{viewModel.stateLayout}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    itemBinding="@{viewModel.itemBinding}"
+                    items="@{viewModel.items}"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
             </com.dashingqi.base.widget.state.DQStateLayout>
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>

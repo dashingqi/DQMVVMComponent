@@ -29,8 +29,7 @@ interface IHomeService {
      * 首页搜索布局
      */
     @POST("/article/query/{page}/json")
-    @FormUrlEncoded
-    fun homeSearch(@Path("page") pageNo: Int, @Field("k") key: String):Call<HomeArticleListResponse>
+    fun homeSearch(@Path("page") pageNo: Int, @Query("k") key: String): Call<HomeArticleListResponse>
 
 
     companion object {
