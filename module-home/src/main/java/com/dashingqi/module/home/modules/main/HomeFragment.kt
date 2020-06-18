@@ -52,8 +52,10 @@ class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel
         appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
             var percent = (kotlin.math.abs(verticalOffset * 1.0f)) / appBarLayout.totalScrollRange
             var alpha = 1 - (1 - percent) * 5
-            if (percent > 0.5) {
+            if (percent > 0.2) {
                 dataBinding.layoutSearch.alpha = alpha
+            } else if (percent == 0.0F) {
+                dataBinding.layoutSearch.alpha = 0.0F
             }
         })
     }

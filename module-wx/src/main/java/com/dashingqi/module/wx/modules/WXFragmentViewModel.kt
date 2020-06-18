@@ -23,7 +23,6 @@ class WXFragmentViewModel(application: Application) : BaseViewModel(application)
         getWxArticleChapters()
     }
 
-    var mFragments: ArrayList<Fragment> = arrayListOf()
     var mDatas: ArrayList<CommonClassifyResponse> = arrayListOf()
     var wxArticleChapterLiveData = MutableLiveData<List<CommonClassifyResponse>>()
 
@@ -36,17 +35,6 @@ class WXFragmentViewModel(application: Application) : BaseViewModel(application)
                         mDatas.clear()
                     }
                     mDatas.addAll(response.data)
-                    if (mFragments.size > 0) {
-                        mFragments.clear()
-                    }
-                    response.data.forEach {
-                        var fragment = ARouter
-                                .getInstance()
-                                .build("/wx/article_list_fragment")
-                                .withInt("id", it.id)
-                                .navigation() as Fragment
-                        mFragments.add(fragment)
-                    }
                     wxArticleChapterLiveData.value = response.data
                 }
         )

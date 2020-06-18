@@ -30,13 +30,13 @@ interface IStateLayout {
 
     companion object {
 
-        const val STATE_SUCCESS = 0
+        const val STATE_SUCCESS = 1
 
-        const val STATE_LOADING = 1
+        const val STATE_LOADING = 2
 
-        const val STATE_EMPTY = 2
+        const val STATE_EMPTY = 3
 
-        const val STATE_ERROR = 3
+        const val STATE_ERROR = 4
 
     }
 

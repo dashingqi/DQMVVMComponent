@@ -41,7 +41,7 @@ class DQStateLayout : FrameLayout, IStateLayout {
         errorLayoutID = obtainAttrs.getResourceId(R.styleable.base_DQStateLayout_base_error_layout, defaultErrorLayoutID)
         emptyLayoutID = obtainAttrs.getResourceId(R.styleable.base_DQStateLayout_base_empty_layout, defaultEmptyLayoutID)
         loadLayoutID = obtainAttrs.getResourceId(R.styleable.base_DQStateLayout_base_load_layout, defaultLoadLayoutID)
-        blockReloadState = obtainAttrs.getBoolean(R.styleable.base_DQStateLayout_base_block_reload_state, false)
+        blockReloadState = obtainAttrs.getBoolean(R.styleable.base_DQStateLayout_base_block_reload_state, true)
         obtainAttrs.recycle()
     }
 
@@ -79,8 +79,10 @@ class DQStateLayout : FrameLayout, IStateLayout {
      * 切换到成功的布局，也就是显示正常数据的布局
      */
     override fun switchToSuccessLayout() {
-        if (blockReloadState)
+        if (blockReloadState) {
             isBlockReload = true
+        }
+        Logger.d("bean switchToSuccessLayout ---> isBlockReload --> $isBlockReload ")
         handleViewShow(successView!!)
 
     }
@@ -89,6 +91,7 @@ class DQStateLayout : FrameLayout, IStateLayout {
      * 切换到加载中的布局
      */
     override fun switchToLoadingLayout() {
+        Logger.d("bean switchToLoadingLayout ---> isBlockReload --> $isBlockReload ")
         if (!isBlockReload) {
             if (loadLayoutID != View.NO_ID && loadView == null) {
                 Logger.d("switchToLoadingLayout")

@@ -30,7 +30,6 @@ class ProjectFragmentViewModel(application: Application) : BaseViewModel(applica
      */
     val mNotify = MutableLiveData<ArrayList<CommonClassifyResponse>>()
 
-    val mFragmentData = arrayListOf<Fragment>()
 
     init {
         getProjectTreeData()
@@ -38,14 +37,11 @@ class ProjectFragmentViewModel(application: Application) : BaseViewModel(applica
 
     private fun getProjectTreeData() {
         IProjectService.INSTANCE.getProjectTree().enqueue(LiveDataCallback<ProjectTreeResponse>(baseLiveData)
+                .bindStateLayout()
                 .doOnResponseSuccess { _, response ->
                     Logger.d("project tree data size is -----> ${response.data.size}")
                     if (mProjectTreeData.size > 0) mProjectTreeData.clear()
                     mProjectTreeData.addAll(response.data)
-                    if (mFragmentData.size > 0) mFragmentData.clear()
-                    mProjectTreeData.forEach {
-                        mFragmentData.add(ARouter.getInstance().build("/project/list_fragment").withInt("cid",it.id).navigation() as Fragment)
-                    }
                     mNotify.value = mProjectTreeData
                 })
     }
