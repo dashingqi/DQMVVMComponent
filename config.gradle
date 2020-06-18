@@ -6,8 +6,8 @@ ext {
             applicationId    : "com.dashingqi.mvvmcomponent",
             minSdkVersion    : 16,
             targetSdkVersion : 29,
-            versionCode      : 1,
-            versionName      : "1.0"
+            versionCode      : 2,
+            versionName      : "0.9.1"
     ]
 
     // androidx 开发支持库
