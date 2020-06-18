@@ -1,6 +1,7 @@
 package com.dashingqi.module.web
 
 import android.os.Bundle
+import android.text.Html
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Autowired
@@ -20,7 +21,7 @@ class CommonWebActivity : AppCompatActivity() {
 
     @JvmField
     @Autowired
-    var title=""
+    var title = ""
 
     lateinit var agentWeb: AgentWeb
 
@@ -29,7 +30,7 @@ class CommonWebActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.web_activity_common_web)
         Logger.d("url ---> $url")
-        webTitle.text = title
+        webTitle.text = Html.fromHtml(title).toString()
         agentWeb = AgentWeb.with(this)
                 .setAgentWebParent(webContainerLayout, LinearLayout.LayoutParams(-1, -1))
                 .useDefaultIndicator()
@@ -46,6 +47,7 @@ class CommonWebActivity : AppCompatActivity() {
         agentWeb.webLifeCycle.onResume()
         super.onResume()
     }
+
     override fun onPause() {
         agentWeb.webLifeCycle.onPause()
         super.onPause()
