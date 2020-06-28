@@ -7,6 +7,8 @@ import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.activity.BaseMVVMActivity
+import com.dashingqi.base.eventbus.EventBusPath
+import com.dashingqi.base.providers.eventbus.IEventBusProvider
 import com.dashingqi.base.widget.bottomtab.*
 import com.dashingqi.module.home.R
 import com.dashingqi.module.home.databinding.HomeActivityMainBinding
@@ -41,6 +43,8 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         configBottomBar()
+
+        createTestObserver()
     }
 
     /**
@@ -78,5 +82,12 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
 
     override fun setStatusBarColorInt(): Int {
         return Color.WHITE
+    }
+
+    private fun createTestObserver() {
+        ARouter.getInstance().navigation(IEventBusProvider::class.java).with(EventBusPath.Test.TEST_PATH)
+                .observe(this){
+                    Logger.d("test_event_bus_perform ----> ${it.toString()}")
+                }
     }
 }
