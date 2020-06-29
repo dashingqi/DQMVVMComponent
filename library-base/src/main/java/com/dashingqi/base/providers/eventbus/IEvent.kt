@@ -19,6 +19,10 @@ interface IEvent {
     fun sendEvent()
     fun sendEvent(obj: Any?)
 
+    /**
+     * 把函数作为参数
+     * 执行这个函数 invoke
+     */
     fun observe(owner: LifecycleOwner, observer: (data: Any?) -> Unit)
 
     fun removeObserver(observer: (data: Any?) -> Unit)
