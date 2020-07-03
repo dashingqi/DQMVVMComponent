@@ -3,6 +3,7 @@ package com.dashingqi.module.user.modules.user
 import android.app.Application
 import androidx.databinding.ObservableArrayList
 import com.dashingqi.base.base.viewmodel.BaseViewModel
+import com.dashingqi.base.route.RoutePath
 import com.dashingqi.module.user.BR
 import com.dashingqi.module.user.R
 import com.dashingqi.module.user.bean.UserItem
@@ -33,7 +34,7 @@ class UserFragmentViewModel(application: Application) : BaseViewModel(applicatio
         items.add(UserItem("可折叠标题栏", "/widget/material"))
         items.add(UserItem("BottomSheetDialog", "/widget/bottom_sheet_dialog"))
         items.add(UserItem("Ex Fresh", "/widget/ex_fresh"))
-        items.add(UserItem("Material Design3", "/widget/material"))
+        items.add(UserItem("Letter View", RoutePath.Widget.WIDGET_LETTER_VIEW))
         items.add(UserItem("Material Design4", "/widget/material"))
         items.add(UserItem("Material Design5", "/widget/material"))
         items.add(UserItem("Material Design3", "/widget/material"))

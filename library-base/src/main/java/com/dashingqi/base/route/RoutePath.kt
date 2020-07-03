@@ -18,4 +18,9 @@ object RoutePath {
        private const val MAIN = "/impl"
         const val EVENT_BUS = "${MAIN}/event_bus"
     }
+
+    object Widget{
+        private const val MAIN = "/widget"
+        const val WIDGET_LETTER_VIEW = "${MAIN}/letter_view"
+    }
 }

@@ -3,9 +3,10 @@
     package="com.dashingqi.module.widget">
 
     <application>
+        <activity android:name=".select.WidgetLetterViewActivity"></activity>
         <activity
             android:name=".animation.PictureTranslateActivityB"
-            android:theme="@style/base_transparent"></activity>
+            android:theme="@style/base_transparent" />
         <activity android:name=".animation.PictureTranslateActivityA" />
         <activity android:name=".material.WidgetImitateExFreshActivity" />
         <activity android:name=".BottomSheetDialog.WidgetBottomSheetDialogActivity" />
