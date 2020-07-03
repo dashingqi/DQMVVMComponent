@@ -3,7 +3,11 @@
     package="com.dashingqi.module.widget">
 
     <application>
-        <activity android:name=".material.WidgetImitateExFreshActivity"></activity>
+        <activity
+            android:name=".animation.PictureTranslateActivityB"
+            android:theme="@style/base_transparent"></activity>
+        <activity android:name=".animation.PictureTranslateActivityA" />
+        <activity android:name=".material.WidgetImitateExFreshActivity" />
         <activity android:name=".BottomSheetDialog.WidgetBottomSheetDialogActivity" />
         <activity android:name=".material.WidgetMaterialActivity" />
     </application>

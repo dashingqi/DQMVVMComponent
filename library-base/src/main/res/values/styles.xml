@@ -24,4 +24,9 @@
     <style name="base_loadingDialogTheme" parent="base_dialog_theme.transparent">
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+
+    <style name="base_transparent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 </resources>
