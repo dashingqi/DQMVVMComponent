@@ -78,6 +78,18 @@ class WidgetLitterListView : View {
         }
     }
 
+    /**
+     *
+     * 通常我们吧xml文件通过解析到内存之后 会调用调用到onFinishInflate()
+     * 之后会进行 measure layout  draw的过程
+     * 而我们的onSizeChanged()方法 从名字上来看就是当View当然大小发生变化的时候会回调一次
+     * onSizeChanged()方法是在layout的过程中进行回调的。layout过程中才能确认一个View的实际大小（虽然一般情况下measure过程中测量后的大小就等同于View的实际大小
+     * ，但是还是有其他情况下）
+     * @param w
+     * @param h
+     * @param oldw
+     * @param oldh
+     */
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         viewHeight = h
