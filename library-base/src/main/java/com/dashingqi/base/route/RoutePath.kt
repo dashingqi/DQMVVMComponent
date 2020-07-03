@@ -14,13 +14,17 @@ package com.dashingqi.base.route
  */
 object RoutePath {
 
-    object Impl{
-       private const val MAIN = "/impl"
+    object Impl {
+        private const val MAIN = "/impl"
         const val EVENT_BUS = "${MAIN}/event_bus"
     }
 
-    object Widget{
+    object Widget {
         private const val MAIN = "/widget"
         const val WIDGET_LETTER_VIEW = "${MAIN}/letter_view"
+        const val WIDGET_COOR_BOTTOM = "${MAIN}/coor_bottom"
+        const val WIDGET_MATERIAL = "${MAIN}/material"
+        const val WIDGET_BOTTOM_SHEET_DIALOG = "${MAIN}/bottom_sheet_dialog"
+        const val WIDGET_EX_FRESH = "${MAIN}/ex_fresh"
     }
 }

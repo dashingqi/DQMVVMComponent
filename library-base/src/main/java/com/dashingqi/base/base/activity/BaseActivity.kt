@@ -80,4 +80,9 @@ open class BaseActivity : AppCompatActivity() {
     open fun setStatusBarColorInt(): Int {
         return resources.getColor(R.color.res_colorPrimary)
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        moveTaskToBack(true)
+    }
 }

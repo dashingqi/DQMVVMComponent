@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.dashingqi.base.base.activity.BaseMVVMActivity
+import com.dashingqi.base.route.RoutePath
 import com.dashingqi.module.widget.databinding.WidgetMaterialActivityBinding
 import com.google.android.material.appbar.AppBarLayout
 import kotlin.math.abs
 
 
-@Route(path = "/widget/material")
+@Route(path = RoutePath.Widget.WIDGET_MATERIAL)
 class WidgetMaterialActivity : BaseMVVMActivity<WidgetMaterialActivityBinding, WidgetMaterialViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
