@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="base_bg_transparent">#00000000</color>
+    <color name="base_color_transparent">#66000000</color>
 
     <style name="base_dialog_theme" parent="android:Theme.Dialog">
         <!--        没有标题-->
@@ -25,8 +26,7 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
-    <style name="base_transparent" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
+    <style name="base_transparent">
+        <item name="android:windowBackground">@color/base_color_transparent</item>
     </style>
 </resources>

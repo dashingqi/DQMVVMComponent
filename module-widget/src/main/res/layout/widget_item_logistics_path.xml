@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dashingqi.module.widget.dialog.LogisticsPathDialog" />
+
+        <variable
+            name="item"
+            type="String" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/orderStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="订单已经完成"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp"
+            android:text="2020-10-1 15:38"
+            android:textColor="#666666"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/orderStatus"
+            app:layout_constraintTop_toBottomOf="@+id/orderStatus" />
+
+
+        <View
+            android:id="@+id/viewCircle"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/widget_logistics_path_circle_shape"
+            app:layout_constraintBottom_toBottomOf="@+id/orderStatus"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewHeader"
+            app:layout_constraintTop_toTopOf="@+id/orderStatus" />
+
+        <View
+            android:id="@+id/viewHeader"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="2dp"
+            android:background="@color/res_colorPrimary"
+            android:visibility="@{viewModel.isHeaderView(item)?View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toTopOf="@+id/viewCircle"
+            app:layout_constraintLeft_toLeftOf="@+id/viewCircle"
+            app:layout_constraintRight_toRightOf="@+id/viewCircle"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/res_colorPrimary"
+            android:visibility="@{viewModel.isFootView(item)?View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/viewCircle"
+            app:layout_constraintRight_toRightOf="@+id/viewCircle"
+            app:layout_constraintTop_toBottomOf="@+id/viewCircle" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

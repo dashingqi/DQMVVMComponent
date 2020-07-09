@@ -4,6 +4,8 @@ import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.graphics.drawable.Drawable
+import com.dashingqi.library_base.R
+import kotlin.math.roundToInt
 
 /**
  * @author : zhangqi
@@ -20,7 +22,7 @@ open class BaseDialog : Dialog {
 
     constructor(context: Context, resId: Int) : super(context, resId)
 
-    constructor(context: Context, cancel: Boolean, onCancelListener: DialogInterface.OnCancelListener?) : super(context, cancel, onCancelListener)
+    protected constructor(context: Context, cancel: Boolean, onCancelListener: DialogInterface.OnCancelListener?) : super(context, cancel, onCancelListener)
 
     /**
      * 设置Dialog的宽度
@@ -37,7 +39,7 @@ open class BaseDialog : Dialog {
      * 根据百分比设置宽度
      */
     fun setDialogWidthPercent(widthPercent: Float) {
-        setDialogWidth((widthPercent * getDialogWidth()) as Int)
+        setDialogWidth(((widthPercent * getDialogWidth()).roundToInt()))
     }
 
     /**
@@ -60,7 +62,7 @@ open class BaseDialog : Dialog {
     }
 
     fun setDialogHeightPercent(heightPercent: Float) {
-        setDialogHeight((heightPercent * getDialogHeight()) as Int)
+        setDialogHeight(((heightPercent * getDialogHeight()).roundToInt()))
     }
 
     fun getDialogHeight(): Int {
