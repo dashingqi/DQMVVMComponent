@@ -81,7 +81,7 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
     }
 
     override fun setStatusBarColorInt(): Int {
-        return Color.WHITE
+        return Color.parseColor("#ffffffff")
     }
 
     private fun createTestObserver() {

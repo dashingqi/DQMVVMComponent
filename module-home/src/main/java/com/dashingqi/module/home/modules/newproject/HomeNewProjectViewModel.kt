@@ -20,7 +20,7 @@ import com.orhanobut.logger.Logger
 class HomeNewProjectViewModel(application: Application) : BasePageViewModel<CommonArticleResponse>(application) {
 
     init {
-        itemBinding.bindExtra(BR.itemClick, onItemClickListener())
+        itemBinding.bindExtra(BR.onNewProjectItemClick, onItemClickListener())
         refresh()
     }
 

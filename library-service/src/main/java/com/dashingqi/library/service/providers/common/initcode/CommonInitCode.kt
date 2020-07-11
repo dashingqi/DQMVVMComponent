@@ -39,15 +39,16 @@ fun ViewPager.init(fragment: Fragment, fragments: ArrayList<Fragment>): ViewPage
 /**
  * MagicIndicator初始化的通用代码
  */
-fun MagicIndicator.initAndBindVP(viewPager: ViewPager, datas: ArrayList<CommonClassifyResponse>) {
+fun MagicIndicator.initAndBindVP(viewPager: ViewPager, datas: ArrayList<CommonClassifyResponse>, normalDefaultColor: String = "#ffffff", selectDefaultColor: String = normalDefaultColor, lineDefaultColor: String = normalDefaultColor) {
     var commonNavigator = CommonNavigator(viewPager.context)
     commonNavigator.adapter = object : CommonNavigatorAdapter() {
         override fun getTitleView(context: Context, index: Int): IPagerTitleView {
             return ScaleTransitionPagerTitleView(context.applicationContext).apply {
                 text = Html.fromHtml(datas[index].name)
                 textSize = 17f
-                normalColor = Color.WHITE
-                selectedColor = Color.WHITE
+
+                normalColor = Color.parseColor(normalDefaultColor)
+                selectedColor = Color.parseColor(selectDefaultColor)
                 setOnClickListener {
                     viewPager.currentItem = index
                 }
@@ -69,7 +70,7 @@ fun MagicIndicator.initAndBindVP(viewPager: ViewPager, datas: ArrayList<CommonCl
                 startInterpolator = AccelerateInterpolator()
                 endInterpolator = DecelerateInterpolator(2.0f)
                 //线条的颜色
-                setColors(Color.WHITE)
+                setColors(Color.parseColor(lineDefaultColor))
             }
         }
 

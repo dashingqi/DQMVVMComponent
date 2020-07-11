@@ -77,31 +77,26 @@
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
             </com.google.android.material.appbar.AppBarLayout>
 
-
-            <com.scwang.smartrefresh.layout.SmartRefreshLayout
-                enableRefresh="@{false}"
-                loadMoreListener="@{()->viewModel.loadMore()}"
-                loadMoreState="@{viewModel.loadMoreState}"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-                <com.dashingqi.base.widget.state.DQStateLayout
-                    stateLayoutState="@{viewModel.stateLayout}"
+                <net.lucode.hackware.magicindicator.MagicIndicator
+                    android:id="@+id/magicIndicator"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="48dp"
+                    android:background="@color/res_colorWhite"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        itemBinding="@{viewModel.itemBinding}"
-                        items="@{viewModel.items}"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:overScrollMode="never"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/magicIndicator" />
 
-                </com.dashingqi.base.widget.state.DQStateLayout>
-
-            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </com.dashingqi.base.widget.state.DQStateLayout>

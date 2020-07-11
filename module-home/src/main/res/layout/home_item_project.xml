@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="onItemClick"
+            name="onNewProjectItemClick"
             type="com.dashingqi.base.utils.OnItemClickListener" />
 
         <variable
@@ -18,7 +18,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{()-> onItemClick.onItemClick(item)}"
+        android:onClick="@{()-> onNewProjectItemClick.onItemClick(item)}"
         android:paddingTop="16dp">
 
         <TextView

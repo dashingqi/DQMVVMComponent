@@ -1,10 +1,16 @@
 package com.dashingqi.module.home.modules.main
 
+import android.graphics.Color
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.fragment.BaseMvvMFragment
+import com.dashingqi.base.route.RoutePath
+import com.dashingqi.library.service.providers.common.initcode.init
+import com.dashingqi.library.service.providers.common.initcode.initAndBindVP
+import com.dashingqi.library.service.providers.common.response.CommonClassifyResponse
 import com.dashingqi.module.home.databinding.HomeFragmentBinding
 import com.dashingqi.module.home.modules.banner.HomeBannerAdapter
 import com.dashingqi.module.home.net.HomeBannerResponse
@@ -21,10 +27,13 @@ import kotlinx.android.synthetic.main.home_fragment.*
 @Route(path = "/home/home_fragment")
 class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel>() {
     private lateinit var homeBannerAdapter: HomeBannerAdapter
+    private val mProjectTreeData = arrayListOf<CommonClassifyResponse>()
+    private val mFragments = ArrayList<Fragment>()
 
     override fun onLoad(view: View) {
         super.onLoad(view)
         configHomeBanner()
+        configViewPager()
         createObserver()
         registerAppbarLayoutListener()
         dataBinding.layoutSearch.alpha = 0.0F
@@ -35,7 +44,7 @@ class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel
         homeBannerAdapter = HomeBannerAdapter()
         dataBinding.homeBanner.adapter = homeBannerAdapter
         dataBinding.homeBanner.indicator = CircleIndicator(activity)
-        dataBinding.homeBanner.setOnBannerListener { data, position ->
+        dataBinding.homeBanner.setOnBannerListener { _, position ->
             var data = dataBinding.homeBanner.adapter.getData(position) as HomeBannerResponse.DataBean
             data?.let {
                 ARouter.getInstance().build("/web/commonView").withString("url", it.url).withString("title", it.title).navigation()
@@ -43,6 +52,15 @@ class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel
 
         }
 
+    }
+
+    private fun configViewPager() {
+        mFragments.add(ARouter.getInstance().build(RoutePath.Home.NEW_ARTICLE).navigation() as Fragment)
+        mFragments.add(ARouter.getInstance().build(RoutePath.Home.NEW_PROJECT).navigation() as Fragment)
+        dataBinding.viewPager.init(this, mFragments)
+        mProjectTreeData.add(CommonClassifyResponse("最新博文"))
+        mProjectTreeData.add(CommonClassifyResponse("最新项目"))
+        dataBinding.magicIndicator.initAndBindVP(dataBinding.viewPager, mProjectTreeData,"#1CA0F1")
     }
 
     /**
@@ -83,5 +101,5 @@ class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel
 
     override fun isFitsSystemWindow(): Boolean {
         return false
-    }
+  }
 }
