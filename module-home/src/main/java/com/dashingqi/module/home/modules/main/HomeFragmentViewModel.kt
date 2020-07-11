@@ -55,12 +55,6 @@ class HomeFragmentViewModel(application: Application) : BasePageViewModel<Common
                     handleItemData(page, response.data.datas)
                 }
         )
-
-        IHomeService.instance.getHomeProjectList(page).enqueue(LiveDataCallback<HomeProjectListResponse>(baseLiveData)
-                .doOnResponseSuccess { _, response ->
-                    Logger.d("home project list data size is -----> ${response.data.datas.size}")
-                }
-        )
     }
 
     override fun getItemLayoutId(): Int {

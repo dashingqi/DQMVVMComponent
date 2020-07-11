@@ -32,4 +32,18 @@ object RoutePath {
          */
         const val WIDGET_LOGISTICS = "${MAIN}/logistics"
     }
+
+    object Home {
+        private const val MAIN = "/home"
+
+        /**
+         * 最新博文
+         */
+        const val NEW_ARTICLE = "${MAIN}/newArticle"
+
+        /**
+         * 最新项目
+         */
+        const val NEW_PROJECT = "${MAIN}/newProject"
+    }
 }

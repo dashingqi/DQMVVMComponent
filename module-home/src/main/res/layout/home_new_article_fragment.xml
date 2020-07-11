@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dashingqi.module.home.modules.newarticle.HomeNewArticleViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            enableRefresh="@{false}"
+            loadMoreListener="@{()->viewModel.loadMore()}"
+            loadMoreState="@{viewModel.loadMoreState}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.dashingqi.base.widget.state.DQStateLayout
+                stateLayoutState="@{viewModel.stateLayout}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    itemBinding="@{viewModel.itemBinding}"
+                    items="@{viewModel.items}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            </com.dashingqi.base.widget.state.DQStateLayout>
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

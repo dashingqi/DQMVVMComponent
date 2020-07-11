@@ -99,4 +99,14 @@ object SmartRefreshBindingAdapter {
     fun setCanRefresh(smartRefreshLayout: SmartRefreshLayout, enableRefresh: Boolean) {
         smartRefreshLayout.setEnableRefresh(enableRefresh)
     }
+
+
+    /**
+     * 设置是否能够加载更多
+     */
+    @JvmStatic
+    @BindingAdapter(value = ["enableCanLoadMore"], requireAll = true)
+    fun setCanLoadMore(smartRefreshLayout: SmartRefreshLayout, enableLoadMore: Boolean) {
+        smartRefreshLayout.setEnableLoadMore(enableLoadMore)
+    }
 }
