@@ -83,6 +83,6 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        moveTaskToBack(true)
+       /// moveTaskToBack(true)
     }
 }

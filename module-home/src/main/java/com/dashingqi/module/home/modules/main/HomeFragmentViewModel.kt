@@ -4,18 +4,16 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.callback.LiveDataCallback
-import com.dashingqi.base.base.response.BaseResponse
 import com.dashingqi.base.base.viewmodel.BasePageViewModel
-import com.dashingqi.base.base.viewmodel.BaseViewModel
 import com.dashingqi.base.utils.OnItemClickListener
 import com.dashingqi.library.service.providers.common.response.CommonArticleResponse
 import com.dashingqi.module.home.BR
 import com.dashingqi.module.home.R
 import com.dashingqi.module.home.net.HomeArticleListResponse
 import com.dashingqi.module.home.net.HomeBannerResponse
+import com.dashingqi.module.home.net.HomeProjectListResponse
 import com.dashingqi.module.home.net.IHomeService
 import com.orhanobut.logger.Logger
-import kotlinx.android.synthetic.main.home_fragment.*
 
 /**
  * @author : zhangqi
@@ -57,10 +55,16 @@ class HomeFragmentViewModel(application: Application) : BasePageViewModel<Common
                     handleItemData(page, response.data.datas)
                 }
         )
+
+        IHomeService.instance.getHomeProjectList(page).enqueue(LiveDataCallback<HomeProjectListResponse>(baseLiveData)
+                .doOnResponseSuccess { _, response ->
+                    Logger.d("home project list data size is -----> ${response.data.datas.size}")
+                }
+        )
     }
 
     override fun getItemLayoutId(): Int {
-        return R.layout.home_article_item
+        return R.layout.home_item_article
     }
 
     private fun onItemClickListener(): OnItemClickListener<CommonArticleResponse> {

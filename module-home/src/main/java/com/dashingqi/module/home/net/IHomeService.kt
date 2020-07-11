@@ -26,6 +26,12 @@ interface IHomeService {
     fun getHomeArticleList(@Path("page") pageNo: Int): Call<HomeArticleListResponse>
 
     /**
+     * 获取到首页最新项目的列表
+     */
+    @GET("/article/listproject/{page}/json")
+    fun getHomeProjectList(@Path("page") pageNo: Int): Call<HomeProjectListResponse>
+
+    /**
      * 首页搜索布局
      */
     @POST("/article/query/{page}/json")

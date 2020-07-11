@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.callback.LiveDataCallback
 import com.dashingqi.base.base.viewmodel.BasePageViewModel
-import com.dashingqi.base.base.viewmodel.BaseViewModel
 import com.dashingqi.base.utils.OnItemClickListener
 import com.dashingqi.library.service.providers.common.response.CommonArticleResponse
 import com.dashingqi.module.home.BR
@@ -38,7 +37,7 @@ class HomeSearchViewModel(application: Application) : BasePageViewModel<CommonAr
     }
 
     override fun getItemLayoutId(): Int {
-        return R.layout.home_article_item
+        return R.layout.home_item_article
     }
 
     /**
