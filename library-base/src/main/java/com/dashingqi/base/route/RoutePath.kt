@@ -33,6 +33,9 @@ object RoutePath {
         const val WIDGET_LOGISTICS = "${MAIN}/logistics"
     }
 
+    /**
+     * 主页
+     */
     object Home {
         private const val MAIN = "/home"
 
@@ -45,5 +48,15 @@ object RoutePath {
          * 最新项目
          */
         const val NEW_PROJECT = "${MAIN}/newProject"
+    }
+
+    /**
+     * 广场
+     */
+    object Square {
+
+        private const val MAIN = "/square"
+
+        const val SQUARE_LIST = "${MAIN}/squareList"
     }
 }

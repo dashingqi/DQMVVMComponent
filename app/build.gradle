@@ -119,5 +119,7 @@ dependencies {
 
         implementation project(':module-web')
 
+        implementation project(':module-square')
+
     }
 }
