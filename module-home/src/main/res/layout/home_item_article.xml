@@ -17,6 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/res_colorWhite"
         android:onClick="@{()-> itemClick.onItemClick(item)}"
         android:paddingTop="16dp">
 

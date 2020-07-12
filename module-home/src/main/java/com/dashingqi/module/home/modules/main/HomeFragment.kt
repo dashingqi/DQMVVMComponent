@@ -1,6 +1,5 @@
 package com.dashingqi.module.home.modules.main
 
-import android.graphics.Color
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer

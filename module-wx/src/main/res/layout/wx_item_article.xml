@@ -8,6 +8,7 @@
         <variable
             name="onItemClick"
             type="com.dashingqi.base.utils.OnItemClickListener" />
+
         <variable
             name="item"
             type="com.dashingqi.library.service.providers.common.response.CommonArticleResponse" />
@@ -15,9 +16,10 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:onClick="@{()->onItemClick.onItemClick(item)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/res_colorWhite"
+        android:onClick="@{()->onItemClick.onItemClick(item)}"
         android:paddingTop="16dp">
 
         <androidx.constraintlayout.widget.Guideline
@@ -82,8 +84,8 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text='@{item.superChapterName+" / "+item.chapterName}'
-            android:textSize="14sp"
             android:textColor="@color/res_colorPrimary"
+            android:textSize="14sp"
             app:layout_constraintLeft_toLeftOf="@+id/line1"
             app:layout_constraintRight_toLeftOf="@+id/tvWxArticleLike"
             app:layout_constraintTop_toBottomOf="@+id/tvWxArticleTitle"

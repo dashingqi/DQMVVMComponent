@@ -21,6 +21,7 @@ data class CommonArticleResponse(
         var id: Int,
         var link: String,
         var niceDate: String,
+        var niceShareDate: String,
         var origin: String,
         var prefix: String,
         var projectLink: String,
@@ -40,5 +41,9 @@ data class CommonArticleResponse(
 
     fun getTitleText(): String {
         return Html.fromHtml(title).toString()
+    }
+
+    fun getShareUserText(): String {
+        return Html.fromHtml("分享人：${shareUser}").toString()
     }
 }
