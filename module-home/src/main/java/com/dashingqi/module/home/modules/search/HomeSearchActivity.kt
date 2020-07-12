@@ -24,6 +24,10 @@ class HomeSearchActivity : BaseMVVMActivity<HomeActivitySearchBinding, HomeSearc
             searchText.onEditorAction(EditorInfo.IME_ACTION_SEARCH)
         }
 
+        dataBinding.back.setOnClickListener {
+            finish()
+        }
+
     }
 
     override fun isFitsSystemWindows(): Boolean {
