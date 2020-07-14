@@ -35,12 +35,13 @@
 - 公众号文章(module-article)
 - 项目（module-project）
 - 入口（module-entrance）
+- 广场 (module-square)
 ##### 公共组件
 - library-base(抽取的Base)
 - library-network(网络层)
 - library-resource（公用的资源文件）
 - library-service(组件间存在调用关系，为其提供调用接口)
-##### 其他第三方公用组件
+##### 其他第三方公用组件(功能组件)
 - module-location(定位)
 - module-share（分享）
 - module-statistics（数据埋点统计）

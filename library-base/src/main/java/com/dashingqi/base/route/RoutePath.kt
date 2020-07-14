@@ -33,6 +33,9 @@ object RoutePath {
         const val WIDGET_LOGISTICS = "${MAIN}/logistics"
     }
 
+    /**
+     * 主页
+     */
     object Home {
         private const val MAIN = "/home"
 
@@ -47,8 +50,19 @@ object RoutePath {
         const val NEW_PROJECT = "${MAIN}/newProject"
     }
 
-    object QrCode{
+
+    object QrCode {
         private const val MAIN = "/qrcode"
         const val QRCODE_HW = "${MAIN}/scanHw"
+    }
+
+    /**
+     * 广场
+     */
+    object Square {
+
+        private const val MAIN = "/square"
+
+        const val SQUARE_LIST = "${MAIN}/squareList"
     }
 }

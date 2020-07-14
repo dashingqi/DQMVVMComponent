@@ -1,6 +1,5 @@
 package com.dashingqi.module.home.modules.main
 
-import android.graphics.Color
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -57,10 +56,12 @@ class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel
     private fun configViewPager() {
         mFragments.add(ARouter.getInstance().build(RoutePath.Home.NEW_ARTICLE).navigation() as Fragment)
         mFragments.add(ARouter.getInstance().build(RoutePath.Home.NEW_PROJECT).navigation() as Fragment)
+        mFragments.add(ARouter.getInstance().build(RoutePath.Square.SQUARE_LIST).navigation() as Fragment)
         dataBinding.viewPager.init(this, mFragments)
         mProjectTreeData.add(CommonClassifyResponse("最新博文"))
         mProjectTreeData.add(CommonClassifyResponse("最新项目"))
-        dataBinding.magicIndicator.initAndBindVP(dataBinding.viewPager, mProjectTreeData,"#1CA0F1")
+        mProjectTreeData.add(CommonClassifyResponse("Android广场"))
+        dataBinding.magicIndicator.initAndBindVP(dataBinding.viewPager, mProjectTreeData, "#1CA0F1")
     }
 
     /**
@@ -101,5 +102,5 @@ class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel
 
     override fun isFitsSystemWindow(): Boolean {
         return false
-  }
+    }
 }

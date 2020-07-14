@@ -121,5 +121,7 @@ dependencies {
         //二维码扫描功能组件
         implementation project(':module-qrcode')
 
+        implementation project(':module-square')
+
     }
 }

@@ -7,6 +7,7 @@
         <option name="testRunner" value="PLATFORM" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$APPLICATION_HOME_DIR$/gradle/gradle-4.4" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -21,6 +22,7 @@
             <option value="$PROJECT_DIR$/module-login" />
             <option value="$PROJECT_DIR$/module-project" />
             <option value="$PROJECT_DIR$/module-qrcode" />
+            <option value="$PROJECT_DIR$/module-square" />
             <option value="$PROJECT_DIR$/module-user" />
             <option value="$PROJECT_DIR$/module-web" />
             <option value="$PROJECT_DIR$/module-widget" />

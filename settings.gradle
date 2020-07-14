@@ -1,5 +1,4 @@
-include ':module-qrcode'
-include ':module-impl'
+
 rootProject.name='DQMVVMComponent'
 include ':app'
 include ':module-user'
@@ -14,3 +13,6 @@ include ':module-wx'
 include ':module-login'
 include ':module-web'
 include ':module-widget'
+include ':module-impl'
+include ':module-square'
+include ':module-qrcode'
