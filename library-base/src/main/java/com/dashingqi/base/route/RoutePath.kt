@@ -46,4 +46,9 @@ object RoutePath {
          */
         const val NEW_PROJECT = "${MAIN}/newProject"
     }
+
+    object QrCode{
+        private const val MAIN = "/qrcode"
+        const val QRCODE_HW = "${MAIN}/scanHw"
+    }
 }

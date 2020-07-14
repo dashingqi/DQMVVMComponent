@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dashingqi.module.qrcode">
+    <!-- 使用特性 -->
+    <application>
+        <activity android:name=".QrCodeRequestActivity"></activity>
+        <!-- 对扫码页面进行声明 -->
+        <activity android:name="com.huawei.hms.hmsscankit.ScanKitActivity" />
+    </application>
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+</manifest>
