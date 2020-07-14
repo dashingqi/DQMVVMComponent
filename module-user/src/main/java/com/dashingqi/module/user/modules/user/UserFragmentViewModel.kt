@@ -54,7 +54,7 @@ class UserFragmentViewModel(application: Application) : BaseViewModel(applicatio
         labelItems.add("自由可撩")
         labelItems.add("北京")
         labelItems.add("互联网技术")
-        labelItems.add("大连海事大学")
+        labelItems.add("辽宁工业大学")
         labelItems.add("正大集团")
     }
 
