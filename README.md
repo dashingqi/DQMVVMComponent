@@ -89,6 +89,8 @@
     - LiveData用于从EditText中获取输入的数据 android:text="@={viewModel.liveData}"
     - 本地的请求通过LiveData拿到输入框中数据
     - 注意使用LiveData需要绑定Activity生命周期 setLifeCycleOwner(this)
-
+#### ARouter源码系列教程
+- [ARouter注解处理器分析-RouteProcessor](https://www.jianshu.com/p/746b9bed4884)
+- [ARouter注解处理器分析-InterceptorProcessor](https://www.jianshu.com/p/a9c1a1cef690)
 
 
