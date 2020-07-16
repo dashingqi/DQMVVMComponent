@@ -93,5 +93,7 @@
 - [Android开发之APT技术](https://www.jianshu.com/p/5ee5b16ed5d8)
 - [ARouter注解处理器分析-RouteProcessor](https://www.jianshu.com/p/746b9bed4884)
 - [ARouter注解处理器分析-InterceptorProcessor](https://www.jianshu.com/p/a9c1a1cef690)
+- [ARouter注解处理器分析-AutowiredProcessor](https://www.jianshu.com/p/6408428b11ae)
+- [ARouter源码分析-初始化](https://www.jianshu.com/p/18a89ba11882)
 
 
