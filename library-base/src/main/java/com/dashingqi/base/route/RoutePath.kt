@@ -79,9 +79,17 @@ object RoutePath {
     /**
      * 登录
      */
-    object Login{
+    object Login {
         private const val MAIN = "/login"
-        const val LOGIN_ACTIVITY = "${MAIN}/login_activity"
+        const val LOGIN_ACTIVITY = "${MAIN}/loginActivity"
+    }
+
+    /**
+     * 分享
+     */
+    object Share {
+        private const val MAIN = "/share"
+        const val SHARE_SERVICE = "${MAIN}/shareService"
     }
 
 }

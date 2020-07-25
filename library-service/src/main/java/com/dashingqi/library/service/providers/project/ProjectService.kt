@@ -1,4 +1,4 @@
-package com.dashingqi.library.service.providers.home
+package com.dashingqi.library.service.providers.project
 
 import com.alibaba.android.arouter.facade.template.IProvider
 
@@ -7,5 +7,5 @@ import com.alibaba.android.arouter.facade.template.IProvider
  * @time : 2020/4/29
  * desc :
  */
-interface HomeProvider:IProvider {
+interface ProjectService:IProvider {
 }

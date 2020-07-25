@@ -27,6 +27,9 @@
 - 为App内的文章列表添加点击事件，展示文章的详情(2020/6/13)
 - 调整状态栏，首页改版 （2020/6/14）
 - 完成通用搜索控件，完成首页搜索（2020/6/18）
+- 完成文章收藏的接口接入，以为未登录状态时的处理（2020/7/13）
+- 完成ARouter系列的源码分析（2020/7/22）
+- 完成分享功能组件（2020/7/25）
 
 #### 组件化部分划分-wanAndroid项目（2020/04/28）
 ##### 功能模块组件划分
@@ -43,10 +46,16 @@
 - library-resource（公用的资源文件）
 - library-service(组件间存在调用关系，为其提供调用接口)
 ##### 其他第三方公用组件(功能组件)
-- module-location(定位)
-- module-share（分享）
-- module-statistics（数据埋点统计）
-- module-crash（异常上报）
+###### module-location(定位)
+###### module-share（分享）
+- 介绍
+> 是基于友盟分享SDK基础上，抽取的一个功能分享组件，同样在Service层提供了调用入口，通过ARouter的IoC的ByType特性（定义一个接口 继承 IProvider，在组件内部实现这个接口以及定义的抽象方法）对外提供调用
+> 使用例子 ARouter.getInstance().navigation(ShareService::class.java).performWxShare(WxShareBean,Activity)
+> WxShareBean 用于传输需要分享的数据，内部工具类通过解析WxShareBean携带的数据，来进行分享的调用
+- 遇到的问题
+> 在定义WXEntryActivity这个类的时候，一定要注意所在的包名，因为我们申请微信分享的Id时候填写的包名是应用的applicationId，所以在组件中应该新建一个 applicationIdName.wxapi的包名，在该包名下建WXEntryActivity
+###### module-statistics（数据埋点统计）
+###### module-crash（异常上报）
 ##### 一些理解（2020/04/30）
 - 组件：指的是一个单一的功能组件，比如分享组件，支付组件
 - 模块：指的是独立的业务模块，比如购物车模块，首页模块，分类模块等。相比较于组件，模块的粒度更大。模块可能包含不同的组件。

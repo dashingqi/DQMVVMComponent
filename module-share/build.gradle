@@ -1,0 +1,23 @@
+apply from: "../module.build.gradle"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+
+    defaultConfig {
+        if (isBuildModule.toBoolean()) {
+            applicationId "com.dashingqi.share"
+        }
+    }
+
+    //统一资源前缀，规范资源的引用
+    resourcePrefix "share_"
+}
+
+dependencies {
+    implementation  'com.umeng.umsdk:common:2.2.5'
+    implementation  'com.umeng.umsdk:share-core:7.0.2'
+    implementation  'com.umeng.umsdk:share-board:7.0.2'
+
+    implementation  'com.umeng.umsdk:share-wx:7.0.2'
+}
