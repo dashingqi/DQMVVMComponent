@@ -10,6 +10,10 @@
             type="com.dashingqi.base.utils.OnItemClickListener" />
 
         <variable
+            name="onCollectArticleClickListener"
+            type="com.dashingqi.base.utils.OnItemClickListener" />
+
+        <variable
             name="item"
             type="com.dashingqi.library.service.providers.common.response.CommonArticleResponse" />
 
@@ -95,6 +99,8 @@
             android:id="@+id/tvWxArticleLike"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:onClick="@{()->onCollectArticleClickListener.onItemClick(item)}"
+            android:src="@drawable/res_ic_like_default"
             app:layout_constraintBottom_toBottomOf="@+id/tvWxArticleCategory"
             app:layout_constraintRight_toRightOf="@id/line2"
             app:layout_constraintTop_toTopOf="@+id/tvWxArticleCategory"

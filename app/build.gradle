@@ -114,14 +114,16 @@ dependencies {
         implementation project(":module-project")
         //登录
         implementation project(":module-login")
-
+        // 功能组件 自定义控件
         implementation project(':module-widget')
         //功能组件 - web
         implementation project(':module-web')
         //二维码扫描功能组件
         implementation project(':module-qrcode')
-
+        //广场
         implementation project(':module-square')
+        //收藏
+        implementation project(':moudle-collect')
 
     }
 }

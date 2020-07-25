@@ -3,10 +3,12 @@ package com.dashingqi.module.wx.modules
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.callback.LiveDataCallback
+import com.dashingqi.base.base.response.BaseResponse
 import com.dashingqi.base.base.viewmodel.BasePageViewModel
 import com.dashingqi.base.eventbus.EventBusPath
 import com.dashingqi.base.providers.eventbus.IEventBusProvider
 import com.dashingqi.base.utils.OnItemClickListener
+import com.dashingqi.library.service.providers.collect.CollectService
 import com.dashingqi.library.service.providers.common.response.CommonArticleResponse
 import com.dashingqi.module.wx.BR
 import com.dashingqi.module.wx.R
@@ -22,7 +24,8 @@ import com.orhanobut.logger.Logger
 class WXArticleChapterFragmentViewModel(application: Application, var id: Int) : BasePageViewModel<CommonArticleResponse>(application) {
     init {
         Logger.d("viewModel ---> id ----> $id")
-        itemBinding.bindExtra(BR.onItemClick,onItemClickListener())
+        itemBinding.bindExtra(BR.onItemClick, onItemClickListener())
+                .bindExtra(BR.onCollectArticleClickListener, onCollectClickListener())
         refresh()
     }
 
@@ -41,14 +44,25 @@ class WXArticleChapterFragmentViewModel(application: Application, var id: Int) :
 
     override fun getItemLayoutId(): Int = R.layout.wx_item_article
 
-    private fun onItemClickListener():OnItemClickListener<CommonArticleResponse>{
-        return object :OnItemClickListener<CommonArticleResponse>{
+    private fun onItemClickListener(): OnItemClickListener<CommonArticleResponse> {
+        return object : OnItemClickListener<CommonArticleResponse> {
             override fun onItemClick(item: CommonArticleResponse) {
-                ARouter.getInstance().build("/web/commonView").withString("url",item.link).withString("title",item.title).navigation()
+                ARouter.getInstance().build("/web/commonView").withString("url", item.link).withString("title", item.title).navigation()
             }
 
         }
     }
 
+    /**
+     * 收藏的事件
+     */
+    private fun onCollectClickListener(): OnItemClickListener<CommonArticleResponse> {
+        return object : OnItemClickListener<CommonArticleResponse> {
+            override fun onItemClick(item: CommonArticleResponse) {
+                var callBack = LiveDataCallback<BaseResponse>(baseLiveData)
+                ARouter.getInstance().navigation(CollectService::class.java).performCollectArticle(item.id.toString(), callBack, item.fresh)
+            }
+        }
+    }
 
 }

@@ -36,6 +36,7 @@
 - 项目（module-project）
 - 入口（module-entrance）
 - 广场 (module-square)
+- 收藏 (module-collect)
 ##### 公共组件
 - library-base(抽取的Base)
 - library-network(网络层)

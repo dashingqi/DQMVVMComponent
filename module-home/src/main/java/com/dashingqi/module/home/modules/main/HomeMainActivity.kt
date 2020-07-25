@@ -9,13 +9,14 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.activity.BaseMVVMActivity
 import com.dashingqi.base.eventbus.EventBusPath
 import com.dashingqi.base.providers.eventbus.IEventBusProvider
+import com.dashingqi.base.route.RoutePath
 import com.dashingqi.base.widget.bottomtab.*
 import com.dashingqi.module.home.R
 import com.dashingqi.module.home.databinding.HomeActivityMainBinding
 import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.home_activity_main.*
 
-@Route(path = "/home/main_activity")
+@Route(path = RoutePath.Home.HOME_ACTIVITY)
 class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel>() {
 
     val fsc by lazy {
@@ -86,8 +87,13 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
 
     private fun createTestObserver() {
         ARouter.getInstance().navigation(IEventBusProvider::class.java).with(EventBusPath.Test.TEST_PATH)
-                .observe(this){
+                .observe(this) {
                     Logger.d("test_event_bus_perform ----> ${it.toString()}")
                 }
+    }
+
+    override fun onBackPressed() {
+        moveTaskToBack(true)
+        super.onBackPressed()
     }
 }

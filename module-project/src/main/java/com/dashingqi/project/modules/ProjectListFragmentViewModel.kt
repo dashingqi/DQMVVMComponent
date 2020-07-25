@@ -3,9 +3,11 @@ package com.dashingqi.project.modules
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.callback.LiveDataCallback
+import com.dashingqi.base.base.response.BaseResponse
 import com.dashingqi.base.base.viewmodel.BasePageViewModel
 import com.dashingqi.base.base.viewmodel.BaseViewModel
 import com.dashingqi.base.utils.OnItemClickListener
+import com.dashingqi.library.service.providers.collect.CollectService
 import com.dashingqi.library.service.providers.common.response.CommonArticleResponse
 import com.dashingqi.project.BR
 import com.dashingqi.project.R
@@ -22,6 +24,7 @@ class ProjectListFragmentViewModel(application: Application, var cid: Int) : Bas
 
     init {
      itemBinding.bindExtra(BR.onItemClick,onItemClickListener())
+             .bindExtra(BR.onCollectArticleClickListener,onCollectClickListener())
         refresh()
     }
 
@@ -57,6 +60,18 @@ class ProjectListFragmentViewModel(application: Application, var cid: Int) : Bas
                 ARouter.getInstance().build("/web/commonView").withString("url",item.link).withString("title",item.title).navigation()
             }
 
+        }
+    }
+
+    /**
+     * 收藏的事件
+     */
+    private fun onCollectClickListener(): OnItemClickListener<CommonArticleResponse> {
+        return object : OnItemClickListener<CommonArticleResponse> {
+            override fun onItemClick(item: CommonArticleResponse) {
+                var callBack = LiveDataCallback<BaseResponse>(baseLiveData)
+                ARouter.getInstance().navigation(CollectService::class.java).performCollectArticle(item.id.toString(), callBack, item.fresh)
+            }
         }
     }
 }

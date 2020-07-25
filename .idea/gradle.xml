@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/module-web" />
             <option value="$PROJECT_DIR$/module-widget" />
             <option value="$PROJECT_DIR$/module-wx" />
+            <option value="$PROJECT_DIR$/moudle-collect" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

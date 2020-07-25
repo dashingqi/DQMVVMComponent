@@ -11,7 +11,7 @@ open class BaseResponse : IResponse {
      */
     open var errorCode: Int = 0
     open var errorMsg: String = ""
-    override fun isTokenError(): Boolean = errorCode == 600500
+    override fun isTokenError(): Boolean = errorCode == -1001
     override fun isSuccess(): Boolean = errorCode == 0
     override fun getMessage(): String = errorMsg
 }

@@ -1,4 +1,4 @@
-
+include ':moudle-collect'
 rootProject.name='DQMVVMComponent'
 include ':app'
 include ':module-user'

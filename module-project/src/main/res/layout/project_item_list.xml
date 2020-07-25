@@ -10,16 +10,20 @@
             type="com.dashingqi.base.utils.OnItemClickListener" />
 
         <variable
+            name="onCollectArticleClickListener"
+            type="com.dashingqi.base.utils.OnItemClickListener" />
+
+        <variable
             name="item"
             type="com.dashingqi.library.service.providers.common.response.CommonArticleResponse" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:onClick="@{()-> onItemClick.onItemClick(item)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/res_colorWhite"
+        android:onClick="@{()-> onItemClick.onItemClick(item)}"
         android:paddingTop="16dp">
 
         <TextView
@@ -50,12 +54,12 @@
 
         <ImageView
             android:id="@+id/ivProjectCover"
+            dbImageUrl="@{item.envelopePic}"
             android:layout_width="120dp"
             android:layout_height="150dp"
             android:layout_marginLeft="16dp"
-            android:scaleType="centerCrop"
-            dbImageUrl="@{item.envelopePic}"
             android:layout_marginTop="15dp"
+            android:scaleType="centerCrop"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvProjectAuthor" />
 
@@ -110,18 +114,20 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginRight="16dp"
+            android:onClick="@{()->onCollectArticleClickListener.onItemClick(item)}"
+            android:src="@drawable/res_ic_like_default"
             app:layout_constraintBottom_toBottomOf="@+id/tvProjectCategory"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvProjectCategory"
             tools:src="@drawable/res_ic_like_default" />
 
         <View
-            app:layout_constraintTop_toBottomOf="@+id/tvProjectCategory"
-            android:background="#f2f2f2"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="6dp"/>
+            android:layout_height="6dp"
+            android:layout_marginTop="16dp"
+            android:background="#f2f2f2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProjectCategory" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

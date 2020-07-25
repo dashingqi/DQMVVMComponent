@@ -1,6 +1,9 @@
 package com.dashingqi.base.base.callback
 
+import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.response.IResponse
+import com.dashingqi.base.route.RoutePath
+import com.orhanobut.logger.Logger
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -62,14 +65,21 @@ open class BaseCallback<T : IResponse> : Callback<T> {
         }
     }
 
-    protected open fun onHttpCodeError(call: Call<T>, response: Response<T>) {}
+    protected open fun onHttpCodeError(call: Call<T>, response: Response<T>) {
+
+        var code = response.code()
+        Logger.w("error code ---> $code")
+
+    }
+
     protected open fun onResponseFailureBodyNull(call: Call<T>, response: Response<T>) {}
 
     /**
      * 登陆的Token失效
      */
     protected open fun onResponseLoginStatusError(body: T) {
-
+        // 跳转到登录界面
+        ARouter.getInstance().build(RoutePath.Login.LOGIN_ACTIVITY).navigation()
     }
 
     private val doOnResponseContainer = ArrayList<(call: Call<T>, response: Response<T>) -> Unit>()

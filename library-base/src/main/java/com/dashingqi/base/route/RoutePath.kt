@@ -39,6 +39,8 @@ object RoutePath {
     object Home {
         private const val MAIN = "/home"
 
+        const val HOME_ACTIVITY = "${MAIN}/mainActivity"
+
         /**
          * 最新博文
          */
@@ -65,4 +67,21 @@ object RoutePath {
 
         const val SQUARE_LIST = "${MAIN}/squareList"
     }
+
+    /**
+     * 收藏
+     */
+    object Collect {
+        private const val MAIN = "/collect"
+        const val COLLECT_SERVICE = "${MAIN}/service"
+    }
+
+    /**
+     * 登录
+     */
+    object Login{
+        private const val MAIN = "/login"
+        const val LOGIN_ACTIVITY = "${MAIN}/login_activity"
+    }
+
 }
