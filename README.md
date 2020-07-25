@@ -95,5 +95,9 @@
 - [ARouter注解处理器分析-InterceptorProcessor](https://www.jianshu.com/p/a9c1a1cef690)
 - [ARouter注解处理器分析-AutowiredProcessor](https://www.jianshu.com/p/6408428b11ae)
 - [ARouter源码分析-初始化](https://www.jianshu.com/p/18a89ba11882)
+- [ARouter源码分析-页面跳转](https://www.jianshu.com/p/48dbaea12813)
+- [ARouter源码分析-拦截器](https://www.jianshu.com/p/25157c8119b0)
+- [ARouter源码分析-降级策略](https://www.jianshu.com/p/8ada64425e1d)
+- [ARouter源码分析-依赖注入](https://www.jianshu.com/p/de2d4f386e9a)
 
 
