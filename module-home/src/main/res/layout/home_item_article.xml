@@ -79,17 +79,19 @@
             app:layout_constraintTop_toBottomOf="@+id/tvArticleContent"
             tools:text="干货资源 / 干货资源" />
 
-        <ImageView
+        <CheckBox
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginRight="16dp"
+            android:background="@null"
+            android:button="@null"
+            android:checked="@={item.isCollectFiledMethod()}"
+            android:drawableEnd="@drawable/res_selector_check"
             android:onClick="@{()->onCollectClickListener.onItemClick(item)}"
-            android:src="@drawable/res_ic_like_default"
             app:layout_constraintBottom_toBottomOf="@+id/tvArticleCategory"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvArticleContent"
-            app:layout_constraintTop_toTopOf="@+id/tvArticleCategory"
-            tools:src="@drawable/res_ic_like_default" />
+            app:layout_constraintTop_toTopOf="@+id/tvArticleCategory" />
 
         <View
             android:id="@+id/line"

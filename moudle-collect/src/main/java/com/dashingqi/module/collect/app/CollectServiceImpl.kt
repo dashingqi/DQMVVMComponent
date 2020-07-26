@@ -2,6 +2,7 @@ package com.dashingqi.module.collect.app
 
 import android.content.Context
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.dashingqi.base.base.callback.BaseCallback
 import com.dashingqi.base.base.callback.LiveDataCallback
 import com.dashingqi.base.base.response.BaseResponse
 import com.dashingqi.base.route.RoutePath
@@ -15,17 +16,17 @@ import com.dashingqi.module.collect.net.ICollectService
  */
 @Route(path = RoutePath.Collect.COLLECT_SERVICE, name = "收藏模块的入口")
 class CollectServiceImpl : CollectService {
-    override fun collectArticle(id: String, callBack: LiveDataCallback<BaseResponse>) {
+    override fun collectArticle(id: String, callBack: BaseCallback<BaseResponse>) {
 
         ICollectService.instance.collectArticle(id).enqueue(callBack)
 
     }
 
-    override fun unCollectArticle(id: String, callBack: LiveDataCallback<BaseResponse>) {
+    override fun unCollectArticle(id: String, callBack: BaseCallback<BaseResponse>) {
         ICollectService.instance.unCollectArticle(id).enqueue(callBack)
     }
 
-    override fun performCollectArticle(id: String, callBack: LiveDataCallback<BaseResponse>, fresh: Boolean) {
+    override fun performCollectArticle(id: String, callBack: BaseCallback<BaseResponse>, fresh: Boolean) {
         if (fresh) {
             unCollectArticle(id, callBack)
         } else {

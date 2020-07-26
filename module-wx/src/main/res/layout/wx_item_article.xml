@@ -95,16 +95,18 @@
             app:layout_constraintTop_toBottomOf="@+id/tvWxArticleTitle"
             tools:text="公众号 / DashingQi" />
 
-        <ImageView
+        <CheckBox
             android:id="@+id/tvWxArticleLike"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:background="@null"
+            android:button="@null"
+            android:drawableEnd="@drawable/res_selector_check"
+            android:checked="@={item.isCollectFiledMethod()}"
             android:onClick="@{()->onCollectArticleClickListener.onItemClick(item)}"
-            android:src="@drawable/res_ic_like_default"
             app:layout_constraintBottom_toBottomOf="@+id/tvWxArticleCategory"
             app:layout_constraintRight_toRightOf="@id/line2"
-            app:layout_constraintTop_toTopOf="@+id/tvWxArticleCategory"
-            tools:src="@drawable/res_ic_like_default" />
+            app:layout_constraintTop_toTopOf="@+id/tvWxArticleCategory" />
 
         <View
             android:layout_width="match_parent"

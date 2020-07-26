@@ -23,8 +23,8 @@ import com.orhanobut.logger.Logger
 class ProjectListFragmentViewModel(application: Application, var cid: Int) : BasePageViewModel<CommonArticleResponse>(application) {
 
     init {
-     itemBinding.bindExtra(BR.onItemClick,onItemClickListener())
-             .bindExtra(BR.onCollectArticleClickListener,onCollectClickListener())
+        itemBinding.bindExtra(BR.onItemClick, onItemClickListener())
+                .bindExtra(BR.onCollectArticleClickListener, onCollectClickListener())
         refresh()
     }
 
@@ -54,10 +54,10 @@ class ProjectListFragmentViewModel(application: Application, var cid: Int) : Bas
         return 15
     }
 
-    private fun onItemClickListener():OnItemClickListener<CommonArticleResponse>{
-        return object :OnItemClickListener<CommonArticleResponse>{
+    private fun onItemClickListener(): OnItemClickListener<CommonArticleResponse> {
+        return object : OnItemClickListener<CommonArticleResponse> {
             override fun onItemClick(item: CommonArticleResponse) {
-                ARouter.getInstance().build("/web/commonView").withString("url",item.link).withString("title",item.title).navigation()
+                ARouter.getInstance().build("/web/commonView").withString("url", item.link).withString("title", item.title).navigation()
             }
 
         }
@@ -70,7 +70,12 @@ class ProjectListFragmentViewModel(application: Application, var cid: Int) : Bas
         return object : OnItemClickListener<CommonArticleResponse> {
             override fun onItemClick(item: CommonArticleResponse) {
                 var callBack = LiveDataCallback<BaseResponse>(baseLiveData)
-                ARouter.getInstance().navigation(CollectService::class.java).performCollectArticle(item.id.toString(), callBack, item.fresh)
+                        .bindLoading()
+                        .doOnResponseSuccess { _, _ ->
+                            item.collect = !item.collect
+                            item.isCollectFiledMethod()
+                        }
+                ARouter.getInstance().navigation(CollectService::class.java).performCollectArticle(item.id.toString(), callBack, item.collect)
             }
         }
     }

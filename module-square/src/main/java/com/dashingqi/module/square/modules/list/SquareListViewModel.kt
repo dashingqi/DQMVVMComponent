@@ -22,7 +22,7 @@ class SquareListViewModel(application: Application) : BasePageViewModel<CommonAr
 
     init {
         itemBinding.bindExtra(BR.onItemClick, onItemClickListener())
-                .bindExtra(BR.onCollectArticleClickListener,onCollectClickListener())
+                .bindExtra(BR.onCollectArticleClickListener, onCollectClickListener())
         refresh()
     }
 
@@ -56,7 +56,12 @@ class SquareListViewModel(application: Application) : BasePageViewModel<CommonAr
         return object : OnItemClickListener<CommonArticleResponse> {
             override fun onItemClick(item: CommonArticleResponse) {
                 var callBack = LiveDataCallback<BaseResponse>(baseLiveData)
-                ARouter.getInstance().navigation(CollectService::class.java).performCollectArticle(item.id.toString(), callBack, item.fresh)
+                        .bindLoading()
+                        .doOnResponseSuccess { _, _ ->
+                            item.collect = !item.collect
+                            item.isCollectFiledMethod()
+                        }
+                ARouter.getInstance().navigation(CollectService::class.java).performCollectArticle(item.id.toString(), callBack, item.collect)
             }
         }
     }

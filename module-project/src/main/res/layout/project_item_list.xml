@@ -109,17 +109,19 @@
             app:layout_constraintTop_toBottomOf="@+id/ivProjectCover"
             tools:text="开源项目 / 完整项目" />
 
-        <ImageView
+        <CheckBox
             android:id="@+id/ivProjectLike"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginRight="16dp"
+            android:background="@null"
+            android:button="@null"
+            android:checked="@={item.isCollectFiledMethod()}"
+            android:drawableEnd="@drawable/res_selector_check"
             android:onClick="@{()->onCollectArticleClickListener.onItemClick(item)}"
-            android:src="@drawable/res_ic_like_default"
             app:layout_constraintBottom_toBottomOf="@+id/tvProjectCategory"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvProjectCategory"
-            tools:src="@drawable/res_ic_like_default" />
+            app:layout_constraintTop_toTopOf="@+id/tvProjectCategory" />
 
         <View
             android:layout_width="match_parent"

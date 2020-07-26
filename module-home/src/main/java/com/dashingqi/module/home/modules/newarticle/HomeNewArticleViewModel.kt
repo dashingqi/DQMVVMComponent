@@ -57,7 +57,12 @@ class HomeNewArticleViewModel(application: Application) : BasePageViewModel<Comm
         return object : OnItemClickListener<CommonArticleResponse> {
             override fun onItemClick(item: CommonArticleResponse) {
                 var callBack = LiveDataCallback<BaseResponse>(baseLiveData)
-                ARouter.getInstance().navigation(CollectService::class.java).performCollectArticle(item.id.toString(), callBack, item.fresh)
+                        .bindLoading()
+                        .doOnResponseSuccess { _, _ ->
+                            item.collect = !item.collect
+                            item.isCollectFiledMethod()
+                        }
+                ARouter.getInstance().navigation(CollectService::class.java).performCollectArticle(item.id.toString(), callBack, item.collect)
             }
         }
     }
