@@ -8,4 +8,19 @@ import com.alibaba.android.arouter.facade.template.IProvider
  * desc :
  */
 interface UserService : IProvider {
+
+    /**
+     *
+     */
+    fun setToken(token:String)
+
+    /**
+     * 获取到Token
+     */
+    fun getToken(): String?
+
+    /**
+     * 保存用户数据
+     */
+    fun setUserData(userBean: UserBean)
 }

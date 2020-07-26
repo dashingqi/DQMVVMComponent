@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.dashingqi.module.login.LoginViewModel" />
+            type="com.dashingqi.module.login.modules.LoginViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.dashingqi.module.login.LoginActivity">
+        tools:context="com.dashingqi.module.login.modules.LoginActivity">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/lineLeft"

@@ -7,6 +7,7 @@ import com.dashingqi.base.providers.network.IServiceProvider
 import com.dashingqi.base.providers.params.IGlobalParams
 import com.dashingqi.network.interceptor.LogInterceptor
 import com.dashingqi.network.interceptor.ParamsInterceptor
+import com.dashingqi.network.interceptor.ResponseHeaderInterceptor
 import okhttp3.logging.HttpLoggingInterceptor
 
 /**
@@ -18,7 +19,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 class ServiceCreateProvider : IServiceProvider {
 
     private val serviceController by lazy {
-        //TODO 需要通过ARouter拿到BaseUrl
        val baseUrl =  ARouter.getInstance().navigation(IGlobalParams::class.java).getBaseUrl()
         createServiceController(baseUrl)
     }
@@ -44,6 +44,7 @@ class ServiceCreateProvider : IServiceProvider {
                     //添加打印拦截器
                     it.addInterceptor(HttpLoggingInterceptor(LogInterceptor())
                             .setLevel(HttpLoggingInterceptor.Level.BODY))
+                    it.addInterceptor(ResponseHeaderInterceptor())
 
                     //失败重联
                     it.retryOnConnectionFailure(true)

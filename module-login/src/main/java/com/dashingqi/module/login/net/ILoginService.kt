@@ -20,7 +20,7 @@ interface ILoginService {
      */
     @FormUrlEncoded
     @POST("/user/login")
-    fun login(@Field("username") userName: String, @Field("password") password: String): Call<BaseResponse>
+    fun login(@Field("username") userName: String, @Field("password") password: String): Call<LoginResponse>
 
     /**
      * 注册接口

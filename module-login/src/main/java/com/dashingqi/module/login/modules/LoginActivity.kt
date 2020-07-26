@@ -1,14 +1,11 @@
-package com.dashingqi.module.login
+package com.dashingqi.module.login.modules
 
-import android.app.Application
 import android.graphics.Color
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.activity.BaseMVVMActivity
-import com.dashingqi.base.base.viewmodel.ParamViewModelFactory
 import com.dashingqi.base.route.RoutePath
 import com.dashingqi.module.login.databinding.LoginActivityLoginBinding
 

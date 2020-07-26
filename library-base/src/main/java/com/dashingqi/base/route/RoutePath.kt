@@ -92,4 +92,9 @@ object RoutePath {
         const val SHARE_SERVICE = "${MAIN}/shareService"
     }
 
+    object User{
+        private const val MAIN = "/user"
+        const val USER_SERVICE = "${MAIN}/service"
+    }
+
 }
