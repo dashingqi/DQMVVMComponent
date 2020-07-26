@@ -35,9 +35,10 @@ abstract class BaseParamsInterceptor : Interceptor {
                 newFormBody = body
             }
             newBuilder.method(request.method, newFormBody)
-            getAddHeaderParams().forEach {
-                newBuilder.addHeader(it.key, it.value)
-            }
+        }
+
+        getAddHeaderParams().forEach {
+            newBuilder.addHeader(it.key, it.value)
         }
         return chain.proceed(newBuilder.build())
     }

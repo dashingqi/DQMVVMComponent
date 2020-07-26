@@ -123,4 +123,8 @@ class DQMMKV : IKV {
         var strValue = getString(key)
         return serializationService.parseObject(strValue, cla)
     }
+
+    override fun clear(keyName: String) {
+        mmkv.remove(keyName)
+    }
 }

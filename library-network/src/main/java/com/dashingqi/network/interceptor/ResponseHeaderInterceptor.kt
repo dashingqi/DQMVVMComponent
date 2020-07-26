@@ -24,8 +24,6 @@ class ResponseHeaderInterceptor : Interceptor {
                 var cookies = response.headers("set-cookie")
                 var cookiesStr = handleCookies(cookies)
                 ARouter.getInstance().navigation(UserService::class.java).setToken(cookiesStr)
-                var token = ARouter.getInstance().navigation(UserService::class.java).getToken()
-                Logger.d("token ---> $token")
             }
         }
 

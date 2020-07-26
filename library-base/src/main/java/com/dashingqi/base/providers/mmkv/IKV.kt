@@ -111,4 +111,9 @@ interface IKV {
      * 指定类型
      */
     fun <T> getObject(key: String, cla: Type?): T
+
+    /**
+     * 删除指定key对应的value
+     */
+    fun clear(keyName:String)
 }

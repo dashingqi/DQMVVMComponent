@@ -12,15 +12,20 @@ interface UserService : IProvider {
     /**
      *
      */
-    fun setToken(token:String)
+    fun setToken(token: String)
 
     /**
      * 获取到Token
      */
-    fun getToken(): String?
+    fun getToken(): String
 
     /**
      * 保存用户数据
      */
     fun setUserData(userBean: UserBean)
+
+    /**
+     * 清除数据
+     */
+    fun clearData()
 }
