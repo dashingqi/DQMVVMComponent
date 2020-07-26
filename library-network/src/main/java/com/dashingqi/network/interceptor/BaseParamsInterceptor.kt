@@ -27,7 +27,7 @@ abstract class BaseParamsInterceptor : Interceptor {
                 params = LinkedHashMap<String, String>()
                 var formBody = body as FormBody
                 for (i in 0 until formBody.size) {
-                    params[formBody.name(i)] == formBody.value(i)
+                    params[formBody.name(i)] = formBody.value(i)
                 }
                 var buildNewBodyWithParams = buildNewBodyWithParams(params)
                 newFormBody = buildNewBodyWithParams

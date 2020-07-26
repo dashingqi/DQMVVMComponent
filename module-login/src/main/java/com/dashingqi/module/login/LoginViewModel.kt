@@ -5,6 +5,7 @@ import androidx.databinding.ObservableField
 import com.dashingqi.base.base.callback.LiveDataCallback
 import com.dashingqi.base.base.response.BaseResponse
 import com.dashingqi.base.base.viewmodel.BaseViewModel
+import com.dashingqi.base.utils.toast
 import com.dashingqi.module.login.net.ILoginService
 import com.orhanobut.logger.Logger
 
@@ -18,27 +19,36 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
     /**
      * 用户名
      */
-    var userNameField = ObservableField<String>()
+    val userNameField = ObservableField<String>()
 
     /**
      * 密码
      */
-    var passwordField = ObservableField<String>()
+    val passwordField = ObservableField<String>()
 
     fun loginAction() {
-
+        Logger.d("userName -->${userNameField.get()}")
+        Logger.d("password ---> ${passwordField.get()}")
         if (userNameField.get().isNullOrEmpty()) {
+            toast("请输入用户名")
             return
         }
 
         if (passwordField.get().isNullOrEmpty()) {
+            toast("请输入密码")
             return
         }
 
-        ILoginService.instance.login(userNameField.get().toString(), passwordField.get().toString()).enqueue(LiveDataCallback<BaseResponse>(baseLiveData)
+        ILoginService.instance.login(userNameField.get()!!, passwordField.get()!!).enqueue(LiveDataCallback<BaseResponse>(baseLiveData)
                 .bindLoading()
                 .doOnResponseSuccess { _, response ->
 
-                })
+                }
+                .doOnResponseCodeError { call, response ->
+                    toast(response.errorMsg)
+                }
+
+        )
+
     }
 }

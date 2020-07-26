@@ -15,6 +15,7 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter
  */
 class BaseApplication : IApplicationProvider {
     override fun init(application: Application) {
+        instance = application
 
     }
 
@@ -56,5 +57,9 @@ class BaseApplication : IApplicationProvider {
         DQStateLayout.setDefaultLoadLayout(R.layout.base_common_state_load_layout)
         DQStateLayout.setDefaultErrorLayout(R.layout.base_common_state_error_layout)
         DQStateLayout.setDefaultEmptyLayout(R.layout.base_common_state_empty_layout)
+    }
+
+    companion object {
+        lateinit var instance: Application
     }
 }
