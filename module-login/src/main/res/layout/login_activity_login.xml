@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.dashingqi.module.login.LoginViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,6 +60,7 @@
                 android:hint="用户名"
                 android:inputType="textWebEditText"
                 android:maxLines="1"
+                android:text="@={viewModel.userNameField}"
                 app:oet_delEnabled="true" />
 
 
@@ -79,6 +84,7 @@
                 android:inputType="textPassword"
                 android:maxLength="12"
                 android:maxLines="1"
+                android:text="@={viewModel.passwordField}"
                 app:oet_maskEnabled="true" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -93,6 +99,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="48dp"
             android:gravity="center"
+            android:onClick="@{()->viewModel.loginAction()}"
             android:paddingVertical="8dp"
             android:text="登录"
             android:textColor="#ffffff"
