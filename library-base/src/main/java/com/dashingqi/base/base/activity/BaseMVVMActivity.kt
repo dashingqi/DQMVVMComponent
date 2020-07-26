@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.dashingqi.base.base.observer.BaseLiveDataObserver
 import com.dashingqi.library_base.BR
 import com.dashingqi.base.base.viewmodel.BaseViewModel
 import com.dashingqi.base.ext.getDbClass
@@ -21,6 +22,7 @@ import com.dashingqi.base.ext.getVmClass
 abstract class BaseMVVMActivity<DB : ViewDataBinding, VM : BaseViewModel> : BaseActivity() {
     lateinit var dataBinding: DB
     lateinit var viewModel: VM
+    lateinit var mBaseLiveDataObserver: BaseLiveDataObserver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +30,7 @@ abstract class BaseMVVMActivity<DB : ViewDataBinding, VM : BaseViewModel> : Base
         viewModel = createViewModel()
         dataBinding.setVariable(getVariableId(), viewModel)
         dataBinding.lifecycleOwner = this
-
+        mBaseLiveDataObserver = viewModel.baseLiveData.attach(this, this)
     }
 
     /**

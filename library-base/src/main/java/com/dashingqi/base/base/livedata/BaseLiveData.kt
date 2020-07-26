@@ -1,8 +1,13 @@
 package com.dashingqi.base.base.livedata
 
+import android.app.Activity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.facade.Postcard
 import com.dashingqi.base.base.callback.CallOwner
+import com.dashingqi.base.base.observer.BaseLiveDataObserver
 import com.dashingqi.base.constant.SmartRefreshEvent
 import com.dashingqi.base.widget.state.IStateLayout
 import com.orhanobut.logger.Logger
@@ -29,8 +34,11 @@ class BaseLiveData {
         LostMutableLiveData<String>()
     }
 
-    val showLoading by lazy {
-        MutableLiveData<MutableList<CallOwner>>()
+    /**
+     * 控制显示加载框
+     */
+     val showLoading by lazy {
+        MutableLiveData<MutableList<Cancelable>>()
     }
 
     val smartRefresh by lazy {
@@ -117,16 +125,36 @@ class BaseLiveData {
     /**
      * 通知开始弹出加载框
      */
-    fun showLoading() {
+    fun showLoading(cancelable: Cancelable) {
         Logger.d("showLoading ----> transform")
+        ThreadUtil.runOnUiThread(Runnable {
+            var value = showLoading.value
+            if (value == null) {
+                value = ArrayList<Cancelable>()
+                value.add(cancelable)
+            } else {
+                value.add(cancelable)
+            }
+            showLoading.value = value
+        })
 
     }
 
     /**
      * 通知隐藏加载框
      */
-    fun hideLoading() {
+    fun hideLoading(cancelable: Cancelable) {
         Logger.d("hideLoading -----> transform")
+        ThreadUtil.runOnUiThread(Runnable {
+            var value = showLoading.value
+            if (value == null) {
+                value = ArrayList()
+            } else {
+                value.remove(cancelable)
+            }
+
+            showLoading.value = value
+        })
     }
 
     /**
@@ -145,7 +173,22 @@ class BaseLiveData {
         smartLoadMore.postValue(SmartRefreshEvent.SMART_REFRESH_LAYOUT_LOAD_MORE_FINISH_AND_NO_MORE)
     }
 
-    fun finish(){
+    fun attach(owner: LifecycleOwner, activity: Activity): BaseLiveDataObserver {
+        return BaseLiveDataObserver(this, owner, activity)
+    }
 
+    fun attach(activity: AppCompatActivity): BaseLiveDataObserver {
+        return BaseLiveDataObserver(this, activity, activity)
+    }
+
+    fun attach(fragment: Fragment): BaseLiveDataObserver {
+        return BaseLiveDataObserver(this, fragment)
+    }
+
+    /**
+     * 通知当前的Activity结束
+     */
+    fun finish() {
+        finishLiveData.postValue(Activity.RESULT_CANCELED)
     }
 }

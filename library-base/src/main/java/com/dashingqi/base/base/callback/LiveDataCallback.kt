@@ -1,7 +1,9 @@
 package com.dashingqi.base.base.callback
 
+import androidx.lifecycle.LiveData
 import com.dashingqi.base.base.response.IResponse
 import com.dashingqi.base.base.livedata.BaseLiveData
+import com.dashingqi.base.base.livedata.Cancelable
 import com.orhanobut.logger.Logger
 import retrofit2.Call
 import retrofit2.Response
@@ -11,7 +13,7 @@ import retrofit2.Response
  * @time : 2020/5/15
  * desc :
  */
-class LiveDataCallback<T : IResponse> : BaseCallback<T> {
+class LiveDataCallback<T : IResponse> : BaseCallback<T>, Cancelable {
     /**
      * 用于记录是否调用了bindStateLayout
      */
@@ -51,7 +53,7 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
                 }
 
                 if (isBindLoading) {
-                    it.hideLoading()
+                    it.hideLoading(this)
                 }
             }
 
@@ -71,7 +73,7 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
                 }
 
                 if (isBindLoading) {
-                    it.hideLoading()
+                    it.hideLoading(this)
                 }
             }
         }
@@ -110,7 +112,11 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
 
     fun bindLoading(): LiveDataCallback<T> {
         Logger.d("bindLoading -----> transform")
-        baseLiveData?.showLoading()
+        return bindLoading(this)
+    }
+
+    private fun bindLoading(cancelable: Cancelable): LiveDataCallback<T> {
+        baseLiveData?.showLoading(cancelable)
         isBindLoading = true
         return this
     }
@@ -136,5 +142,9 @@ class LiveDataCallback<T : IResponse> : BaseCallback<T> {
 
     override fun doOnResponseCodeError(doOnResponseCodeError: (call: Call<T>, response: T) -> Unit): BaseCallback<T> {
         return super.doOnResponseCodeError(doOnResponseCodeError) as LiveDataCallback<T>
+    }
+
+    override fun cancel() {
+
     }
 }

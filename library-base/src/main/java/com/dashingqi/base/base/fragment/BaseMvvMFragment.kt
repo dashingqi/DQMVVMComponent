@@ -7,6 +7,7 @@ import androidx.annotation.CallSuper
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.dashingqi.base.base.observer.BaseLiveDataObserver
 import com.dashingqi.library_base.BR
 import com.dashingqi.base.base.viewmodel.BaseViewModel
 import com.dashingqi.base.ext.getDbClass
@@ -22,6 +23,8 @@ abstract class BaseMvvMFragment<DB : ViewDataBinding, VM : BaseViewModel> : Base
 
     lateinit var dataBinding: DB
     lateinit var viewModel: VM
+
+    lateinit var mBaseLiveDataObserver: BaseLiveDataObserver
 
 
     /**
@@ -40,6 +43,7 @@ abstract class BaseMvvMFragment<DB : ViewDataBinding, VM : BaseViewModel> : Base
         viewModel = createViewModel()
         dataBinding.lifecycleOwner = this
         dataBinding.setVariable(getVariableId(), viewModel)
+        mBaseLiveDataObserver = viewModel.baseLiveData.attach(this)
     }
 
     /**

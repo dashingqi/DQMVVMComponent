@@ -44,6 +44,7 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
                 .bindLoading()
                 .doOnResponseSuccess { _, response ->
 
+                    baseLiveData.finish()
                 }
                 .doOnResponseCodeError { call, response ->
                     toast(response.errorMsg)
