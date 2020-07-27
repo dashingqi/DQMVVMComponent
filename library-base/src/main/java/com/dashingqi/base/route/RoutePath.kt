@@ -26,6 +26,7 @@ object RoutePath {
         const val WIDGET_MATERIAL = "${MAIN}/material"
         const val WIDGET_BOTTOM_SHEET_DIALOG = "${MAIN}/bottom_sheet_dialog"
         const val WIDGET_EX_FRESH = "${MAIN}/ex_fresh"
+        const val WIDGET_BATTERY = "${MAIN}/battery"
 
         /**
          * 物流

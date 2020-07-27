@@ -3,7 +3,8 @@
     package="com.dashingqi.module.widget">
 
     <application>
-        <activity android:name=".dialog.WidgetLogisticsActivity"></activity>
+        <activity android:name=".customview.BatteryActivity"></activity>
+        <activity android:name=".dialog.WidgetLogisticsActivity" />
         <activity android:name=".material.WidgetCoorBottomActivity" />
         <activity android:name=".select.WidgetLetterViewActivity" />
         <activity
