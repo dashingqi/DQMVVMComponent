@@ -17,22 +17,13 @@ import com.dashingqi.library_base.R
 /**
  * @author : zhangqi
  * @time : 2020/5/13
- * desc : xml组件中的特殊用法
+ * desc : xml组件中的特殊用法（自定义属性）
  */
 object CommonBindingAdapter {
 
     /**
      * 自定义一个带有圆角的shape的View
      */
-    @JvmStatic
-    @BindingAdapter(value = ["dbBackgroundColor", "dbShapeRadius"], requireAll = true)
-    fun setBackgroundShape(view: View, color: Int, radius: Float) {
-        var drawable = GradientDrawable()
-        drawable.setColor(color)
-        drawable.cornerRadius = DensityUtils.dip2px(view.context, radius)
-        view.background = drawable
-    }
-
     @JvmStatic
     @BindingAdapter(value = ["dbBackgroundColor", "dbShapeRadius"], requireAll = true)
     fun setBackgroundShape(view: View, color: String, radius: Float) {

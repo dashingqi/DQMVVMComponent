@@ -7,10 +7,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        dbBackgroundColor='@{"66000000"}'
-        dbShapeRadius="@{6}"
         android:layout_width="70dp"
-        android:layout_height="70dp">
+        android:layout_height="70dp"
+        android:background="@drawable/base_shape_loading">
 
         <ProgressBar
             android:id="@+id/loadingDialogPb"
