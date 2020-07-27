@@ -124,6 +124,8 @@ dependencies {
         implementation project(':module-square')
         //收藏
         implementation project(':moudle-collect')
+        //测试
+        implementation project(':module-debug')
 
     }
 }

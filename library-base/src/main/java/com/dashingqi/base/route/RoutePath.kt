@@ -97,4 +97,9 @@ object RoutePath {
         const val USER_SERVICE = "${MAIN}/service"
     }
 
+    object Debug{
+        private const val MAIN = "/debug"
+        const val DEBUG_VIEW= "${MAIN}/debugView"
+    }
+
 }

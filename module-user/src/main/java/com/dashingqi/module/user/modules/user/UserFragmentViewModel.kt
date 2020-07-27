@@ -31,13 +31,14 @@ class UserFragmentViewModel(application: Application) : BaseViewModel(applicatio
     }
 
     private fun initData() {
+        items.add(UserItem("Debug View", RoutePath.Debug.DEBUG_VIEW))
         items.add(UserItem("可折叠标题栏", RoutePath.Widget.WIDGET_MATERIAL))
         items.add(UserItem("BottomSheetDialog", RoutePath.Widget.WIDGET_BOTTOM_SHEET_DIALOG))
         items.add(UserItem("Ex Fresh", RoutePath.Widget.WIDGET_EX_FRESH))
         items.add(UserItem("Letter View", RoutePath.Widget.WIDGET_LETTER_VIEW))
         items.add(UserItem("CoordinatorLayout Bottom", RoutePath.Widget.WIDGET_COOR_BOTTOM))
         items.add(UserItem("物流进度弹窗", RoutePath.Widget.WIDGET_LOGISTICS))
-        items.add(UserItem("二维码扫描",RoutePath.QrCode.QRCODE_HW))
+        items.add(UserItem("二维码扫描", RoutePath.QrCode.QRCODE_HW))
         items.add(UserItem("Material Design3", "/widget/material"))
         items.add(UserItem("Material Design4", "/widget/material"))
         items.add(UserItem("Material Design5", "/widget/material"))
