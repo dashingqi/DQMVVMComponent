@@ -1,4 +1,4 @@
-package com.dashingqi.module.widget.customview
+package com.dashingqi.module.widget.customview.battery
 
 import android.content.Context
 import android.graphics.*

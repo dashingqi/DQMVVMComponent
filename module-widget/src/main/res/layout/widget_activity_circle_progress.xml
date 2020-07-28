@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customview.battery.BatteryActivity">
+    android:background="#dddddd"
+    tools:context=".customview.circleprogress.CircleProgressActivity">
 
-    <com.dashingqi.module.widget.customview.battery.DQBatteryView
-        android:id="@+id/batteryView"
-        android:layout_width="300dp"
-        android:layout_height="400dp"
+
+    <com.dashingqi.module.widget.customview.circleprogress.DQCircleProgress
+        android:id="@+id/circleProgress"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

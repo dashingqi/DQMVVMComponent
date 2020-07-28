@@ -11,11 +11,13 @@ import com.dashingqi.module.debug.data.DebugItemData
  * @time : 2020/7/27
  * desc :
  */
-class DebugViewModel(application: Application):BasePageViewModel<DebugItemData>(application) {
+class DebugViewModel(application: Application) : BasePageViewModel<DebugItemData>(application) {
 
     init {
-        items.add(DebugItemData("自定义电池",RoutePath.Widget.WIDGET_BATTERY))
+        items.add(DebugItemData("自定义电池", RoutePath.Widget.WIDGET_BATTERY))
+        items.add(DebugItemData("自定义圆环进度", RoutePath.Widget.WIDGET_CIRCLE_PROGRESS))
     }
+
     override fun requestData(page: Int) {
         TODO("Not yet implemented")
     }

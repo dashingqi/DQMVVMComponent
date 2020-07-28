@@ -27,6 +27,7 @@ object RoutePath {
         const val WIDGET_BOTTOM_SHEET_DIALOG = "${MAIN}/bottom_sheet_dialog"
         const val WIDGET_EX_FRESH = "${MAIN}/ex_fresh"
         const val WIDGET_BATTERY = "${MAIN}/battery"
+        const val WIDGET_CIRCLE_PROGRESS = "${MAIN}/circleProgress"
 
         /**
          * 物流
@@ -93,14 +94,14 @@ object RoutePath {
         const val SHARE_SERVICE = "${MAIN}/shareService"
     }
 
-    object User{
+    object User {
         private const val MAIN = "/user"
         const val USER_SERVICE = "${MAIN}/service"
     }
 
-    object Debug{
+    object Debug {
         private const val MAIN = "/debug"
-        const val DEBUG_VIEW= "${MAIN}/debugView"
+        const val DEBUG_VIEW = "${MAIN}/debugView"
     }
 
 }
