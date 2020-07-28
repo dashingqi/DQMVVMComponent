@@ -18,7 +18,7 @@ class CircleProgressActivity : AppCompatActivity() {
     var handler: Handler = object : Handler() {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
-            if (flowValue == 200) {
+            if (flowValue == 100) {
                 removeMessages(0)
             } else {
                 flowValue++
