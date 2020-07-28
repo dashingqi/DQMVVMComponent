@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import com.dashingqi.base.utils.DensityUtils
+import com.orhanobut.logger.Logger
 import java.util.jar.Attributes
 
 /**
@@ -28,6 +29,8 @@ class DQBatteryView : View {
     lateinit var batteryBorderPaint: Paint
     lateinit var borderPath: Path
 
+    lateinit var batteryHeaderPath: Path
+
     /**
      * 绘制电池能量的画笔
      */
@@ -36,6 +39,9 @@ class DQBatteryView : View {
     private val batteryBorderWidth = 12f
 
     var batteryPowerValue: Int = 0
+
+    var headerHeight = DensityUtils.dip2px(context, 40f)
+    var headerWidth = DensityUtils.dip2px(context, 70f)
 
 
     constructor(context: Context) : super(context)
@@ -51,10 +57,11 @@ class DQBatteryView : View {
 
     private fun initBorderPaint() {
         borderPath = Path()
+        batteryHeaderPath = Path()
         //设置边框的画笔
         batteryBorderPaint = Paint()
         //设置画笔颜色
-        batteryBorderPaint.color = Color.RED
+        batteryBorderPaint.color = Color.WHITE
         //设置画笔抗锯齿
         batteryBorderPaint.isAntiAlias = true
         //设置边框的粗细
@@ -107,11 +114,10 @@ class DQBatteryView : View {
      * 画电池的边框
      */
     private fun drawBatteryBorder(canvas: Canvas?) {
-        var headerHeight = DensityUtils.dip2px(context, 35f)
-        var headerWidth = DensityUtils.dip2px(context, 70f)
+
         var shoulderWidth = (measuredWidth - headerWidth) / 2
         borderPath.moveTo(measuredWidth.toFloat(), measuredHeight.toFloat())
-        borderPath.lineTo(0F, measuredHeight.toFloat())
+        borderPath.lineTo(0f, measuredHeight.toFloat())
         borderPath.lineTo(0f, headerHeight)
         borderPath.lineTo(shoulderWidth, headerHeight)
         borderPath.lineTo(shoulderWidth, 0f)
@@ -126,9 +132,11 @@ class DQBatteryView : View {
      * 画电池的电量
      */
     private fun drawBatteryPower(canvas: Canvas?) {
-        var topValue = measuredHeight * (1F - (batteryPowerValue / 100F))
-        Log.d("topValue ---> ", "$topValue")
-        var batteryRectF = RectF(batteryBorderWidth, topValue.toInt() * 0.9F, (measuredWidth - batteryBorderWidth), (measuredHeight - batteryBorderWidth))
+        var value1 = (1 - batteryPowerValue / 100F) * 0.9f
+        Logger.d("value1 ----> $value1")
+
+
+        var batteryRectF = Rect(batteryBorderWidth.toInt(), (measuredHeight * value1+headerHeight).toInt(), (measuredWidth - batteryBorderWidth).toInt(), (measuredHeight - batteryBorderWidth).toInt())
         var top = batteryRectF.top
         Log.d("top---> ", "$top")
         canvas?.drawRect(batteryRectF, batteryPowerPaint)
