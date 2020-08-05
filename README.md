@@ -110,4 +110,14 @@
 - [ARouter源码分析-降级策略](https://www.jianshu.com/p/8ada64425e1d)
 - [ARouter源码分析-依赖注入](https://www.jianshu.com/p/de2d4f386e9a)
 
+#### Lifecycle使用与分析
+- [Lifecycle使用篇](https://www.jianshu.com/p/61a13156c19c)
+- [Lifecycle原理篇](https://www.jianshu.com/p/06c8ba0a1263)
+
+#### ViewModel分析
+- [ViewModel原理篇](https://www.jianshu.com/p/e2cc680d5829)
+
+#### LiveData使用与分析
+- [LiveData使用篇](https://www.jianshu.com/p/0b89514d5a4c)
+- [LiveData原理篇](https://www.jianshu.com/p/d8c0825c339d)
 
