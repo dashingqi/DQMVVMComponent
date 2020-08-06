@@ -1,5 +1,6 @@
 package com.dashingqi.network.interceptor
 
+import com.dashingqi.dqlog.DQLog
 import com.orhanobut.logger.Logger
 import okhttp3.logging.HttpLoggingInterceptor
 
@@ -11,10 +12,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 class LogInterceptor : HttpLoggingInterceptor.Logger {
     override fun log(message: String) {
         if (message.isEmpty()) {
-            Logger.e("net-component-http", "response is null")
+            DQLog.eJson("net-component-http", "response is null")
         } else {
-            Logger.d(message)
-            //Logger.json(message)
+            DQLog.eJson("net-component-http", message)
         }
     }
 }

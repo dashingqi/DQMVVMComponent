@@ -63,6 +63,8 @@ ext {
             'zxing'                                : 'com.google.zxing:core:3.4.0',
             'hms-scanplus'                         : 'com.huawei.hms:scanplus:1.1.1.301',
             "wx-pay"                               : 'com.dashingqi:wxpay:0.9.9.4',
-            "ali-pay"                              : 'com.dashingqi:alipay:0.9.9.4'
+            "ali-pay"                              : 'com.dashingqi:alipay:0.9.9.4',
+            "dq-log"                               : "com.dashingqi:dqlog:0.9.9.1"
+
     ]
 }

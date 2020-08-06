@@ -18,14 +18,15 @@ class AppApplication : Application() {
 
     init {
         //初始化打印
-        initLog()
+        //initLog()
         ApplicationController.init(this, true)
     }
 
     override fun onCreate() {
         super.onCreate()
-        ApplicationController.transformOnCreate()
         initARouter()
+        ApplicationController.transformOnCreate()
+
 
     }
 
