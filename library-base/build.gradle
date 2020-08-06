@@ -79,6 +79,8 @@ dependencies {
     api rootProject.ext.dependencies["roundImageView"]
     api rootProject.ext.dependencies["edit-text-layout"]
     api rootProject.ext.dependencies["utilcodex"]
+    api rootProject.ext.dependencies["wx-pay"]
+    api rootProject.ext.dependencies["ali-pay"]
 
     implementation project(":library-res")
 

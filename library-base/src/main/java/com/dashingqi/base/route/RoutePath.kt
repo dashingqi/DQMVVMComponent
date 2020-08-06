@@ -104,4 +104,11 @@ object RoutePath {
         const val DEBUG_VIEW = "${MAIN}/debugView"
     }
 
+    object Pay{
+        private const val MAIN = "/pay"
+        const val PAY_SERVICE = "${MAIN}/service"
+
+        const val PAY_TEST_ACTIVITY = "${MAIN}/payTestActivity"
+    }
+
 }

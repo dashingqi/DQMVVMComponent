@@ -1,3 +1,4 @@
+include ':module-pay'
 include ':module-debug'
 include ':module-share'
 include ':moudle-collect'
