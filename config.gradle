@@ -62,7 +62,7 @@ ext {
             "utilcodex"                            : "com.blankj:utilcodex:1.29.0",
             'zxing'                                : 'com.google.zxing:core:3.4.0',
             'hms-scanplus'                         : 'com.huawei.hms:scanplus:1.1.1.301',
-            "wx-pay"                               : 'com.dashingqi:wxpay:0.9.9.3',
-            "ali-pay"                              : 'com.dashingqi:alipay:0.9.9.3'
+            "wx-pay"                               : 'com.dashingqi:wxpay:0.9.9.4',
+            "ali-pay"                              : 'com.dashingqi:alipay:0.9.9.4'
     ]
 }

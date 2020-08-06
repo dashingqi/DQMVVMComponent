@@ -31,6 +31,8 @@ class PayTestActivity : AppCompatActivity() {
         }
 
 
+        // println( " ======> ${method(1, null)}")
+
     }
 
 
@@ -80,5 +82,9 @@ class PayTestActivity : AppCompatActivity() {
         }
 
         ARouter.getInstance().navigation(PayService::class.java).performAliPay(AliPay(), this, aliPayBean, aliPayCallback)
+    }
+
+    private fun method(a: Int?, b: Int?): Int? {
+        return a?.minus(b!!) ?: null
     }
 }
