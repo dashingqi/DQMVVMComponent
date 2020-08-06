@@ -3,7 +3,12 @@
     package="com.dashingqi.module.pay">
 
     <application>
-        <activity android:name=".modules.PayTestActivity"></activity>
+        <activity android:name=".modules.PayTestActivity"/>
+        <activity
+            android:name="com.dashingqi.mvvmcomponent.wxapi.WXPayEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>
