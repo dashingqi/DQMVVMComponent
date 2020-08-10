@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/res_colorWhite"
+        android:onClick="@{()-> itemClick.onItemClick(item)}"
+        android:paddingTop="16dp">
+
+        <CheckBox
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="16dp"
+            android:background="@null"
+            android:button="@null"
+            android:checked="@={item.isCollectFiledMethod()}"
+            android:drawableEnd="@drawable/res_selector_check"
+            android:onClick="@{()->onCollectClickListener.onItemClick(item)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvArticleCategory"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvArticleContent"
+            app:layout_constraintTop_toTopOf="@+id/tvArticleCategory" />
+
+        <TextView
+            android:id="@+id/tvArticleAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="@{item.author}"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/tag"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tag"
+            tools:text="仍物线" />
+
+        <TextView
+            android:id="@+id/tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/res_shape_border_2_"
+            android:gravity="center"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="2dp"
+            android:text="@{ViewShowController.INSTANCE.getTagOne(item)}"
+            android:textColor="@color/res_colorPrimary"
+            android:textSize="10sp"
+            android:visibility="@{ViewShowController.INSTANCE.isShowTagOne(item)}"
+            app:layout_constraintLeft_toRightOf="@+id/tvArticleAuthor"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="本站发布" />
+
+        <TextView
+            android:id="@+id/tvArticlePubTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:text="@{item.niceDate}"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvArticleAuthor"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvArticleAuthor"
+            tools:text="刚刚" />
+
+        <TextView
+            android:id="@+id/tvArticleContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{item.titleText}"
+            android:textColor="@color/res_colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@+id/tvArticleAuthor"
+            app:layout_constraintRight_toRightOf="@+id/tvArticlePubTime"
+            app:layout_constraintTop_toBottomOf="@+id/tvArticleAuthor"
+            tools:text="Kotlin的Lambda，大部分人学得连皮毛都不算" />
+
+        <TextView
+            android:id="@+id/tvArticleCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text='@{item.categoryName}'
+            android:textColor="@color/res_colorPrimary"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@+id/tvArticleContent"
+            app:layout_constraintTop_toBottomOf="@+id/tvArticleContent"
+            tools:text="干货资源 / 干货资源" />
+
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_marginTop="16dp"
+            android:background="#f2f2f2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvArticleCategory" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <import type="com.dashingqi.library.service.providers.common.ViewShowController.ViewShowController" />
+
+        <variable
+            name="onCollectClickListener"
+            type="com.dashingqi.base.utils.OnItemClickListener" />
+
+        <variable
+            name="item"
+            type="com.dashingqi.library.service.providers.common.response.CommonArticleResponse" />
+
+        <variable
+            name="itemClick"
+            type="com.dashingqi.base.utils.OnItemClickListener" />
+
+    </data>
+</layout>

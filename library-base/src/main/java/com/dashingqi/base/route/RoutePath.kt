@@ -52,6 +52,12 @@ object RoutePath {
          * 最新项目
          */
         const val NEW_PROJECT = "${MAIN}/newProject"
+
+        /**
+         * 每日一问
+         */
+
+        const val WEN_DA = "${MAIN}/wenDa"
     }
 
 

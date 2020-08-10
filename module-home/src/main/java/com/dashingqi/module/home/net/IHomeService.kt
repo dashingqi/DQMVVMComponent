@@ -38,6 +38,13 @@ interface IHomeService {
     fun homeSearch(@Path("page") pageNo: Int, @Query("k") key: String): Call<HomeArticleListResponse>
 
 
+    /**
+     * 每日一问
+     */
+    @GET("/wenda/list/{pageId}/json ")
+    fun getWenDa(@Path("pageId")pageNo:Int):Call<HomeWenDaListResponse>
+
+
     companion object {
         var instance = ARouter.getInstance().navigation(IServiceProvider::class.java).createService(IHomeService::class.java)
     }
