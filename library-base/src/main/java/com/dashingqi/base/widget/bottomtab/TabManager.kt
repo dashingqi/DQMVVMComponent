@@ -22,10 +22,10 @@ object TabManager {
     @JvmStatic
     fun register(tabProvider: BottomTabProvider) {
         var bottomBarItemBean: BottomBarItemBean = tabProvider.getBottomBarItemBean() ?: return
+        tabs.add(bottomBarItemBean)
         Collections.sort(tabs, java.util.Comparator { o1, o2 ->
             o2?.priorityLD?.value?.minus((o1?.priorityLD?.value)!!)!!
         })
-        tabs.add(bottomBarItemBean)
         liveData.postValue(tabs)
 
     }

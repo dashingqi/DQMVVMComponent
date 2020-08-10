@@ -12,7 +12,7 @@ class UserTab : BottomTabProvider {
     override fun getBottomBarItemBean(): BottomBarItemBean {
         return BottomBarItemBean(
                 "我的",
-                40,
+                20,
                 "/user/user_fragment",
                 R.drawable.user_icon_selected,
                 R.drawable.user_icon_default,
