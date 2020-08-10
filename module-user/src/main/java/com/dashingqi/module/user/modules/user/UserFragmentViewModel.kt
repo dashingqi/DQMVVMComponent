@@ -31,31 +31,16 @@ class UserFragmentViewModel(application: Application) : BaseViewModel(applicatio
     }
 
     private fun initData() {
+        items.add(UserItem("我的收藏",""))
+        items.add(UserItem("我的文章",""))
+        items.add(UserItem("TODO",""))
+        items.add(UserItem("系统设置",""))
         items.add(UserItem("Debug View", RoutePath.Debug.DEBUG_VIEW))
-        items.add(UserItem("可折叠标题栏", RoutePath.Widget.WIDGET_MATERIAL))
-        items.add(UserItem("BottomSheetDialog", RoutePath.Widget.WIDGET_BOTTOM_SHEET_DIALOG))
-        items.add(UserItem("Ex Fresh", RoutePath.Widget.WIDGET_EX_FRESH))
-        items.add(UserItem("Letter View", RoutePath.Widget.WIDGET_LETTER_VIEW))
-        items.add(UserItem("CoordinatorLayout Bottom", RoutePath.Widget.WIDGET_COOR_BOTTOM))
-        items.add(UserItem("物流进度弹窗", RoutePath.Widget.WIDGET_LOGISTICS))
-        items.add(UserItem("二维码扫描", RoutePath.QrCode.QRCODE_HW))
-        items.add(UserItem("Material Design3", "/widget/material"))
-        items.add(UserItem("Material Design4", "/widget/material"))
-        items.add(UserItem("Material Design5", "/widget/material"))
-        items.add(UserItem("Material Design3", "/widget/material"))
-        items.add(UserItem("Material Design4", "/widget/material"))
-        items.add(UserItem("Material Design5", "/widget/material"))
-        items.add(UserItem("Material Design3", "/widget/material"))
-        items.add(UserItem("Material Design4", "/widget/material"))
-        items.add(UserItem("Material Design5", "/widget/material"))
-        items.add(UserItem("Material Design3", "/widget/material"))
-        items.add(UserItem("Material Design4", "/widget/material"))
-        items.add(UserItem("Material Design5", "/widget/material"))
 
         labelItems.add("自由可撩")
         labelItems.add("北京")
         labelItems.add("互联网技术")
-        labelItems.add("辽宁工业大学")
+        labelItems.add("大连海事大学")
         labelItems.add("正大集团")
     }
 
