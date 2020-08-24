@@ -3,55 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="onItemClick"
-            type="com.dashingqi.base.utils.OnItemClickListener" />
-
-        <variable
-            name="onCollectArticleClickListener"
-            type="com.dashingqi.base.utils.OnItemClickListener" />
-
-        <variable
-            name="item"
-            type="com.dashingqi.library.service.providers.common.response.CommonArticleResponse" />
-
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        dbBackgroundColor='@{"#ffffff"}'
+        dbShapeRadius="@{6}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/res_colorWhite"
         android:onClick="@{()->onItemClick.onItemClick(item)}"
-        android:paddingTop="16dp">
+        android:paddingVertical="16dp">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/line1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="16dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/line2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="16dp" />
-
-        <TextView
-            android:id="@+id/tvWxArticleAuthor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="@{item.author}"
-            android:textColor="@color/res_colorBlack66"
-            android:textSize="14sp"
-            app:layout_constraintLeft_toLeftOf="@+id/line1"
-            app:layout_constraintRight_toLeftOf="@+id/tvWxArticlePubTime"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="DashingQi" />
+        <CheckBox
+            android:id="@+id/tvWxArticleLike"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@null"
+            android:button="@null"
+            android:checked="@={item.isCollectFiledMethod()}"
+            android:drawableEnd="@drawable/res_selector_check"
+            android:onClick="@{()->onCollectArticleClickListener.onItemClick(item)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvWxArticleCategory"
+            app:layout_constraintRight_toRightOf="@id/line2"
+            app:layout_constraintTop_toTopOf="@+id/tvWxArticleCategory" />
 
         <TextView
             android:id="@+id/tvWxArticlePubTime"
@@ -95,26 +66,48 @@
             app:layout_constraintTop_toBottomOf="@+id/tvWxArticleTitle"
             tools:text="公众号 / DashingQi" />
 
-        <CheckBox
-            android:id="@+id/tvWxArticleLike"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@null"
-            android:button="@null"
-            android:drawableEnd="@drawable/res_selector_check"
-            android:checked="@={item.isCollectFiledMethod()}"
-            android:onClick="@{()->onCollectArticleClickListener.onItemClick(item)}"
-            app:layout_constraintBottom_toBottomOf="@+id/tvWxArticleCategory"
-            app:layout_constraintRight_toRightOf="@id/line2"
-            app:layout_constraintTop_toTopOf="@+id/tvWxArticleCategory" />
+        <TextView
+            android:id="@+id/tvWxArticleAuthor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="@{item.author}"
+            android:textColor="@color/res_colorBlack66"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@+id/line1"
+            app:layout_constraintRight_toLeftOf="@+id/tvWxArticlePubTime"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="DashingQi" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="6dp"
-            android:layout_marginTop="16dp"
-            android:background="#f2f2f2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvWxArticleCategory" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="onItemClick"
+            type="com.dashingqi.base.utils.OnItemClickListener" />
+
+        <variable
+            name="onCollectArticleClickListener"
+            type="com.dashingqi.base.utils.OnItemClickListener" />
+
+        <variable
+            name="item"
+            type="com.dashingqi.library.service.providers.common.response.CommonArticleResponse" />
+
+    </data>
 </layout>

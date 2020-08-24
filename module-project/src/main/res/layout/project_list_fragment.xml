@@ -28,6 +28,8 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:background="#f8f8f8"
+                    android:id="@+id/projectRV"
                     itemBinding="@{viewModel.itemBinding}"
                     items="@{viewModel.items}"
                     android:layout_width="match_parent"
