@@ -82,6 +82,8 @@ object RoutePath {
     object Collect {
         private const val MAIN = "/collect"
         const val COLLECT_SERVICE = "${MAIN}/service"
+
+        const val COLLECT_LIST = "${MAIN}/list"
     }
 
     /**
@@ -116,5 +118,7 @@ object RoutePath {
 
         const val PAY_TEST_ACTIVITY = "${MAIN}/payTestActivity"
     }
+
+
 
 }

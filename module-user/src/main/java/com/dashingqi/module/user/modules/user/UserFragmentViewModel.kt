@@ -31,7 +31,7 @@ class UserFragmentViewModel(application: Application) : BaseViewModel(applicatio
     }
 
     private fun initData() {
-        items.add(UserItem("我的收藏",""))
+        items.add(UserItem("我的收藏",RoutePath.Collect.COLLECT_LIST))
         items.add(UserItem("我的文章",""))
         items.add(UserItem("TODO",""))
         items.add(UserItem("系统设置",""))

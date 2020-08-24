@@ -3,7 +3,6 @@ package com.dashingqi.module.collect.app
 import android.content.Context
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.dashingqi.base.base.callback.BaseCallback
-import com.dashingqi.base.base.callback.LiveDataCallback
 import com.dashingqi.base.base.response.BaseResponse
 import com.dashingqi.base.route.RoutePath
 import com.dashingqi.library.service.providers.collect.CollectService
