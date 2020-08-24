@@ -40,7 +40,7 @@ class ProjectListFragmentViewModel(application: Application, var cid: Int) : Bas
     }
 
     override fun getItemLayoutId(): Int {
-        return R.layout.project_item_list
+        return R.layout.service_project_item_list
     }
 
     /**

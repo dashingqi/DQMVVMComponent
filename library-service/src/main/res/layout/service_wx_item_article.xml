@@ -99,7 +99,7 @@
 
         <variable
             name="onItemClick"
-            type="com.dashingqi.base.utils.OnItemClickListener" />
+            type="com.dashingqi.base.utils.OnItemClickListener"/>
 
         <variable
             name="onCollectArticleClickListener"

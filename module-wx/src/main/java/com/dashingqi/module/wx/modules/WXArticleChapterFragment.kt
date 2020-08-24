@@ -2,8 +2,6 @@ package com.dashingqi.module.wx.modules
 
 import android.app.Application
 import android.graphics.Rect
-import android.icu.lang.UCharacter.GraphemeClusterBreak.V
-import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -13,11 +11,8 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.fragment.BaseMvvMFragment
 import com.dashingqi.base.base.viewmodel.ParamViewModelFactory
 import com.dashingqi.base.utils.DensityUtils
-import com.dashingqi.module.wx.R
 import com.dashingqi.module.wx.databinding.WxArticleChapterFragmentBinding
-import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.wx_article_chapter_fragment.*
-import kotlinx.android.synthetic.main.wx_item_article.view.*
 
 /**
  * @author : zhangqi

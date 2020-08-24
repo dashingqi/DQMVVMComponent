@@ -42,7 +42,7 @@ class WXArticleChapterFragmentViewModel(application: Application, var id: Int) :
                 })
     }
 
-    override fun getItemLayoutId(): Int = R.layout.wx_item_article
+    override fun getItemLayoutId(): Int = R.layout.service_wx_item_article
 
     private fun onItemClickListener(): OnItemClickListener<CommonArticleResponse> {
         return object : OnItemClickListener<CommonArticleResponse> {

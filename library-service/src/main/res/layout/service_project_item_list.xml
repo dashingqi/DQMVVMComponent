@@ -10,7 +10,7 @@
         dbShapeRadius="@{6}"
         android:onClick="@{()-> onItemClick.onItemClick(item)}"
         android:paddingVertical="16dp"
-       >
+        >
 
         <CheckBox
             android:id="@+id/ivProjectLike"

@@ -1,6 +1,5 @@
 package com.dashingqi.project.modules
 
-import android.graphics.Color
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -9,7 +8,6 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.fragment.BaseMvvMFragment
 import com.dashingqi.library.service.providers.common.initcode.init
 import com.dashingqi.library.service.providers.common.initcode.initAndBindVP
-import com.dashingqi.project.R
 import com.dashingqi.project.databinding.ProjectFragmentBinding
 
 /**
