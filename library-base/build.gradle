@@ -82,6 +82,8 @@ dependencies {
     api rootProject.ext.dependencies["wx-pay"]
     api rootProject.ext.dependencies["ali-pay"]
     api rootProject.ext.dependencies["dq-log"]
+    api rootProject.ext.dependencies["dq-toolbar"]
+
 
     implementation project(":library-res")
 

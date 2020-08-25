@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         tools:context=".DebugViewActivity">
 
-        <com.dashingqi.base.widget.toolbar.CommonToolbar
+        <com.dashingqi.dqcommontoolbar.widget.CommonToolbar
             android:id="@+id/toolbar"
             leftText='@{"左标题"}'
             leftTextClickListener="@{()->viewModel.leftTextClickListener()}"
