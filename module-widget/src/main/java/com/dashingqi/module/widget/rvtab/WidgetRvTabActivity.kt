@@ -57,7 +57,7 @@ class WidgetRvTabActivity : BaseMVVMActivity<WidgetRvTabActivityBinding, WidgetR
         }
     }
 
-    override fun isImmersionEnable(): Boolean {
-        return false
+    override fun isFitsSystemWindows(): Boolean {
+        return true
     }
 }

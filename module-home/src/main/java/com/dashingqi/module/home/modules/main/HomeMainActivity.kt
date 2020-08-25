@@ -85,6 +85,7 @@ class HomeMainActivity : BaseMVVMActivity<HomeActivityMainBinding, HomeViewModel
         return Color.parseColor("#ffffffff")
     }
 
+
     private fun createTestObserver() {
         ARouter.getInstance().navigation(IEventBusProvider::class.java).with(EventBusPath.Test.TEST_PATH)
                 .observe(this) {

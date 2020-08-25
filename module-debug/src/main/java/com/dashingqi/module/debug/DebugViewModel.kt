@@ -4,6 +4,7 @@ import android.app.Application
 import com.dashingqi.base.base.viewmodel.BasePageViewModel
 import com.dashingqi.base.base.viewmodel.BaseViewModel
 import com.dashingqi.base.route.RoutePath
+import com.dashingqi.base.utils.toast
 import com.dashingqi.module.debug.data.DebugItemData
 
 /**
@@ -33,5 +34,13 @@ class DebugViewModel(application: Application) : BasePageViewModel<DebugItemData
 
     override fun getItemLayoutId(): Int {
         return R.layout.debug_item_view
+    }
+
+    fun rightTextClickListener() {
+        toast("点击了右标题")
+    }
+
+    fun leftTextClickListener() {
+        toast("点击了左标题")
     }
 }

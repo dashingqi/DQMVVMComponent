@@ -6,15 +6,30 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="48dp"
         tools:context=".DebugViewActivity">
+
+        <com.dashingqi.base.widget.toolbar.CommonToolbar
+            android:id="@+id/toolbar"
+            leftText='@{"左标题"}'
+            leftTextClickListener="@{()->viewModel.leftTextClickListener()}"
+            rightText='@{"右标题"}'
+            rightTextClickListener="@{()->viewModel.rightTextClickListener()}"
+            titleTextColorInt="@{Color.BLUE}"
+            titleTextSize="@{16}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:base_title="Debug View"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             itemBinding="@{viewModel.itemBinding}"
             items="@{viewModel.items}"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:layout_height="0dp"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -23,6 +38,8 @@
         <variable
             name="viewModel"
             type="com.dashingqi.module.debug.DebugViewModel" />
+
+        <import type="android.graphics.Color" />
 
     </data>
 </layout>

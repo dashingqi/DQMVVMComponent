@@ -18,6 +18,9 @@
 
         <!--   标题栏     -->
         <attr name="base_title" format="string" />
+        <attr name="base_title_size" format="float" />
+        <attr name="base_title_color" format="color" />
+
         <!--   左面的部分  -->
         <attr name="base_left_icon" format="reference" />
         <attr name="base_left_text" format="reference|string" />

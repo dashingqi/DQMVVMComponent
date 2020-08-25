@@ -15,4 +15,8 @@ class DebugViewActivity : BaseMVVMActivity<DebugActivityViewBinding, DebugViewMo
         super.onCreate(savedInstanceState)
     }
 
+    override fun isFitsSystemWindows(): Boolean {
+        return true
+    }
+
 }

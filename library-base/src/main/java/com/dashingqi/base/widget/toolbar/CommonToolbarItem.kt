@@ -1,6 +1,7 @@
 package com.dashingqi.base.widget.toolbar
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
@@ -26,6 +27,7 @@ class CommonToolbarItem : ConstraintLayout {
         var rootView = View.inflate(context, R.layout.base_common_toolbar_item_layout, this)
         mLeftIcon = rootView.leftIcon
         mRightIcon = rootView.rightIcon
+        mTitleText = rootView.title
     }
 
     constructor(context: Context) : super(context) {
@@ -48,6 +50,13 @@ class CommonToolbarItem : ConstraintLayout {
         return this
     }
 
+    fun setLeftTextClickListener(listener: OnClickListener): CommonToolbarItem {
+        mTitleText?.visibility = View.VISIBLE
+        mTitleText?.setOnClickListener(listener)
+        return this
+    }
+
+
     fun setRightIcon(rightDrawable: Drawable): CommonToolbarItem {
         mRightIcon?.visibility = View.VISIBLE
         mRightIcon?.setImageDrawable(rightDrawable)
@@ -60,11 +69,22 @@ class CommonToolbarItem : ConstraintLayout {
         return this
     }
 
+    fun setRightTextClickListener(listener: OnClickListener): CommonToolbarItem {
+        mTitleText?.visibility = View.VISIBLE
+        mTitleText?.setOnClickListener(listener)
+        return this
+    }
+
     fun setTitleText(title: CharSequence): CommonToolbarItem {
         mTitleText?.visibility = View.VISIBLE
         mTitleText?.text = title
         return this
+    }
 
+    fun setTitleTextColor(colorStr: String): CommonToolbarItem {
+        mTitleText?.visibility = View.VISIBLE
+        mTitleText?.setTextColor(Color.parseColor(colorStr))
+        return this
     }
 
 }

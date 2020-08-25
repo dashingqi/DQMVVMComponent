@@ -1,13 +1,15 @@
 package com.dashingqi.base.widget.toolbar
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.children
+import androidx.databinding.BindingAdapter
+import com.dashingqi.base.utils.DensityUtils
 import com.dashingqi.library_base.R
 import kotlinx.android.synthetic.main.base_common_toolbar_layout.view.*
 
@@ -17,6 +19,9 @@ import kotlinx.android.synthetic.main.base_common_toolbar_layout.view.*
  * desc : 通用的标题栏
  */
 class CommonToolbar : ConstraintLayout {
+
+    var paddingHorizontal = DensityUtils.dip2pxInt(context, 16f)
+    var paddingVertical = DensityUtils.dip2pxInt(context, 16f)
 
     private var mToolbarTitle: TextView? = null
     private var mLeftContainer: LinearLayout? = null
@@ -41,6 +46,7 @@ class CommonToolbar : ConstraintLayout {
     private fun initDefaultLeftLayout() {
         if (mLeftButtonLayout == null) {
             mLeftButtonLayout = getDefaultToolbarItem()
+            mLeftButtonLayout?.setPadding(paddingHorizontal, paddingVertical, 0, paddingVertical)
             //添加到布局中
             mLeftContainer?.addView(mLeftButtonLayout, mLeftContainer!!.childCount)
         }
@@ -48,9 +54,9 @@ class CommonToolbar : ConstraintLayout {
     }
 
     private fun initDefaultRightLayout() {
-
         if (mRightButtonLayout == null) {
             mRightButtonLayout = getDefaultToolbarItem()
+            mRightButtonLayout?.setPadding(0, paddingVertical, paddingHorizontal, paddingVertical)
             mRightContainer?.addView(mRightButtonLayout, mRightContainer!!.childCount)
         }
 
@@ -68,6 +74,9 @@ class CommonToolbar : ConstraintLayout {
 
         //设置标题
         obtainAttributeSet.getString(R.styleable.base_common_tool_bar_base_title)?.let { setTitleText(it) }
+        obtainAttributeSet.getFloat(R.styleable.base_common_tool_bar_base_title_size, 16f)?.let { setTitleTextSize(it) }
+        obtainAttributeSet.getColor(R.styleable.base_common_tool_bar_base_title_color, Color.BLACK)?.let { setTitleTextColor(it) }
+
 
         //设置左边布局
         if (obtainAttributeSet.hasValue(R.styleable.base_common_tool_bar_base_left_text)) {
@@ -83,7 +92,6 @@ class CommonToolbar : ConstraintLayout {
         }
 
         //设置右边布局
-
         if (obtainAttributeSet.hasValue(R.styleable.base_common_tool_bar_base_right_text)) {
             obtainAttributeSet.getString(R.styleable.base_common_tool_bar_base_right_text)?.let { setRightText(it) }
         } else {
@@ -99,35 +107,76 @@ class CommonToolbar : ConstraintLayout {
         }
 
         //设置右边布局
-
         obtainAttributeSet.recycle()
     }
 
     /**
      * 设置标题
      */
-    private fun setTitleText(charSequence: CharSequence): CommonToolbar {
+    fun setTitleText(charSequence: CharSequence): CommonToolbar {
         mToolbarTitle?.text = charSequence
         return this
     }
 
-    private fun setLeftText(charSequence: CharSequence): CommonToolbar {
+    fun setTitleTextSize(size: Float): CommonToolbar {
+        mToolbarTitle?.textSize = size
+        return this
+    }
+
+    fun setTitleTextColor(color: Int): CommonToolbar {
+        mToolbarTitle?.setTextColor(color)
+        return this
+    }
+
+    fun setTitleTextColor(colorStr: String): CommonToolbar {
+        mToolbarTitle?.setTextColor(Color.parseColor(colorStr))
+        return this
+    }
+
+    /**
+     * 设置左布局
+     */
+    fun setLeftText(charSequence: CharSequence): CommonToolbar {
         mLeftButtonLayout?.setTitleText(charSequence)
         return this
     }
 
-    private fun setLeftIcon(drawable: Drawable): CommonToolbar {
+    fun setLeftTextColor(colorStr: String): CommonToolbar {
+        mLeftButtonLayout?.setTitleTextColor(colorStr)
+        return this
+    }
+
+    fun setLeftIcon(drawable: Drawable): CommonToolbar {
         mLeftButtonLayout?.setLeftIcon(drawable)
         return this
     }
 
-    private fun setRightText(charSequence: CharSequence): CommonToolbar {
+    fun setLeftTextClickListener(listener: View.OnClickListener): CommonToolbar {
+        mLeftButtonLayout?.setLeftTextClickListener(listener)
+        return this
+    }
+
+
+    /**
+     * 设置右布局
+     */
+    fun setRightText(charSequence: CharSequence): CommonToolbar {
         mRightButtonLayout?.setTitleText(charSequence)
         return this
     }
 
-    private fun setRightIcon(drawable: Drawable): CommonToolbar {
+    fun setRightTextColor(colorStr: String): CommonToolbar {
+        mRightButtonLayout?.setTitleTextColor(colorStr)
+        return this
+    }
+
+    fun setRightIcon(drawable: Drawable): CommonToolbar {
         mRightButtonLayout?.setRightIcon(drawable)
+        return this
+    }
+
+    fun setRightTextClickListener(listener: View.OnClickListener): CommonToolbar {
+        mRightButtonLayout?.setRightTextClickListener(listener)
         return this
     }
 
