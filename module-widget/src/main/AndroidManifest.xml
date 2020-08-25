@@ -3,7 +3,8 @@
     package="com.dashingqi.module.widget">
 
     <application>
-        <activity android:name=".customview.circleprogress.CircleProgressActivity"></activity>
+        <activity android:name=".rvtab.WidgetRvTabActivity"></activity>
+        <activity android:name=".customview.circleprogress.CircleProgressActivity" />
         <activity android:name=".customview.battery.BatteryActivity" />
         <activity android:name=".dialog.WidgetLogisticsActivity" />
         <activity android:name=".material.WidgetCoorBottomActivity" />

@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.fragment.BaseMvvMFragment
 import com.dashingqi.base.base.viewmodel.ParamViewModelFactory
 import com.dashingqi.base.utils.DensityUtils
+import com.dashingqi.library.service.providers.widget.CommonItemDecoration
 import com.dashingqi.module.wx.databinding.WxArticleChapterFragmentBinding
 import kotlinx.android.synthetic.main.wx_article_chapter_fragment.*
 
@@ -28,17 +29,7 @@ class WXArticleChapterFragment : BaseMvvMFragment<WxArticleChapterFragmentBindin
 
     override fun onLoad(view: View) {
         ARouter.getInstance().inject(this)
-        wxRV.addItemDecoration(object : RecyclerView.ItemDecoration() {
-            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-              if(  parent.getChildAdapterPosition(view) ==0){
-                  outRect.top = DensityUtils.dip2pxInt(context!!, 16f)
-              }
-                outRect.left = DensityUtils.dip2pxInt(context!!, 16f)
-                outRect.right = DensityUtils.dip2pxInt(context!!, 16f)
-                outRect.bottom = DensityUtils.dip2pxInt(context!!, 16f)
-
-            }
-        })
+        wxRV.addItemDecoration(CommonItemDecoration())
         super.onLoad(view)
     }
 

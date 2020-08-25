@@ -29,6 +29,8 @@ object RoutePath {
         const val WIDGET_BATTERY = "${MAIN}/battery"
         const val WIDGET_CIRCLE_PROGRESS = "${MAIN}/circleProgress"
 
+        const val WIDGET_RV_TAB_LAYOUT = "${MAIN}/rvTabLayout"
+
         /**
          * 物流
          */
@@ -112,13 +114,12 @@ object RoutePath {
         const val DEBUG_VIEW = "${MAIN}/debugView"
     }
 
-    object Pay{
+    object Pay {
         private const val MAIN = "/pay"
         const val PAY_SERVICE = "${MAIN}/service"
 
         const val PAY_TEST_ACTIVITY = "${MAIN}/payTestActivity"
     }
-
 
 
 }

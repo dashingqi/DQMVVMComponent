@@ -51,7 +51,7 @@ class CommonToolbar : ConstraintLayout {
 
         if (mRightButtonLayout == null) {
             mRightButtonLayout = getDefaultToolbarItem()
-            mRightButtonLayout?.addView(mRightButtonLayout, mRightButtonLayout!!.childCount)
+            mRightContainer?.addView(mRightButtonLayout, mRightContainer!!.childCount)
         }
 
     }
@@ -93,7 +93,9 @@ class CommonToolbar : ConstraintLayout {
         if (obtainAttributeSet.hasValue(R.styleable.base_common_tool_bar_base_right_icon)) {
             obtainAttributeSet.getDrawable(R.styleable.base_common_tool_bar_base_right_icon)?.let { setRightIcon(it) }
         } else {
-            setRightIcon(getDefaultRightIcon()!!)
+            getDefaultRightIcon()?.let {
+                setRightIcon(it)
+            }
         }
 
         //设置右边布局
@@ -134,16 +136,16 @@ class CommonToolbar : ConstraintLayout {
      */
 
     private fun getDefaultLeftText(): CharSequence? {
-        return null
+        return ""
     }
 
     private fun getDefaultLeftIcon(): Drawable? {
-        return null
+        return resources.getDrawable(R.drawable.res_arrow_left_black)
     }
 
 
     private fun getDefaultRightText(): CharSequence? {
-        return null
+        return ""
     }
 
     private fun getDefaultRightIcon(): Drawable? {

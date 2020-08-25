@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-       android:paddingTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="48dp"
         tools:context=".DebugViewActivity">
 
         <androidx.recyclerview.widget.RecyclerView
