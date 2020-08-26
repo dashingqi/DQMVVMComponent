@@ -1,5 +1,7 @@
 package com.dashingqi.base.route
 
+import androidx.annotation.MainThread
+
 /**
  *
  * @ProjectName: DQMVVMComponent
@@ -35,6 +37,26 @@ object RoutePath {
          * 物流
          */
         const val WIDGET_LOGISTICS = "${MAIN}/logistics"
+
+        /**
+         * 开眼
+         */
+        const val WIDGET_OPEN_EYE = "${MAIN}/openEye"
+
+        /**
+         * 开眼 推荐
+         */
+        const val WIDGET_OPEN_EYE_COMMEND = "${MAIN}/commend"
+
+        /**
+         * 开眼 日报
+         */
+        const val WIDGET_OPEN_EYE_DAILY = "${MAIN}/daily"
+
+        /**
+         * 开眼 发现
+         */
+        const val WIDGET_OPEN_EYE_DISCOVER = "${MAIN}/discover"
     }
 
     /**

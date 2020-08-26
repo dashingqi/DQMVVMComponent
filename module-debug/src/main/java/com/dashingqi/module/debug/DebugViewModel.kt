@@ -30,6 +30,7 @@ class DebugViewModel(application: Application) : BasePageViewModel<DebugItemData
         items.add(DebugItemData("物流进度弹窗", RoutePath.Widget.WIDGET_LOGISTICS))
         items.add(DebugItemData("二维码扫描", RoutePath.QrCode.QRCODE_HW))
         items.add(DebugItemData("RV TabLayout 联动", RoutePath.Widget.WIDGET_RV_TAB_LAYOUT))
+        items.add(DebugItemData("开眼首页", RoutePath.Widget.WIDGET_OPEN_EYE))
     }
 
     override fun getItemLayoutId(): Int {

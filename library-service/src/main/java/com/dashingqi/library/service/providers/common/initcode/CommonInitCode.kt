@@ -6,6 +6,7 @@ import android.text.Html
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.dashingqi.base.widget.indicator.ScaleTransitionPagerTitleView
@@ -36,11 +37,25 @@ fun ViewPager.init(fragment: Fragment, fragments: ArrayList<Fragment>): ViewPage
     return this
 }
 
+fun ViewPager.init(manager: FragmentManager, fragments: ArrayList<Fragment>): ViewPager {
+    adapter = object : FragmentStatePagerAdapter(manager) {
+        override fun getItem(position: Int): Fragment = fragments[position]
+
+        override fun getCount(): Int = fragments.size
+    }
+    return this
+}
+
+fun MagicIndicator.initAndBindVP(viewPager: ViewPager, datas: ArrayList<CommonClassifyResponse>, normalDefaultColor: String = "#ffffff", selectDefaultColor: String = normalDefaultColor, lineDefaultColor: String = normalDefaultColor) {
+    initAndBindVP(viewPager, datas, normalDefaultColor, selectDefaultColor, lineDefaultColor, false)
+}
+
 /**
  * MagicIndicator初始化的通用代码
  */
-fun MagicIndicator.initAndBindVP(viewPager: ViewPager, datas: ArrayList<CommonClassifyResponse>, normalDefaultColor: String = "#ffffff", selectDefaultColor: String = normalDefaultColor, lineDefaultColor: String = normalDefaultColor) {
+fun MagicIndicator.initAndBindVP(viewPager: ViewPager, datas: ArrayList<CommonClassifyResponse>, normalDefaultColor: String = "#ffffff", selectDefaultColor: String = normalDefaultColor, lineDefaultColor: String = normalDefaultColor, isAdjustMode: Boolean) {
     var commonNavigator = CommonNavigator(viewPager.context)
+    commonNavigator.isAdjustMode = isAdjustMode
     commonNavigator.adapter = object : CommonNavigatorAdapter() {
         override fun getTitleView(context: Context, index: Int): IPagerTitleView {
             return ScaleTransitionPagerTitleView(context.applicationContext).apply {
