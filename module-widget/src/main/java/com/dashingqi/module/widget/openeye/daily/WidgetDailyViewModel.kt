@@ -9,6 +9,7 @@ import com.dashingqi.module.widget.R
 import com.dashingqi.module.widget.net.response.OpenEyeResponse
 import com.dashingqi.module.widget.net.WidgetService
 import com.dashingqi.module.widget.openeye.constant.TypeConfigUtil
+import com.dashingqi.module.widget.openeye.constant.getLayoutId
 import me.tatarka.bindingcollectionadapter2.ItemBinding
 import me.tatarka.bindingcollectionadapter2.OnItemBind
 
@@ -35,15 +36,6 @@ class WidgetDailyViewModel(application: Application) : BaseMultiplyPageViewModel
                     handleItemData(page, response.itemList)
                 }
         )
-    }
-
-    private fun getLayoutId(item: OpenEyeResponse.ItemListBean): Int {
-        return when (item.type) {
-            TypeConfigUtil.TEXT_CARD -> R.layout.widget_open_eye_item_text
-            TypeConfigUtil.PICTURE_FOLLOW_CARD -> R.layout.widget_open_eye_item_picture_follow_card
-            TypeConfigUtil.FOLLOW_CARD -> R.layout.widget_open_eye_item_video_follow_card
-            else -> 0
-        }
     }
 
 }

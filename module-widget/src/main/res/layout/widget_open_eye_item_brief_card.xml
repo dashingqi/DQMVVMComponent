@@ -3,32 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="item"
-            type="com.dashingqi.module.widget.net.response.OpenEyeResponse.ItemListBean" />
-
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/ivCover"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
+            android:layout_marginRight="10dp"
+            android:ellipsize="end"
+            android:maxLength="1"
             android:maxLines="1"
+            android:text="@{Html.fromHtml(item.data.title).toString()}"
             android:textColor="#333333"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -45,6 +33,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{item.data.description}"
             android:textColor="#333333"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/ivCover"
@@ -52,7 +43,6 @@
             app:layout_constraintRight_toLeftOf="@+id/tvAttention"
             app:layout_constraintTop_toBottomOf="@+id/title"
             tools:text="title" />
-
 
         <TextView
             android:id="@+id/tvAttention"
@@ -71,5 +61,27 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_goneMarginRight="10dp" />
 
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/ivCover"
+            dbImageUrl="@{item.data.icon}"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="4dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <import type="android.text.Html" />
+
+        <variable
+            name="item"
+            type="com.dashingqi.module.widget.net.response.OpenEyeResponse.ItemListBean" />
+
+    </data>
 </layout>

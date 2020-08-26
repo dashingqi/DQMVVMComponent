@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:text="@{item.data.text}"
             android:textColor="#333333"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"

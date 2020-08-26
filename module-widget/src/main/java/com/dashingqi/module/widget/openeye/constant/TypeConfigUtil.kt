@@ -17,4 +17,12 @@ object TypeConfigUtil {
 
     const val BRIEF_CARD = "briefCard"
 
+    const val HORIZONTAL_SCROLL_CARD = "horizontalScrollCard"
+
+    const val SPECIAL_SQUARE_CARD_COLLECTION = "specialSquareCardCollection"
+
+    const val COLUMN_CARD_LIST = "columnCardList"
+
+    const val BANNER = "banner"
+
 }

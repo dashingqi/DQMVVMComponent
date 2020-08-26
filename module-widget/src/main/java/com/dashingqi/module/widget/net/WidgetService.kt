@@ -19,7 +19,7 @@ interface WidgetService {
      * 发现页面的数据
      */
     @GET("/api/v7/index/tab/discovery")
-    fun getDiscoveryData(): Call<BaseResponse>
+    fun getDiscoveryData(): Call<OpenEyeResponse>
 
     /**
      * 推荐页面的数据
