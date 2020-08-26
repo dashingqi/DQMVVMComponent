@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.dashingqi.module.widget.net.response.OpenEyeResponse.ItemListBean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/ivCover"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:maxLines="1"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/description"
+            app:layout_constraintLeft_toRightOf="@+id/ivCover"
+            app:layout_constraintRight_toLeftOf="@+id/tvAttention"
+            app:layout_constraintTop_toTopOf="@+id/ivCover"
+            app:layout_constraintVertical_chainStyle="spread"
+            tools:text="title" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#333333"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCover"
+            app:layout_constraintLeft_toRightOf="@+id/ivCover"
+            app:layout_constraintRight_toLeftOf="@+id/tvAttention"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="title" />
+
+
+        <TextView
+            android:id="@+id/tvAttention"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/widget_shape_attention_border"
+            android:gravity="center"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="2dp"
+            android:text="+ 关注"
+            android:textColor="#333333"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_goneMarginRight="10dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

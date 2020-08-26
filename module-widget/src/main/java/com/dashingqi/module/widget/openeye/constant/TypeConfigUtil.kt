@@ -13,6 +13,8 @@ object TypeConfigUtil {
     const val VIDEO_SMALL_CARD = "videoSmallCard"
     const val BANNER2 = "banner2"
 
-    const val SQUARE_CARD_COLLECTION="squareCardCollection"
+    const val SQUARE_CARD_COLLECTION = "squareCardCollection"
+
+    const val BRIEF_CARD = "briefCard"
 
 }
