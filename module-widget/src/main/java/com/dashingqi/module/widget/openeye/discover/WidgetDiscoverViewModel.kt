@@ -4,7 +4,7 @@ import android.app.Application
 import com.dashingqi.base.base.callback.LiveDataCallback
 import com.dashingqi.base.base.response.BaseResponse
 import com.dashingqi.base.base.viewmodel.BaseMultiplyPageViewModel
-import com.dashingqi.module.widget.openeye.net.WidgetService
+import com.dashingqi.module.widget.net.WidgetService
 
 /**
  * @author : zhangqi

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.dashingqi.module.widget.net.response.OpenEyeResponse.ItemListBean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/iv"
+            dbImageUrl="@{item.data.content.data.cover.feed}"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="8dp" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/ivCover"
+            dbImageUrl="@{item.data.header.icon}"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintLeft_toLeftOf="@+id/iv"
+            app:layout_constraintTop_toBottomOf="@+id/iv"
+            app:riv_corner_radius="36dp" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:maxLines="1"
+            android:text="@{item.data.content.data.description}"
+            android:textColor="#333333"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toRightOf="@+id/ivCover"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivCover"
+            tools:text="测试，测试，测试，测试，测试" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:maxLines="1"
+            android:textColor="#f2f2f2"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCover"
+            app:layout_constraintLeft_toRightOf="@+id/title"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="测试，测试，测试，测试，测试，内容，内容，内容" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
