@@ -25,7 +25,7 @@ interface WidgetService {
      * 推荐页面的数据
      */
     @GET("/api/v5/index/tab/allRec")
-    fun getAllRec(): Call<BaseResponse>
+    fun getAllRec(): Call<OpenEyeResponse>
 
     /**
      * 日报页面数据

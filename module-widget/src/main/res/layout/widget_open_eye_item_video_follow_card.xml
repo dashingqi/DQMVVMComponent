@@ -20,7 +20,7 @@
             android:id="@+id/iv"
             dbImageUrl="@{item.data.content.data.cover.feed}"
             android:layout_width="match_parent"
-            android:layout_height="240dp"
+            android:layout_height="180dp"
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
             app:riv_corner_radius="8dp" />
