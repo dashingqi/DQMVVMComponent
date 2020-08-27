@@ -33,6 +33,12 @@ class WidgetDiscoverViewModel(application: Application) : BaseMultiplyPageViewMo
                 itemBinding.set(BR.item, R.layout.widget_open_eye_item_column_card_list).bindExtra(BR.viewModel, columnCardListViewModel)
             }
 
+            TypeConfigUtil.SPECIAL_SQUARE_CARD_COLLECTION->{
+                var specialSquareCarCollectionViewModel = WidgetOpenEyeSpecialSquareCarCollectionViewModel(application)
+                specialSquareCarCollectionViewModel.setData(item.data.itemList)
+                itemBinding.set(BR.item,R.layout.widget_open_eye_item_special_square_card_collection).bindExtra(BR.viewModel,specialSquareCarCollectionViewModel)
+            }
+
             else ->
                 itemBinding.set(BR.item, getLayoutId(item))
         }
@@ -45,7 +51,6 @@ class WidgetDiscoverViewModel(application: Application) : BaseMultiplyPageViewMo
 
     override fun requestData(page: Int) {
         var openEyeData = JsonUtils.jsonToObject(getApplication(), "openeye.json", OpenEyeResponse::class.java)
-        var data = openEyeData.itemList.filter { (it.type != TypeConfigUtil.SPECIAL_SQUARE_CARD_COLLECTION) }
-        handleItemData(page, data)
+        handleItemData(page, openEyeData.itemList)
     }
 }
