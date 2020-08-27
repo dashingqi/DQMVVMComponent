@@ -57,6 +57,11 @@ object RoutePath {
          * 开眼 发现
          */
         const val WIDGET_OPEN_EYE_DISCOVER = "${MAIN}/discover"
+
+        /**
+         * 抖音页面切换效果
+         */
+        const val WIDGET_TIK_TOK_SNAP = "${MAIN}/tikTokSnap"
     }
 
     /**
