@@ -11,7 +11,11 @@ data class OpenEyeResponse(var itemList: List<ItemListBean>) : BaseResponse() {
 
     data class ItemListBean(var type: String, var data: ItemListDataBean)
 
-    data class ItemListDataBean(var dataType: String, var image: String, var title: String, var description: String, var icon: String, var category: String, var id: Int, var type: String, var text: String, var header: HeaderDataBean, var content: ContentBean, var cover: CoverDataBean)
+    data class ItemListDataBean(var dataType: String, var image: String, var title: String, var description: String, var icon: String, var category: String, var id: Int, var type: String, var text: String, var header: HeaderDataBean, var itemList: List<DataItemListDataBean>, var content: ContentBean, var cover: CoverDataBean)
+
+    data class DataItemListDataBean(var type: String, var data: DataBean) {
+        data class DataBean(var id: String, var title: String, var image: String)
+    }
 
     data class HeaderDataBean(var id: String, var actionUrl: String, var icon: String, var iconType: String, var time: String,
                               var showHateVideo: Boolean, var followType: String, var tagId: String, var tagName: String, var issuerName: String, var topShow: Boolean, var title: String, var description: String)

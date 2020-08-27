@@ -7,7 +7,6 @@ import com.dashingqi.base.base.viewmodel.BaseMultiplyPageViewModel
 import com.dashingqi.base.utils.JsonUtils
 import com.dashingqi.module.widget.BR
 import com.dashingqi.module.widget.R
-import com.dashingqi.module.widget.net.WidgetService
 import com.dashingqi.module.widget.net.response.OpenEyeResponse
 import com.dashingqi.module.widget.openeye.constant.TypeConfigUtil
 import com.dashingqi.module.widget.openeye.constant.getLayoutId
@@ -22,7 +21,16 @@ import me.tatarka.bindingcollectionadapter2.OnItemBind
 class WidgetDiscoverViewModel(application: Application) : BaseMultiplyPageViewModel<OpenEyeResponse.ItemListBean>(application) {
 
     private val onItemBind: OnItemBind<OpenEyeResponse.ItemListBean> = OnItemBind { itemBinding, position, item ->
-        itemBinding.set(BR.item, getLayoutId(item))
+
+        when (item.type) {
+            TypeConfigUtil.HORIZONTAL_SCROLL_CARD -> {
+                var scrollCardViewModel = WidgetOPenEyeHorizontalScrollCardViewModel(application)
+                scrollCardViewModel.setData(item.data.itemList)
+                itemBinding.set(BR.item, R.layout.widget_open_eye_item_horizontal_scroll_card).bindExtra(BR.viewModel, scrollCardViewModel)
+            }
+            else ->
+                itemBinding.set(BR.item, getLayoutId(item))
+        }
     }
     val itemBinding = ItemBinding.of(onItemBind)
 
@@ -33,7 +41,7 @@ class WidgetDiscoverViewModel(application: Application) : BaseMultiplyPageViewMo
     override fun requestData(page: Int) {
 
         var openEyeData = JsonUtils.jsonToObject(getApplication(), "openeye.json", OpenEyeResponse::class.java)
-        var data = openEyeData.itemList.filter { (it.type != TypeConfigUtil.HORIZONTAL_SCROLL_CARD) || (it.type != TypeConfigUtil.SPECIAL_SQUARE_CARD_COLLECTION) || (it.type != TypeConfigUtil.COLUMN_CARD_LIST) }
+        var data = openEyeData.itemList.filter { (it.type != TypeConfigUtil.SPECIAL_SQUARE_CARD_COLLECTION) || (it.type != TypeConfigUtil.COLUMN_CARD_LIST) }
         handleItemData(page, data)
     }
 }
