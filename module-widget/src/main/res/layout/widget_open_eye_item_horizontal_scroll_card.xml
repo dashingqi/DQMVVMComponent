@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.dashingqi.module.widget.openeye.discover.WidgetOPenEyeHorizontalScrollCardViewModel" />
+            type="com.dashingqi.module.widget.openeye.discover.WidgetOpenEyeHorizontalScrollCardViewModel" />
 
         <variable
             name="item"

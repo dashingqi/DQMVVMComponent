@@ -10,17 +10,18 @@ import com.dashingqi.module.widget.net.response.OpenEyeResponse
  * @time : 2020/8/27
  * desc :
  */
-class WidgetOPenEyeHorizontalScrollCardViewModel(application: Application) : BasePageViewModel<OpenEyeResponse.DataItemListDataBean>(application) {
+class WidgetOpenEyeColumnCardListViewModel(application: Application):BasePageViewModel<OpenEyeResponse.DataItemListDataBean>(application) {
 
     override fun requestData(page: Int) {
 
     }
 
-    fun setData(data: List<OpenEyeResponse.DataItemListDataBean>) {
+
+    fun setData(data : List<OpenEyeResponse.DataItemListDataBean>){
         items.addAll(data)
     }
 
     override fun getItemLayoutId(): Int {
-        return R.layout.widget_open_eye_item_horizontal_scroll_card_sun
+       return R.layout.widget_open_eye_item_column_card_list_sun
     }
 }

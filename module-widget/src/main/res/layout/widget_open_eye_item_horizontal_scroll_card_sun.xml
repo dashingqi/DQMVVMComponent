@@ -12,14 +12,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/ivCover"
             dbImageUrl="@{item.data.image}"
-            android:scaleType="centerCrop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             app:riv_corner_radius="6dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

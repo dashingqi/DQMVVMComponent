@@ -1,8 +1,6 @@
 package com.dashingqi.module.widget.openeye.discover
 
 import android.app.Application
-import com.dashingqi.base.base.callback.LiveDataCallback
-import com.dashingqi.base.base.response.BaseResponse
 import com.dashingqi.base.base.viewmodel.BaseMultiplyPageViewModel
 import com.dashingqi.base.utils.JsonUtils
 import com.dashingqi.module.widget.BR
@@ -24,10 +22,17 @@ class WidgetDiscoverViewModel(application: Application) : BaseMultiplyPageViewMo
 
         when (item.type) {
             TypeConfigUtil.HORIZONTAL_SCROLL_CARD -> {
-                var scrollCardViewModel = WidgetOPenEyeHorizontalScrollCardViewModel(application)
+                val scrollCardViewModel = WidgetOpenEyeHorizontalScrollCardViewModel(application)
                 scrollCardViewModel.setData(item.data.itemList)
                 itemBinding.set(BR.item, R.layout.widget_open_eye_item_horizontal_scroll_card).bindExtra(BR.viewModel, scrollCardViewModel)
             }
+
+            TypeConfigUtil.COLUMN_CARD_LIST -> {
+                val columnCardListViewModel = WidgetOpenEyeColumnCardListViewModel(application)
+                columnCardListViewModel.setData(item.data.itemList)
+                itemBinding.set(BR.item, R.layout.widget_open_eye_item_column_card_list).bindExtra(BR.viewModel, columnCardListViewModel)
+            }
+
             else ->
                 itemBinding.set(BR.item, getLayoutId(item))
         }
@@ -39,9 +44,8 @@ class WidgetDiscoverViewModel(application: Application) : BaseMultiplyPageViewMo
     }
 
     override fun requestData(page: Int) {
-
         var openEyeData = JsonUtils.jsonToObject(getApplication(), "openeye.json", OpenEyeResponse::class.java)
-        var data = openEyeData.itemList.filter { (it.type != TypeConfigUtil.SPECIAL_SQUARE_CARD_COLLECTION) || (it.type != TypeConfigUtil.COLUMN_CARD_LIST) }
+        var data = openEyeData.itemList.filter { (it.type != TypeConfigUtil.SPECIAL_SQUARE_CARD_COLLECTION) }
         handleItemData(page, data)
     }
 }
