@@ -62,6 +62,11 @@ object RoutePath {
          * 抖音页面切换效果
          */
         const val WIDGET_TIK_TOK_SNAP = "${MAIN}/tikTokSnap"
+
+        /**
+         * rv 的 fling
+         */
+        const val WIDGET_RV_FLING = "${MAIN}/rvFling"
     }
 
     /**

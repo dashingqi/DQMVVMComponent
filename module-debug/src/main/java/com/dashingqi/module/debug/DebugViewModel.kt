@@ -32,6 +32,7 @@ class DebugViewModel(application: Application) : BasePageViewModel<DebugItemData
         items.add(DebugItemData("RV TabLayout 联动", RoutePath.Widget.WIDGET_RV_TAB_LAYOUT))
         items.add(DebugItemData("开眼首页", RoutePath.Widget.WIDGET_OPEN_EYE))
         items.add(DebugItemData("仿抖音页面切换效果", RoutePath.Widget.WIDGET_TIK_TOK_SNAP))
+        items.add(DebugItemData("Rv的fling", RoutePath.Widget.WIDGET_RV_FLING))
     }
 
     override fun getItemLayoutId(): Int {
