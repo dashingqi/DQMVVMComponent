@@ -20,4 +20,8 @@ class CollectListActivity : BaseMVVMActivity<CollectListActivityBinding, Collect
         super.onCreate(savedInstanceState)
         collectRV.addItemDecoration(CommonItemDecoration())
     }
+
+    override fun isFitsSystemWindows(): Boolean {
+        return true
+    }
 }

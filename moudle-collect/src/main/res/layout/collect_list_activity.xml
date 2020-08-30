@@ -16,18 +16,39 @@
         android:layout_height="match_parent"
         tools:context="com.dashingqi.module.collect.modules.list.CollectListActivity">
 
+        <com.dashingqi.dqcommontoolbar.widget.CommonToolbar
+            android:id="@+id/toolbar"
+            titleText='@{"我的收藏"}'
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.dashingqi.base.widget.state.DQStateLayout
             stateLayoutState="@{viewModel.stateLayout}"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/collectRV"
-                android:overScrollMode="never"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                items="@{viewModel.items}"
-                itemBinding="@{viewModel.onItemBind}"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                loadMoreListener="@{()->viewModel.loadMore()}"
+                loadMoreState="@{viewModel.loadMoreState}"
+                refreshListener="@{()->viewModel.refresh()}"
+                refreshState="@{viewModel.refreshState}"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/collectRV"
+                    itemBinding="@{viewModel.itemBinding}"
+                    items="@{viewModel.items}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
         </com.dashingqi.base.widget.state.DQStateLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
