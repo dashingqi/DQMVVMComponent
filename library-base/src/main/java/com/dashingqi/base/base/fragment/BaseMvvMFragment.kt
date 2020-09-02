@@ -59,14 +59,14 @@ abstract class BaseMvvMFragment<DB : ViewDataBinding, VM : BaseViewModel> : Base
      * 创建ViewModel
      */
     private fun createViewModel(): VM {
-        return ViewModelProviders.of(this, getViewModelFactory()).get(getVmClass(this))
+        return ViewModelProvider(this, getViewModelFactory()).get(getVmClass(this))
     }
 
     /**
      * 可通过重写该方法，来提供ViewModel传参数
      */
-    open fun getViewModelFactory(): ViewModelProvider.Factory? {
-        return null
+    open fun getViewModelFactory(): ViewModelProvider.Factory {
+        return defaultViewModelProviderFactory
     }
 
     /**

@@ -28,7 +28,7 @@ class ProjectListFragment : BaseMvvMFragment<ProjectListFragmentBinding, Project
         projectRV.addItemDecoration(CommonItemDecoration())
         super.onLoad(view)
     }
-    override fun getViewModelFactory(): ViewModelProvider.Factory? {
+    override fun getViewModelFactory(): ViewModelProvider.Factory {
         return ParamViewModelFactory(
                 arrayOf(Application::class.java, Int::class.java),
                 arrayOf(activity!!.application, cid)

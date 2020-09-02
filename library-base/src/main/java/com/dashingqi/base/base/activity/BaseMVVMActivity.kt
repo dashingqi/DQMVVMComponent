@@ -47,15 +47,15 @@ abstract class BaseMVVMActivity<DB : ViewDataBinding, VM : BaseViewModel> : Base
      * 创建ViewModel
      */
     private fun createViewModel(): VM {
-        return ViewModelProviders.of(this, getViewHolderFactory()).get(getVmClass(this))
+        return ViewModelProvider(this, getViewHolderFactory()).get(getVmClass(this))
     }
 
     /**
      * 如果你想传递参数到ViewModel中
      * 可以重写这个方法，通过Factory 重新构造一个带参数的ViewModel
      */
-    open fun getViewHolderFactory(): ViewModelProvider.Factory? {
-        return null
+    open fun getViewHolderFactory(): ViewModelProvider.Factory {
+        return defaultViewModelProviderFactory
     }
 
     /**
