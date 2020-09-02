@@ -124,4 +124,6 @@
 #### RecyclerView系列
 - [RecyclerView基础篇-列表数据展示](https://www.jianshu.com/p/bb8c76cec3cd)
 - [RecyclerView基础篇-ItemDecoration](https://www.jianshu.com/p/2c7e0011e5c1)
+- [RecyclerView基础篇-Item添加动画](https://www.jianshu.com/p/4c1eb409bc0e)
+- [RecyclerView基础篇-Api解释](https://www.jianshu.com/p/7bb51be254d4)
 
