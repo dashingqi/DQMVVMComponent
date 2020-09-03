@@ -3,7 +3,8 @@
     package="com.dashingqi.module.widget">
 
     <application>
-        <activity android:name=".rvtab.WidgetRvFlingActivity"></activity>
+        <activity android:name=".ddmc.detail.DdmcProductDetailActivity"></activity>
+        <activity android:name=".rvtab.WidgetRvFlingActivity" />
         <activity android:name=".tiktok.TikTokSnapHelperActivity" />
         <activity android:name=".openeye.WidgetOpenEyeActivity" />
         <activity android:name=".rvtab.WidgetRvTabActivity" />

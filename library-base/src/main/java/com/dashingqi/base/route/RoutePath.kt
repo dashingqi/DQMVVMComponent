@@ -67,6 +67,8 @@ object RoutePath {
          * rv 的 fling
          */
         const val WIDGET_RV_FLING = "${MAIN}/rvFling"
+
+        const val WIDGET_DDMC_PRODUCT_DETAIL = "${MAIN}/ddmcProductDetail"
     }
 
     /**

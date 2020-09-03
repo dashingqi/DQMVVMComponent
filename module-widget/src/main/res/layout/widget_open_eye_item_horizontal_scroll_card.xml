@@ -20,6 +20,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/horizontalScrollCarRv"
+            dbBackgroundColor='@{"#ffffff"}'
+            dbShapeRadius="@{6}"
             itemBinding="@{viewModel.itemBinding}"
             items="@{viewModel.items}"
             android:layout_width="match_parent"
