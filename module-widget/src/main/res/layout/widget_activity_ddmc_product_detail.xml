@@ -11,10 +11,351 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ddmc.detail.DdmcProductDetailActivity">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            app:elevation="0dp">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <ImageView
+                        android:id="@+id/bannerIv"
+                        dbImageUrl="@{viewModel.productDetail.data.detail.image_list[0]}"
+                        android:layout_width="match_parent"
+                        android:layout_height="360dp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/priceUnit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="10dp"
+                        android:text="¥"
+                        android:textColor="#FF0000"
+                        android:textSize="10sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/bannerIv" />
+
+                    <TextView
+                        android:id="@+id/price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:text="39.9"
+                        android:textColor="#FF0000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/priceUnit"
+                        app:layout_constraintBottom_toBottomOf="@+id/priceUnit"
+                        app:layout_constraintLeft_toRightOf="@+id/priceUnit" />
+
+                    <TextView
+                        android:id="@+id/originPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="¥49.90"
+                        android:textColor="#333333"
+                        android:textSize="12sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/priceUnit"
+                        app:layout_constraintBottom_toBottomOf="@+id/priceUnit"
+                        app:layout_constraintLeft_toRightOf="@+id/price" />
+
+                    <TextView
+                        android:id="@+id/productName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="16dp"
+                        android:text="@{viewModel.productDetail.data.detail.product_name}"
+                        android:textColor="#333333"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="@+id/priceUnit"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/priceUnit" />
+
+                    <TextView
+                        android:id="@+id/spec"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@{viewModel.productDetail.data.detail.spec}"
+                        android:textColor="#888888"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="@+id/productName"
+                        app:layout_constraintTop_toBottomOf="@+id/productName" />
+
+                    <View
+                        android:id="@+id/viewLine1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="#f3f3f3"
+                        app:layout_constraintLeft_toLeftOf="@+id/spec"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/spec" />
+
+                    <TextView
+                        android:id="@+id/hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@{viewModel.productDetail.data.detail.hint}"
+                        android:textColor="#333333"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toLeftOf="@+id/viewLine1"
+                        app:layout_constraintTop_toBottomOf="@+id/viewLine1" />
+
+                    <View
+                        android:id="@+id/viewLine2"
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="16dp"
+                        android:background="#f3f3f3"
+                        app:layout_constraintTop_toBottomOf="@+id/hint" />
+
+                    <TextView
+                        android:id="@+id/recommendPra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="推荐做法"
+                        android:textColor="#333333"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="@+id/hint"
+                        app:layout_constraintTop_toBottomOf="@+id/viewLine2" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvRecommend"
+                        itemBinding="@{viewModel.recipeItemBinding}"
+                        items="@{viewModel.recipeItems}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintTop_toBottomOf="@+id/recommendPra" />
+
+                    <View
+                        android:id="@+id/viewLine3"
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="16dp"
+                        android:background="#f3f3f3"
+                        app:layout_constraintTop_toBottomOf="@+id/rvRecommend" />
+
+                    <TextView
+                        android:id="@+id/appraise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="评价"
+                        android:textColor="#333333"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="@+id/spec"
+                        app:layout_constraintTop_toBottomOf="@+id/viewLine3" />
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/commentCover"
+                        dbImageUrl="@{viewModel.commentCover}"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintLeft_toLeftOf="@+id/spec"
+                        app:layout_constraintTop_toBottomOf="@+id/appraise"
+                        app:riv_corner_radius="8dp" />
+
+                    <TextView
+                        android:id="@+id/commentUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="@{viewModel.productDetail.data.detail.product_comment.list[0].username}"
+                        android:textColor="#333333"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toRightOf="@+id/commentCover"
+                        app:layout_constraintTop_toTopOf="@+id/commentCover" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"
+                        android:text="@{viewModel.productDetail.data.detail.product_comment.list[0].eval_time}"
+                        android:textColor="#f4f4f4"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/commentCover"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/commentCover" />
+
+                    <TextView
+                        android:id="@+id/evalStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="很满意"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="@+id/commentUserName"
+                        app:layout_constraintTop_toBottomOf="@+id/commentUserName" />
+
+                    <TextView
+                        android:id="@+id/evalContent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@{viewModel.productDetail.data.detail.product_comment.list[0].eval_content}"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="@+id/evalStar"
+                        app:layout_constraintTop_toBottomOf="@+id/evalStar" />
+
+                    <TextView
+                        android:id="@+id/lookMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/widget_shape_look_more"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="4dp"
+                        android:text="查看更多（406）"
+                        android:textColor="#f3f3f3"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/evalContent" />
+
+                    <View
+                        android:id="@+id/viewLine4"
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="16dp"
+                        android:background="#f3f3f3"
+                        app:layout_constraintTop_toBottomOf="@+id/lookMore" />
+
+                    <TextView
+                        android:id="@+id/tvRecommend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="为你推荐"
+                        android:textColor="#333333"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="@+id/spec"
+                        app:layout_constraintTop_toBottomOf="@+id/viewLine4" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvRecommendFood"
+                        itemBinding="@{viewModel.userRecommendItemBinding}"
+                        items="@{viewModel.recommendItems}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintTop_toBottomOf="@+id/tvRecommend" />
+
+                    <View
+                        android:id="@+id/viewLine5"
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#f3f3f3"
+                        app:layout_constraintTop_toBottomOf="@+id/rvRecommendFood" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvDetailImage"
+                        itemBinding="@{viewModel.detailsImagesItemBinding}"
+                        items="@{viewModel.detailImages}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintTop_toBottomOf="@+id/viewLine5" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="#ffffff"
+                    app:layout_collapseMode="pin">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/widget_ic_detail_back_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.tabs.TabLayout
+                            android:id="@+id/tabLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:overScrollMode="never"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tabMode="auto" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="16dp"
+                            android:src="@drawable/widget_ic_detail_share_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecommendList"
+            itemBinding="@{viewModel.thinkLikeItemBinding}"
+            items="@{viewModel.thinkListItems}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f3f3f3"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:spanCount="2" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

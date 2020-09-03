@@ -10,6 +10,7 @@ import com.dashingqi.dqlog.DQJsonParse
 import com.dashingqi.dqlog.DQLog
 import com.dashingqi.dqlog.DQLogInterceptor
 import com.dashingqi.library_base.R
+import com.didichuxing.doraemonkit.DoraemonKit
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import java.lang.reflect.Type
@@ -29,6 +30,7 @@ class BaseApplication : IApplicationProvider {
         initSmartRefresh()
         initStateLayout()
         initDQLog()
+        DoraemonKit.install(instance)
 
     }
 

@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.didi.dokit'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -86,6 +87,8 @@ dependencies {
 
 
     implementation project(":library-res")
+    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.2.0"
+    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.2.0"
 
 
 }

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.dashingqi.module.widget.ddmc.detail.response.ThinkLike" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        dbBackgroundColor='@{"#ffffff"}'
+        dbShapeRadius="@{8}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="8dp"
+        android:paddingBottom="8dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/ivCover"
+            dbImageUrl="@{item.small_image}"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius_top_left="8dp"
+            app:riv_corner_radius_top_right="8dp" />
+
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{item.product_name}"
+            android:textColor="#333333"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@+id/ivCover"
+            app:layout_constraintTop_toBottomOf="@+id/ivCover" />
+
+        <ImageView
+            android:id="@+id/ivAddCar"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/widget_ic_add_cart_enable"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productName" />
+
+        <TextView
+            android:id="@+id/unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥"
+            android:textColor="#ff0000"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivAddCar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivAddCar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.price}"
+            android:textColor="#ff0000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/unit"
+            app:layout_constraintBottom_toBottomOf="@+id/unit"
+            app:layout_constraintLeft_toRightOf="@+id/unit" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
