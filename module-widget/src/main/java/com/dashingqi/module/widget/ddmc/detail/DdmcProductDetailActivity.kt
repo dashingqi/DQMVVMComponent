@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.view.animation.TranslateAnimation
 import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.dashingqi.base.base.activity.BaseMVVMActivity
@@ -12,6 +13,7 @@ import com.dashingqi.base.utils.DensityUtils
 import com.dashingqi.dqlog.DQLog
 import com.dashingqi.module.widget.databinding.WidgetActivityDdmcProductDetailBinding
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.widget_activity_ddmc_product_detail.*
 import kotlin.math.abs
 
@@ -55,6 +57,7 @@ class DdmcProductDetailActivity : BaseMVVMActivity<WidgetActivityDdmcProductDeta
         })
         toolBar.alpha = 0.0f
         configAppbarLayout()
+        configTabLayout()
     }
 
     override fun isFitsSystemWindows(): Boolean {
@@ -110,10 +113,34 @@ class DdmcProductDetailActivity : BaseMVVMActivity<WidgetActivityDdmcProductDeta
                     tabLayout.setScrollPosition(0, 0f, true)
                 }
             }
+        })
+    }
 
+    private fun configTabLayout() {
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                val currentPosition = tab?.position
+                if (currentPosition == 1) {
+                    val location = IntArray(2)
+                    viewLine3.getLocationInWindow(location) //获取在当前窗口内的绝对坐标，含toolBar
+                    val x = location[0]
+                    val y = location[1]
+                    val translate = TranslateAnimation(0f, 0f, y.toFloat(), toolBar.height.toFloat())
+                    translate.duration = 300
+                    viewLine3.startAnimation(translate)
+
+                }
+            }
 
         })
-
     }
 
 }

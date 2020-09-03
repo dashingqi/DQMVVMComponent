@@ -15,7 +15,7 @@ import com.google.android.material.tabs.TabLayout
  * desc :自定义的TabLayout
  * 目前主要就是为了设置一个自定义的指示器
  */
-class DQCustomerTabLayout : TabLayout {
+ class DQCustomerTabLayout : TabLayout {
     constructor(context: Context) : super(context)
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
     constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int) : super(context, attributeSet, defStyleAttr)
