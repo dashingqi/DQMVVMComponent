@@ -155,7 +155,7 @@
                         items="@{viewModel.recipeItems}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="16dp"
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:layout_constraintTop_toBottomOf="@+id/recommendPra" />
@@ -272,6 +272,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/viewLine4" />
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginTop="8dp"
                         android:id="@+id/rvRecommendFood"
                         itemBinding="@{viewModel.userRecommendItemBinding}"
                         items="@{viewModel.recommendItems}"
@@ -320,19 +321,18 @@
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <com.google.android.material.tabs.TabLayout
+                        <com.dashingqi.module.widget.tablayout.DQTabLayout
                             android:id="@+id/tabLayout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:overScrollMode="never"
-                            app:tabSelectedTextColor="#33CC33"
-                            app:tabIndicatorColor="#33CC33"
-                            app:tabIndicatorHeight="4dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:tabMode="auto" />
+                            app:tabIndicatorColor="#66FF66"
+                            app:tabMode="auto"
+                            app:tabSelectedTextColor="#66FF66" />
 
                         <ImageView
                             android:layout_width="wrap_content"

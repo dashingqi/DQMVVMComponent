@@ -4,7 +4,7 @@ import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
-import android.view.animation.TranslateAnimation
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.dashingqi.base.base.activity.BaseMVVMActivity
@@ -14,6 +14,7 @@ import com.dashingqi.dqlog.DQLog
 import com.dashingqi.module.widget.databinding.WidgetActivityDdmcProductDetailBinding
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
+import com.scwang.smartrefresh.layout.listener.CoordinatorLayoutListener
 import kotlinx.android.synthetic.main.widget_activity_ddmc_product_detail.*
 import kotlin.math.abs
 
@@ -70,17 +71,16 @@ class DdmcProductDetailActivity : BaseMVVMActivity<WidgetActivityDdmcProductDeta
 
     private fun configAppbarLayout() {
         viewModel.tabData.forEach {
-            tabLayout.addTab(tabLayout.newTab().setText(it))
+            val newTab = tabLayout.newTab()
+            tabLayout.addTab(newTab.setText(it))
         }
 
-
         appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { applbarLayout, verticalOffset ->
-            var percent = (kotlin.math.abs(verticalOffset * 1.0f)) / appBarLayout.totalScrollRange
+            var percent = (abs(verticalOffset * 1.0f)) / appBarLayout.totalScrollRange
             DQLog.d("verticalOffset --> ", "$verticalOffset")
             val viewline3Top = viewLine3.top
             DQLog.d("viewline3Top ---> ", "$viewline3Top")
             val viewLine5Top = viewLine5.top
-
             if (percent > 0.01 && percent <= 0.5) {
                 toolBar.alpha = percent * 10
             }
@@ -99,20 +99,24 @@ class DdmcProductDetailActivity : BaseMVVMActivity<WidgetActivityDdmcProductDeta
             DQLog.d("y === ", "$y")
             val screenHeight = DensityUtils.getScreenHeightPixels(this)
             DQLog.d("screenHeight==> ", "$screenHeight")
+            var selectPosition = 0
             when {
                 (screenHeight - toolBar.height >= y) -> {
-                    tabLayout.setScrollPosition(3, 0f, true)
+                    selectPosition = 3
                 }
                 (offset in viewline3Top until viewLine5Top) -> {
-                    tabLayout.setScrollPosition(1, 0f, true)
+                    selectPosition = 1
                 }
                 offset >= viewLine5Top -> {
-                    tabLayout.setScrollPosition(2, 0f, true)
+
+                    selectPosition = 2
                 }
                 offset < viewline3Top -> {
-                    tabLayout.setScrollPosition(0, 0f, true)
+                    selectPosition = 0
                 }
             }
+            //滑动tabLayout
+            tabLayout.setScrollPosition(selectPosition, 0f, true, true)
         })
     }
 
@@ -127,19 +131,15 @@ class DdmcProductDetailActivity : BaseMVVMActivity<WidgetActivityDdmcProductDeta
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                val currentPosition = tab?.position
-                if (currentPosition == 1) {
-                    val location = IntArray(2)
-                    viewLine3.getLocationInWindow(location) //获取在当前窗口内的绝对坐标，含toolBar
-                    val x = location[0]
-                    val y = location[1]
-                    val translate = TranslateAnimation(0f, 0f, y.toFloat(), toolBar.height.toFloat())
-                    translate.duration = 300
-                    viewLine3.startAnimation(translate)
-
+                val childPosition = tab?.position
+                val appBarLayoutParams = (appBarLayout.layoutParams) as (CoordinatorLayout.LayoutParams)
+                val appBarLayoutBehavior = appBarLayoutParams.behavior as CoordinatorLayout.Behavior
+                if (appBarLayoutBehavior is AppBarLayout.Behavior) {
+                    if (childPosition == 0) {
+                        appBarLayoutBehavior.topAndBottomOffset = 0
+                    }
                 }
             }
-
         })
     }
 
