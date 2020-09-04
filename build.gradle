@@ -16,6 +16,9 @@ buildscript {
         }
         maven { url 'http://developer.huawei.com/repo/' }
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven {
+            url  "https://dl.bintray.com/dashingqi/utils"
+        }
         mavenCentral()
 
     }
