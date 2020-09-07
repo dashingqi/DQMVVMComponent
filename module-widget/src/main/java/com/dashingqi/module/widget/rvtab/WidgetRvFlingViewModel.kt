@@ -15,7 +15,7 @@ class WidgetRvFlingViewModel(application: Application) : BasePageViewModel<Strin
     }
 
     override fun requestData(page: Int) {
-        for (index in 0..50) {
+        for (index in 0..10) {
             items.add("")
         }
     }

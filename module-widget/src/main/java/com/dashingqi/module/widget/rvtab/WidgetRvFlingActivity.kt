@@ -24,4 +24,10 @@ class WidgetRvFlingActivity : BaseMVVMActivity<WidgetRvFlingActivityBinding, Wid
         })
     }
 
+    override fun isFitsSystemWindows(): Boolean {
+        return true
+    }
+
+
+
 }
