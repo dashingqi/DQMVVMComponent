@@ -78,6 +78,8 @@ object RoutePath {
          */
         const val WIDGET_LOADING_DIALOG = "${MAIN}/loadingDialog"
 
+        const val WIDGET_BOTTOM_DIALOG = "${MAIN}/bottomDialog"
+
     }
 
     /**
