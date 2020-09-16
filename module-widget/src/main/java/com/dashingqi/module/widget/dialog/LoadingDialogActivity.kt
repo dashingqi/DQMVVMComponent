@@ -15,8 +15,9 @@ class LoadingDialogActivity : AppCompatActivity() {
         setContentView(
                 R.layout.widget_loading_dialog_activity)
 
+        LoadingDialog(this).show()
         btn_show_loading.setOnClickListener {
-            LoadingDialog(this).show()
+
         }
     }
 }
