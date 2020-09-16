@@ -68,7 +68,16 @@ object RoutePath {
          */
         const val WIDGET_RV_FLING = "${MAIN}/rvFling"
 
+        /**
+         * 叮咚买菜的详情页面
+         */
         const val WIDGET_DDMC_PRODUCT_DETAIL = "${MAIN}/ddmcProductDetail"
+
+        /**
+         * LoadingDialog
+         */
+        const val WIDGET_LOADING_DIALOG = "${MAIN}/loadingDialog"
+
     }
 
     /**
