@@ -19,6 +19,9 @@ buildscript {
         maven {
             url  "https://dl.bintray.com/dashingqi/utils"
         }
+        maven {
+            url "https://dl.bintray.com/ooftf/maven"
+        }
         mavenCentral()
 
     }
@@ -26,7 +29,8 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.6.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.alibaba:arouter-register:1.0.2"
-        classpath 'com.billy.android:autoregister:1.4.2'
+        //classpath 'com.billy.android:autoregister:1.4.2'
+        classpath 'com.ooftf:autoregister:1.4.3'
         classpath 'com.didichuxing.doraemonkit:doraemonkit-plugin:3.2.0'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -47,7 +51,12 @@ allprojects {
         maven { url 'https://jitpack.io' }
         mavenLocal()
         maven { url 'https://dl.bintray.com/umsdk/release' }
-
+        maven {
+            url "https://dl.bintray.com/ooftf/maven"
+        }
+        maven {
+            url  "https://dl.bintray.com/dashingqi/utils"
+        }
     }
 }
 
