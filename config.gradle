@@ -65,7 +65,8 @@ ext {
             "wx-pay"                               : 'com.dashingqi:wxpay:0.9.9.4',
             "ali-pay"                              : 'com.dashingqi:alipay:0.9.9.4',
             "dq-log"                               : "com.dashingqi:dqlog:0.9.9.1",
-            'dq-toolbar'                           : 'com.dashingqi:DQCommonToolbar:0.9.9.2'
+            'dq-toolbar'                           : 'com.dashingqi:DQCommonToolbar:0.9.9.2',
+            "layoutBehavior"                       : 'com.github.yuruiyin:AppbarLayoutBehavior:1.0.4'
 
     ]
 }
