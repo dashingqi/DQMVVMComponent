@@ -86,7 +86,7 @@ open class BaseDialog : Dialog {
     /**
      * 设置背景
      */
-    fun setDialogBackground(bgDraw: Drawable) {
+    fun setDialogBackground(bgDraw: Drawable?) {
         window?.decorView?.background = bgDraw
     }
 

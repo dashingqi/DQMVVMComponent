@@ -2,6 +2,7 @@ package com.dashingqi.base.base.viewmodel
 
 import android.app.Application
 import androidx.databinding.ObservableArrayList
+import androidx.lifecycle.MutableLiveData
 import com.dashingqi.library_base.BR
 import me.tatarka.bindingcollectionadapter2.ItemBinding
 
@@ -17,6 +18,7 @@ abstract class BasePageViewModel<T>(application: Application) : BaseViewModel(ap
      * 用于装载item的数据
      */
     val items = ObservableArrayList<T>()
+
 
     val itemBinding by lazy {
         ItemBinding.of<T>(BR.item, getItemLayoutId()).bindExtra(BR.viewModel, this)

@@ -31,8 +31,8 @@ android {
     }
 
     //开启DataBinding
-    dataBinding {
-        enabled true
+    buildFeatures {
+        dataBinding true
     }
 
     compileOptions {
