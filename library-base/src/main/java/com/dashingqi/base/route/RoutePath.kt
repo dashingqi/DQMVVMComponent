@@ -93,6 +93,11 @@ object RoutePath {
          */
         const val WIDGET_TIME_PICKER = "${MAIN}/timePicker"
 
+        /**
+         * PopWindow
+         */
+        const val WIDGET_POP_WINDOW = "${MAIN}/popWindow"
+
     }
 
     /**
