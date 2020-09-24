@@ -19,6 +19,7 @@ import java.util.*
 class TimePickerPlus(activity: Activity) : BottomDialog(activity) {
 
     var timePicker: TimePickerView
+    lateinit var date: Date
 
     init {
         //设置布局
@@ -26,10 +27,12 @@ class TimePickerPlus(activity: Activity) : BottomDialog(activity) {
         setCanceledOnTouchOutside(false)
 
         //拿到时间选择器
-        timePicker = TimePickerBuilder(activity, OnTimeSelectListener { date, v ->
+        timePicker = TimePickerBuilder(activity, OnTimeSelectListener { it, v ->
+            date = it
         })
                 .setItemVisibleCount(4)
                 .setLineSpacingMultiplier(3f).setTimeSelectChangeListener {
+                    date = it
                 }
                 .setRangDate(Calendar.getInstance().apply {
                     add(Calendar.YEAR, -3)
@@ -45,5 +48,24 @@ class TimePickerPlus(activity: Activity) : BottomDialog(activity) {
         (timePickerLayoutContainer.parent as ViewGroup).removeView(timePickerLayoutContainer)
         timePickerContainer.addView(timePickerLayoutContainer)
 
+        //设置点击事件
+        //取消的点击事件
+        tvCancel.setOnClickListener {
+            timePicker.returnData()
+            dismiss()
+        }
+
+        //确认的点击事件
+        tvConfirm.setOnClickListener {
+            timePicker.returnData()
+            okListener?.invoke(date)
+            dismiss()
+        }
+
     }
+
+    /**
+     * 确认的事件
+     */
+    var okListener: ((date: Date) -> Unit)? = null
 }
