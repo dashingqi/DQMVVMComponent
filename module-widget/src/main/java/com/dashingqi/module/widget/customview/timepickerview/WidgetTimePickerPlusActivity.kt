@@ -2,7 +2,6 @@ package com.dashingqi.module.widget.customview.timepickerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.dashingqi.base.route.RoutePath
 import com.dashingqi.dqcommonutils.DateUtils
@@ -20,6 +19,11 @@ class WidgetTimePickerPlusActivity : AppCompatActivity() {
             var dateToString = DateUtils.dateToString(date, "yyyy-MM-dd")
             tvDate.text = dateToString
         }
-        timePickerPlus.show()
+
+        btnShowTimePicker.setOnClickListener {
+            if (!timePickerPlus.isShowing) {
+                timePickerPlus.show()
+            }
+        }
     }
 }
