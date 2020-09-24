@@ -3,7 +3,8 @@
     package="com.dashingqi.module.widget">
 
     <application>
-        <activity android:name=".dialog.BoxDialogActivity"></activity>
+        <activity android:name=".customview.timepickerview.WidgetTimePickerPlusActivity"></activity>
+        <activity android:name=".dialog.BoxDialogActivity" />
         <activity android:name=".dialog.BottomDialogActivity" />
         <activity android:name=".dialog.LoadingDialogActivity" />
         <activity android:name=".ddmc.detail.DdmcProductDetailActivity" />

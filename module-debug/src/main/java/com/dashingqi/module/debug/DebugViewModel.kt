@@ -37,6 +37,7 @@ class DebugViewModel(application: Application) : BasePageViewModel<DebugItemData
         items.add(DebugItemData("loading dialog 测试", RoutePath.Widget.WIDGET_LOADING_DIALOG))
         items.add(DebugItemData("bottom dialog 测试", RoutePath.Widget.WIDGET_BOTTOM_DIALOG))
         items.add(DebugItemData("box dialog 测试", RoutePath.Widget.WIDGET_BOX_DIALOG))
+        items.add(DebugItemData("time picker 测试", RoutePath.Widget.WIDGET_TIME_PICKER))
 
     }
 

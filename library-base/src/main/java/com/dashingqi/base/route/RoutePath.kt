@@ -88,6 +88,11 @@ object RoutePath {
          */
         const val WIDGET_BOX_DIALOG = "${MAIN}/boxDialog"
 
+        /**
+         * 时间选择器
+         */
+        const val WIDGET_TIME_PICKER = "${MAIN}/timePicker"
+
     }
 
     /**
