@@ -98,6 +98,11 @@ object RoutePath {
          */
         const val WIDGET_POP_WINDOW = "${MAIN}/popWindow"
 
+        /**
+         * 回调事件
+         */
+        const val WIDGET_CALL_BACK = "${MAIN}/callBack"
+
     }
 
     /**

@@ -15,7 +15,7 @@ import com.dashingqi.module.widget.databinding.WidgetCustomerPopWindowLayoutBind
  * desc : 自定义PopWindow
  */
 
-class DQCustomerPopWindow(context: Context) : PopupWindow(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT) {
+class DQCustomerPopWindow(context: Context) : PopupWindow(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT) {
 
     var viewBinding: WidgetCustomerPopWindowLayoutBinding = WidgetCustomerPopWindowLayoutBinding.inflate(LayoutInflater.from(context))
 
