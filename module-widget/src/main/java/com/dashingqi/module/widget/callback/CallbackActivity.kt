@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.dashingqi.base.base.activity.BaseMVVMActivity
 import com.dashingqi.base.route.RoutePath
+import com.dashingqi.dqcommonutils.toast
 import com.dashingqi.module.widget.R
 import com.dashingqi.module.widget.databinding.WidgetCallbackActivityBinding
 import kotlinx.android.synthetic.main.widget_callback_activity.*
@@ -24,7 +25,7 @@ class CallbackActivity : BaseMVVMActivity<WidgetCallbackActivityBinding, Callbac
             it?.let {
                 var str = it as String
                 Log.d("------> ", "获取到的结果 $str")
-                Toast.makeText(this, "------> 获取到的结果 $str", Toast.LENGTH_LONG).show()
+                toast(str)
             }
         })
     }
