@@ -3,7 +3,9 @@
     package="com.dashingqi.module.widget">
 
     <application>
-        <activity android:name=".callback.CallbackActivity"></activity>
+        <activity android:name=".view.WidgetShareElementTwoActivity"></activity>
+        <activity android:name=".view.WidgetShareElementActivity" />
+        <activity android:name=".callback.CallbackActivity" />
         <activity android:name=".popwindow.WidgetPopWindowActivity" />
         <activity android:name=".customview.timepickerview.WidgetTimePickerPlusActivity" />
         <activity android:name=".dialog.BoxDialogActivity" />

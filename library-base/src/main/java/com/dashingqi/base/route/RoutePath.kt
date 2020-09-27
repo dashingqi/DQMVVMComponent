@@ -103,6 +103,11 @@ object RoutePath {
          */
         const val WIDGET_CALL_BACK = "${MAIN}/callBack"
 
+        /**
+         * 共享元素
+         */
+        const val WIDGET_SHARE_ELEMENT = "${MAIN}/shareElement"
+
     }
 
     /**
