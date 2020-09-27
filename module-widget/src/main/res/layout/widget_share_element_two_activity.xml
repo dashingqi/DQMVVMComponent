@@ -7,10 +7,12 @@
     tools:context=".view.WidgetShareElementTwoActivity">
 
 
-    <TextView
+    <ImageView
+        android:id="@+id/iv"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:background="@android:color/holo_red_dark"
+        android:scaleType="centerCrop"
         android:transitionName="sharedView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".view.WidgetShareElementActivity">
 
-    <TextView
+    <ImageView
         android:id="@+id/jump"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:scaleType="centerCrop"
         android:background="@android:color/holo_red_dark"
         android:transitionName="sharedView"
         app:layout_constraintBottom_toBottomOf="parent"
