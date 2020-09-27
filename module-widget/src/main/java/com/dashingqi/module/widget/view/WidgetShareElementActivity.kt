@@ -4,6 +4,7 @@ import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.bumptech.glide.Glide
 import com.dashingqi.base.route.RoutePath
@@ -21,5 +22,12 @@ class WidgetShareElementActivity : AppCompatActivity() {
             startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this, jump, "sharedView").toBundle())
         }
 
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("width ----> ", "${jump.width}")
+        Log.d("height ---->", "${jump.height}")
     }
 }
