@@ -1,12 +1,17 @@
 package com.dashingqi.mvvmcomponent
 
 import android.app.Application
+import android.os.SystemClock
+import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.application.ApplicationController
+import com.dashingqi.base.utils.ProcessUtils
+import com.dashingqi.dqlog.DQLog
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.FormatStrategy
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
+import java.time.LocalDate
 
 
 /**
@@ -15,6 +20,7 @@ import com.orhanobut.logger.PrettyFormatStrategy
  * desc :
  */
 class AppApplication : Application() {
+    private  val TAG = "AppApplication"
 
     init {
         //初始化打印
@@ -24,8 +30,26 @@ class AppApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
         initARouter()
         ApplicationController.transformOnCreate()
+
+        val nameStart = SystemClock.elapsedRealtimeNanos()
+        var name = ProcessUtils.getCurrentProcessName(this)
+        Log.d(TAG,"getCurrentProcessName cost == ${SystemClock.elapsedRealtimeNanos()-nameStart}")
+
+        val pNameStart = SystemClock.elapsedRealtimeNanos()
+        var pName = ProcessUtils.getCurrentProcessNameOnP()
+        Log.d(TAG,"getCurrentProcessNameOnP cost == ${SystemClock.elapsedRealtimeNanos() - pNameStart}")
+
+        val atNameStart = SystemClock.elapsedRealtimeNanos()
+        var atName = ProcessUtils.getCurrentProcessNameByAT()
+        Log.d(TAG,"getCurrentProcessNameByAT cost == ${SystemClock.elapsedRealtimeNanos()-atNameStart}")
+
+        if (ProcessUtils.getCurrentProcessName(this) == BuildConfig.APPLICATION_ID){
+            Log.d(TAG,"init main application")
+        }
+
 
 
     }
