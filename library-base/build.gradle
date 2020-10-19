@@ -84,6 +84,8 @@ dependencies {
     api rootProject.ext.dependencies["ali-pay"]
     api rootProject.ext.dependencies["dq-log"]
     api rootProject.ext.dependencies["dq-toolbar"]
+    api rootProject.ext.dependencies["android-pickerview"]
+    api rootProject.ext.dependencies["dq-common-utils"]
 
 
     implementation project(":library-res")

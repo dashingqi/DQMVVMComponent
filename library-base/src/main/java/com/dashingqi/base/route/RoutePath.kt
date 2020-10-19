@@ -68,7 +68,46 @@ object RoutePath {
          */
         const val WIDGET_RV_FLING = "${MAIN}/rvFling"
 
+        /**
+         * 叮咚买菜的详情页面
+         */
         const val WIDGET_DDMC_PRODUCT_DETAIL = "${MAIN}/ddmcProductDetail"
+
+        /**
+         * LoadingDialog
+         */
+        const val WIDGET_LOADING_DIALOG = "${MAIN}/loadingDialog"
+
+        /**
+         * bottom dialog
+         */
+        const val WIDGET_BOTTOM_DIALOG = "${MAIN}/bottomDialog"
+
+        /**
+         * box dialog
+         */
+        const val WIDGET_BOX_DIALOG = "${MAIN}/boxDialog"
+
+        /**
+         * 时间选择器
+         */
+        const val WIDGET_TIME_PICKER = "${MAIN}/timePicker"
+
+        /**
+         * PopWindow
+         */
+        const val WIDGET_POP_WINDOW = "${MAIN}/popWindow"
+
+        /**
+         * 回调事件
+         */
+        const val WIDGET_CALL_BACK = "${MAIN}/callBack"
+
+        /**
+         * 共享元素
+         */
+        const val WIDGET_SHARE_ELEMENT = "${MAIN}/shareElement"
+
     }
 
     /**

@@ -3,7 +3,15 @@
     package="com.dashingqi.module.widget">
 
     <application>
-        <activity android:name=".ddmc.detail.DdmcProductDetailActivity"></activity>
+        <activity android:name=".view.WidgetShareElementTwoActivity"></activity>
+        <activity android:name=".view.WidgetShareElementActivity" />
+        <activity android:name=".callback.CallbackActivity" />
+        <activity android:name=".popwindow.WidgetPopWindowActivity" />
+        <activity android:name=".customview.timepickerview.WidgetTimePickerPlusActivity" />
+        <activity android:name=".dialog.BoxDialogActivity" />
+        <activity android:name=".dialog.BottomDialogActivity" />
+        <activity android:name=".dialog.LoadingDialogActivity" />
+        <activity android:name=".ddmc.detail.DdmcProductDetailActivity" />
         <activity android:name=".rvtab.WidgetRvFlingActivity" />
         <activity android:name=".tiktok.TikTokSnapHelperActivity" />
         <activity android:name=".openeye.WidgetOpenEyeActivity" />

@@ -34,6 +34,14 @@ class DebugViewModel(application: Application) : BasePageViewModel<DebugItemData
         items.add(DebugItemData("仿抖音页面切换效果", RoutePath.Widget.WIDGET_TIK_TOK_SNAP))
         items.add(DebugItemData("Rv的fling", RoutePath.Widget.WIDGET_RV_FLING))
         items.add(DebugItemData("叮咚买菜商品详情", RoutePath.Widget.WIDGET_DDMC_PRODUCT_DETAIL))
+        items.add(DebugItemData("loading dialog 测试", RoutePath.Widget.WIDGET_LOADING_DIALOG))
+        items.add(DebugItemData("bottom dialog 测试", RoutePath.Widget.WIDGET_BOTTOM_DIALOG))
+        items.add(DebugItemData("box dialog 测试", RoutePath.Widget.WIDGET_BOX_DIALOG))
+        items.add(DebugItemData("time picker 测试", RoutePath.Widget.WIDGET_TIME_PICKER))
+        items.add(DebugItemData("pop window", RoutePath.Widget.WIDGET_POP_WINDOW))
+        items.add(DebugItemData("测试回调", RoutePath.Widget.WIDGET_CALL_BACK))
+        items.add(DebugItemData("共享元素", RoutePath.Widget.WIDGET_SHARE_ELEMENT))
+
     }
 
     override fun getItemLayoutId(): Int {

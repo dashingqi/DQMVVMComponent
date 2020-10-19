@@ -29,6 +29,7 @@ abstract class BaseMVVMActivity<DB : ViewDataBinding, VM : BaseViewModel> : Base
         createDataBinding()
         viewModel = createViewModel()
         dataBinding.setVariable(getVariableId(), viewModel)
+        // 这句话的作用 是在xml中使用了LiveData，能监听到LiveData数据源发生变化
         dataBinding.lifecycleOwner = this
         mBaseLiveDataObserver = viewModel.baseLiveData.attach(this, this)
     }

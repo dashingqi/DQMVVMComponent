@@ -26,6 +26,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.Li
  */
 
 /**
+ * 在Fragment中 ViewPager通用的初始化代码
  * viewpager初始化的通用代码
  */
 fun ViewPager.init(fragment: Fragment, fragments: ArrayList<Fragment>): ViewPager {

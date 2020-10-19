@@ -29,6 +29,7 @@ class LogisticsPathDialog(context: Context) : BaseDialog(context) {
         setCanceledOnTouchOutside(false)
         setDialogWidthPercent(0.9f)
         setDialogGravity(Gravity.CENTER)
+        setDialogBackground(null)
         items.add("1")
         items.add("2")
         items.add("3")

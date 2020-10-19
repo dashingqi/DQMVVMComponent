@@ -4,6 +4,7 @@ package com.dashingqi.module.widget.rvtab
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.dashingqi.base.base.activity.BaseMVVMActivity
@@ -22,5 +23,11 @@ class WidgetRvFlingActivity : BaseMVVMActivity<WidgetRvFlingActivityBinding, Wid
             }
         })
     }
+
+    override fun isFitsSystemWindows(): Boolean {
+        return true
+    }
+
+
 
 }
