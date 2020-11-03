@@ -1,5 +1,13 @@
 package com.dashingqi.network.service
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.dashingqi.network.bean.Book
+import com.google.gson.GsonBuilder
+import com.google.gson.TypeAdapter
+import com.google.gson.reflect.TypeToken
+import com.google.gson.stream.JsonReader
+import com.google.gson.stream.JsonWriter
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
@@ -45,7 +53,19 @@ class ServiceController(var baseUrl: String?,
             builder.baseUrl(baseUrl)
         }
         builder.client(createOKHttp())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().registerTypeAdapter(LiveDataType().type, object :
+                        TypeAdapter<LiveData<String>>() {
+                    override fun write(out: JsonWriter, value: LiveData<String>?) {
+                        out.value(value?.value)
+                    }
+
+                    override fun read(reader: JsonReader): LiveData<String> {
+                        return MutableLiveData<String>().apply {
+                            value = reader.nextString()
+                        }
+                    }
+
+                }).create()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
         retrofitBuilder?.invoke(builder)
         return builder.build()
@@ -84,4 +104,6 @@ class ServiceController(var baseUrl: String?,
      * 创建对应的Service接口类
      */
     fun <T> createService(cla: Class<T>): T = createRetrofit().create(cla)
+
+    class LiveDataType : TypeToken<MutableLiveData<String>>() {}
 }
