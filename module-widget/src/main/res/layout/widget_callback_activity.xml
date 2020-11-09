@@ -21,6 +21,20 @@
             android:text="change data"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/jsonToBean"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="json to bean"
+            app:layout_constraintTop_toBottomOf="@+id/btnChangeData" />
+
+        <Button
+            android:id="@+id/beanToJson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bean to json"
+            app:layout_constraintTop_toBottomOf="@+id/jsonToBean" />
+
 
         <TextView
             android:layout_width="wrap_content"
