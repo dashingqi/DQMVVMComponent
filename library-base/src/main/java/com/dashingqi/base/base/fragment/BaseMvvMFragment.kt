@@ -40,10 +40,17 @@ abstract class BaseMvvMFragment<DB : ViewDataBinding, VM : BaseViewModel> : Base
      */
     override fun onLoad(view: View) {
         Logger.d("onLoad -----> transform")
-        viewModel = createViewModel()
-        dataBinding.lifecycleOwner = this
-        dataBinding.setVariable(getVariableId(), viewModel)
-        mBaseLiveDataObserver = viewModel.baseLiveData.attach(this)
+        viewModel = createViewModel().apply {
+            activity?.let {
+                setActivity(it)
+            }
+            setFragment(this@BaseMvvMFragment)
+
+            dataBinding.lifecycleOwner = this@BaseMvvMFragment
+            dataBinding.setVariable(getVariableId(), viewModel)
+            mBaseLiveDataObserver = viewModel.baseLiveData.attach(this@BaseMvvMFragment)
+            onLoad(view, this)
+        }
     }
 
     /**
@@ -73,4 +80,11 @@ abstract class BaseMvvMFragment<DB : ViewDataBinding, VM : BaseViewModel> : Base
      * BR.viewModel变量是由 文件 base_br_layout文件生成的
      */
     private fun getVariableId() = BR.viewModel
+
+    /**
+     * 可重写该方法在Fragment中拿到对应的ViewModel
+     */
+    open fun onLoad(view: View, viewModel: VM) {
+
+    }
 }

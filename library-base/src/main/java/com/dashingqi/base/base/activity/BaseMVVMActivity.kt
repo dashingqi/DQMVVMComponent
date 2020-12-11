@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.dashingqi.base.base.observer.BaseLiveDataObserver
 import com.dashingqi.library_base.BR
 import com.dashingqi.base.base.viewmodel.BaseViewModel
@@ -33,6 +32,7 @@ abstract class BaseMVVMActivity<DB : ViewDataBinding, VM : BaseViewModel> : Base
         // 这句话的作用 是在xml中使用了LiveData，能监听到LiveData数据源发生变化
         dataBinding.lifecycleOwner = this
         mBaseLiveDataObserver = viewModel.baseLiveData.attach(this, this)
+        onLoad(viewModel)
     }
 
     /**
@@ -49,19 +49,32 @@ abstract class BaseMVVMActivity<DB : ViewDataBinding, VM : BaseViewModel> : Base
      * 创建ViewModel
      */
     private fun createViewModel(): VM {
-        return ViewModelProvider(this, getViewHolderFactory()).get(getVmClass(this))
+        var vmClass = getVmClass<VM>(this)
+        return getViewModelFactory()?.let {
+            ViewModelProvider(this, it).get(vmClass)
+        } ?: ViewModelProvider(this).get(vmClass)
     }
 
     /**
      * 如果你想传递参数到ViewModel中
      * 可以重写这个方法，通过Factory 重新构造一个带参数的ViewModel
      */
-    open fun getViewHolderFactory(): ViewModelProvider.Factory {
-        return defaultViewModelProviderFactory
+    open fun getViewModelFactory(): ViewModelProvider.Factory? {
+        return null
     }
 
     /**
      * BR.viewModel 是由文件 base_br_layout生成的
      */
     private fun getVariableId() = BR.viewModel
+
+
+    /**
+     * 通过重写此方法获取到ViewModel
+     */
+    open fun onLoad(viewModel: VM) {
+
+    }
+
+
 }

@@ -2,6 +2,7 @@ package com.dashingqi.base.base.viewmodel
 
 import android.app.Activity
 import android.app.Application
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import com.dashingqi.base.base.livedata.BaseLiveData
 import java.lang.ref.WeakReference
@@ -19,6 +20,8 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
     var baseLiveData = BaseLiveData()
 
     private var mActivityWeakReference: WeakReference<Activity>? = null
+
+    private var mFragmentWeakReference: WeakReference<Fragment>? = null
 
     /**
      * 用于绑定到xml布局上的 （BindingAdapter）
@@ -42,6 +45,20 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
      */
     fun getActivity(): Activity? {
         return mActivityWeakReference?.get()
+    }
+
+    /**
+     * 设置Fragment
+     */
+    fun setFragment(fragment: Fragment) {
+        mFragmentWeakReference = WeakReference(fragment)
+    }
+
+    /**
+     * 获取到Fragment
+     */
+    fun getFragment(): Fragment? {
+        return mFragmentWeakReference?.get()
     }
 
 }
