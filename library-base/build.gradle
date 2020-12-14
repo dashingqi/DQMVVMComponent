@@ -86,6 +86,7 @@ dependencies {
     api rootProject.ext.dependencies["dq-toolbar"]
     api rootProject.ext.dependencies["android-pickerview"]
     api rootProject.ext.dependencies["dq-common-utils"]
+    api rootProject.ext.dependencies["viewmodel-ktx"]
 
 
     implementation project(":library-res")

@@ -7,7 +7,9 @@ import com.dashingqi.base.base.callback.LiveDataCallback
 import com.dashingqi.base.base.response.BaseResponse
 import com.dashingqi.base.base.viewmodel.BaseMultiplyPageViewModel
 import com.dashingqi.base.base.viewmodel.BaseViewModel
+import com.dashingqi.base.ext.request
 import com.dashingqi.base.utils.OnItemClickListener
+import com.dashingqi.dqlog.DQLog
 import com.dashingqi.library.service.providers.collect.CollectService
 import com.dashingqi.library.service.providers.common.response.CommonArticleResponse
 import com.dashingqi.module.collect.app.CollectServiceImpl
@@ -57,6 +59,15 @@ class CollectListViewModel(application: Application) : BaseMultiplyPageViewModel
                     handleItemData(page, response.data.datas)
                 }
         )
+
+        testScope(page)
+    }
+
+    private fun testScope(page:Int){
+        request {
+           val data =  ICollectService.instance.getSuspendCollectList(page)
+            DQLog.d("data size  = ${data.data.datas.size}")
+        }
     }
 
 

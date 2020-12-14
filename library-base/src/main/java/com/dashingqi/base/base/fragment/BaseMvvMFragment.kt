@@ -47,8 +47,8 @@ abstract class BaseMvvMFragment<DB : ViewDataBinding, VM : BaseViewModel> : Base
             setFragment(this@BaseMvvMFragment)
 
             dataBinding.lifecycleOwner = this@BaseMvvMFragment
-            dataBinding.setVariable(getVariableId(), viewModel)
-            mBaseLiveDataObserver = viewModel.baseLiveData.attach(this@BaseMvvMFragment)
+            dataBinding.setVariable(getVariableId(), this)
+            mBaseLiveDataObserver = this.baseLiveData.attach(this@BaseMvvMFragment)
             onLoad(view, this)
         }
     }

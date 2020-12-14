@@ -40,6 +40,9 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            url  "https://dl.bintray.com/dashingqi/utils"
+        }
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven {
             url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
@@ -54,9 +57,7 @@ allprojects {
         maven {
             url "https://dl.bintray.com/ooftf/maven"
         }
-        maven {
-            url  "https://dl.bintray.com/dashingqi/utils"
-        }
+
     }
 }
 

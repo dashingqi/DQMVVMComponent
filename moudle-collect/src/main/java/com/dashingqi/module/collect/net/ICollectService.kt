@@ -33,7 +33,13 @@ interface ICollectService {
      */
 
     @GET("/lg/collect/list/{pageNum}/json")
-    fun getCollectList(@Path("pageNum") pageNum:Int):Call<CollectListResponse>
+    fun getCollectList(@Path("pageNum") pageNum: Int): Call<CollectListResponse>
+
+    /**
+     * 使用协程做网络请求
+     */
+    @GET("/lg/collect/list/{pageNum}/json")
+    suspend fun getSuspendCollectList(@Path("pageNum") pageNum: Int):CollectListResponse
 
     companion object {
         var instance = ARouter.getInstance().navigation(IServiceProvider::class.java).createService(ICollectService::class.java)
