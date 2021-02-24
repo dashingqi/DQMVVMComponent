@@ -12,6 +12,7 @@ import com.dashingqi.base.route.RoutePath
 import com.dashingqi.library.service.providers.widget.CommonItemDecoration
 import com.dashingqi.module.widget.databinding.WidgetRvTabActivityBinding
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.widget_rv_tab_activity.*
 
 @Route(path = RoutePath.Widget.WIDGET_RV_TAB_LAYOUT)
 class WidgetRvTabActivity : BaseMVVMActivity<WidgetRvTabActivityBinding, WidgetRvTabViewModel>() {
@@ -20,7 +21,7 @@ class WidgetRvTabActivity : BaseMVVMActivity<WidgetRvTabActivityBinding, WidgetR
         dataBinding.rv.layoutManager as LinearLayoutManager
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
+//    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         configRV()
@@ -49,12 +50,25 @@ class WidgetRvTabActivity : BaseMVVMActivity<WidgetRvTabActivityBinding, WidgetR
     }
 
 
-    @RequiresApi(Build.VERSION_CODES.M)
+//    @RequiresApi(Build.VERSION_CODES.M)
     private fun configRV() {
         dataBinding.rv.addItemDecoration(CommonItemDecoration())
-        dataBinding.rv.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            dataBinding.tabLayout.setScrollPosition(rvManager.findFirstVisibleItemPosition(), 0f, true)
-        }
+//        dataBinding.rv.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+//            dataBinding.tabLayout.setScrollPosition(rvManager.findFirstVisibleItemPosition(), 0f, true)
+//        }
+
+    dataBinding.rv.addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+
+
+    }
+    
+        dataBinding.rv.addOnScrollListener(object:RecyclerView.OnScrollListener(){
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+//                super.onScrollStateChanged(recyclerView, newState)
+               var position =  rvManager.findFirstVisibleItemPosition()
+                dataBinding.tabLayout.setScrollPosition(position,0f,true)
+            }
+        })
     }
 
     override fun isFitsSystemWindows(): Boolean {
