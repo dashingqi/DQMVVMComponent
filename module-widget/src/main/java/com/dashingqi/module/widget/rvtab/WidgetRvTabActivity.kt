@@ -53,9 +53,11 @@ class WidgetRvTabActivity : BaseMVVMActivity<WidgetRvTabActivityBinding, WidgetR
 //    @RequiresApi(Build.VERSION_CODES.M)
     private fun configRV() {
         dataBinding.rv.addItemDecoration(CommonItemDecoration())
-//        dataBinding.rv.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-//            dataBinding.tabLayout.setScrollPosition(rvManager.findFirstVisibleItemPosition(), 0f, true)
-//        }
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        dataBinding.rv.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            dataBinding.tabLayout.setScrollPosition(rvManager.findFirstVisibleItemPosition(), 0f, true)
+        }
+    }
 
     dataBinding.rv.addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
 
