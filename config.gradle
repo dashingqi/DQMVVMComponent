@@ -65,11 +65,11 @@ ext {
             'hms-scanplus'                         : 'com.huawei.hms:scanplus:1.1.1.301',
             "wx-pay"                               : 'com.dashingqi:wxpay:0.9.9.4',
             "ali-pay"                              : 'com.dashingqi:alipay:0.9.9.4',
-            "dq-log"                               : "com.dashingqi:dqlog:0.9.9.1",
-            'dq-toolbar'                           : 'com.dashingqi:DQCommonToolbar:0.9.9.2',
+            "dq-log"                               : "io.github.dashingqi:log:0.0.1",
+            'dq-toolbar'                           : 'io.github.dashingqi:common-toolbar:0.0.1',
             "layoutBehavior"                       : 'com.github.yuruiyin:AppbarLayoutBehavior:1.0.4',
             "android-pickerview"                   : 'com.contrarywind:Android-PickerView:4.1.9',
-            "dq-common-utils"                      : 'com.dashingqi:DQCommonUtils:0.9.9.2'
+            "dq-common-utils"                      : 'io.github.dashingqi:common-utils:0.0.1'
 
     ]
 }
