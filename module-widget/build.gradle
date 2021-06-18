@@ -1,5 +1,4 @@
 apply from: "../module.build.gradle"
-apply plugin: 'kotlin-android'
 
 android {
 
@@ -14,11 +13,7 @@ android {
 }
 
 dependencies {
-
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'io.github.dashingqi:overscrolllayoutoverscrolllayoutoverscrolllayout:0.0.1'
-    implementation 'io.github.dashingqi:dialog:0.0.1'
-
-    implementation rootProject.ext.dependencies["layoutBehavior"]
+//    implementation 'io.github.dashingqi:overscrolllayout:0.0.1'
+//    implementation 'io.github.dashingqi:dialog:0.0.1'
+//    implementation rootProject.ext.dependencies["layoutBehavior"]
 }

@@ -41,8 +41,8 @@ android {
 
     //统一资源前缀，规范资源引用，局限于布局的资源文件
     resourcePrefix "network_"
-    dataBinding {
-        enabled true
+    buildFeatures{
+        dataBinding true
     }
 
     compileOptions {

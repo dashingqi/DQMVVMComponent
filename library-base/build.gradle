@@ -36,8 +36,8 @@ android {
 
     //统一资源前缀，规范资源引用，局限于布局的资源文件
     resourcePrefix "base_"
-    dataBinding {
-        enabled true
+    buildFeatures{
+        dataBinding true
     }
 
     compileOptions {
@@ -81,12 +81,12 @@ dependencies {
     api rootProject.ext.dependencies["edit-text-layout"]
     api rootProject.ext.dependencies["utilcodex"]
     api rootProject.ext.dependencies["wx-pay"]
-    api rootProject.ext.dependencies["ali-pay"]
-    api rootProject.ext.dependencies["dq-log"]
+//    api rootProject.ext.dependencies["ali-pay"]
     api rootProject.ext.dependencies["dq-toolbar"]
     api rootProject.ext.dependencies["android-pickerview"]
-    api rootProject.ext.dependencies["dq-common-utils"]
+//    api rootProject.ext.dependencies["dq-common-utils"]
     api rootProject.ext.dependencies["viewmodel-ktx"]
+    api rootProject.ext.dependencies["dq-log"]
 
 
     implementation project(":library-res")

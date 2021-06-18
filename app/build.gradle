@@ -72,8 +72,8 @@ android {
         }
     }
 
-    dataBinding {
-        enabled true
+    buildFeatures{
+        dataBinding true
     }
 
     compileOptions {
@@ -114,8 +114,8 @@ dependencies {
         implementation project(":module-project")
         //登录
         implementation project(":module-login")
-        // 功能组件 自定义控件
-        implementation project(':module-widget')
+//        // 功能组件 自定义控件
+//        implementation project(":module-widget")
         //功能组件 - web
         implementation project(':module-web')
         //二维码扫描功能组件
@@ -127,7 +127,7 @@ dependencies {
         //测试
         implementation project(':module-debug')
         //支付
-        implementation project(':module-pay')
+//        implementation project(':module-pay')
 
     }
 }
