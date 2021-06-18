@@ -87,8 +87,6 @@ dependencies {
 //    api rootProject.ext.dependencies["dq-common-utils"]
     api rootProject.ext.dependencies["viewmodel-ktx"]
     api rootProject.ext.dependencies["dq-log"]
-
-
     implementation project(":library-res")
     debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.2.0"
     releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.2.0"
