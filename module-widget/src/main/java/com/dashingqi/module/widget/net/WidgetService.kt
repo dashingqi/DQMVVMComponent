@@ -22,6 +22,13 @@ interface WidgetService {
     fun getDiscoveryData(): Call<OpenEyeResponse>
 
     /**
+     * 通过协程做本次请求
+     * @return OpenEyeResponse
+     */
+    @GET("/api/v7/index/tab/discovery")
+    suspend fun getDiscoveryDataCoroutine(): OpenEyeResponse
+
+    /**
      * 推荐页面的数据
      */
     @GET("/api/v5/index/tab/allRec")
