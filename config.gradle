@@ -69,7 +69,7 @@ ext {
             'dq-toolbar'                           : 'io.github.dashingqi:common-toolbar:0.0.2',
             "layoutBehavior"                       : 'com.github.yuruiyin:AppbarLayoutBehavior:1.0.4',
             "android-pickerview"                   : 'com.contrarywind:Android-PickerView:4.1.9',
-            "dq-common-utils"                      : 'io.github.dashingqi:common-utils:0.0.1'
+            "dq-common-utils"                      : 'io.github.dashingqi:common-utils:0.0.2'
 
     ]
 }
