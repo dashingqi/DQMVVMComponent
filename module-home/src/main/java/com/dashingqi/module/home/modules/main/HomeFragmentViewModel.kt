@@ -2,6 +2,7 @@ package com.dashingqi.module.home.modules.main
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.base.callback.LiveDataCallback
 import com.dashingqi.base.base.viewmodel.BasePageViewModel
@@ -15,6 +16,8 @@ import com.dashingqi.module.home.net.HomeBannerResponse
 import com.dashingqi.module.home.net.HomeProjectListResponse
 import com.dashingqi.module.home.net.IHomeService
 import com.orhanobut.logger.Logger
+import kotlinx.coroutines.handleCoroutineException
+import kotlinx.coroutines.launch
 
 /**
  * @author : zhangqi
@@ -26,6 +29,7 @@ class HomeFragmentViewModel(application: Application) : BasePageViewModel<Common
     init {
         itemBinding.bindExtra(BR.itemClick, onItemClickListener())
         getBannerData()
+        getNewBannerData()
         refresh()
     }
 
@@ -41,6 +45,23 @@ class HomeFragmentViewModel(application: Application) : BasePageViewModel<Common
                     var data = response.data
                     bannerData.value = data
                 }
+        )
+    }
+
+    /**
+     * 使用协程的方式获取数据
+     */
+    private fun getNewBannerData() {
+        launch(
+                success = {
+                    DQLog.d("currentThread == ${Thread.currentThread().name}")
+                    val resultResponse = IHomeService.instance.getNewBannerData()
+                    DQLog.d("NewBannerData size is = ${resultResponse.data?.size}")
+                },
+                failure = { exception ->
+                    exception.printStackTrace()
+                }
+
         )
     }
 

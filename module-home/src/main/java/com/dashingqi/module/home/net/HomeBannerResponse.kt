@@ -1,6 +1,5 @@
 package com.dashingqi.module.home.net
 
-import androidx.lifecycle.LiveData
 import com.dashingqi.base.base.response.BaseResponse
 
 /**
@@ -10,7 +9,5 @@ import com.dashingqi.base.base.response.BaseResponse
  */
 data class HomeBannerResponse(val data: List<DataBean>) : BaseResponse() {
 
-    data class DataBean(var desc: String, var id: Int, var imagePath: String, var isVisible: Int, var order: Int, var title: String, var type: Int, var url: String) {
-
-    }
+    data class DataBean(var desc: String, var id: Int, var imagePath: String, var isVisible: Int, var order: Int, var title: String, var type: Int, var url: String)
 }

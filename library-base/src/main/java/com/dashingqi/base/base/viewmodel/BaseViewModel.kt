@@ -4,7 +4,10 @@ import android.app.Activity
 import android.app.Application
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
 import com.dashingqi.base.base.livedata.BaseLiveData
+import com.dashingqi.dqlog.DQLog
+import kotlinx.coroutines.launch
 import java.lang.ref.WeakReference
 
 
@@ -59,6 +62,29 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
      */
     fun getFragment(): Fragment? {
         return mFragmentWeakReference?.get()
+    }
+
+    /**
+     * BaseViewModel中协程的封装
+     * @param success SuspendFunction0<Unit> 成功的的高阶函数
+     * @param failure Function1<Exception, Unit> 失败的高阶函数
+     * @param complete Function0<Unit> 完成的高阶函数 对于本次请求结尾的工作
+     */
+    open fun launch(success: suspend () -> Unit, failure: (Exception) -> Unit, complete: (() -> Unit)? = null) {
+        viewModelScope.launch {
+            try {
+                DQLog.d("perform launch success ")
+                success.invoke()
+            } catch (exception: Exception) {
+                DQLog.d("perform launch failure ")
+                failure.invoke(exception)
+            } finally {
+                complete?.let {
+                    DQLog.d("perform launch success ")
+                    it.invoke()
+                }
+            }
+        }
     }
 
 }
