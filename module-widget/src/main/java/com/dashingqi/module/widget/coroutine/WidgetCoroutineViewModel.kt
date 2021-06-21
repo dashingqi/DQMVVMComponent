@@ -40,5 +40,14 @@ class WidgetCoroutineViewModel(application: Application) : BaseViewModel(applica
             }
         } catch (e: Exception) {
         }
+
+    }
+
+    fun useLaunch(){
+        launch(success = {
+                 // doSomething
+        },failure = {
+            // handle Exception
+        })
     }
 }
