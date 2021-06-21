@@ -108,6 +108,9 @@ object RoutePath {
          */
         const val WIDGET_SHARE_ELEMENT = "${MAIN}/shareElement"
 
+        const val WIDGET_COROUTINE =  "${MAIN}/coroutine"
+
+
     }
 
     /**

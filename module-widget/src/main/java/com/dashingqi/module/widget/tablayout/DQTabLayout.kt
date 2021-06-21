@@ -1,10 +1,7 @@
 package com.dashingqi.module.widget.tablayout
 
 import android.content.Context
-import android.graphics.Typeface
 import android.util.AttributeSet
-import android.util.TypedValue
-import android.widget.TextView
 import com.dashingqi.module.widget.R
 import com.google.android.material.tabs.TabLayout
 
@@ -14,9 +11,9 @@ import com.google.android.material.tabs.TabLayout
  * desc :
  */
 class DQTabLayout : TabLayout {
-    constructor(context: Context?) : super(context)
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
             context,
             attrs,
             defStyleAttr

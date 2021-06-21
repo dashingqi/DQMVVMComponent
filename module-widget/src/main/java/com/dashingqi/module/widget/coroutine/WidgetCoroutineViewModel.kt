@@ -16,6 +16,9 @@ import retrofit2.Response
  * @since 6/19/21
  */
 class WidgetCoroutineViewModel(application: Application) : BaseViewModel(application) {
+    init {
+        getDiscoverDataWithCoroutine()
+    }
 
     /**
      * 没有使用协程做网络请求
