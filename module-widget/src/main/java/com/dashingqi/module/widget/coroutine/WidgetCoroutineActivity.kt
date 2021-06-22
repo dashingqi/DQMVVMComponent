@@ -1,20 +1,19 @@
 package com.dashingqi.module.widget.coroutine
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.dashingqi.base.base.activity.BaseMVVMActivity
 import com.dashingqi.base.route.RoutePath
-import com.dashingqi.module.widget.R
+import com.dashingqi.module.widget.databinding.WidgetActivityCoroutineBinding
 import kotlinx.coroutines.*
 
 @Route(path = RoutePath.Widget.WIDGET_COROUTINE)
-class WidgetCoroutineActivity : AppCompatActivity() {
+class WidgetCoroutineActivity : BaseMVVMActivity<WidgetActivityCoroutineBinding,
+        WidgetCoroutineViewModel>() {
     private val TAG = "WidgetCoroutineActivity"
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_widget_coroutine)
+    override fun onLoad(viewModel: WidgetCoroutineViewModel) {
+        super.onLoad(viewModel)
         // lifecycleScope 是能绑定Activity和Fragment的生命周期
         // 在组件销毁的时候会自动取消协程
         lifecycleScope.launch(Dispatchers.Default) {

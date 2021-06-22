@@ -5,10 +5,17 @@ import androidx.lifecycle.viewModelScope
 import com.dashingqi.base.base.viewmodel.BaseViewModel
 import com.dashingqi.module.widget.net.WidgetService
 import com.dashingqi.module.widget.net.response.OpenEyeResponse
+import io.reactivex.Single
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.concurrent.thread
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 /**
  * 用于做协程测试的ViewModel
@@ -18,6 +25,7 @@ import retrofit2.Response
 class WidgetCoroutineViewModel(application: Application) : BaseViewModel(application) {
     init {
         getDiscoverDataWithCoroutine()
+        runTaskDefault()
     }
 
     /**
@@ -28,6 +36,7 @@ class WidgetCoroutineViewModel(application: Application) : BaseViewModel(applica
             override fun onResponse(call: Call<OpenEyeResponse>, response: Response<OpenEyeResponse>) {
                 var body = response.body()
             }
+
             override fun onFailure(call: Call<OpenEyeResponse>, t: Throwable) {
             }
         })
@@ -46,11 +55,108 @@ class WidgetCoroutineViewModel(application: Application) : BaseViewModel(applica
 
     }
 
-    fun useLaunch(){
+    fun useLaunch() {
         launch(success = {
-                 // doSomething
-        },failure = {
+            // doSomething
+        }, failure = {
             // handle Exception
         })
     }
+
+    /**
+     * 执行耗时操作
+     */
+    private fun runTask(callback: SingleMethodCallback) {
+        thread {
+            Thread.sleep(1000)
+            callback.onCallBack("result")
+        }
+    }
+
+    /**
+     * 默认的单一方法接口的实现
+     */
+    private fun runTaskDefault() {
+        runTask(object : SingleMethodCallback {
+            override fun onCallBack(value: String) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+    private fun runTaskSuspend() {
+        viewModelScope.launch {
+            runTaskWithSuspend()
+        }
+    }
+
+
+    /**
+     * 使用协程将单一回到函数转成挂起函数
+     */
+    suspend fun runTaskWithSuspend(): String {
+        // suspendCoroutine是一个挂起函数
+        return suspendCoroutine {
+            runTask(object : SingleMethodCallback {
+                override fun onCallBack(value: String) {
+                    it.resume(value)
+                }
+            })
+        }
+    }
+
+    /**
+     * 模拟一个耗时操作
+     */
+    private fun request(callback: ICallBack) {
+        thread {
+            try {
+                callback.onSuccess("success")
+            } catch (e: Exception) {
+                callback.onFailure(e)
+            }
+        }
+    }
+
+
+    private fun requestDefault() {
+        request(object : ICallBack {
+            override fun onSuccess(data: String) {
+                // doSomething
+            }
+
+            override fun onFailure(t: Throwable) {
+                // handle Exception
+            }
+
+        })
+    }
+
+
+    suspend fun requestWithSuspend():String{
+       return suspendCancellableCoroutine<String> {it->
+            request(object:ICallBack{
+                override fun onSuccess(data: String) {
+                    it.resume(data)
+                }
+
+                override fun onFailure(t: Throwable) {
+                    it.resumeWithException(t)
+                }
+            })
+        }
+    }
+
+
+    fun runRequestSuspend(){
+        try {
+            viewModelScope.launch {
+                requestWithSuspend()
+            }
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+
+    }
+
 }
