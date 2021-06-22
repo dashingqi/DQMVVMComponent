@@ -133,9 +133,9 @@ class WidgetCoroutineViewModel(application: Application) : BaseViewModel(applica
     }
 
 
-    suspend fun requestWithSuspend():String{
-       return suspendCancellableCoroutine<String> {it->
-            request(object:ICallBack{
+   private suspend fun requestWithSuspend(): String {
+        return suspendCancellableCoroutine<String> { it ->
+            request(object : ICallBack {
                 override fun onSuccess(data: String) {
                     it.resume(data)
                 }
@@ -148,12 +148,12 @@ class WidgetCoroutineViewModel(application: Application) : BaseViewModel(applica
     }
 
 
-    fun runRequestSuspend(){
+  private  fun runRequestSuspend() {
         try {
             viewModelScope.launch {
                 requestWithSuspend()
             }
-        }catch (e:Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
 
