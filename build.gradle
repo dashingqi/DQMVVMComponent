@@ -30,8 +30,8 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenLocal()
         mavenCentral()
+        mavenLocal()
         google()
         jcenter()
         maven { url 'http://developer.huawei.com/repo/' }

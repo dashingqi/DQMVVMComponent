@@ -25,7 +25,7 @@ import kotlin.coroutines.suspendCoroutine
 class WidgetCoroutineViewModel(application: Application) : BaseViewModel(application) {
     init {
         getDiscoverDataWithCoroutine()
-        runTaskDefault()
+       // runTaskDefault()
     }
 
     /**
@@ -52,7 +52,6 @@ class WidgetCoroutineViewModel(application: Application) : BaseViewModel(applica
             }
         } catch (e: Exception) {
         }
-
     }
 
     fun useLaunch() {
