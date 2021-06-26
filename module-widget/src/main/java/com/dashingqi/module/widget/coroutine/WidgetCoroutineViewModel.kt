@@ -96,10 +96,10 @@ class WidgetCoroutineViewModel(application: Application) : BaseViewModel(applica
      */
     suspend fun runTaskWithSuspend(): String {
         // suspendCoroutine是一个挂起函数
-        return suspendCoroutine {
+        return suspendCoroutine { continuation ->
             runTask(object : SingleMethodCallback {
                 override fun onCallBack(value: String) {
-                    it.resume(value)
+                    continuation.resume(value)
                 }
             })
         }
@@ -133,19 +133,19 @@ class WidgetCoroutineViewModel(application: Application) : BaseViewModel(applica
     }
 
     private suspend fun requestWithSuspend(): String {
-        return suspendCancellableCoroutine {
-
+        return suspendCancellableCoroutine { cancellableContinuation->
             request(object : ICallBack {
                 override fun onSuccess(data: String) {
-                    it.resume(data)
+                    cancellableContinuation.resume(data)
                 }
 
                 override fun onFailure(t: Throwable) {
-                    it.resumeWithException(t)
+                    cancellableContinuation.resumeWithException(t)
                 }
             })
         }
     }
+
     private fun runRequestSuspend() {
 
         try {
