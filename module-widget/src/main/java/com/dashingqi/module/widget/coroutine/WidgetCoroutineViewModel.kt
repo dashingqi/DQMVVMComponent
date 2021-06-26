@@ -157,4 +157,14 @@ class WidgetCoroutineViewModel(application: Application) : BaseViewModel(applica
 
     }
 
+
+    inner class MyResolveTODO :ICallBack{
+        override fun onSuccess(data: String) {
+        }
+
+        override fun onFailure(t: Throwable) {
+        }
+    }
+
+
 }
