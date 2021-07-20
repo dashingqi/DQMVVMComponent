@@ -6,12 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".view.WidgetShareElementActivity">
 
+    <com.dashingqi.module.widget.view.DQWeatherView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toTopOf="@id/jump"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/jump"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:scaleType="centerCrop"
         android:background="@android:color/holo_red_dark"
+        android:scaleType="centerCrop"
         android:transitionName="sharedView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

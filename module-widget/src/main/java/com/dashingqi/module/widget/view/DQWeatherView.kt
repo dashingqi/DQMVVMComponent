@@ -142,6 +142,16 @@ class DQWeatherView : ViewGroup {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
+        canvas?.let {
+            //画温度
+            if (!mWeatherTemp.isNullOrEmpty()) {
+                it.drawText(mWeatherTemp, 0.0f,
+                        TextPaintUtil.getTextBaseLineY(mTemperaturePaint, height,
+                                false),
+                        mTemperaturePaint)
+            }
+
+        }
     }
 
 }

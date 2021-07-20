@@ -39,4 +39,17 @@ object TextPaintUtil {
             textPaint.measureText(content)
         }
     }
+
+    /**
+     * 获取到一行文字的baseLineY值
+     */
+    fun getTextBaseLineY(paint: TextPaint, maxHeight: Int, includePadding: Boolean): Float {
+        var baseLineY = (maxHeight - getTextHeight(paint, includePadding)) / 2
+        baseLineY -= if (includePadding) {
+            paint.fontMetrics.top
+        } else {
+            paint.fontMetrics.ascent
+        }
+        return baseLineY
+    }
 }
