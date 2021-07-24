@@ -7,11 +7,12 @@
     tools:context=".view.WidgetShareElementActivity">
 
     <com.dashingqi.module.widget.view.DQWeatherView
+        android:id="@+id/weatherView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_dark"
-        app:layout_constraintBottom_toTopOf="@id/jump"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

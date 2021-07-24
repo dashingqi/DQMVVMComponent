@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.bumptech.glide.Glide
 import com.dashingqi.base.route.RoutePath
 import com.dashingqi.module.widget.R
+import com.dashingqi.module.widget.view.data.WeatherData
 import kotlinx.android.synthetic.main.widget_share_element_activity.*
 
 @Route(path = RoutePath.Widget.WIDGET_SHARE_ELEMENT)
@@ -21,7 +22,7 @@ class WidgetShareElementActivity : AppCompatActivity() {
             val intent = Intent(this, WidgetShareElementTwoActivity::class.java)
             startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this, jump, "sharedView").toBundle())
         }
-
+        weatherView.setData(updateWeatherData())
     }
 
 
@@ -29,5 +30,15 @@ class WidgetShareElementActivity : AppCompatActivity() {
         super.onResume()
         Log.d("width ----> ", "${jump.width}")
         Log.d("height ---->", "${jump.height}")
+    }
+
+    private fun updateWeatherData(): WeatherData {
+        return WeatherData().apply {
+            city = "北京"
+            weatherTemperature = "33"
+            weatherDesc = "多云"
+            pm = "46"
+            weatherQuality = "优"
+        }
     }
 }

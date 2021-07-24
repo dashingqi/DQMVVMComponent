@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.ViewGroup
 import com.dashingqi.module.widget.R
 import com.dashingqi.module.widget.util.TextPaintUtil
+import com.dashingqi.module.widget.view.data.WeatherData
 
 /**
  * @author : zhangqi
@@ -52,6 +53,13 @@ class DQWeatherView : ViewGroup {
         TextPaint()
     }
 
+    /**
+     * 画天气质量的的画笔
+     */
+    private val mWeatherQualityPaint by lazy {
+        TextPaint()
+    }
+
     /**  天气温度*/
     private var mWeatherTemp = "30"
 
@@ -64,8 +72,14 @@ class DQWeatherView : ViewGroup {
     /** pm值*/
     private var mPM = "34"
 
+    /** 天气质量*/
+    private var mWeatherQuality = "优"
+
     /** 天气描述*/
-    private var mWeatherDesc = "优"
+    private var mWeatherDesc = "多云"
+
+    /** 是否包含文字的空白区域*/
+    private var mIsIncludePadding = false
 
     constructor(context: Context) : super(context) {
         init()
@@ -102,27 +116,31 @@ class DQWeatherView : ViewGroup {
                 resources.getDimension(R.dimen.widget_temperature_size)
         mTemperaturePaint.color = resources.getColor(R.color.widget_temperature_color)
 
+        // 画温度符号的画笔
+        mTemperatureSymbolPaint.isAntiAlias = true
+        mTemperatureSymbolPaint.textSize =
+                resources.getDimension(R.dimen.widget_weather_temperature_symbol)
+        mTemperatureSymbolPaint.color = resources.getColor(R.color.widget_temperature_color)
         // 画城市的画笔
         mCityPaint.isAntiAlias = true
         mCityPaint.textSize =
                 resources.getDimension(R.dimen.widget_city_size)
         mCityPaint.color = resources.getColor(R.color.widget_temperature_color)
 
-        // 画温度符号的画笔
-        mTemperatureSymbolPaint.isAntiAlias = true
-        mTemperatureSymbolPaint.textSize =
-                resources.getDimension(R.dimen.widget_weather_temperature_symbol)
-        mTemperatureSymbolPaint.color = resources.getColor(R.color.widget_temperature_color)
+        // 画天气描述
+        mWeatherDescPaint.isAntiAlias = true
+        mWeatherDescPaint.textSize = resources.getDimension(R.dimen.widget_weather_desc_size)
+        mWeatherDescPaint.color = resources.getColor(R.color.widget_temperature_color)
 
         // 画pm2.5
         mPMPaint.isAntiAlias = true
         mPMPaint.textSize = resources.getDimension(R.dimen.widget_pm_size)
         mPMPaint.color = resources.getColor(R.color.widget_temperature_color)
 
-        // 画天气描述
-        mWeatherDescPaint.isAntiAlias = true
-        mWeatherDescPaint.textSize = resources.getDimension(R.dimen.widget_weather_desc_size)
-        mWeatherDescPaint.color = resources.getColor(R.color.widget_temperature_color)
+        // 画天气质量
+        mWeatherQualityPaint.isAntiAlias = true
+        mWeatherQualityPaint.textSize = resources.getDimension(R.dimen.widget_weather_quality_size)
+        mWeatherQualityPaint.color = resources.getColor(R.color.widget_temperature_color)
 
 
     }
@@ -140,7 +158,7 @@ class DQWeatherView : ViewGroup {
 
         val height = when (measureHeightMode) {
             MeasureSpec.AT_MOST -> {
-                (TextPaintUtil.getTextHeight(mTemperaturePaint, false).toInt()
+                (TextPaintUtil.getTextHeight(mTemperaturePaint, mIsIncludePadding).toInt()
                         + paddingTop + paddingBottom).coerceAtMost(measureHeightSize)
             }
 
@@ -148,7 +166,7 @@ class DQWeatherView : ViewGroup {
                 measureHeightSize
             }
             else -> {
-                TextPaintUtil.getTextHeight(mTemperaturePaint, false)
+                TextPaintUtil.getTextHeight(mTemperaturePaint, mIsIncludePadding)
                 +paddingTop + paddingBottom
             }
         }
@@ -173,10 +191,19 @@ class DQWeatherView : ViewGroup {
      * 获取到天气显示的最大宽度
      */
     private fun getWeatherMaxWidth(): Int {
-        val maxWidth =
+        var maxWidth =
                 TextPaintUtil.getTextWidth(mWeatherTemp, mTemperaturePaint) +
-                        TextPaintUtil.getTextWidth(mCity, mCityPaint) +
-                        TextPaintUtil.getTextWidth(mTemperatureSymbolText, mTemperatureSymbolPaint)
+                        TextPaintUtil.getTextWidth(mTemperatureSymbolText, mTemperatureSymbolPaint) +
+                        resources.getDimension(R.dimen.widget_weather_right_padding)
+
+        maxWidth += Math.max((TextPaintUtil.getTextWidth(mCity, mCityPaint) +
+                TextPaintUtil.getTextWidth(mWeatherDesc, mWeatherDescPaint) +
+                resources.getDimension(R.dimen.widget_weather_symbol_margin_right)),
+                (TextPaintUtil.getTextWidth(mPM, mPMPaint) +
+                        TextPaintUtil.getTextWidth(mWeatherQuality, mWeatherQualityPaint) +
+                        resources.getDimension(R.dimen.widget_weather_symbol_margin_right)
+                        )
+        )
         return maxWidth.toInt()
     }
 
@@ -198,41 +225,70 @@ class DQWeatherView : ViewGroup {
             if (!mWeatherTemp.isNullOrEmpty()) {
                 it.drawText(mWeatherTemp, 0.0f,
                         TextPaintUtil.getTextBaseLineY(mTemperaturePaint, height,
-                                false),
+                                mIsIncludePadding),
                         mTemperaturePaint)
             }
             // 画温度的符号
             leftPadding += TextPaintUtil.getTextWidth(mWeatherTemp, mTemperaturePaint)
 
+            var symbolBaselineY = (height - TextPaintUtil.getTextHeight(mTemperaturePaint, mIsIncludePadding)) / 2 +
+                    resources.getDimension(R.dimen.widget_weather_symbol_margin_top)
+
+            if (mIsIncludePadding) {
+                symbolBaselineY -= mTemperatureSymbolPaint.fontMetrics.top
+            } else {
+                symbolBaselineY -= mTemperatureSymbolPaint.fontMetrics.ascent
+            }
 
             if (!mTemperatureSymbolText.isNullOrEmpty()) {
-                it.drawText(mTemperatureSymbolText, leftPadding, TextPaintUtil.getTextBaseLineY(mTemperatureSymbolPaint, height,
-                        false), mTemperatureSymbolPaint)
+                it.drawText(mTemperatureSymbolText, leftPadding, symbolBaselineY, mTemperatureSymbolPaint)
             }
             // 画城市
-            leftPadding += TextPaintUtil.getTextWidth(mTemperatureSymbolText, mTemperatureSymbolPaint)
+            leftPadding += TextPaintUtil.getTextWidth(mTemperatureSymbolText, mTemperatureSymbolPaint) +
+                    resources.getDimension(R.dimen.widget_weather_symbol_margin_right)
+            var lintBaseLineYCity = TextPaintUtil.getNewLineBaseLineY(mCityPaint, mPMPaint, height, mIsIncludePadding)
+            +resources.getDimension(R.dimen.widget_weather_city_margin_top)
             if (!mCity.isNullOrEmpty()) {
-                it.drawText(mCity, leftPadding, TextPaintUtil.getTextBaseLineY(mCityPaint, height,
-                        false), mCityPaint)
+                it.drawText(mCity, leftPadding, lintBaseLineYCity, mCityPaint)
+            }
+
+            // 画天气的描述
+            leftPadding += TextPaintUtil.getTextWidth(mWeatherDesc, mWeatherDescPaint) +
+                    resources.getDimension(R.dimen.widget_weather_desc_margin_left)
+            if (!mWeatherDesc.isNullOrEmpty()) {
+                it.drawText(mWeatherDesc, leftPadding, lintBaseLineYCity, mWeatherDescPaint)
             }
 
             var bottomLeft = TextPaintUtil.getTextWidth(mWeatherTemp, mTemperaturePaint) +
-                    TextPaintUtil.getTextWidth(mTemperatureSymbolText, mTemperatureSymbolPaint)
+                    TextPaintUtil.getTextWidth(mTemperatureSymbolText, mTemperatureSymbolPaint) +
+                    resources.getDimension(R.dimen.widget_weather_symbol_margin_right)
             // 画pm
             if (!mPM.isNullOrEmpty()) {
                 it.drawText(mPM, bottomLeft, TextPaintUtil.getTextBaseLineY(mTemperaturePaint, height,
-                        false), mPMPaint)
+                        mIsIncludePadding), mPMPaint)
             }
 
-            bottomLeft += TextPaintUtil.getTextWidth(mPM, mPMPaint)
+            bottomLeft += TextPaintUtil.getTextWidth(mPM, mPMPaint) +
+                    resources.getDimension(R.dimen.widget_weather_quality_margin_left)
 
-            // 画天气的描述
-            if (!mWeatherDesc.isNullOrEmpty()) {
-                it.drawText(mWeatherDesc, bottomLeft, TextPaintUtil.getTextBaseLineY(mTemperaturePaint, height,
-                        false), mWeatherDescPaint)
+            // 画天气的质量
+            if (!mWeatherQuality.isNullOrEmpty()) {
+                it.drawText(mWeatherQuality, bottomLeft, TextPaintUtil.getTextBaseLineY(mTemperaturePaint, height,
+                        mIsIncludePadding), mWeatherQualityPaint)
             }
 
         }
     }
 
+    fun setData(weatherData: WeatherData?) {
+        weatherData?.let {
+            mWeatherTemp = weatherData.weatherTemperature
+            mCity = weatherData.city
+            mWeatherDesc = weatherData.weatherDesc
+            mPM = weatherData.pm
+            mWeatherQuality = weatherData.weatherQuality
+            requestLayout()
+            invalidate()
+        }
+    }
 }

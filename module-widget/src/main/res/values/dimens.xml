@@ -4,7 +4,16 @@
     <dimen name="widget_city_size">9dp</dimen>
     <dimen name="widget_pm_size">9dp</dimen>
     <dimen name="widget_weather_desc_size">9dp</dimen>
+    <dimen name="widget_weather_quality_size">9dp</dimen>
     <dimen name="widget_weather_default_padding">0dp</dimen>
     <dimen name="widget_weather_city_left">2dp</dimen>
+    <dimen name="widget_weather_right_padding">5dp</dimen>
     <dimen name="widget_weather_temperature_symbol">22dp</dimen>
+    <dimen name="widget_weather_city_margin_left">3dp</dimen>
+    <dimen name="widget_weather_pm_margin_left">3dp</dimen>
+    <dimen name="widget_weather_symbol_margin_right">5dp</dimen>
+    <dimen name="widget_weather_quality_margin_left">3dp</dimen>
+    <dimen name="widget_weather_desc_margin_left">3dp</dimen>
+    <dimen name="widget_weather_symbol_margin_top">2dp</dimen>
+    <dimen name="widget_weather_city_margin_top">4dp</dimen>
 </resources>
