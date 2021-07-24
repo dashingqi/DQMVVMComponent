@@ -2,4 +2,9 @@
 <resources>
     <dimen name="widget_temperature_size">27dp</dimen>
     <dimen name="widget_city_size">9dp</dimen>
+    <dimen name="widget_pm_size">9dp</dimen>
+    <dimen name="widget_weather_desc_size">9dp</dimen>
+    <dimen name="widget_weather_default_padding">0dp</dimen>
+    <dimen name="widget_weather_city_left">2dp</dimen>
+    <dimen name="widget_weather_temperature_symbol">22dp</dimen>
 </resources>
