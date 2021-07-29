@@ -3,7 +3,8 @@
     package="com.dashingqi.module.widget">
 
     <application>
-        <activity android:name=".coroutine.WidgetCoroutineActivity"></activity>
+        <activity android:name=".view.canvas.WidgetCanvasActivity"></activity>
+        <activity android:name=".coroutine.WidgetCoroutineActivity" />
         <activity android:name=".view.WidgetShareElementTwoActivity" />
         <activity android:name=".view.WidgetShareElementActivity" />
         <activity android:name=".callback.CallbackActivity" />

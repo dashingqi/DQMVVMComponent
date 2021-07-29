@@ -41,7 +41,8 @@ class DebugViewModel(application: Application) : BasePageViewModel<DebugItemData
         items.add(DebugItemData("pop window", RoutePath.Widget.WIDGET_POP_WINDOW))
         items.add(DebugItemData("测试回调", RoutePath.Widget.WIDGET_CALL_BACK))
         items.add(DebugItemData("共享元素", RoutePath.Widget.WIDGET_SHARE_ELEMENT))
-        items.add(DebugItemData("协程度",RoutePath.Widget.WIDGET_COROUTINE))
+        items.add(DebugItemData("协程度", RoutePath.Widget.WIDGET_COROUTINE))
+        items.add(DebugItemData("canvas练习", RoutePath.Widget.WIDGET_CANVAS))
 
     }
 

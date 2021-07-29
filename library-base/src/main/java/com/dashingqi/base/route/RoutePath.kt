@@ -110,6 +110,9 @@ object RoutePath {
 
         const val WIDGET_COROUTINE =  "${MAIN}/coroutine"
 
+        /** canvas 使用的Activity */
+        const val WIDGET_CANVAS = "${MAIN}/canvas"
+
 
     }
 
