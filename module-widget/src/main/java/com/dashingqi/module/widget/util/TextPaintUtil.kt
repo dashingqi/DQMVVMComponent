@@ -56,10 +56,10 @@ object TextPaintUtil {
     fun getNewLineBaseLineY(textPaintOne: TextPaint, textPaintTwo: TextPaint, maxHeight: Int, includePadding: Boolean): Float {
         var baseLineY = (maxHeight -
                 getTextHeight(textPaintOne, includePadding) - getTextHeight(textPaintTwo, includePadding)) / 2
-        if (includePadding) {
-            baseLineY -= textPaintOne.fontMetrics.top
+        baseLineY -= if (includePadding) {
+            textPaintOne.fontMetrics.top
         } else {
-            baseLineY -= textPaintOne.fontMetrics.ascent
+            textPaintOne.fontMetrics.ascent
         }
         return baseLineY
     }
