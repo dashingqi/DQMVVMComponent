@@ -16,7 +16,7 @@ object TextPaintUtil {
      */
     fun getTextHeight(paint: TextPaint?, includePadding: Boolean): Float {
 
-        var tempTextHeight: Float = 0.0f
+        var tempTextHeight = 0.0f
         paint?.let { textPaint ->
             tempTextHeight = if (includePadding) {
                 textPaint.fontMetrics.bottom - textPaint.fontMetrics.top
@@ -33,7 +33,7 @@ object TextPaintUtil {
      */
     fun getTextWidth(content: String, textPaint: TextPaint): Float {
 
-        return if (content.isNullOrEmpty()) {
+        return if (content.isEmpty()) {
             0.0f
         } else {
             textPaint.measureText(content)
@@ -57,9 +57,9 @@ object TextPaintUtil {
         var baseLineY = (maxHeight -
                 getTextHeight(textPaintOne, includePadding) - getTextHeight(textPaintTwo, includePadding)) / 2
         if (includePadding) {
-            baseLineY -= textPaintOne.getFontMetrics().top
+            baseLineY -= textPaintOne.fontMetrics.top
         } else {
-            baseLineY -= textPaintOne.getFontMetrics().ascent
+            baseLineY -= textPaintOne.fontMetrics.ascent
         }
         return baseLineY
     }
