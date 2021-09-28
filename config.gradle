@@ -18,7 +18,8 @@ ext {
             "androidx.espresso"        : "androidx.test.espresso:espresso-core:3.2.0",
             "androidx.constraintlayout": "androidx.constraintlayout:constraintlayout:2.0.0",
             "androidx.recyclerview"    : "androidx.recyclerview:recyclerview:1.1.0",
-            "material"                 : "com.google.android.material:material:1.1.0-alpha07"
+            "material"                 : "com.google.android.material:material:1.1.0-alpha07",
+            "core-ktx"                 : "androidx.core:core-ktx:1.5.3"
     ]
 
     versions = [

@@ -67,6 +67,10 @@ class BaseApplication : IApplicationProvider {
         DQStateLayout.setDefaultErrorLayout(R.layout.base_common_state_error_layout)
         DQStateLayout.setDefaultEmptyLayout(R.layout.base_common_state_empty_layout)
     }
+
+    /**
+     * 初始化Log
+     */
     private fun initDQLog(){
         DQLog.setDQLogInterceptor(object :DQLogInterceptor{
             override fun process(level: Int): Boolean {

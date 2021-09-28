@@ -20,7 +20,7 @@ import java.time.LocalDate
  * desc :
  */
 class AppApplication : Application() {
-    private  val TAG = "AppApplication"
+    private val TAG = "AppApplication"
 
     init {
         //初始化打印
@@ -28,29 +28,34 @@ class AppApplication : Application() {
         ApplicationController.init(this, true)
     }
 
+    private val activityLifecycleCallbacks = DQActivityLifecycleCallbacks(
+        onActivityCreated = { activity, savedInstanceState ->
+            DQLog.i("${activity::class.java.name} ---> perform onCreate()")
+        },
+        onActivityStarted = { activity ->
+            DQLog.i("${activity::class.java.name} ---> perform onStart()")
+        },
+        onActivityResumed = { activity ->
+            DQLog.i("${activity::class.java.name} ---> perform onResume()")
+        },
+        onActivityPaused = { activity ->
+            DQLog.i("${activity::class.java.name} ---> perform onPause()")
+        },
+        onActivityStopped = { activity ->
+            DQLog.i("${activity::class.java.name} ---> perform onStop()")
+        },
+        onActivityDestroyed = { activity ->
+            DQLog.i("${activity::class.java.name} ---> perform onDestroy()")
+        }
+    )
+
     override fun onCreate() {
         super.onCreate()
 
         initARouter()
         ApplicationController.transformOnCreate()
-
-        val nameStart = SystemClock.elapsedRealtimeNanos()
-        var name = ProcessUtils.getCurrentProcessName(this)
-        Log.d(TAG,"getCurrentProcessName cost == ${SystemClock.elapsedRealtimeNanos()-nameStart}")
-
-        val pNameStart = SystemClock.elapsedRealtimeNanos()
-        var pName = ProcessUtils.getCurrentProcessNameOnP()
-        Log.d(TAG,"getCurrentProcessNameOnP cost == ${SystemClock.elapsedRealtimeNanos() - pNameStart}")
-
-        val atNameStart = SystemClock.elapsedRealtimeNanos()
-        var atName = ProcessUtils.getCurrentProcessNameByAT()
-        Log.d(TAG,"getCurrentProcessNameByAT cost == ${SystemClock.elapsedRealtimeNanos()-atNameStart}")
-
-        if (ProcessUtils.getCurrentProcessName(this) == BuildConfig.APPLICATION_ID){
-            Log.d(TAG,"init main application")
-        }
-
-
+        initTest()
+        registerActivityLifecycleCallbacks(activityLifecycleCallbacks)
 
     }
 
@@ -88,15 +93,23 @@ class AppApplication : Application() {
     }
 
     /**
-     * 初始化日志的打印
+     * 测试代码
      */
-    private fun initLog() {
-        val formatStrategy: FormatStrategy = PrettyFormatStrategy.newBuilder()
-                .showThreadInfo(false)
-                .methodCount(0)
-                .methodOffset(7)
-                .tag("dq-m-v-v-m-component")
-                .build()
-        Logger.addLogAdapter(AndroidLogAdapter(formatStrategy))
+    private fun initTest() {
+        val nameStart = SystemClock.elapsedRealtimeNanos()
+        var name = ProcessUtils.getCurrentProcessName(this)
+        Log.d(TAG, "getCurrentProcessName cost == ${SystemClock.elapsedRealtimeNanos() - nameStart}")
+
+        val pNameStart = SystemClock.elapsedRealtimeNanos()
+        var pName = ProcessUtils.getCurrentProcessNameOnP()
+        Log.d(TAG, "getCurrentProcessNameOnP cost == ${SystemClock.elapsedRealtimeNanos() - pNameStart}")
+
+        val atNameStart = SystemClock.elapsedRealtimeNanos()
+        var atName = ProcessUtils.getCurrentProcessNameByAT()
+        Log.d(TAG, "getCurrentProcessNameByAT cost == ${SystemClock.elapsedRealtimeNanos() - atNameStart}")
+
+        if (ProcessUtils.getCurrentProcessName(this) == BuildConfig.APPLICATION_ID) {
+            Log.d(TAG, "init main application")
+        }
     }
 }

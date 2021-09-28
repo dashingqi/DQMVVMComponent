@@ -48,7 +48,6 @@ android {
 }
 
 dependencies {
-    api "androidx.core:core-ktx:+"
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api rootProject.ext.androidx["androidx.appcompat"]
     api rootProject.ext.androidx["androidx.constraintlayout"]
@@ -91,8 +90,7 @@ dependencies {
     debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.2.0"
     releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.2.0"
     api rootProject.ext.dependencies["lifecycleScope"]
-
-
+    //api rootProject.ext.dependencies["core-ktx"]
 }
 repositories {
     mavenCentral()
