@@ -127,3 +127,11 @@
 - [RecyclerView基础篇-Item添加动画](https://www.jianshu.com/p/4c1eb409bc0e)
 - [RecyclerView基础篇-Api解释](https://www.jianshu.com/p/7bb51be254d4)
 
+#### 痛点
+##### LiveData
+###### 痛点一
+- 当横竖屏切换的时候伴随着页面的销毁重建，会导致页面每次屏幕旋转都会重新执行observe；
+- LiveData保证订阅者总能在值变化的时候观察到最新的值，并且每个初次订阅的观察者都会执行一次回调方法；
+- 在一个UI刷新周期内，LiveData连续两次post值，回调处只能收到最新一次的值，之前的都会被丢弃；
+
+
