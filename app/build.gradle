@@ -81,6 +81,8 @@ android {
         targetCompatibility rootProject.ext.versions.java
     }
 
+    kapt.includeCompileClasspath = false
+
 }
 
 configurations.all {

@@ -13,7 +13,11 @@ buildscript {
         jcenter()
         maven { url 'http://developer.huawei.com/repo/' }
         maven { url 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/' }
-
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+        }
+        maven { url 'http://developer.huawei.com/repo/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
 
     }
     dependencies {
@@ -34,6 +38,14 @@ allprojects {
         mavenLocal()
         google()
         jcenter()
+        maven { url 'http://developer.huawei.com/repo/' }
+//        maven {
+//            url  "https://dl.bintray.com/dashingqi/utils"
+//        }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+        }
         maven { url 'http://developer.huawei.com/repo/' }
         maven { url 'https://jitpack.io' }
 
