@@ -4,6 +4,25 @@
     <asm skipDebug="false" skipFrames="false" skipCode="false" expandFrames="false" />
     <groovy codeStyle="LEGACY" />
   </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="library-service/src/main/res/layout/service_project_item_list.xml" value="0.35833333333333334" />
+        <entry key="library-service/src/main/res/layout/service_wx_item_article.xml" value="0.35833333333333334" />
+        <entry key="module-home/src/main/res/layout/home_activity_main.xml" value="0.3134057971014493" />
+        <entry key="module-home/src/main/res/layout/home_bottom_bar_item.xml" value="0.3134057971014493" />
+        <entry key="module-home/src/main/res/layout/home_new_project_fragment.xml" value="0.2056159420289855" />
+        <entry key="module-home/src/main/res/layout/home_wen_da_fragment.xml" value="0.3582427536231884" />
+        <entry key="module-project/src/main/res/layout/project_fragment.xml" value="0.2056159420289855" />
+        <entry key="module-project/src/main/res/layout/project_list_fragment.xml" value="0.2056159420289855" />
+        <entry key="module-square/src/main/res/layout/square_item_list.xml" value="0.2056159420289855" />
+        <entry key="module-square/src/main/res/layout/square_list_layout.xml" value="0.2056159420289855" />
+        <entry key="module-wx/src/main/res/layout/wx_article_chapter_fragment.xml" value="0.2056159420289855" />
+        <entry key="module-wx/src/main/res/layout/wx_fragment.xml" value="0.2056159420289855" />
+        <entry key="moudle-collect/src/main/res/layout/collect_list_activity.xml" value="0.2056159420289855" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

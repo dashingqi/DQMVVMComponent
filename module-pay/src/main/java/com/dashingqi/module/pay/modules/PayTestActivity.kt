@@ -31,8 +31,6 @@ class PayTestActivity : AppCompatActivity() {
         }
 
 
-        // println( " ======> ${method(1, null)}")
-
     }
 
 
@@ -41,10 +39,10 @@ class PayTestActivity : AppCompatActivity() {
         WXPay.initWxPay(this, "")
 
         //构造支付数据
-        var wxPayInfoBean = WXPayInfoBean()
+        val wxPayInfoBean = WXPayInfoBean()
 
 
-        var wxPayCallback = object : IPayCallback<WXPayInfoBean> {
+        val wxPayCallback = object : IPayCallback<WXPayInfoBean> {
             override fun onCancel() {
                 toast("微信支付取消了")
             }
@@ -64,9 +62,9 @@ class PayTestActivity : AppCompatActivity() {
 
     private fun aliPay() {
 
-        var aliPayBean = AliPayBean()
+        val aliPayBean = AliPayBean()
 
-        var aliPayCallback = object : IPayCallback<AliPayBean> {
+        val aliPayCallback = object : IPayCallback<AliPayBean> {
             override fun onCancel() {
                 toast("支付宝取消支付")
             }
@@ -81,7 +79,14 @@ class PayTestActivity : AppCompatActivity() {
 
         }
 
-        ARouter.getInstance().navigation(PayService::class.java).performAliPay(AliPay(), this, aliPayBean, aliPayCallback)
+        ARouter.getInstance()
+            .navigation(PayService::class.java)
+            .performAliPay(
+                AliPay(),
+                this,
+                aliPayBean,
+                aliPayCallback
+            )
     }
 
     private fun method(a: Int?, b: Int?): Int? {
