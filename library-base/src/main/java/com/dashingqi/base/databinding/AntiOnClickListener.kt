@@ -10,7 +10,7 @@ import android.view.View
 open class AntiOnClickListener(var clickListener: View.OnClickListener) : View.OnClickListener {
     var last = 0L
     override fun onClick(v: View?) {
-        var currentTimeMillis = System.currentTimeMillis()
+        val currentTimeMillis = System.currentTimeMillis()
         if (currentTimeMillis - last > getAntiMillis()) {
             clickListener.onClick(v)
             last = currentTimeMillis

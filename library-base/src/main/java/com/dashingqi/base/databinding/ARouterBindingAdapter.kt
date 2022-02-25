@@ -17,14 +17,17 @@ object ARouterBindingAdapter {
      */
     @JvmStatic
     @BindingAdapter(value = ["arPath"], requireAll = true)
-    fun arPath(view: View, arPath: String) {
-        Logger.d("arPath onClick")
-        view?.let {
-            arPath?.let {
-                view.setOnClickListener(AntiOnClickListener(View.OnClickListener {
-                    ARouter.getInstance().build(arPath).navigation()
-                }))
-            }
-        }
+    fun arPath(view: View?, arPath: String?) {
+        view ?: return
+        arPath ?: return
+        Logger.d(
+            """
+            arPath onClick 
+            arPath is $arPath
+        """.trimIndent()
+        )
+        view.setOnClickListener(AntiOnClickListener {
+            ARouter.getInstance().build(arPath).navigation()
+        })
     }
 }
