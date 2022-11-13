@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -14,13 +15,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
             loadMoreListener="@{()->viewModel.loadMore()}"
             loadMoreState="@{viewModel.loadMoreState}"
             refreshListener="@{()->viewModel.refresh()}"
             refreshState="@{viewModel.refreshState}"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:ignore="MissingClass">
 
             <com.dashingqi.base.widget.state.DQStateLayout
                 stateLayoutState="@{viewModel.stateLayout}"
@@ -38,7 +40,7 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
             </com.dashingqi.base.widget.state.DQStateLayout>
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

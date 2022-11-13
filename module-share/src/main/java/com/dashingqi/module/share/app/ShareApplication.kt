@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.dashingqi.base.providers.application.IApplicationProvider
 import com.umeng.commonsdk.UMConfigure
-import com.umeng.socialize.PlatformConfig
+//import com.umeng.socialize.PlatformConfig
 
 /**
  * @author : zhangqi
@@ -28,7 +28,7 @@ class ShareApplication : IApplicationProvider {
                 UMConfigure.DEVICE_TYPE_PHONE,
                 ""
         )
-        PlatformConfig.setWeixin("wx7c6aefb68a206835", "de675f3b2e25f7efa9dbe15e822987e7")
+//        PlatformConfig.setWeixin("wx7c6aefb68a206835", "de675f3b2e25f7efa9dbe15e822987e7")
     }
 
     override fun onLowMemory() {

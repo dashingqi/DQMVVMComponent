@@ -72,7 +72,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
             loadMoreListener="@{()->viewModel.loadMore()}"
             loadMoreState="@{viewModel.loadMoreState}"
@@ -97,7 +97,7 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
             </com.dashingqi.base.widget.state.DQStateLayout>
 
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

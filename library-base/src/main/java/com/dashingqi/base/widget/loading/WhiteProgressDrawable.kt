@@ -1,7 +1,7 @@
 package com.dashingqi.base.widget.loading
 
 import android.graphics.Color
-import com.scwang.smartrefresh.layout.internal.ProgressDrawable
+import com.scwang.smart.drawable.ProgressDrawable
 
 /**
  * @author : zhangqi

@@ -88,8 +88,4 @@ class PayTestActivity : AppCompatActivity() {
                 aliPayCallback
             )
     }
-
-    private fun method(a: Int?, b: Int?): Int? {
-        return a?.minus(b!!) ?: null
-    }
 }

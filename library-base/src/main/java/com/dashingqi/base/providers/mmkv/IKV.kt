@@ -100,12 +100,12 @@ interface IKV {
     /**
      * 获取到字节数组
      */
-    fun getByteArray(key: String): ByteArray
+    fun getByteArray(key: String): ByteArray?
 
     /**
      * 获取到字节数组，带有默认值
      */
-    fun getByteArray(key: String, defaultValue: ByteArray): ByteArray
+    fun getByteArray(key: String, defaultValue: ByteArray): ByteArray?
 
     /**
      * 指定类型

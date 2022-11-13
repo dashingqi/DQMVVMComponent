@@ -2,27 +2,24 @@
 apply from: "config.gradle"
 buildscript {
     ext {
-        kotlin_version = '1.5.31'
+        kotlin_version = '1.7.10'
     }
     repositories {
-        google()
         mavenCentral()
         mavenLocal()
-        maven { url 'http://developer.huawei.com/repo/' }
-        maven { url 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/' }
+        google()
+        jcenter()
         maven {
-            url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+            url 'https://developer.huawei.com/repo/'
         }
-        maven { url 'http://developer.huawei.com/repo/' }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.android.tools.build:gradle:7.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.alibaba:arouter-register:1.0.2"
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
         classpath 'com.github.ooftf:autoregister:1.4.4'
-        classpath 'com.didichuxing.doraemonkit:doraemonkit-plugin:3.2.0'
+//        classpath 'com.didichuxing.doraemonkit:doraemonkit-plugin:3.2.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -34,13 +31,11 @@ allprojects {
         google()
         mavenCentral()
         mavenLocal()
-        maven { url 'http://developer.huawei.com/repo/' }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven {
-            url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
-        }
-        maven { url 'http://developer.huawei.com/repo/' }
         maven { url 'https://jitpack.io' }
+        jcenter()
+        maven {
+            url 'https://developer.huawei.com/repo/'
+        }
 
     }
 }

@@ -41,12 +41,13 @@ class HomeFragment : BaseMvvMFragment<HomeFragmentBinding, HomeFragmentViewModel
 
     private fun configHomeBanner() {
         homeBannerAdapter = HomeBannerAdapter()
-        dataBinding.homeBanner.adapter = homeBannerAdapter
+        //homeBanner.
         dataBinding.homeBanner.indicator = CircleIndicator(activity)
         dataBinding.homeBanner.setOnBannerListener { _, position ->
-            var data = dataBinding.homeBanner.adapter.getData(position) as HomeBannerResponse.DataBean
+            val data = dataBinding.homeBanner.adapter.getData(position) as? HomeBannerResponse.DataBean
             data?.let {
-                ARouter.getInstance().build("/web/commonView").withString("url", it.url).withString("title", it.title).navigation()
+                ARouter.getInstance().build("/web/commonView").withString("url", it.url).withString("title", it.title)
+                    .navigation()
             }
 
         }

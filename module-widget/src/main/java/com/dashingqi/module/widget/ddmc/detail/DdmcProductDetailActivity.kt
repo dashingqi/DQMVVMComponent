@@ -14,7 +14,6 @@ import com.dashingqi.dqlog.DQLog
 import com.dashingqi.module.widget.databinding.WidgetActivityDdmcProductDetailBinding
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
-import com.scwang.smartrefresh.layout.listener.CoordinatorLayoutListener
 import kotlinx.android.synthetic.main.widget_activity_ddmc_product_detail.*
 import kotlin.math.abs
 
@@ -121,26 +120,26 @@ class DdmcProductDetailActivity : BaseMVVMActivity<WidgetActivityDdmcProductDeta
     }
 
     private fun configTabLayout() {
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                val childPosition = tab?.position
-                val appBarLayoutParams = (appBarLayout.layoutParams) as (CoordinatorLayout.LayoutParams)
-                val appBarLayoutBehavior = appBarLayoutParams.behavior as CoordinatorLayout.Behavior
-                if (appBarLayoutBehavior is AppBarLayout.Behavior) {
-                    if (childPosition == 0) {
-                        appBarLayoutBehavior.topAndBottomOffset = 0
-                    }
-                }
-            }
-        })
+//        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+//            override fun onTabReselected(tab: TabLayout.Tab?) {
+//
+//            }
+//
+//            override fun onTabUnselected(tab: TabLayout.Tab?) {
+//
+//            }
+//
+//            override fun onTabSelected(tab: TabLayout.Tab?) {
+//                val childPosition = tab?.position
+//                val appBarLayoutParams = (appBarLayout.layoutParams) as (CoordinatorLayout.LayoutParams)
+//                val appBarLayoutBehavior = appBarLayoutParams.behavior as CoordinatorLayout.Behavior
+//                if (appBarLayoutBehavior is AppBarLayout.Behavior) {
+//                    if (childPosition == 0) {
+//                        appBarLayoutBehavior.topAndBottomOffset = 0
+//                    }
+//                }
+//            }
+//        })
     }
 
 }

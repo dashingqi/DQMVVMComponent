@@ -11,8 +11,7 @@ import kotlinx.android.synthetic.main.base_loading_dialog_layout.*
  * @time : 2020/5/19
  * desc :
  */
-class LoadingDialog : BaseDialog {
-    constructor(context: Context) : super(context, R.style.base_loadingDialogTheme)
+class LoadingDialog(context: Context) : BaseDialog(context, R.style.base_loadingDialogTheme) {
 
     init {
         setContentView(R.layout.base_loading_dialog_layout)

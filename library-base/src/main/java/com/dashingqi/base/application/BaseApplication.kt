@@ -4,15 +4,15 @@ import android.app.Application
 import com.alibaba.android.arouter.facade.service.SerializationService
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dashingqi.base.providers.application.IApplicationProvider
-import com.dashingqi.base.widget.smart.PremixHeader
 import com.dashingqi.base.widget.state.DQStateLayout
 import com.dashingqi.dqlog.DQJsonParse
 import com.dashingqi.dqlog.DQLog
 import com.dashingqi.dqlog.DQLogInterceptor
 import com.dashingqi.library_base.R
-import com.didichuxing.doraemonkit.DoraemonKit
-import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter
+import com.scwang.smart.refresh.footer.ClassicsFooter
+import com.scwang.smart.refresh.header.ClassicsHeader
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
+//import com.didichuxing.doraemonkit.DoraemonKit
 import java.lang.reflect.Type
 
 /**
@@ -30,7 +30,7 @@ class BaseApplication : IApplicationProvider {
         initSmartRefresh()
         initStateLayout()
         initDQLog()
-        DoraemonKit.install(instance)
+        // DoraemonKit.install(instance)
 
     }
 
@@ -51,7 +51,7 @@ class BaseApplication : IApplicationProvider {
      */
     private fun initSmartRefresh() {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
-            return@setDefaultRefreshHeaderCreator PremixHeader(context)
+            return@setDefaultRefreshHeaderCreator ClassicsHeader(context)
         }
 
         SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout ->

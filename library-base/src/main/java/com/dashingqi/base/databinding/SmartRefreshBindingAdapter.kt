@@ -3,8 +3,8 @@ package com.dashingqi.base.databinding
 import androidx.databinding.BindingAdapter
 import com.dashingqi.base.constant.SmartRefreshEvent
 import com.orhanobut.logger.Logger
-import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.constant.RefreshState
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.scwang.smart.refresh.layout.constant.RefreshState
 import java.lang.Exception
 
 /**

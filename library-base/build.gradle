@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.didi.dokit'
+//apply plugin: 'com.didi.dokit'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -21,7 +21,7 @@ android {
         }
         ndk {
             //设置支持的SO库架构
-            abiFilters 'armeabi-v7a', 'x86', 'armeabi', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+            abiFilters 'armeabi-v7a'
         }
 
         multiDexEnabled true
@@ -88,8 +88,8 @@ dependencies {
     api rootProject.ext.dependencies["viewmodel-ktx"]
     api rootProject.ext.dependencies["dq-log"]
     implementation project(":library-res")
-    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.2.0"
-    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.2.0"
+//    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.2.0"
+//    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.2.0"
     api rootProject.ext.dependencies["lifecycleScope"]
     //api rootProject.ext.dependencies["core-ktx"]
 }

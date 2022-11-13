@@ -42,7 +42,7 @@ class HomeFragmentViewModel(application: Application) : BasePageViewModel<Common
         IHomeService.instance.getBannerData().enqueue(LiveDataCallback<HomeBannerResponse>(baseLiveData)
                 .bindStateLayout()
                 .doOnResponseSuccess { _, response ->
-                    var data = response.data
+                    val data = response.data
                     bannerData.value = data
                 }
         )

@@ -18,7 +18,7 @@ import com.dashingqi.library.service.providers.common.response.CommonArticleResp
 object ViewShowController {
 
     fun getTagOne(item: CommonArticleResponse): String {
-        return item.tags?.let {
+        return item.tags.let {
             it[0].name
         }
     }
