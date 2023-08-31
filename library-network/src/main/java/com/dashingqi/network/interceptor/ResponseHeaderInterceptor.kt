@@ -15,14 +15,14 @@ import java.lang.StringBuilder
 class ResponseHeaderInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
 
-        var request = chain.request()
-        var encodedPath = request.url.encodedPath
-        var response = chain.proceed(chain.request())
+        val request = chain.request()
+        val encodedPath = request.url.encodedPath
+        val response = chain.proceed(chain.request())
 
         if (encodedPath.contains("/user/login")) {
             if (response.headers("set-cookie").isNotEmpty()) {
-                var cookies = response.headers("set-cookie")
-                var cookiesStr = handleCookies(cookies)
+                val cookies = response.headers("set-cookie")
+                val cookiesStr = handleCookies(cookies)
                 ARouter.getInstance().navigation(UserService::class.java).setToken(cookiesStr)
             }
         }
@@ -36,7 +36,7 @@ class ResponseHeaderInterceptor : Interceptor {
     private fun handleCookies(cookies: List<String>): String {
         val sb = StringBuilder()
         for (index in cookies.indices) {
-            var cookie = cookies[index].split(";")[0]
+            val cookie = cookies[index].split(";")[0]
             Logger.d("cookie ----> $cookie")
             sb.append(cookie)
             if (index < cookies.size - 1) {

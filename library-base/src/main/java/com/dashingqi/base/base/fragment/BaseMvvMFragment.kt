@@ -57,8 +57,8 @@ abstract class BaseMvvMFragment<DB : ViewDataBinding, VM : BaseViewModel> : Base
      * 创建DataBinding
      */
     private fun createDataBinding() {
-        var dbClass = getDbClass<DB>(this)
-        var method = dbClass.getMethod("inflate", LayoutInflater::class.java)
+        val dbClass = getDbClass<DB>(this)
+        val method = dbClass.getMethod("inflate", LayoutInflater::class.java)
         dataBinding = method.invoke(null, layoutInflater) as DB
     }
 

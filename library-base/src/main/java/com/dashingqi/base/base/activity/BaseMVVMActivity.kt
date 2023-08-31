@@ -39,8 +39,8 @@ abstract class BaseMVVMActivity<DB : ViewDataBinding, VM : BaseViewModel> : Base
      * 创建DataBinding
      */
     private fun createDataBinding() {
-        var dbClass = getDbClass<DB>(this)
-        var method = dbClass.getMethod("inflate", LayoutInflater::class.java)
+        val dbClass = getDbClass<DB>(this)
+        val method = dbClass.getMethod("inflate", LayoutInflater::class.java)
         dataBinding = method.invoke(null, layoutInflater) as DB
         setContentView(dataBinding.root)
     }
@@ -49,7 +49,7 @@ abstract class BaseMVVMActivity<DB : ViewDataBinding, VM : BaseViewModel> : Base
      * 创建ViewModel
      */
     private fun createViewModel(): VM {
-        var vmClass = getVmClass<VM>(this)
+        val vmClass = getVmClass<VM>(this)
         return getViewModelFactory()?.let {
             ViewModelProvider(this, it).get(vmClass)
         } ?: ViewModelProvider(this).get(vmClass)

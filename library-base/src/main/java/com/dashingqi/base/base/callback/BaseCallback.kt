@@ -37,7 +37,7 @@ open class BaseCallback<T : IResponse> : Callback<T> {
                 return
             }
 
-            var body = response.body()
+            val body = response.body()
             if (body == null) {
                 doOnAnyFailContainer.forEach { it.invoke(call) }
                 onResponseFailureBodyNull(call, response)
@@ -67,7 +67,7 @@ open class BaseCallback<T : IResponse> : Callback<T> {
 
     protected open fun onHttpCodeError(call: Call<T>, response: Response<T>) {
 
-        var code = response.code()
+        val code = response.code()
         Logger.w("error code ---> $code")
 
     }

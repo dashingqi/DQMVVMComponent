@@ -11,7 +11,7 @@ import com.dashingqi.library.service.providers.user.UserService
 class ParamsInterceptor : BaseParamsInterceptor() {
     override fun getAddHeaderParams(): MutableMap<String, String> {
         val headerParams = mutableMapOf<String, String>()
-        headerParams?.let {
+        headerParams.let {
             if (ARouter.getInstance().navigation(UserService::class.java).getToken().isNotEmpty()) {
                 it["Cookie"] = ARouter.getInstance().navigation(UserService::class.java).getToken()
             }

@@ -2,7 +2,6 @@ package com.dashingqi.module.widget.net
 
 
 import com.alibaba.android.arouter.launcher.ARouter
-import com.dashingqi.base.base.response.BaseResponse
 import com.dashingqi.base.providers.network.IServiceProvider
 import com.dashingqi.module.widget.net.response.OpenEyeResponse
 import retrofit2.Call

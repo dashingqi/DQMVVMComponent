@@ -39,7 +39,7 @@ class DQLazyFragmentProxy<T>(var mFragment: T) where T : Fragment, T : DQLazyPro
             view
         } else {
 
-            var view = mFragment.view ?: mFragment.getContentView(inflater, container)
+            val view = mFragment.view ?: mFragment.getContentView(inflater, container)
             loadJudgment(view)
             mFragment.view
         }

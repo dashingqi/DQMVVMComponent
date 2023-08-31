@@ -10,26 +10,26 @@ import okhttp3.*
  */
 abstract class BaseParamsInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        var request = chain.request()
-        var body = request.body
-        var newBuilder = request.newBuilder()
+        val request = chain.request()
+        val body = request.body
+        val newBuilder = request.newBuilder()
         var params: MutableMap<String, String>? = null
         if (request.method.equals("GET", false)) {
             //GET请求
             request.url.queryParameterNames
             params = getUrlParams(request.url)
             params = transformParams(params)
-            var newUrl = buildNewUrlWithNewParams(request.url, params)
+            val newUrl = buildNewUrlWithNewParams(request.url, params)
             newBuilder.url(newUrl)
         } else {
-            var newFormBody: RequestBody?
+            val newFormBody: RequestBody?
             if (body is FormBody) {
                 params = LinkedHashMap<String, String>()
-                var formBody = body as FormBody
+                val formBody = body
                 for (i in 0 until formBody.size) {
                     params[formBody.name(i)] = formBody.value(i)
                 }
-                var buildNewBodyWithParams = buildNewBodyWithParams(params)
+                val buildNewBodyWithParams = buildNewBodyWithParams(params)
                 newFormBody = buildNewBodyWithParams
             } else {
                 newFormBody = body
@@ -47,9 +47,9 @@ abstract class BaseParamsInterceptor : Interceptor {
      * 从url中获取到请求参数
      */
     private fun getUrlParams(url: HttpUrl): MutableMap<String, String> {
-        var params = LinkedHashMap<String, String>()
+        val params = LinkedHashMap<String, String>()
         url.queryParameterNames.forEach { key ->
-            var value = url.queryParameter(key)
+            val value = url.queryParameter(key)
             value?.let {
                 params[key] = value
             }
@@ -61,7 +61,7 @@ abstract class BaseParamsInterceptor : Interceptor {
      * 通过参数构造新的HttpUrl
      */
     private fun buildNewUrlWithNewParams(url: HttpUrl, params: MutableMap<String, String>): HttpUrl {
-        var newBuilder = url.newBuilder()
+        val newBuilder = url.newBuilder()
         url.queryParameterNames.forEach {
             newBuilder.removeAllQueryParameters(it)
         }
@@ -75,8 +75,8 @@ abstract class BaseParamsInterceptor : Interceptor {
      * 构建新的表单参数
      */
     private fun buildNewBodyWithParams(oldParams: MutableMap<String, String>): FormBody {
-        var body = FormBody.Builder()
-        var newParams = transformParams(oldParams)
+        val body = FormBody.Builder()
+        val newParams = transformParams(oldParams)
         for ((key, value) in newParams) {
             body.add(key, value)
         }

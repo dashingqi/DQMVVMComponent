@@ -7,5 +7,8 @@ import android.os.Bundle
  * @time : 2020/5/10
  * desc :
  */
-class FinishData(var code:Int,var data:Bundle,var isFinish:Boolean = true) {
-}
+class FinishData(
+    val code: Int,
+    val data: Bundle,
+    val isFinish: Boolean = true
+)

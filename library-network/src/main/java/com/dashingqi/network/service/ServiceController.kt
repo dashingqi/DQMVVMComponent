@@ -1,8 +1,8 @@
 package com.dashingqi.network.service
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.dashingqi.network.bean.Book
 import com.google.gson.GsonBuilder
 import com.google.gson.TypeAdapter
 import com.google.gson.reflect.TypeToken
@@ -33,7 +33,7 @@ class ServiceController(var baseUrl: String?,
      * 创建OKHttpClient 主要用来设置公共的控制参数
      */
     private fun createOKHttp(): OkHttpClient {
-        var builder = OkHttpClient.Builder()
+        val builder = OkHttpClient.Builder()
         if (ignoreSSL) {
             builder.run {
                 hostnameVerifier(createHostnameVerifier())
@@ -48,13 +48,13 @@ class ServiceController(var baseUrl: String?,
      * 创建Retrofit
      */
     private fun createRetrofit(): Retrofit {
-        var builder = Retrofit.Builder()
+        val builder = Retrofit.Builder()
         baseUrl?.let {
-            builder.baseUrl(baseUrl)
+            builder.baseUrl(it)
         }
         builder.client(createOKHttp())
-                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().registerTypeAdapter(LiveDataType().type, object :
-                        TypeAdapter<LiveData<String>>() {
+                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().registerTypeAdapter(LiveDataType().type,
+                    object : TypeAdapter<LiveData<String>>() {
                     override fun write(out: JsonWriter, value: LiveData<String>?) {
                         out.value(value?.value)
                     }
@@ -86,8 +86,8 @@ class ServiceController(var baseUrl: String?,
     /**
      * 创建X509TrustManager
      */
-    private fun createX509TrustManager(): X509TrustManager {
-        return object : X509TrustManager {
+    private fun createX509TrustManager(): X509TrustManager  = @SuppressLint("CustomX509TrustManager")
+    object : X509TrustManager {
             override fun checkClientTrusted(chain: Array<out X509Certificate>?, authType: String?) {
             }
 
@@ -98,7 +98,6 @@ class ServiceController(var baseUrl: String?,
                 return arrayOf<X509Certificate>()
             }
         }
-    }
 
     /**
      * 创建对应的Service接口类
